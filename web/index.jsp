@@ -8,8 +8,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-
+    <meta  charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
   <title>登录系统</title>
   <link href="style/login.css" rel="stylesheet" type="text/css">
   <link rel="stylesheet" href="style/layui.css">
@@ -33,6 +32,9 @@
           <img class="textPic" src="style/styleImg/密码.png">
           <input class="text" type="password" placeholder="密码" name="password"/>
         </div>
+          <%if(request.getAttribute("msg")!=null){ %>
+          <%=request.getAttribute("msg")%>
+          <%  }%>
 
         <br/>
         <div id="button">

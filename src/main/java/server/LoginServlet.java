@@ -1,17 +1,31 @@
 package server;
 
+import dbcon.DBConnect;
+
 import java.io.IOException;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.sql.ResultSet;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+
 @SuppressWarnings("serial")
 public class LoginServlet extends HttpServlet {
     public void doPost(HttpServletRequest request,
                        HttpServletResponse response)
             throws ServletException, IOException {
+        //建立数据库连接
+        DBConnect db = new DBConnect();
+        Statement stmt = db.connect();
+        ResultSet rs = null;
+        String userid = request.getParameter("username");
+        String password = request.getParameter("password");
+        System.out.println(userid);System.out.println(password);
+
         String access = request.getParameter("submit");
         RequestDispatcher view;
         if(access.equals("立即注册")){
@@ -23,7 +37,22 @@ public class LoginServlet extends HttpServlet {
         }
         else
         {
-            view = request.getRequestDispatcher("WEB-INF/firstpage.jsp");
+            try {
+                rs = stmt.executeQuery("SELECT * FROM user where usr_name = '"+userid+"'and password =  '"+password+"'");
+                rs.next();
+                if(rs.getString(1).equals(null))
+                {
+                    request.setAttribute("msg","登录失败");
+                    view=request.getRequestDispatcher("index.jsp");
+                }
+                else{
+                    view = request.getRequestDispatcher("WEB-INF/firstpage.jsp");
+                }
+            } catch (SQLException e) {
+                e.printStackTrace();
+                request.setAttribute("msg","登录失败");
+                view=request.getRequestDispatcher("index.jsp");
+            }
         }
         view.forward(request,response);
     }

@@ -7,6 +7,11 @@
         <element id="directory" name="classes">
           <element id="module-output" name="ManageSystem" />
         </element>
+        <element id="directory" name="lib">
+          <element id="library" level="application" name="servlet-api1" />
+          <element id="file-copy" path="$USER_HOME$/Desktop/第7次实验参考资料/第7次实验参考资料/导入的项目/classes12.jar" />
+          <element id="file-copy" path="$USER_HOME$/Desktop/第7次实验参考资料/第7次实验参考资料/导入的项目/mysql-connector-java-5.1.22-bin.jar" />
+        </element>
       </element>
     </root>
   </artifact>

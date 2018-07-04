@@ -86,6 +86,7 @@ public class wxconnect extends HttpServlet {
         //校验签名
         if (mySignature != null && mySignature != "" && mySignature.equals(signature)) {
             System.out.println("签名校验通过。");
+            System.out.println(sortString);
             //如果检验成功输出echostr，微信服务器接收到此输出，才会确认检验完成。
             //response.getWriter().println(echostr);
             response.getWriter().write(echostr);
