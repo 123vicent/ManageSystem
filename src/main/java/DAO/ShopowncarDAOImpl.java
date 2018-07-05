@@ -79,11 +79,14 @@ public class ShopowncarDAOImpl implements ShopowncarDAO {
             ps.setString(1,shopuser_id);
             ps.setString(2,car_id);
             rs = ps.executeQuery();
-            soc.setShopuser_id(rs.getString(1));
-            soc.setCar_id(rs.getString(2));
-            soc.setStock(rs.getInt(3));
-            soc.setPrice(rs.getDouble(4));
-            soc.setPic_url(rs.getString(5));
+            if(rs.next()){
+                soc.setShopuser_id(rs.getString(1));
+                soc.setCar_id(rs.getString(2));
+                soc.setStock(rs.getInt(3));
+                soc.setPrice(rs.getDouble(4));
+                soc.setPic_url(rs.getString(5));
+            }
+
 
         } catch (SQLException e) {
             e.printStackTrace();

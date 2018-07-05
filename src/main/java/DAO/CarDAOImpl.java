@@ -80,13 +80,16 @@ public class CarDAOImpl implements CarDAO {
             ps = conn.prepareStatement(sql);
             ps.setString(1,car_id);
             rs = ps.executeQuery();
-            c.setCar_id(rs.getString(1));
-            c.setBrand(rs.getString(2));
-            c.setModel(rs.getString(3));
-            c.setColor(rs.getString(4));
-            c.setSeats(rs.getString(5));
-            c.setType(rs.getString(6));
-            c.setPower(rs.getString(7));
+            if(rs.next()){
+                c.setCar_id(rs.getString(1));
+                c.setBrand(rs.getString(2));
+                c.setModel(rs.getString(3));
+                c.setColor(rs.getString(4));
+                c.setSeats(rs.getString(5));
+                c.setType(rs.getString(6));
+                c.setPower(rs.getString(7));
+            }
+
         } catch (SQLException e) {
             e.printStackTrace();
         }

@@ -72,9 +72,11 @@ public class CustomeruserDAOImpl implements CustomeruserDAO {
             ps = conn.prepareStatement(sql);
             ps.setString(1,cususer_id);
             rs = ps.executeQuery();
-            cu.setCususer_id(rs.getString(1));
-            cu.setCus_name(rs.getString(2));
-            cu.setCus_phone(rs.getString(3));
+            if(rs.next()){
+                cu.setCususer_id(rs.getString(1));
+                cu.setCus_name(rs.getString(2));
+                cu.setCus_phone(rs.getString(3));
+            }
 
         } catch (SQLException e) {
             e.printStackTrace();

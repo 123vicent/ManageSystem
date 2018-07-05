@@ -81,7 +81,7 @@ public class ShopuserDAOImpl implements ShopuserDAO {
             ps = conn.prepareStatement(sql);
             ps.setString(1,shopuser_id);
             rs = ps.executeQuery();
-            if(rs.next()) {
+            if(rs.next()){
                 su.setShopuser_id(rs.getString(1));
                 su.setPswd(rs.getString(2));
                 su.setShop_name(rs.getString(3));
@@ -89,7 +89,9 @@ public class ShopuserDAOImpl implements ShopuserDAO {
                 su.setShop_address(rs.getString(5));
                 su.setShop_manager(rs.getString(6));
                 su.setDescription(rs.getString(7));
-            }
+        }
+
+
         } catch (SQLException e) {
             e.printStackTrace();
         }
