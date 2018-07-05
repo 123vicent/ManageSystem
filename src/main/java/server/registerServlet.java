@@ -1,10 +1,11 @@
 package server;
 
-import dbcon.DBConnect;
+import DAO.AppointmentDAO;
+import DAO.DAOFactory;
+import model.Appointment;
 
 import java.io.IOException;
-import java.sql.SQLException;
-import java.sql.Statement;
+import java.sql.Date;
 import javax.servlet.RequestDispatcher;
         import javax.servlet.ServletException;
         import javax.servlet.http.HttpServlet;
@@ -21,10 +22,18 @@ public class registerServlet extends HttpServlet {
         String identity = request.getParameter("identity");
         String password = request.getParameter("password");
         String phone = request.getParameter("phone");
-        String email = request.getParameter("email");
+        Date email = Date.valueOf(request.getParameter("email"));
 
-        DBConnect db = new DBConnect();
-        Statement stmt = db.connect();
+        /*Appointment apt = new Appointment();
+        apt.setAppointment_id(identity);
+        apt.setCususer_id(password);
+        apt.setShopuser_id(phone);
+        apt.setAp_time(email);
+
+        AppointmentDAO aptdao = DAOFactory.getAppointmentDAO();
+        aptdao.insert(apt);
+        */
+        //test
 
 
         String access = request.getParameter("submit");

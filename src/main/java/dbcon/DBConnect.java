@@ -2,42 +2,37 @@ package dbcon;
 
 import java.sql.*;
 public class DBConnect {
+    private static String driver = "com.mysql.jdbc.Driver";
     private Connection conn = null;
-    private Statement stmt = null;
     private String url = null;
     private String user = null;
     private String password = null;
-    public Statement connect()
-    {
 
-
+    static {
         try {
-            Class.forName("com.mysql.jdbc.Driver"); //驱动
+            Class.forName(driver); //驱动
         } catch (ClassNotFoundException e) {
             e.printStackTrace();
-            System.out.print("驱动失败");
+            System.out.println("数据库驱动加载失败");
         }
-        url ="jdbc:mysql://localhost:3306/mydb";
-        user = "root";
-        password = "vincent";
-        try {
-            conn = (Connection) DriverManager.getConnection(url,user,password);
-            stmt = (Statement) conn.createStatement();
-            System.out.print("连接成功");
-        } catch (SQLException e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
-        }
-        return stmt;
-
     }
+
+    public Connection getConnection() {
+        url ="jdbc:mysql://localhost:3306/car";
+        user = "root";
+        password = "root";
+        try {
+            conn = DriverManager.getConnection(url,user,password);
+        } catch (SQLException e) {
+            e.printStackTrace();
+            System.out.println("数据库连接失败");
+        }
+        return conn;
+    }
+
     public void closeDB()
     {
         try {
-            if(stmt != null) {
-                stmt.close();
-                stmt = null;
-            }
             if(conn != null) {
                 conn.close();
                 conn = null;
