@@ -41,12 +41,22 @@ public class LoginServlet extends HttpServlet {
         }
         else
         {
+            if(userid.equals(""))
+            {
+                request.setAttribute("msg0", "请输入用户名");
+                view  = request.getRequestDispatcher("index.jsp");
+            }
+            else if(password.equals(""))
+            {
+                request.setAttribute("msg1", "请输入密码");
+                view  = request.getRequestDispatcher("index.jsp");
+            }
+            else {
                 //rs = stmt.executeQuery("SELECT * FROM user where usr_name = '"+userid+"'and password =  '"+password+"'");
                 //rs.next();
-                 ShopuserDAO shopuserdao = DAOFactory.getShopuserDAO();
-                 Shopuser shopuser = shopuserdao.findById(userid);
-                if(shopuser.getPswd().equals(password))
-                {
+                ShopuserDAO shopuserdao = DAOFactory.getShopuserDAO();
+                Shopuser shopuser = shopuserdao.findById(userid);
+                if (shopuser.getPswd()!=null&&shopuser.getPswd().equals(password)) {
                     //request.setAttribute("msg","登录失败");
                     //view=request.getRequestDispatcher("index.jsp");
                     Car owncars = new Car();
@@ -58,7 +68,7 @@ public class LoginServlet extends HttpServlet {
                     owncars.setColor("red");
                     owncars.setPower("1000");
 
-                    Appointment apm  = new Appointment();
+                    Appointment apm = new Appointment();
                     apm.setAppoint_id("212");
                     apm.setAppoint_state("保养预约");
                     apm.setAppoint_time("2018-08-08");
@@ -66,16 +76,16 @@ public class LoginServlet extends HttpServlet {
                     apm.setCustomer_call("65165156");
                     apm.setCustomer_name("sfsdfsf");
 
-                    request.setAttribute("shopcar",owncars);
-                    request.setAttribute("appointment",apm);
+                    request.setAttribute("shopcar", owncars);
+                    request.setAttribute("appointment", apm);
 
                     view = request.getRequestDispatcher("WEB-INF/firstpage.jsp");
-                }
-                else{
-                    request.setAttribute("msg","登录失败");
-                    view=request.getRequestDispatcher("index.jsp");
+                } else {
+                    request.setAttribute("msg2", "登录失败");
+                    view = request.getRequestDispatcher("index.jsp");
 
                 }
+            }
         }
         view.forward(request,response);
     }
