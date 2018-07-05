@@ -1,5 +1,13 @@
 package wxcon;
+import bean.TextMessage;
+import org.dom4j.DocumentException;
+//import util.CheckUtil;
+import util.MessageUtils;
+
 import java.io.IOException;
+import java.io.PrintWriter;
+import java.util.Map;
+import java.util.Date;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -11,14 +19,10 @@ import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.util.Arrays;
 
-
 public class wxconnect extends HttpServlet {
-    private final String token = "weixin";
-    public void doPost(HttpServletRequest request,
-                       HttpServletResponse response)
-            throws ServletException, IOException {
-        doGet(request, response);
-    }
+    private final String token = "iamdcz";
+
+
 
     /**
      * 排序方法
@@ -68,6 +72,10 @@ public class wxconnect extends HttpServlet {
         return "";
     }
 
+    /*
+     * 接受微信服务器发送的4个参数并且返回echostr
+     * 检测是否成功连接
+     */
     public void doGet(HttpServletRequest request,
                       HttpServletResponse response)
             throws ServletException, IOException {
@@ -86,13 +94,65 @@ public class wxconnect extends HttpServlet {
         //校验签名
         if (mySignature != null && mySignature != "" && mySignature.equals(signature)) {
             System.out.println("签名校验通过。");
-            System.out.println(sortString);
             //如果检验成功输出echostr，微信服务器接收到此输出，才会确认检验完成。
             //response.getWriter().println(echostr);
             response.getWriter().write(echostr);
         } else {
             System.out.println("签名校验失败.");
         }
+
+    }
+
+
+    /**
+     * 接收并处理微信客户端发送的请求
+     */
+    public void doPost(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        request.setCharacterEncoding("UTF-8");
+        response.setCharacterEncoding("UTF-8");
+        response.setContentType("text/xml;charset=utf-8");
+        PrintWriter out = response.getWriter();
+
+        Map<String, String> map = MessageUtils.xmlToMap(request);
+        String toUserName = map.get("ToUserName");
+        String fromUserName = map.get("FromUserName");
+        String msgType = map.get("MsgType");
+        String content = map.get("Content");
+
+        // 对文本消息进行处理
+        String message = null;
+        if (MessageUtils.MESSAGE_TEXT.equals(msgType)) {
+            if("1".equals(content)){
+                message = MessageUtils.initText(toUserName,fromUserName,MessageUtils.menuFirst());
+            }else if("2".equals(content)){
+                message = MessageUtils.initText(toUserName,fromUserName,MessageUtils.menuSecond());
+            }else if("?".equals(content) || "？".equals(content)){
+                message = MessageUtils.initText(toUserName,fromUserName,MessageUtils.menuText());
+            }else{
+                message = MessageUtils.initText(toUserName,fromUserName,"无法识别的的指令，请回复'?'呼出菜单");
+            }
+//            TextMessage text = new TextMessage();
+//            // 发送和回复是反向的
+//            text.setFromUserName(toUserName);
+//            text.setToUserName(fromUserName);
+//            text.setMsgType("text");
+//            text.setCreateTime(String.valueOf(new Date().getTime()));
+//            text.setContent("你发送的消息是：" + content);
+//            message = MessageUtils.textMessageToXML(text);
+//            System.out.println(message);
+        }else if(MessageUtils.MESSAGE_EVENT.equals(msgType)){//事件推送
+            String eventType = map.get("Event");
+            if(MessageUtils.MESSAGE_SUBSCRIBE.equals(eventType)){//关注事件
+                message = MessageUtils.initText(toUserName,fromUserName,MessageUtils.initMenuText());
+
+            }
+        }else if(MessageUtils.MESSAGE_IMAGE.equals(msgType)){
+            message = MessageUtils.initText(toUserName,fromUserName,MessageUtils.initMenuText());
+        }
+        // 将回应发送给微信服务器
+        out.print(message);
+
 
     }
 }
