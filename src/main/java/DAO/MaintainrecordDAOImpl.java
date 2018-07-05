@@ -80,13 +80,16 @@ public class MaintainrecordDAOImpl implements MaintainrecordDAO {
             ps = conn.prepareStatement(sql);
             ps.setString(1,matintainrecord_id);
             rs = ps.executeQuery();
-            m.setMaintainrecord_id(rs.getString(1));
-            m.setShopuser_id(rs.getString(2));
-            m.setCususer_id(rs.getString(3));
-            m.setCar_id(rs.getString(4));
-            m.setMaintain_time(rs.getTimestamp(5));
-            m.setPayment(rs.getDouble(6));
-            m.setDescription(rs.getString(7));
+            if(rs.next()){
+                m.setMaintainrecord_id(rs.getString(1));
+                m.setShopuser_id(rs.getString(2));
+                m.setCususer_id(rs.getString(3));
+                m.setCar_id(rs.getString(4));
+                m.setMaintain_time(rs.getTimestamp(5));
+                m.setPayment(rs.getDouble(6));
+                m.setDescription(rs.getString(7));
+            }
+
 
         } catch (SQLException e) {
             e.printStackTrace();

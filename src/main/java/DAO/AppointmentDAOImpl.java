@@ -77,11 +77,13 @@ public class AppointmentDAOImpl implements AppointmentDAO {
             ps = conn.prepareStatement(sql);
             ps.setString(1,ap_id);
             rs = ps.executeQuery();
-            apt.setAppointment_id(rs.getString(1));
-            apt.setCususer_id(rs.getString(2));
-            apt.setShopuser_id(rs.getString(3));
-            apt.setAp_time(rs.getDate(4));
-            apt.setAp_type(rs.getString(5));
+            if(rs.next()){
+                apt.setAppointment_id(rs.getString(1));
+                apt.setCususer_id(rs.getString(2));
+                apt.setShopuser_id(rs.getString(3));
+                apt.setAp_time(rs.getDate(4));
+                apt.setAp_type(rs.getString(5));
+            }
 
         } catch (SQLException e) {
             e.printStackTrace();

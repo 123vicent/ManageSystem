@@ -83,11 +83,14 @@ public class CusowncarDAOImpl implements CusowncarDAO {
             ps.setString(2,cususer_id);
             ps.setString(3,car_id);
             rs = ps.executeQuery();
-            coc.setShopuser_id(rs.getString(1));
-            coc.setCususer_id(rs.getString(2));
-            coc.setCar_id(rs.getString(3));
-            coc.setBuy_time(rs.getDate(4));
-            coc.setPay_price(rs.getDouble(5));
+            if(rs.next()){
+                coc.setShopuser_id(rs.getString(1));
+                coc.setCususer_id(rs.getString(2));
+                coc.setCar_id(rs.getString(3));
+                coc.setBuy_time(rs.getDate(4));
+                coc.setPay_price(rs.getDouble(5));
+            }
+
 
         } catch (SQLException e) {
             e.printStackTrace();

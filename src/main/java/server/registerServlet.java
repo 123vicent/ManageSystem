@@ -1,6 +1,9 @@
 package server;
 
+import DAO.DAOFactory;
+import DAO.ShopuserDAO;
 import dbcon.DBConnect;
+import model.Shopuser;
 
 import java.io.IOException;
 import java.sql.ResultSet;
@@ -24,13 +27,30 @@ public class registerServlet extends HttpServlet {
         String phone = request.getParameter("phone");
         String email = request.getParameter("email");
 
-        DBConnect db = new DBConnect();
-        Statement stmt = db.connect();
-        ResultSet rs = null;
-
         RequestDispatcher view;
 
-        try {
+        ShopuserDAO shopuserdao = DAOFactory.getShopuserDAO();
+        Shopuser shopuser = shopuserdao.findById(identity);
+
+        if(shopuser!=null)
+        {
+            request.setAttribute("msg","该用户名已被注册!");
+            view=request.getRequestDispatcher("WEB-INF/register.jsp");
+
+        }else{
+            shopuser = new Shopuser();
+            shopuser.setDescription("1");
+            shopuser.setPswd(password);
+            shopuser.setShop_address("1");
+            shopuser.setShop_manager("fdfd");
+            shopuser.setShopuser_id("dsaff");
+            shopuser.setShop_name("dfgdg");
+            shopuser.setShop_phone(phone);
+
+            shopuserdao.insert(shopuser);
+            view = request.getRequestDispatcher("index.jsp");
+        }
+        /*try {
             rs = stmt.executeQuery("select * from user");
             while(rs.next())
             {
@@ -49,8 +69,7 @@ public class registerServlet extends HttpServlet {
             request.setAttribute("msg","注册失败");
             view=request.getRequestDispatcher("WEB-INF/register.jsp");
             view.forward(request,response);
-        }
-        view = request.getRequestDispatcher("index.jsp");
+        }*/
         view.forward(request,response);
     }
 
