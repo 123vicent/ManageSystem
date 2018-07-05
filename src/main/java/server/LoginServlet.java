@@ -1,10 +1,7 @@
 package server;
 
-import DAO.CustomeruserDAO;
-import DAO.DAOFactory;
+import basic.Car;
 import dbcon.DBConnect;
-import model.Customeruser;
-import model.Shopowncar;
 
 import java.io.IOException;
 import java.sql.SQLException;
@@ -22,29 +19,55 @@ public class LoginServlet extends HttpServlet {
     public void doPost(HttpServletRequest request,
                        HttpServletResponse response)
             throws ServletException, IOException {
-        String submit = request.getParameter("submit");
-        RequestDispatcher view;
+        //建立数据库连接
+        DBConnect db = new DBConnect();
+        Statement stmt = db.connect();
+        ResultSet rs = null;
+        String userid = request.getParameter("username");
+        String password = request.getParameter("password");
+        System.out.println(userid);System.out.println(password);
 
-        if(submit.equals("立即注册")){
-            String cusid = "1";
-            String cusname = "jack";
-            String cusphone = "13335555";
-            Customeruser cu =new Customeruser();
-            cu.setCususer_id(cusid);
-            cu.setCus_name(cusname);
-            cu.setCus_phone(cusphone);
-            CustomeruserDAO cuDAO = DAOFactory.getCustometuserDAO();
-            cuDAO.insert(cu);
+        String access = request.getParameter("submit");
+        RequestDispatcher view;
+        if(access.equals("立即注册")){
             view = request.getRequestDispatcher("WEB-INF/register.jsp");
         }
-        else if(submit.equals("登陆")){
-            view = request.getRequestDispatcher("WEB-INF/firstpage.jsp");
-        }
-        else{
+        else if(access.equals("忘记密码"))
+        {
             view = request.getRequestDispatcher("WEB-INF/forget.jsp");
         }
-        view.forward(request,response);
+        else
+        {
+            try {
+                rs = stmt.executeQuery("SELECT * FROM user where usr_name = '"+userid+"'and password =  '"+password+"'");
+                rs.next();
+                if(rs.getString(1).equals(null))
+                {
+                    request.setAttribute("msg","登录失败");
+                    view=request.getRequestDispatcher("index.jsp");
+                }
+                else{
+                    Car owncars = new Car();
+                    owncars.setCar_id("0");
+                    owncars.setBrand("RRR");
+                    owncars.setModel("666");
+                    owncars.setSeats("4");
+                    owncars.setType("跑车");
+                    owncars.setColor("red");
+                    owncars.setPower("1000");
 
+                    request.setAttribute("shopcar",owncars);
+
+                    view = request.getRequestDispatcher("WEB-INF/firstpage.jsp");
+
+                }
+            } catch (SQLException e) {
+                e.printStackTrace();
+                request.setAttribute("msg","登录失败");
+                view=request.getRequestDispatcher("index.jsp");
+            }
+        }
+        view.forward(request,response);
     }
 
     public void doGet(HttpServletRequest request,
