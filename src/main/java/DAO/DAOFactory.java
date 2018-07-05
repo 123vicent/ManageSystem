@@ -1,6 +1,8 @@
 package DAO;
 
 
+import model.Shopuser;
+
 //DAO工厂类    直接调用以创建接口实例
 public class DAOFactory {
     public static AppointmentDAO getAppointmentDAO(){
@@ -27,7 +29,12 @@ public class DAOFactory {
         return new ShopowncarDAOImpl();
     }
 
+    public static ShopuserDAO getShopuserDAO(){ return new ShopuserDAOImpl(); }
+
     public static ViewrecordDAO getViewrecordDAO(){
         return new ViewrecordDAOImpl();
     }
+
+
 }
+//CarDAO cardao = DAOFactory.getCarDAO()
