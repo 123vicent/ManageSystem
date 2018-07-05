@@ -72,9 +72,11 @@ public class ViewrecordDAOImpl implements ViewrecordDAO {
             ps.setString(2,cususer_id);
             ps.setTimestamp(3,view_time);
             rs = ps.executeQuery();
-            vr.setCar_id(rs.getString(1));
-            vr.setCususer_id(rs.getString(2));
-            vr.setView_date(rs.getTimestamp(3));
+            if(rs.next()){
+                vr.setCar_id(rs.getString(1));
+                vr.setCususer_id(rs.getString(2));
+                vr.setView_date(rs.getTimestamp(3));
+            }
 
 
         } catch (SQLException e) {

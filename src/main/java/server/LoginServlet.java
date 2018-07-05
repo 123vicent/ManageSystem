@@ -41,41 +41,41 @@ public class LoginServlet extends HttpServlet {
         }
         else
         {
-                //rs = stmt.executeQuery("SELECT * FROM user where usr_name = '"+userid+"'and password =  '"+password+"'");
-                //rs.next();
-                 ShopuserDAO shopuserdao = DAOFactory.getShopuserDAO();
-                 Shopuser shopuser = shopuserdao.findById(userid);
-                if(shopuser.getPswd().equals(password))
-                {
-                    //request.setAttribute("msg","登录失败");
-                    //view=request.getRequestDispatcher("index.jsp");
-                    Car owncars = new Car();
-                    owncars.setCar_id("0");
-                    owncars.setBrand("RRR");
-                    owncars.setModel("666");
-                    owncars.setSeats("4");
-                    owncars.setType("跑车");
-                    owncars.setColor("red");
-                    owncars.setPower("1000");
+            //rs = stmt.executeQuery("SELECT * FROM user where usr_name = '"+userid+"'and password =  '"+password+"'");
+            //rs.next();
+            ShopuserDAO shopuserdao = DAOFactory.getShopuserDAO();
+            Shopuser shopuser = shopuserdao.findById(userid);
+            if(shopuser.getPswd().equals(password))
+            {
+                //request.setAttribute("msg","登录失败");
+                //view=request.getRequestDispatcher("index.jsp");
+                Car owncars = new Car();
+                owncars.setCar_id("0");
+                owncars.setBrand("RRR");
+                owncars.setModel("666");
+                owncars.setSeats("4");
+                owncars.setType("跑车");
+                owncars.setColor("red");
+                owncars.setPower("1000");
 
-                    Appointment apm  = new Appointment();
-                    apm.setAppoint_id("212");
-                    apm.setAppoint_state("保养预约");
-                    apm.setAppoint_time("2018-08-08");
-                    apm.setAppoint_type("已处理");
-                    apm.setCustomer_call("65165156");
-                    apm.setCustomer_name("sfsdfsf");
+                Appointment apm  = new Appointment();
+                apm.setAppoint_id("212");
+                apm.setAppoint_state("保养预约");
+                apm.setAppoint_time("2018-08-08");
+                apm.setAppoint_type("已处理");
+                apm.setCustomer_call("65165156");
+                apm.setCustomer_name("sfsdfsf");
 
-                    request.setAttribute("shopcar",owncars);
-                    request.setAttribute("appointment",apm);
+                request.setAttribute("shopcar",owncars);
+                request.setAttribute("appointment",apm);
 
-                    view = request.getRequestDispatcher("WEB-INF/firstpage.jsp");
-                }
-                else{
-                    request.setAttribute("msg","登录失败");
-                    view=request.getRequestDispatcher("index.jsp");
+                view = request.getRequestDispatcher("WEB-INF/firstpage.jsp");
+            }
+            else{
+                request.setAttribute("msg","登录失败");
+                view=request.getRequestDispatcher("index.jsp");
 
-                }
+            }
         }
         view.forward(request,response);
     }
