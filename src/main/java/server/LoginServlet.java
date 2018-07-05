@@ -1,5 +1,6 @@
 package server;
 
+import basic.Car;
 import dbcon.DBConnect;
 
 import java.io.IOException;
@@ -46,7 +47,19 @@ public class LoginServlet extends HttpServlet {
                     view=request.getRequestDispatcher("index.jsp");
                 }
                 else{
+                    Car owncars = new Car();
+                    owncars.setCar_id("0");
+                    owncars.setBrand("RRR");
+                    owncars.setModel("666");
+                    owncars.setSeats("4");
+                    owncars.setType("跑车");
+                    owncars.setColor("red");
+                    owncars.setPower("1000");
+
+                    request.setAttribute("shopcar",owncars);
+
                     view = request.getRequestDispatcher("WEB-INF/firstpage.jsp");
+
                 }
             } catch (SQLException e) {
                 e.printStackTrace();

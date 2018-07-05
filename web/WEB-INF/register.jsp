@@ -21,13 +21,16 @@
 </div>
 <div id="reg_border">
     <h2 id="reg_title">欢迎注册车辆销售管理系统！</h2>
-    <form class="layui-form" action="">
+    <form class="layui-form" action="/rigister">
 
         <div class="layui-form-item" id="reg_id">
             <label class="layui-form-label">用户名</label>
             <div class="layui-input-block">
                 <input type="text" style="width:300px" name="identity" lay-verify="identity" placeholder="" autocomplete="off" class="layui-input">
             </div>
+            <%if(request.getAttribute("msg")!=null){ %>
+            <%=request.getAttribute("msg")%>
+            <%  }%>
         </div>
         <div class="layui-form-item">
             <label class="layui-form-label">密码</label>
@@ -61,7 +64,7 @@
 
         <div class="layui-form-item">
             <div class="layui-input-block">
-                <button class="layui-btn" lay-submit="" lay-filter="demo1" type = "submit" name="submit">立即提交</button>
+                <input class="layui-btn"  type = "submit" name="submit" value="立即提交">
                 <button type="reset" class="layui-btn layui-btn-primary">重置</button>
             </div>
         </div>

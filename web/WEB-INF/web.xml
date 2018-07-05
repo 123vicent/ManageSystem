@@ -67,6 +67,15 @@
     </servlet-mapping>
 
     <servlet>
+        <servlet-name>Search</servlet-name>
+        <servlet-class>server.SearchcarServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>Search</servlet-name>
+        <url-pattern>/Search</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
         <servlet-name>WxServlet</servlet-name>
         <servlet-class>wxcon.wxconnect</servlet-class>
     </servlet>

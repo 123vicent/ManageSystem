@@ -1,6 +1,6 @@
 <component name="ArtifactManager">
-  <artifact type="exploded-war" name="ManageSystem:war exploded">
-    <output-path>$PROJECT_DIR$/out/artifacts/ManageSystem_war_exploded</output-path>
+  <artifact type="exploded-war" name="ManageSystem:Web exploded">
+    <output-path>$PROJECT_DIR$/web</output-path>
     <root id="root">
       <element id="javaee-facet-resources" facet="ManageSystem/web/Web" />
       <element id="directory" name="WEB-INF">
@@ -8,9 +8,8 @@
           <element id="module-output" name="ManageSystem" />
         </element>
         <element id="directory" name="lib">
+          <element id="library" level="application" name="mysql-connector-java-5.1.22-bin" />
           <element id="library" level="application" name="servlet-api1" />
-          <element id="file-copy" path="$USER_HOME$/Desktop/第7次实验参考资料/第7次实验参考资料/导入的项目/classes12.jar" />
-          <element id="file-copy" path="$USER_HOME$/Desktop/第7次实验参考资料/第7次实验参考资料/导入的项目/mysql-connector-java-5.1.22-bin.jar" />
         </element>
       </element>
     </root>
