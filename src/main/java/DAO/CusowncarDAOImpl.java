@@ -106,7 +106,7 @@ public class CusowncarDAOImpl implements CusowncarDAO {
         try {
             ps = conn.prepareStatement(sql);
             rs = ps.executeQuery();
-            if(rs.next()){
+            while(rs.next()){
                 Cusowncar coc = new Cusowncar();
                 coc.setShopuser_id(rs.getString(1));
                 coc.setCususer_id(rs.getString(2));

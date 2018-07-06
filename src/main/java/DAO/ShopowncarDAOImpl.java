@@ -102,7 +102,7 @@ public class ShopowncarDAOImpl implements ShopowncarDAO {
         try {
             ps = conn.prepareStatement(sql);
             rs = ps.executeQuery();
-            if(rs.next()){
+            while(rs.next()){
                 Shopowncar soc = new Shopowncar();
                 soc.setShopuser_id(rs.getString(1));
                 soc.setCar_id(rs.getString(2));

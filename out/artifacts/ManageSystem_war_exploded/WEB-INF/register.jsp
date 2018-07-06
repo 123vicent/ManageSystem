@@ -21,7 +21,7 @@
 </div>
 <div id="reg_border">
     <h2 id="reg_title">欢迎注册车辆销售管理系统！</h2>
-    <form class="layui-form" action="/rigister">
+    <form class="layui-form" action="/register">
 
         <div class="layui-form-item" id="reg_id">
             <label class="layui-form-label">用户名</label>

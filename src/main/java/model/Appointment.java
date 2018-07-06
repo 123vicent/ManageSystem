@@ -8,6 +8,7 @@ public class Appointment {
     private String shopuser_id;
     private Date ap_time;
     private String ap_type;
+    private String ap_state;
 
     public String getAppointment_id() {
         return appointment_id;
@@ -47,5 +48,13 @@ public class Appointment {
 
     public void setAp_type(String ap_type) {
         this.ap_type = ap_type;
+    }
+
+    public String getAp_state() {
+        return ap_state;
+    }
+
+    public void setAp_state(String ap_state) {
+        this.ap_state = ap_state;
     }
 }

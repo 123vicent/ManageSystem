@@ -35,6 +35,10 @@ public class DAOFactory {
         return new ViewrecordDAOImpl();
     }
 
+    public static ShopaptDAO getShopaptDAO(){
+        return new ShopaptDAOImpl();
+    }
+
 
 }
 //CarDAO cardao = DAOFactory.getCarDAO()
