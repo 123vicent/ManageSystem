@@ -3,11 +3,20 @@ package basic;
 import java.sql.Timestamp;
 
 public class Shopapt {
+    private String shopuser_id;
     private String cus_name;
     private String cus_phone;
     private String ap_type;
     private Timestamp ap_time;
     private String ap_state;
+
+    public String getShopuser_id() {
+        return shopuser_id;
+    }
+
+    public void setShopuser_id(String shopuser_id) {
+        this.shopuser_id = shopuser_id;
+    }
 
     public String getCus_name() {
         return cus_name;
