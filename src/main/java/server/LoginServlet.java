@@ -2,16 +2,10 @@ package server;
 
 import DAO.DAOFactory;
 import DAO.ShopuserDAO;
-import DAO.ShopuserDAOImpl;
-import basic.Appointment;
-import basic.Car;
-import dbcon.DBConnect;
+import model.Car;
 import model.Shopuser;
 
 import java.io.IOException;
-import java.sql.SQLException;
-import java.sql.Statement;
-import java.sql.ResultSet;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -68,16 +62,7 @@ public class LoginServlet extends HttpServlet {
                     owncars.setColor("red");
                     owncars.setPower("1000");
 
-                    Appointment apm = new Appointment();
-                    apm.setAppoint_id("212");
-                    apm.setAppoint_state("保养预约");
-                    apm.setAppoint_time("2018-08-08");
-                    apm.setAppoint_type("已处理");
-                    apm.setCustomer_call("65165156");
-                    apm.setCustomer_name("sfsdfsf");
 
-                    request.setAttribute("shopcar", owncars);
-                    request.setAttribute("appointment", apm);
 
                     view = request.getRequestDispatcher("WEB-INF/firstpage.jsp");
                 } else {

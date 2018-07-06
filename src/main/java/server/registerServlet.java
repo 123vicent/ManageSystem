@@ -32,7 +32,7 @@ public class registerServlet extends HttpServlet {
         ShopuserDAO shopuserdao = DAOFactory.getShopuserDAO();
         Shopuser shopuser = shopuserdao.findById(identity);
 
-        if(shopuser!=null)
+        if(shopuser.getShopuser_id()!=null)
         {
             request.setAttribute("msg","该用户名已被注册!");
             view=request.getRequestDispatcher("WEB-INF/register.jsp");
@@ -43,7 +43,7 @@ public class registerServlet extends HttpServlet {
             shopuser.setPswd(password);
             shopuser.setShop_address("1");
             shopuser.setShop_manager("fdfd");
-            shopuser.setShopuser_id("dsaff");
+            shopuser.setShopuser_id(identity);
             shopuser.setShop_name("dfgdg");
             shopuser.setShop_phone(phone);
 

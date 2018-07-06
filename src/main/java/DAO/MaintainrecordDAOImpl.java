@@ -105,7 +105,7 @@ public class MaintainrecordDAOImpl implements MaintainrecordDAO {
         try {
             ps = conn.prepareStatement(sql);
             rs = ps.executeQuery();
-            if(rs.next()){
+            while(rs.next()){
                 Maintainrecord m = new Maintainrecord();
                 m.setMaintainrecord_id(rs.getString(1));
                 m.setShopuser_id(rs.getString(2));

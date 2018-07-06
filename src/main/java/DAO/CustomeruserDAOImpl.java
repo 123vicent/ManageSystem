@@ -92,7 +92,7 @@ public class CustomeruserDAOImpl implements CustomeruserDAO {
         try {
             ps = conn.prepareStatement(sql);
             rs = ps.executeQuery();
-            if(rs.next()){
+            while(rs.next()){
                 Customeruser cu = new Customeruser();
                 cu.setCususer_id(rs.getString(1));
                 cu.setCus_name(rs.getString(2));
