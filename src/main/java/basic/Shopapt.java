@@ -1,7 +1,5 @@
 package basic;
 
-import oracle.sql.DATE;
-
 import java.sql.Date;
 import java.sql.Timestamp;
 

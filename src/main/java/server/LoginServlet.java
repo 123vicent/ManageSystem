@@ -1,10 +1,7 @@
 package server;
 
 import DAO.*;
-import basic.Shopapt;
-import basic.Shopowncar;
-import model.Car;
-import model.Shopuser;
+import model.*;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -61,6 +58,8 @@ public class LoginServlet extends HttpServlet {
 
 
                 CarDAO carDAO = DAOFactory.getCarDAO();
+                List<Car> cars = new ArrayList<Car>();
+                cars = carDAO.findAll();
 
 
                 if (shopuser.getPswd()!=null&&shopuser.getPswd().equals(password)) {
@@ -69,8 +68,7 @@ public class LoginServlet extends HttpServlet {
                     HttpSession session = request.getSession();
                     session.setAttribute("userid",userid);
 
-                    request.setAttribute("",carDAO.findAll());
-                    System.out.println(carDAO.findAll());
+                    request.setAttribute("cars",carDAO.findAll());
 
                     view = request.getRequestDispatcher("WEB-INF/firstpage.jsp");
                 } else {
