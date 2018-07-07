@@ -1,4 +1,5 @@
-<%--
+<%@ page import="basic.Shopapt" %>
+<%@ page import="java.util.List" %><%--
   Created by IntelliJ IDEA.
   User: 17308
   Date: 2018/7/3
@@ -56,8 +57,8 @@
 
           <div id="navbar" class="navbar-collapse collapse">
               <ul class="nav navbar-nav navbar-right">
-                  <li><a href="#A" class="active" data-toggle="tab"><font size="3">系统主页</font></a></li>
-                  <li><a href="#B" data-toggle="tab"><font size="3">使用功能</font></a></li>
+                  <li><a href="#A" data-toggle="tab"><font size="3">系统主页</font></a></li>
+                  <li><a href="#B" class="active" data-toggle="tab"><font size="3">使用功能</font></a></li>
                   <li><a href="#C" data-toggle="tab"><font size="3">用户设置</font></a></li>
                   <li><a href="#D" data-toggle="tab"><font size="3">帮助界面</font></a></li>
               </ul>
@@ -72,7 +73,7 @@
   </nav>
 
   <div class="tab-content">
-      <div class="tab-pane fade in active" id="A">
+      <div class="tab-pane fade" id="A">
           <!-- Carousel
           ================================================== -->
           <div id="myCarousel" class="carousel slide" data-ride="carousel">
@@ -205,15 +206,15 @@
               </footer>
 
           </div><!-- /.container -->
-      <div class="tab-pane fade" id="B">
+      <div class="tab-pane fade in active" id="B">
           <!-- 功能主页实现 -->
           <div class="container-fluid">
               <div class="col-sm-3 col-md-2 sidebar">
                   <ul class="nav nav-sidebar">
-                      <li class="active"><a href="#0"data-toggle="tab">功能概览</a></li>
+                      <li><a href="#0"data-toggle="tab">功能概览</a></li>
                       <li><a href="#1" data-toggle="tab">查询车辆信息</a></li>
                       <li><a href="#2" data-toggle="tab">上传车辆信息</a></li>
-                      <li><a href="#3" data-toggle="tab">查询客户预约</a></li>
+                      <li  class="active"><a href="#3" data-toggle="tab">查询客户预约</a></li>
                       <li><a href="#4" data-toggle="tab">进行消息推送</a></li>
                       <!--功能可以继续扩展-->
                   </ul>
@@ -221,21 +222,21 @@
               <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
                   <!-- 控制输出内容在右半部分 -->
                   <div class="tab-content">
-                      <div class="tab-pane fade in active" id="0">
+                      <div class="tab-pane fade " id="0">
                           <p>
 							<font size="4">
 							在这里可以看到功能的概览
 							</font>
                           </p>
                       </div>
-                      <div class="tab-pane fade" id="1">
-					<div>
-                    <form action="/Search">
-					<p>
+              <div class="tab-pane fade" id="1">
+                   <div>
+                      <form action="/Search">
+					    <p>
 						<font size="4">
 						在这里你可以查看你旗下的车辆信息
 						</font>
-					</p></br>
+					    </p></br>
 						<form class="navbar-form navbar-left">
 							<select style="width:100px;height:35px">
 								<option value="null"></option>
@@ -264,8 +265,8 @@
 							<input type="text" class="form-control" name="customername" placeholder="输入信息..."></input>
 								<button id="queryBtn2" type="button" class="btn btn-default" class="btn-group pull-left" style="margin-left: 10px;">
 								<span class="glyphicon glyphicon-search" aria-hidden="true"></span>查询</button>
-						</form>
                         </form>
+                      </form>
 					</div>
                           <p></br></br>
                               <font size="4">
@@ -332,7 +333,7 @@
                       -->
 
                       <div class="tab-pane fade" id="2">
-                        <form action="/addcar">
+                          <form action="/addcar">
                           <p>
                               <font size="4">
                                   在这里你可以上传你旗下的车辆信息
@@ -373,32 +374,32 @@
                               <button id="addBtn" type="button" class="btn btn-default">
                                   <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>上传</button>
                           </div>
-                        </form>
+                          </form>
                       </div>
 
-                      <div class="tab-pane fade" id="3">
+                      <div class="tab-pane fade in active" id="3">
                           <p>
                               <font size="4">
                                   在这里你可以查看你旗下的客户预约
                               </font>
                           </p></br>
-                          <form action="/handlebook" class="navbar-form navbar-left">
-                              <select name="appointstate" style="width:100px;height:35px">
-                                  <option value=""></option>
-                                  <option >全部预约</option>
-                                  <option >已处理预约</option>
-                                  <option >未处理预约</option>
-                              </select>
-                              <select name="appointtype" style="width:100px;height:35px">
-                                  <option value=""></option>
-                                  <option >试驾预约</option>
-                                  <option >保养预约</option>
-                                  <option >购车预约</option>
-                              </select>
-                              <input type="text" class="form-control" name="customername" placeholder="输入需要查询的客户姓名"></input>
-                              <button id="queryBtn2" type="submit" class="btn btn-default" class="btn-group pull-left" style="margin-left: 10px;">
-                                  <span class="glyphicon glyphicon-search" aria-hidden="true"></span>查询</button>
-                          </form>
+						<form action="/handlebook" class="navbar-form navbar-left">
+							<select name="appointstate" style="width:100px;height:35px">
+								<option value=""></option>
+								<option >全部预约</option>
+								<option >已处理预约</option>
+								<option >未处理预约</option>
+							</select>
+                            <select name="appointtype" style="width:100px;height:35px">
+                                <option value=""></option>
+                                <option >试驾预约</option>
+                                <option >保养预约</option>
+                                <option >购车预约</option>
+                            </select>
+							<input type="text" class="form-control" name="customername" placeholder="输入需要查询的客户姓名"></input>
+								<button id="queryBtn2" type="submit" class="btn btn-default" class="btn-group pull-left" style="margin-left: 10px;">
+								<span class="glyphicon glyphicon-search" aria-hidden="true"></span>查询</button>
+						</form>
 					<p></br></br></br>
                               <font size="4">
                                   查询结果
@@ -415,23 +416,31 @@
                                   <th>预约类型</th>
                                   <th>预约时间</th>
                                   <th>预约状态</th>
-
                               </tr>
                               </thead>
-                              <tbody>
-                              <th>序号</th>
-
-
+                              <%List<Shopapt> shopapts = (List<Shopapt>) request.getAttribute("userapoint");
+                                  int i = 0;%>
+                              <%for(Shopapt shopapt:shopapts){%>
+                              <tr>
+                              <th><%=i%></th>
+                              <th><%=shopapt.getCus_name()%></th>
+                              <th><%=shopapt.getCus_phone()%></th>
+                              <th><%=shopapt.getAp_type()%></th>
+                              <th><%=shopapt.getAp_time()%></th>
+                              <th><%=shopapt.getAp_state()%></th>
+                              <%i++;%>
+                              <%}%>
+                              </tr>
                               </tbody>
                           </table>
-                  </div>
+                      </div>
 				<div class="tab-pane fade" id="4">
 					<p>
 						<font size="4">
 							在这里可以进行微信端的消息推送
 						</font>
 					</p>
-					<form role="form">
+					<form role="form" action="/sendMessage">
 						<div>
 							<textarea name="customermessage" style="width:1000px;" rows="5" warp="virtual" placeholder="输入要推送给客户的信息"></textarea>
 						</div>

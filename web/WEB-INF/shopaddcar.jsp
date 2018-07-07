@@ -14,31 +14,31 @@
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
     <meta name="description" content="">
     <meta name="author" content="">
-    <link rel="icon" href="../css/favicon.ico">
+    <link rel="icon" href="../../../Users/17308/Desktop/实训项目/CarManage/css/favicon.ico">
     <title>汽车销售管理系统</title>
 	<!-- css引用 -->
     <!-- Bootstrap core CSS -->
-    <link href="../style/css/bootstrap.min.css" rel="stylesheet">
-	<link rel="stylesheet" href="../style/css/childstyle.css" type="text/css" media="screen" />
-	<link rel="stylesheet" href="../style/css/childmenu.css" type="text/css" media="screen">
-	<link rel="stylesheet" href="../style/css/bootstrap-table.css"/>
-	<link rel="stylesheet" href="../style/css/bootstrap-table-fixed-columns.css"/>
+    <link href="../../../Users/17308/Desktop/实训项目/CarManage/style/css/bootstrap.min.css" rel="stylesheet">
+	<link rel="stylesheet" href="../../../Users/17308/Desktop/实训项目/CarManage/style/css/childstyle.css" type="text/css" media="screen" />
+	<link rel="stylesheet" href="../../../Users/17308/Desktop/实训项目/CarManage/style/css/childmenu.css" type="text/css" media="screen">
+	<link rel="stylesheet" href="../../../Users/17308/Desktop/实训项目/CarManage/style/css/bootstrap-table.css"/>
+	<link rel="stylesheet" href="../../../Users/17308/Desktop/实训项目/CarManage/style/css/bootstrap-table-fixed-columns.css"/>
     <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
-    <link href="../style/css/ie10-viewport-bug-workaround.css" rel="stylesheet">
+    <link href="../../../Users/17308/Desktop/实训项目/CarManage/style/css/ie10-viewport-bug-workaround.css" rel="stylesheet">
     <!-- Custom styles for this template -->
-    <link href="../style/css/dashboard.css" rel="stylesheet">
-	<link href="../style/css/carousel.css" rel="stylesheet">
+    <link href="../../../Users/17308/Desktop/实训项目/CarManage/style/css/dashboard.css" rel="stylesheet">
+	<link href="../../../Users/17308/Desktop/实训项目/CarManage/style/css/carousel.css" rel="stylesheet">
 
-  <script src="../style/js/ie-emulation-modes-warning.js"></script>
+  <script src="../../../Users/17308/Desktop/实训项目/CarManage/style/js/ie-emulation-modes-warning.js"></script>
 	<!-- Bootstrap core JavaScript
   ================================================== -->
   <!-- Placed at the end of the document so the pages load faster -->
 	<!--jquery和box和bootstrap-->
-	<script type="text/javascript" src="../style/js/jquery.min.js"></script>
-	<script type="text/javascript" src="../style/js/bootstrap.min.js"></script>
+	<script type="text/javascript" src="../../../Users/17308/Desktop/实训项目/CarManage/style/js/jquery.min.js"></script>
+	<script type="text/javascript" src="../../../Users/17308/Desktop/实训项目/CarManage/style/js/bootstrap.min.js"></script>
 	<script type="text/javascript" src="https://cdn.bootcss.com/bootbox.js/4.4.0/bootbox.min.js"></script><!-- 如果断网，需要下载这个js -->
-	<script type="text/javascript" src="../style/js/bootstrap-table.js"></script>
-	<script type="text/javascript" src="../style/js/bootstrap-table-zh-CN.js"></script>
+	<script type="text/javascript" src="../../../Users/17308/Desktop/实训项目/CarManage/style/js/bootstrap-table.js"></script>
+	<script type="text/javascript" src="../../../Users/17308/Desktop/实训项目/CarManage/style/js/bootstrap-table-zh-CN.js"></script>
 
 
   </head>
@@ -56,8 +56,8 @@
 
           <div id="navbar" class="navbar-collapse collapse">
               <ul class="nav navbar-nav navbar-right">
-                  <li><a href="#A" class="active" data-toggle="tab"><font size="3">系统主页</font></a></li>
-                  <li><a href="#B" data-toggle="tab"><font size="3">使用功能</font></a></li>
+                  <li><a href="#A" data-toggle="tab"><font size="3">系统主页</font></a></li>
+                  <li><a href="#B" class="active" data-toggle="tab"><font size="3">使用功能</font></a></li>
                   <li><a href="#C" data-toggle="tab"><font size="3">用户设置</font></a></li>
                   <li><a href="#D" data-toggle="tab"><font size="3">帮助界面</font></a></li>
               </ul>
@@ -72,7 +72,7 @@
   </nav>
 
   <div class="tab-content">
-      <div class="tab-pane fade in active" id="A">
+      <div class="tab-pane fade" id="A">
           <!-- Carousel
           ================================================== -->
           <div id="myCarousel" class="carousel slide" data-ride="carousel">
@@ -205,14 +205,14 @@
               </footer>
 
           </div><!-- /.container -->
-      <div class="tab-pane fade" id="B">
+      <div class="tab-pane fade in active" id="B">
           <!-- 功能主页实现 -->
           <div class="container-fluid">
               <div class="col-sm-3 col-md-2 sidebar">
                   <ul class="nav nav-sidebar">
-                      <li class="active"><a href="#0"data-toggle="tab">功能概览</a></li>
+                      <li><a href="#0"data-toggle="tab">功能概览</a></li>
                       <li><a href="#1" data-toggle="tab">查询车辆信息</a></li>
-                      <li><a href="#2" data-toggle="tab">上传车辆信息</a></li>
+                      <li class="active"><a href="#2" data-toggle="tab">上传车辆信息</a></li>
                       <li><a href="#3" data-toggle="tab">查询客户预约</a></li>
                       <li><a href="#4" data-toggle="tab">进行消息推送</a></li>
                       <!--功能可以继续扩展-->
@@ -221,7 +221,7 @@
               <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
                   <!-- 控制输出内容在右半部分 -->
                   <div class="tab-content">
-                      <div class="tab-pane fade in active" id="0">
+                      <div class="tab-pane fade" id="0">
                           <p>
 							<font size="4">
 							在这里可以看到功能的概览
@@ -331,7 +331,7 @@
                       </div>
                       -->
 
-                      <div class="tab-pane fade" id="2">
+                      <div class="tab-pane fade in active" id="2">
                         <form action="/addcar">
                           <p>
                               <font size="4">

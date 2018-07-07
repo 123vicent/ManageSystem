@@ -29,7 +29,7 @@ public class ShopaptDAOImpl implements ShopaptDAO {
                 shopapt.setCus_name(rs.getString(2));
                 shopapt.setCus_phone(rs.getString(3));
                 shopapt.setAp_type(rs.getString(4));
-                shopapt.setAp_time(rs.getTimestamp(5));
+                shopapt.setAp_time(rs.getDate(5));
                 shopapt.setAp_state(rs.getString(6));
 
                 shopaptList.add(shopapt);

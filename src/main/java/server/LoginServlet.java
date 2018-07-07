@@ -1,7 +1,9 @@
 package server;
 
 import DAO.DAOFactory;
+import DAO.ShopaptDAO;
 import DAO.ShopuserDAO;
+import basic.Shopapt;
 import model.Car;
 import model.Shopuser;
 
@@ -11,6 +13,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 
 @SuppressWarnings("serial")
@@ -48,19 +51,14 @@ public class LoginServlet extends HttpServlet {
             else {
                 //rs = stmt.executeQuery("SELECT * FROM user where usr_name = '"+userid+"'and password =  '"+password+"'");
                 //rs.next();
+                HttpSession session = request.getSession();
+                session.setAttribute("userid",userid);
                 ShopuserDAO shopuserdao = DAOFactory.getShopuserDAO();
                 Shopuser shopuser = shopuserdao.findById(userid);
                 if (shopuser.getPswd()!=null&&shopuser.getPswd().equals(password)) {
                     //request.setAttribute("msg","登录失败");
                     //view=request.getRequestDispatcher("index.jsp");
-                    Car owncars = new Car();
-                    owncars.setCar_id("0");
-                    owncars.setBrand("RRR");
-                    owncars.setModel("666");
-                    owncars.setSeats("4");
-                    owncars.setType("跑车");
-                    owncars.setColor("red");
-                    owncars.setPower("1000");
+
 
 
 
