@@ -6,6 +6,7 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html lang="en">
   <head>
     <meta charset="utf-8">
@@ -275,38 +276,27 @@
 
                           <table class="table table-bordered table-striped">
                               <thead>
+                              
                               <tr>
-                                  <th>#</th>
-                                  <th>first</th>
-                                  <th>second</th>
-                                  <th>thrid</th>
-                                  <th>fourth</th>
-                                  <th>fifth</th>
+                                  <th>id</th>
+                                  <th>brand</th>
+                                  <th>model</th>
+                                  <th>color</th>
+                                  <th>seats</th>
+                                  <th>type</th>
+                                  <th>power</th>
                               </tr>
+                              <c:forEach var="U" items="${cars}">
                               <tr>
-                                  <td>1</td>
-                                  <td> </td>
-                                  <td> </td>
-                                  <td> </td>
-                                  <td> </td>
-                                  <td> </td>
+                                  <td><c:out value="${U.car_id}"></c:out></td>
+                                  <td><c:out value="${U.brand}"></c:out></td>
+                                  <td><c:out value="${U.model}"></c:out></td>
+                                  <td><c:out value="${U.color}"></c:out></td>
+                                  <td><c:out value="${U.seats}"></c:out> </td>
+                                  <td><c:out value="${U.type}"></c:out> </td>
+                                  <td><c:out value="${U.power}"></c:out> </td>
                               </tr>
-                              <tr>
-                                  <td>2</td>
-                                  <td> </td>
-                                  <td> </td>
-                                  <td> </td>
-                                  <td> </td>
-                                  <td> </td>
-                              </tr>
-                              <tr>
-                                  <td>3</td>
-                                  <td> </td>
-                                  <td> </td>
-                                  <td> </td>
-                                  <td> </td>
-                                  <td> </td>
-                              </tr>
+                              </c:forEach>
                               </thead>
                           </table>
                               </form>
@@ -338,12 +328,12 @@
                                   在这里你可以上传你旗下的车辆信息
                               </font>
                           </p></br>
-					<form role="form">
+
 						<div>
-	
+
 							<label for="name">车辆属性一（选择）</label>
 							<div>
-							<select style="width:1000px;height:35px">
+							<select name="brand" style="width:1000px;height:35px">
 								<option value="value1">11111</option>
 								<option value="value2">22222</option>
 								<option value="value3">33333</option>
@@ -352,15 +342,16 @@
 							<div>
 							<label for="name">车辆属性二（自填）</label>
 							<input style="width:1000px" type="text" class="form-control" 
-							placeholder="请输入属性二">
+							placeholder="请输入属性二" name="model">
 							</div>
 							<div>
 							<label for="name">车辆属性三</label>
 							<input style="width:1000px" type="text" class="form-control" 
 							placeholder="请输入属性三">
 							</div>
+
 						</div>
-					</form>                          <!--
+					                         <!--
                           <div class="form-group">
                               <label for="inputfile">车辆展示图片上传</label>
                               <input type="file" id="inputfile">
@@ -370,7 +361,7 @@
                           -->
 					</br>
                           <div class="btn-group pull-left" style="margin-left: 20px;">
-                              <button id="addBtn" type="button" class="btn btn-default">
+                              <button id="addBtn" type="submit" class="btn btn-default">
                                   <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>上传</button>
                           </div>
                         </form>

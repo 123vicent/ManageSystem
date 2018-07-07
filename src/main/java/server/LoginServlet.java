@@ -1,13 +1,11 @@
 package server;
 
-import DAO.DAOFactory;
-import DAO.ShopaptDAO;
-import DAO.ShopuserDAO;
-import basic.Shopapt;
-import model.Car;
-import model.Shopuser;
+import DAO.*;
+import model.*;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -51,16 +49,26 @@ public class LoginServlet extends HttpServlet {
             else {
                 //rs = stmt.executeQuery("SELECT * FROM user where usr_name = '"+userid+"'and password =  '"+password+"'");
                 //rs.next();
-                HttpSession session = request.getSession();
-                session.setAttribute("userid",userid);
+
                 ShopuserDAO shopuserdao = DAOFactory.getShopuserDAO();
                 Shopuser shopuser = shopuserdao.findById(userid);
+
+                ShopowncarDAO shopowncarDAO = new ShopowncarDAOImpl();
+                //Shopowncar shopowncar = shopowncarDAO.findById(shopuser.getShopuser_id());
+
+
+                CarDAO carDAO = DAOFactory.getCarDAO();
+                List<Car> cars = new ArrayList<Car>();
+                cars = carDAO.findAll();
+
+
                 if (shopuser.getPswd()!=null&&shopuser.getPswd().equals(password)) {
                     //request.setAttribute("msg","登录失败");
                     //view=request.getRequestDispatcher("index.jsp");
+                    HttpSession session = request.getSession();
+                    session.setAttribute("userid",userid);
 
-
-
+                    request.setAttribute("cars",carDAO.findAll());
 
                     view = request.getRequestDispatcher("WEB-INF/firstpage.jsp");
                 } else {

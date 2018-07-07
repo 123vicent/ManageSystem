@@ -17,7 +17,7 @@ public class CarDAOImpl implements CarDAO {
     Connection conn = dbc.getConnection();
 
     public void insert(Car c) {
-        String sql = "insert into car values (?,?,?,?,?,?,?)";
+        String sql = "insert into car.car values (?,?,?,?,?,?,?)";
         PreparedStatement ps = null;
         try {
             ps = conn.prepareStatement(sql);
@@ -98,7 +98,7 @@ public class CarDAOImpl implements CarDAO {
 
     public List<Car> findAll(){
         List<Car> carList = new ArrayList<Car>();
-        String sql = "select * from car";
+        String sql = "select * from car.car";
         PreparedStatement ps = null;
         ResultSet rs = null;
         try {
