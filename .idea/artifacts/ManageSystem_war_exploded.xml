@@ -1,22 +1,17 @@
 <component name="ArtifactManager">
   <artifact type="exploded-war" name="ManageSystem:war exploded">
-    <output-path>$PROJECT_DIR$/out/artifacts/ManageSystem_war_exploded</output-path>
+    <output-path>$PROJECT_DIR$/web/WEB-INF/classes/artifacts/ManageSystem_war_exploded</output-path>
     <root id="root">
-      <element id="javaee-facet-resources" facet="ManageSystem/web/Web" />
       <element id="directory" name="WEB-INF">
         <element id="directory" name="classes">
           <element id="module-output" name="ManageSystem" />
         </element>
         <element id="directory" name="lib">
-          <element id="library" level="application" name="servlet-api1" />
-          <element id="file-copy" path="$USER_HOME$/Desktop/第7次实验参考资料/第7次实验参考资料/导入的项目/classes12.jar" />
-          <element id="file-copy" path="$USER_HOME$/Desktop/第7次实验参考资料/第7次实验参考资料/导入的项目/mysql-connector-java-5.1.22-bin.jar" />
-          <element id="library" level="project" name="Maven: mysql:mysql-connector-java:5.1.46" />
+          <element id="file-copy" path="$PROJECT_DIR$/web/WEB-INF/lib/servlet-api.jar" />
+          <element id="file-copy" path="$PROJECT_DIR$/web/WEB-INF/lib/wx-tools-2.0.0.jar" />
         </element>
       </element>
-      <element id="library" level="application" name="servlet-api" />
-      <element id="library" level="project" name="Maven: javax.servlet:javax.servlet-api:3.1.0" />
-      <element id="library" level="project" name="Maven: mysql:mysql-connector-java:5.1.46" />
+      <element id="javaee-facet-resources" facet="ManageSystem/web/Web" />
     </root>
   </artifact>
 </component>

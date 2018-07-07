@@ -6,8 +6,12 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<%@ page language="java" import="basic.Appointment" %>
-<%@ page language="java" import="basic.Car" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%
+    String path = request.getContextPath();
+    String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
+%>
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html lang="en">
   <head>
     <meta charset="utf-8">
@@ -46,16 +50,14 @@
   </head>
 
   <body>
-  <%Appointment appointment = new Appointment();
-      appointment=(Appointment)request.getAttribute("appointment");
-  %>
+
   <nav class="navbar navbar-inverse navbar-fixed-top">
       <div class="container-fluid">
           <div class="navbar-header">
               <p class="navbar-brand" ><font size="5">汽车销售管理系统</font></p>
           </div>
           <div>
-              <p id= "huanying" class="navbar-brand" align="right"><font size="4">欢迎您！XXX</font></p>
+              <p id= "huanying" class="navbar-brand" align="right"><font size="4">欢迎您！${userid}</font></p>
           </div>
 
           <div id="navbar" class="navbar-collapse collapse">
@@ -257,34 +259,24 @@
                                   <th>thrid</th>
                                   <th>fourth</th>
                                   <th>fifth</th>
+                                  <th>fifth</th>
                               </tr>
-                              <tr>
-                                  <td>1</td>
-                                  <td> </td>
-                                  <td> </td>
-                                  <td> </td>
-                                  <td> </td>
-                                  <td> </td>
-                              </tr>
-                              <tr>
-                                  <td>2</td>
-                                  <td> </td>
-                                  <td> </td>
-                                  <td> </td>
-                                  <td> </td>
-                                  <td> </td>
-                              </tr>
-                              <tr>
-                                  <td>3</td>
-                                  <td> </td>
-                                  <td> </td>
-                                  <td> </td>
-                                  <td> </td>
-                                  <td> </td>
-                              </tr>
+                              <c:forEach var="U" items="${shopcar}">
+                                  <tr>
+                                      <td> <c:out value="${U.car_id}"></c:out></td>
+                                      <td> <c:out value="${U.brand}"></c:out></td>
+                                      <td> <c:out value="${U.model}"></c:out></td>
+                                      <td> <c:out value="${U.color}"></c:out></td>
+                                      <td> <c:out value="${U.seats}"></c:out></td>
+                                      <td> <c:out value="${U.type}"></c:out></td>
+                                      <td> <c:out value="${U.power}"></c:out></td>
+                                  </tr>
+                              </c:forEach>
                               </thead>
                           </table>
+
                               </form>
+
                       </div>
 
                       <!--
@@ -359,27 +351,26 @@
                                   查询结果
                               </font>
                           </p></br>
-
                           <table class="table table-bordered table-striped">
-
                               <thead>
                               <tr>
-                                  <th>序号</th>
-                                  <th>客户姓名</th>
-                                  <th>预约类型</th>
-                                  <th>预约时间</th>
-                                  <th>预约状态</th>
-                                  <th>联系方式</th>
+                                  <th>#</th>
+                                  <th>first</th>
+                                  <th>second</th>
+                                  <th>thrid</th>
+                                  <th>fourth</th>
+                                  <th>fifth</th>
                               </tr>
                               </thead>
                               <tbody>
-                              <th>序号</th>
-                              <th><%=appointment.getCustomer_name()%></th>
-                              <th><%=appointment.getAppoint_type()%></th>
-                              <th><%=appointment.getAppoint_time()%></th>
-                              <th><%=appointment.getAppoint_state()%></th>
-                              <th><%=appointment.getCustomer_call()%></th>
-
+                              <tr>
+                                  <td></td>
+                                  <td></td>
+                                  <td></td>
+                                  <td></td>
+                                  <td></td>
+                                  <td></td>
+                              </tr>
                               </tbody>
                           </table>
                       </div>

@@ -1,67 +1,67 @@
 package basic;
 
 public class Car {
-    private String Car_id;
-    private String Brand;
-    private String Model;
-    private String Seats;
-    private String Type;
-    private String Color;
-    private String Power;
+    private String car_id;
+    private String brand;
+    private String model;
+    private String color;
+    private String seats;
+    private String type;
+    private String power;
 
-    public String getType() {
-        return Type;
-    }
-
-    public String getSeats() {
-        return Seats;
-    }
-
-    public String getPower() {
-        return Power;
-    }
-
-    public String getColor() {
-        return Color;
-    }
-
-    public String getModel() {
-        return Model;
-    }
-
-    public String getBrand() {
-        return Brand;
-    }
-
-    public String getCar_id() {
-        return Car_id;
-    }
-
-    public void setPower(String power) {
-        Power = power;
-    }
-
-    public void setType(String type) {
-        Type = type;
-    }
-
-    public void setSeats(String seats) {
-        Seats = seats;
-    }
-
-    public void setColor(String color) {
-        Color = color;
-    }
-
-    public void setModel(String model) {
-        Model = model;
+    public void setCar_id(String car_id) {
+        this.car_id = car_id;
     }
 
     public void setBrand(String brand) {
-        Brand = brand;
+        this.brand = brand;
     }
 
-    public void setCar_id(String car_id) {
-        Car_id = car_id;
+    public void setModel(String model) {
+        this.model = model;
+    }
+
+    public void setColor(String color) {
+        this.color = color;
+    }
+
+    public void setSeats(String seats) {
+        this.seats = seats;
+    }
+
+    public void setType(String type) {
+        this.type = type;
+    }
+
+    public void setPower(String power) {
+        this.power = power;
+    }
+
+    public String getCar_id() {
+        return car_id;
+    }
+
+    public String getBrand() {
+        return brand;
+    }
+
+    public String getModel() {
+        return model;
+    }
+
+    public String getColor() {
+        return color;
+    }
+
+    public String getPower() {
+        return power;
+    }
+
+    public String getSeats() {
+        return seats;
+    }
+
+    public String getType() {
+        return type;
     }
 }
