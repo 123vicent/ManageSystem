@@ -106,7 +106,7 @@ public class ShopuserDAOImpl implements ShopuserDAO {
         try {
             ps = conn.prepareStatement(sql);
             rs = ps.executeQuery();
-            if(rs.next()){
+            while(rs.next()){
                 Shopuser su = new Shopuser();
                 su.setShopuser_id(rs.getString(1));
                 su.setPswd(rs.getString(2));

@@ -104,7 +104,7 @@ public class CarDAOImpl implements CarDAO {
         try {
             ps = conn.prepareStatement(sql);
             rs = ps.executeQuery();
-            if(rs.next()){
+            while(rs.next()){
                 Car c = new Car();
                 c.setCar_id(rs.getString(1));
                 c.setBrand(rs.getString(2));

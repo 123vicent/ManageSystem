@@ -14,7 +14,6 @@ public class AddcarServlet extends HttpServlet {
                        HttpServletResponse response)
             throws ServletException, IOException {
 
-
         String access = request.getParameter("submit");
 
     }

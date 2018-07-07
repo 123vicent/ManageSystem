@@ -83,4 +83,13 @@
         <servlet-name>WxServlet</servlet-name>
         <url-pattern>/WxServlet</url-pattern>
     </servlet-mapping>
+
+    <servlet>
+        <servlet-name>handlebook</servlet-name>
+        <servlet-class>server.HandleBookingServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>handlebook</servlet-name>
+        <url-pattern>/handlebook</url-pattern>
+    </servlet-mapping>
 </web-app>
