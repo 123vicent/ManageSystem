@@ -18,9 +18,9 @@ public class DBConnect {
     }
 
     public Connection getConnection() {
-        url ="jdbc:mysql://localhost:3306/car";
+        url ="jdbc:mysql://localhost:3306/car?useUnicode=true&characterEncoding=utf-8&useSSL=false";
         user = "root";
-        password = "vincent";
+        password = "root";
         try {
             conn = DriverManager.getConnection(url,user,password);
         } catch (SQLException e) {
