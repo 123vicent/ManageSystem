@@ -1,8 +1,4 @@
-<%@ page import="model.Car" %>
-<%@ page import="java.util.List" %>
-<%@ page import="java.util.Map" %>
-<%@ page import="java.util.HashMap" %>
-<%@ page import="java.util.Set" %><%--
+<%--
   Created by IntelliJ IDEA.
   User: 17308
   Date: 2018/7/3
@@ -234,28 +230,41 @@
                       </div>
                       <div class="tab-pane fade" id="1">
 					<div>
-                    <form action="/Search" class="navbar-form navbar-left">
+                    <form action="/Search">
 					<p>
 						<font size="4">
 						在这里你可以查看你旗下的车辆信息
 						</font>
 					</p></br>
-                        <label>品牌</label>
+						<form class="navbar-form navbar-left">
 							<select style="width:100px;height:35px">
-								<option value=""></option>
+								<option value="null"></option>
 								<option value="A1">A1</option>
 								<option value="A2">A2</option>
 								<option value="A3">A3</option>
 							</select>
-                        <label>车型号</label>
+							<input type="text" class="form-control" name="customername" placeholder="输入信息..."></input>
+						</form>
+						<form class="navbar-form navbar-left">
 							<select style="width:100px;height:35px">
-								<option value=""></option>
+								<option value="null"></option>
 								<option value="B1">B1</option>
 								<option value="B2">B2</option>
 								<option value="B3">B3</option>
 							</select>
+							<input type="text" class="form-control" name="customername" placeholder="输入信息..."></input>
+						</form>
+						<form class="navbar-form navbar-left">
+							<select style="width:100px;height:35px">
+								<option value="null"></option>
+								<option value="C1">C1</option>
+								<option value="C2">C2</option>
+								<option value="C3">C3</option>
+							</select>
+							<input type="text" class="form-control" name="customername" placeholder="输入信息..."></input>
 								<button id="queryBtn2" type="button" class="btn btn-default" class="btn-group pull-left" style="margin-left: 10px;">
 								<span class="glyphicon glyphicon-search" aria-hidden="true"></span>查询</button>
+						</form>
                         </form>
 					</div>
                           <p></br></br>
@@ -329,14 +338,6 @@
                                   在这里你可以上传你旗下的车辆信息
                               </font>
                           </p></br>
-                            <!--获取所有车辆信息-->
-                            <%Map<String,String> maps = (Map<String,String>)request.getAttribute("maps");%>
-                            <%Set<Map.Entry<String, String>> entryseSet=maps.entrySet();
-                            int i = 101;
-                            for (Map.Entry<String, String> entry:entryseSet){%>
-                            <input id=<%=i%> type="hidden" name=<%=entry.getKey()%> value=<%=entry.getValue()%>>
-                            <%i++;%>
-                            <%}%>
 					<form role="form">
 						<div>
 	
@@ -456,8 +457,7 @@
           </p>
       </div>
   </div>
+
+
   </body>
 </html>
-<script language="javascript" type="text/javascript">
-    carArray=new Array();
-</script>
