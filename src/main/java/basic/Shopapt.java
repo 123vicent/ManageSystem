@@ -1,5 +1,6 @@
 package basic;
 
+
 import java.sql.Date;
 import java.sql.Timestamp;
 
@@ -8,7 +9,7 @@ public class Shopapt {
     private String cus_name;
     private String cus_phone;
     private String ap_type;
-    private Date ap_time;
+    private Timestamp ap_time;
     private String ap_state;
 
     public String getShopuser_id() {
@@ -43,11 +44,11 @@ public class Shopapt {
         this.ap_type = ap_type;
     }
 
-    public Date getAp_time() {
+    public Timestamp getAp_time() {
         return ap_time;
     }
 
-    public void setAp_time(Date ap_time) {
+    public void setAp_time(Timestamp ap_time) {
         this.ap_time = ap_time;
     }
 

@@ -14,7 +14,7 @@ public class Main {
     public static void main(String []args){
         //test shopaptDAO
         ShopaptDAO shopaptdao = DAOFactory.getShopaptDAO();
-        List<Shopapt> shopaptList = shopaptdao.findAllByShopId("s1");
+        List<Shopapt> shopaptList = shopaptdao.findAllByTag("s1","","","");
         System.out.print("车店id ");
         System.out.print("客户姓名 ");
         System.out.print("联系方式 ");
@@ -22,6 +22,7 @@ public class Main {
         System.out.print("预约时间 ");
         System.out.print("预约状态 ");
         System.out.println();
+
 
         for(int i = 0; i<shopaptList.size();i++){
             System.out.print(shopaptList.get(i).getShopuser_id()+" ");
@@ -36,7 +37,7 @@ public class Main {
 
         //test carinfoDAO
         CarinfoDAO carinfoDAO = DAOFactory.getCarinfoDAO();
-        List<Carinfo> carinfoList = carinfoDAO.findAllByShopId("s1");
+        List<Carinfo> carinfoList = carinfoDAO.findAllByTag("s1","","","");
         System.out.print("车店id ");
         System.out.print("品牌 ");
         System.out.print("型号 ");
@@ -55,5 +56,6 @@ public class Main {
             System.out.print(shopaptList.size());
             System.out.println();
         }
+
     }
 }

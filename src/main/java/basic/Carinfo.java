@@ -4,6 +4,7 @@ public class Carinfo {
     private String shopuser_id;
     private String brand;
     private String model;
+    private String type;
     private int stock;
     private double price;
     private String pic_url;
@@ -30,6 +31,14 @@ public class Carinfo {
 
     public void setModel(String model) {
         this.model = model;
+    }
+
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
     }
 
     public int getStock() {
