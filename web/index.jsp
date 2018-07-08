@@ -26,14 +26,14 @@
         <br/>
         <div id="userName">
           <img class="textPic" src="style/styleImg/用户.png">
-          <input class="text" type="text" placeholder="账号" name="username"/>
+          <input class="text" type="text" placeholder="账号" name="username">
         </div>
         <%if(request.getAttribute("msg0")!=null){ %>
         <%=request.getAttribute("msg0")%>
         <%  }%>
         <div id="password">
           <img class="textPic" src="style/styleImg/密码.png">
-          <input class="text" type="password" placeholder="密码" name="password"/>
+          <input class="text" type="password" placeholder="密码" name="password">
         </div>
         <%if(request.getAttribute("msg1")!=null){ %>
         <%=request.getAttribute("msg1")%>

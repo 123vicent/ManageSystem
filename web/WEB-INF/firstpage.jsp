@@ -52,7 +52,7 @@
               <p class="navbar-brand" ><font size="5">汽车销售管理系统</font></p>
           </div>
           <div>
-              <p id= "huanying" class="navbar-brand" align="right"><font size="4">欢迎您！XXX</font></p>
+              <p id= "huanying" class="navbar-brand" align="right"><font size="4">欢迎您！${userid}</font></p>
           </div>
 
           <div id="navbar" class="navbar-collapse collapse">
@@ -251,7 +251,14 @@
                                       <option value="Benz307">Benz307</option>
                                       <option value="A6">A6</option>
                                       <option value="URUS">URUS</option>
-                                      <option value="骞诲奖">骞诲奖</option>
+                                      <option value="幻影">幻影</option>
+                                  </select>
+                                  <label>类型</label>
+                                  <select name="Bytype" style="width:100px;height:35px">
+                                      <option value=""></option>
+                                      <option value="轿车">轿车</option>
+                                      <option value="超级跑车">超级跑车</option>
+                                      <option value="高级轿车">高级轿车</option>
                                   </select>
                                   <button id="queryBtn2" type="submit" class="btn btn-default" class="btn-group pull-left" style="margin-left: 10px;">
                                       <span class="glyphicon glyphicon-search" aria-hidden="true"></span>查询</button>
@@ -268,23 +275,21 @@
                               <thead>
                               
                               <tr>
-                                  <th>id</th>
                                   <th>brand</th>
                                   <th>model</th>
-                                  <th>color</th>
-                                  <th>seats</th>
                                   <th>type</th>
-                                  <th>power</th>
+                                  <th>stock</th>
+                                  <th>price</th>
+                                  <th>pic_url</th>
                               </tr>
                               <c:forEach var="U" items="${cars}">
                               <tr>
-                                  <td><c:out value="${U.car_id}"></c:out></td>
                                   <td><c:out value="${U.brand}"></c:out></td>
                                   <td><c:out value="${U.model}"></c:out></td>
-                                  <td><c:out value="${U.color}"></c:out></td>
-                                  <td><c:out value="${U.seats}"></c:out> </td>
-                                  <td><c:out value="${U.type}"></c:out> </td>
-                                  <td><c:out value="${U.power}"></c:out> </td>
+                                  <td><c:out value="${U.type}"></c:out></td>
+                                  <td><c:out value="${U.stock}"></c:out> </td>
+                                  <td><c:out value="${U.price}"></c:out> </td>
+                                  <td><c:out value="${U.pic_url}"></c:out> </td>
                               </tr>
                               </c:forEach>
                               </thead>

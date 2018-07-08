@@ -52,13 +52,13 @@
             <p class="navbar-brand" ><font size="5">汽车销售管理系统</font></p>
         </div>
         <div>
-            <p id= "huanying" class="navbar-brand" align="right"><font size="4">欢迎您！XXX</font></p>
+            <p id= "huanying" class="navbar-brand" align="right"><font size="4">欢迎您！${userid}</font></p>
         </div>
 
         <div id="navbar" class="navbar-collapse collapse">
             <ul class="nav navbar-nav navbar-right">
-                <li><a href="#A" class="active" data-toggle="tab"><font size="3">系统主页</font></a></li>
-                <li><a href="#B" data-toggle="tab"><font size="3">使用功能</font></a></li>
+                <li><a href="#A"data-toggle="tab"><font size="3">系统主页</font></a></li>
+                <li><a href="#B"  class="active"  data-toggle="tab"><font size="3">使用功能</font></a></li>
                 <li><a href="#C" data-toggle="tab"><font size="3">用户设置</font></a></li>
                 <li><a href="#D" data-toggle="tab"><font size="3">帮助界面</font></a></li>
             </ul>
@@ -73,7 +73,7 @@
 </nav>
 
 <div class="tab-content">
-    <div class="tab-pane fade in active" id="A">
+    <div class="tab-pane fade" id="A">
         <!-- Carousel
         ================================================== -->
         <div id="myCarousel" class="carousel slide" data-ride="carousel">
@@ -206,14 +206,14 @@
         </footer>
 
     </div><!-- /.container -->
-    <div class="tab-pane fade" id="B">
+    <div class="tab-pane fade in active" id="B">
         <!-- 功能主页实现 -->
         <div class="container-fluid">
             <div class="col-sm-3 col-md-2 sidebar">
                 <ul class="nav nav-sidebar">
-                    <li class="active"><a href="#0"data-toggle="tab">功能概览</a></li>
-                    <li><a href="#1" data-toggle="tab">查询车辆信息</a></li>
-                    <li><a href="#2" data-toggle="tab">上传车辆信息</a></li>
+                    <li ><a href="#0"data-toggle="tab">功能概览</a></li>
+                    <li ><a href="#1" data-toggle="tab">查询车辆信息</a></li>
+                    <li class="active"><a href="#2" data-toggle="tab">上传车辆信息</a></li>
                     <li><a href="#3" data-toggle="tab">查询客户预约</a></li>
                     <li><a href="#4" data-toggle="tab">进行消息推送</a></li>
                     <!--功能可以继续扩展-->
@@ -222,7 +222,7 @@
             <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
                 <!-- 控制输出内容在右半部分 -->
                 <div class="tab-content">
-                    <div class="tab-pane fade in active" id="0">
+                    <div class="tab-pane fade" id="0">
                         <p>
                             <font size="4">
                                 在这里可以看到功能的概览
@@ -238,20 +238,29 @@
                                     </font>
                                 </p></br>
                                 <label>品牌</label>
-                                <select style="width:100px;height:35px">
+                                <select name="Bybrand" style="width:100px;height:35px">
                                     <option value=""></option>
-                                    <option value="A1">A1</option>
-                                    <option value="A2">A2</option>
-                                    <option value="A3">A3</option>
+                                    <option value="Benz">Benz</option>
+                                    <option value="Audi">Audi</option>
+                                    <option value="Lamborghini">Lamborghini</option>
+                                    <option value="Rolls-Royce">Rolls-Royce</option>
                                 </select>
                                 <label>车型号</label>
-                                <select style="width:100px;height:35px">
+                                <select name="Bymodel" style="width:100px;height:35px">
                                     <option value=""></option>
-                                    <option value="B1">B1</option>
-                                    <option value="B2">B2</option>
-                                    <option value="B3">B3</option>
+                                    <option value="Benz307">Benz307</option>
+                                    <option value="A6">A6</option>
+                                    <option value="URUS">URUS</option>
+                                    <option value="幻影">幻影</option>
                                 </select>
-                                <button id="queryBtn2" type="button" class="btn btn-default" class="btn-group pull-left" style="margin-left: 10px;">
+                                <label>类型</label>
+                                <select name="Bytype" style="width:100px;height:35px">
+                                    <option value=""></option>
+                                    <option value="轿车">轿车</option>
+                                    <option value="超级跑车">超级跑车</option>
+                                    <option value="高级轿车">高级轿车</option>
+                                </select>
+                                <button id="queryBtn2" type="submit" class="btn btn-default" class="btn-group pull-left" style="margin-left: 10px;">
                                     <span class="glyphicon glyphicon-search" aria-hidden="true"></span>查询</button>
                             </form>
                         </div>
@@ -266,23 +275,21 @@
                             <thead>
 
                             <tr>
-                                <th>id</th>
                                 <th>brand</th>
                                 <th>model</th>
-                                <th>color</th>
-                                <th>seats</th>
                                 <th>type</th>
-                                <th>power</th>
+                                <th>stock</th>
+                                <th>price</th>
+                                <th>pic_url</th>
                             </tr>
                             <c:forEach var="U" items="${cars}">
                                 <tr>
-                                    <td><c:out value="${U.car_id}"></c:out></td>
                                     <td><c:out value="${U.brand}"></c:out></td>
                                     <td><c:out value="${U.model}"></c:out></td>
-                                    <td><c:out value="${U.color}"></c:out></td>
-                                    <td><c:out value="${U.seats}"></c:out> </td>
-                                    <td><c:out value="${U.type}"></c:out> </td>
-                                    <td><c:out value="${U.power}"></c:out> </td>
+                                    <td><c:out value="${U.type}"></c:out></td>
+                                    <td><c:out value="${U.stock}"></c:out> </td>
+                                    <td><c:out value="${U.price}"></c:out> </td>
+                                    <td><c:out value="${U.pic_url}"></c:out> </td>
                                 </tr>
                             </c:forEach>
                             </thead>
@@ -309,7 +316,7 @@
                     </div>
                     -->
 
-                    <div class="tab-pane fade" id="2">
+                    <div class="tab-pane fade  in active" id="2">
                         <form action="/addcar">
                             <p>
                                 <font size="4">
@@ -398,11 +405,7 @@
 
                             </tr>
                             </thead>
-                            <tbody>
-                            <th>序号</th>
 
-
-                            </tbody>
                         </table>
                     </div>
                     <div class="tab-pane fade" id="4">

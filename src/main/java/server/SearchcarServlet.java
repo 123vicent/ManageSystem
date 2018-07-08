@@ -1,5 +1,6 @@
 package server;
 import DAO.CarDAO;
+import DAO.CarinfoDAO;
 import DAO.DAOFactory;
 import DAO.ShopowncarDAO;
 import model.Car;
@@ -21,19 +22,21 @@ public class SearchcarServlet extends HttpServlet {
     public void doPost(HttpServletRequest request,
                        HttpServletResponse response)
             throws ServletException, IOException {
+
         HttpSession session = request.getSession();
         String shopuserid = (String)session.getAttribute("userid");
+
         String brand = request.getParameter("Bybrand");
         String model = request.getParameter("Bymodel");
+        String type = request.getParameter("Bytype");
+        System.out.println(brand);
+        System.out.println(model);
+        System.out.println(type);
 
-        CarDAO carDAO = DAOFactory.getCarDAO();
-        Car car = carDAO.findByBrandModel(brand,model);
+        CarinfoDAO carinfoDAO = DAOFactory.getCarinfoDAO();
+        System.out.println(carinfoDAO.findAllByTag(shopuserid,brand,model,type));
 
-        ShopowncarDAO shopowncarDAO = DAOFactory.getShopowncarDAO();
-        List<Shopowncar> shopowncars = new ArrayList<Shopowncar>();
-        shopowncars.add(shopowncarDAO.findById(shopuserid,car.getCar_id()));
-
-        request.setAttribute("searchcars",shopowncars);
+        request.setAttribute("searchcars",carinfoDAO.findAllByTag(shopuserid,brand,model,type));
         request.getRequestDispatcher("WEB-INF/shopsearchcar.jsp").forward(request,response);
     }
 

@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page import="basic.Shopapt" %>
 <%@ page import="java.util.List" %><%--
   Created by IntelliJ IDEA.
@@ -237,32 +238,29 @@
 						在这里你可以查看你旗下的车辆信息
 						</font>
 					    </p></br>
-						<form class="navbar-form navbar-left">
-							<select style="width:100px;height:35px">
-								<option value="null"></option>
-								<option value="A1">A1</option>
-								<option value="A2">A2</option>
-								<option value="A3">A3</option>
-							</select>
-							<input type="text" class="form-control" name="customername" placeholder="输入信息..."></input>
-						</form>
-						<form class="navbar-form navbar-left">
-							<select style="width:100px;height:35px">
-								<option value="null"></option>
-								<option value="B1">B1</option>
-								<option value="B2">B2</option>
-								<option value="B3">B3</option>
-							</select>
-							<input type="text" class="form-control" name="customername" placeholder="输入信息..."></input>
-						</form>
-						<form class="navbar-form navbar-left">
-							<select style="width:100px;height:35px">
-								<option value="null"></option>
-								<option value="C1">C1</option>
-								<option value="C2">C2</option>
-								<option value="C3">C3</option>
-							</select>
-							<input type="text" class="form-control" name="customername" placeholder="输入信息..."></input>
+                          <label>品牌</label>
+                          <select name="Bybrand" style="width:100px;height:35px">
+                              <option value=""></option>
+                              <option value="Benz">Benz</option>
+                              <option value="Audi">Audi</option>
+                              <option value="Lamborghini">Lamborghini</option>
+                              <option value="Rolls-Royce">Rolls-Royce</option>
+                          </select>
+                          <label>车型号</label>
+                          <select name="Bymodel" style="width:100px;height:35px">
+                              <option value=""></option>
+                              <option value="Benz307">Benz307</option>
+                              <option value="A6">A6</option>
+                              <option value="URUS">URUS</option>
+                              <option value="幻影">幻影</option>
+                          </select>
+                          <label>类型</label>
+                          <select name="Bytype" style="width:100px;height:35px">
+                              <option value=""></option>
+                              <option value="轿车">轿车</option>
+                              <option value="超级跑车">超级跑车</option>
+                              <option value="高级轿车">高级轿车</option>
+                          </select>
 								<button id="queryBtn2" type="button" class="btn btn-default" class="btn-group pull-left" style="margin-left: 10px;">
 								<span class="glyphicon glyphicon-search" aria-hidden="true"></span>查询</button>
                         </form>
@@ -276,38 +274,25 @@
 
                           <table class="table table-bordered table-striped">
                               <thead>
+
                               <tr>
-                                  <th>#</th>
-                                  <th>first</th>
-                                  <th>second</th>
-                                  <th>thrid</th>
-                                  <th>fourth</th>
-                                  <th>fifth</th>
+                                  <th>brand</th>
+                                  <th>model</th>
+                                  <th>type</th>
+                                  <th>stock</th>
+                                  <th>price</th>
+                                  <th>pic_url</th>
                               </tr>
-                              <tr>
-                                  <td>1</td>
-                                  <td> </td>
-                                  <td> </td>
-                                  <td> </td>
-                                  <td> </td>
-                                  <td> </td>
-                              </tr>
-                              <tr>
-                                  <td>2</td>
-                                  <td> </td>
-                                  <td> </td>
-                                  <td> </td>
-                                  <td> </td>
-                                  <td> </td>
-                              </tr>
-                              <tr>
-                                  <td>3</td>
-                                  <td> </td>
-                                  <td> </td>
-                                  <td> </td>
-                                  <td> </td>
-                                  <td> </td>
-                              </tr>
+                              <c:forEach var="U" items="${cars}">
+                                  <tr>
+                                      <td><c:out value="${U.brand}"></c:out></td>
+                                      <td><c:out value="${U.model}"></c:out></td>
+                                      <td><c:out value="${U.type}"></c:out></td>
+                                      <td><c:out value="${U.stock}"></c:out> </td>
+                                      <td><c:out value="${U.price}"></c:out> </td>
+                                      <td><c:out value="${U.pic_url}"></c:out> </td>
+                                  </tr>
+                              </c:forEach>
                               </thead>
                           </table>
                               </form>
@@ -341,25 +326,26 @@
                           </p></br>
 					<form role="form">
 						<div>
-	
-							<label for="name">车辆属性一（选择）</label>
-							<div>
-							<select style="width:1000px;height:35px">
-								<option value="value1">11111</option>
-								<option value="value2">22222</option>
-								<option value="value3">33333</option>
-							</select>
-							</div>
-							<div>
-							<label for="name">车辆属性二（自填）</label>
-							<input style="width:1000px" type="text" class="form-control" 
-							placeholder="请输入属性二">
-							</div>
-							<div>
-							<label for="name">车辆属性三</label>
-							<input style="width:1000px" type="text" class="form-control" 
-							placeholder="请输入属性三">
-							</div>
+
+                            <label for="name">车辆属性一（选择）</label>
+                            <div>
+                                <select name="brand-model" style="width:1000px;height:35px">
+                                    <option value=""></option>
+                                    <option value="Audi-A6">Audi-A6</option>
+                                    <option value="Benz-Benz307">Benz-Benz307</option>
+                                    <option value="Lamborghini-URUS">Lamborghini-URUS</option>
+                                </select>
+                            </div>
+                            <div>
+                                <label for="name">车辆属性二（自填）</label>
+                                <input style="width:1000px" type="text" class="form-control"
+                                       placeholder="请输入属性二" name="stock">
+                            </div>
+                            <div>
+                                <label for="name">车辆属性三</label>
+                                <input style="width:1000px" type="text" class="form-control"
+                                       placeholder="请输入属性三" name="price">
+                            </div>
 						</div>
 					</form>                          <!--
                           <div class="form-group">
@@ -371,7 +357,7 @@
                           -->
 					</br>
                           <div class="btn-group pull-left" style="margin-left: 20px;">
-                              <button id="addBtn" type="button" class="btn btn-default">
+                              <button id="addBtn" type="submit" class="btn btn-default">
                                   <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>上传</button>
                           </div>
                           </form>
