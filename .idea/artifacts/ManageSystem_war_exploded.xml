@@ -7,16 +7,7 @@
         <element id="directory" name="classes">
           <element id="module-output" name="ManageSystem" />
         </element>
-        <element id="directory" name="lib">
-          <element id="library" level="application" name="servlet-api1" />
-          <element id="file-copy" path="$USER_HOME$/Desktop/第7次实验参考资料/第7次实验参考资料/导入的项目/classes12.jar" />
-          <element id="file-copy" path="$USER_HOME$/Desktop/第7次实验参考资料/第7次实验参考资料/导入的项目/mysql-connector-java-5.1.22-bin.jar" />
-          <element id="library" level="project" name="Maven: mysql:mysql-connector-java:5.1.46" />
-        </element>
       </element>
-      <element id="library" level="application" name="servlet-api" />
-      <element id="library" level="project" name="Maven: javax.servlet:javax.servlet-api:3.1.0" />
-      <element id="library" level="project" name="Maven: mysql:mysql-connector-java:5.1.46" />
     </root>
   </artifact>
 </component>
