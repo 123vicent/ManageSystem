@@ -229,44 +229,31 @@
                           </p>
                       </div>
                       <div class="tab-pane fade" id="1">
-					<div>
-                    <form action="/Search">
-					<p>
-						<font size="4">
-						在这里你可以查看你旗下的车辆信息
-						</font>
-					</p></br>
-						<form class="navbar-form navbar-left">
-							<select style="width:100px;height:35px">
-								<option value="null"></option>
-								<option value="A1">A1</option>
-								<option value="A2">A2</option>
-								<option value="A3">A3</option>
-							</select>
-							<input type="text" class="form-control" name="customername" placeholder="输入信息..."></input>
-						</form>
-						<form class="navbar-form navbar-left">
-							<select style="width:100px;height:35px">
-								<option value="null"></option>
-								<option value="B1">B1</option>
-								<option value="B2">B2</option>
-								<option value="B3">B3</option>
-							</select>
-							<input type="text" class="form-control" name="customername" placeholder="输入信息..."></input>
-						</form>
-						<form class="navbar-form navbar-left">
-							<select style="width:100px;height:35px">
-								<option value="null"></option>
-								<option value="C1">C1</option>
-								<option value="C2">C2</option>
-								<option value="C3">C3</option>
-							</select>
-							<input type="text" class="form-control" name="customername" placeholder="输入信息..."></input>
-								<button id="queryBtn2" type="button" class="btn btn-default" class="btn-group pull-left" style="margin-left: 10px;">
-								<span class="glyphicon glyphicon-search" aria-hidden="true"></span>查询</button>
-						</form>
-                        </form>
-					</div>
+                          <div>
+                              <form action="/Search" class="navbar-form navbar-left">
+                                  <p>
+                                      <font size="4">
+                                          在这里你可以查看你旗下的车辆信息
+                                      </font>
+                                  </p></br>
+                                  <label>品牌</label>
+                                  <select style="width:100px;height:35px">
+                                      <option value=""></option>
+                                      <option value="A1">A1</option>
+                                      <option value="A2">A2</option>
+                                      <option value="A3">A3</option>
+                                  </select>
+                                  <label>车型号</label>
+                                  <select style="width:100px;height:35px">
+                                      <option value=""></option>
+                                      <option value="B1">B1</option>
+                                      <option value="B2">B2</option>
+                                      <option value="B3">B3</option>
+                                  </select>
+                                  <button id="queryBtn2" type="button" class="btn btn-default" class="btn-group pull-left" style="margin-left: 10px;">
+                                      <span class="glyphicon glyphicon-search" aria-hidden="true"></span>查询</button>
+                              </form>
+                          </div>
                           <p></br></br>
                               <font size="4">
                                   查询结果
