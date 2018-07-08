@@ -17,7 +17,7 @@ public class ShopowncarDAOImpl implements ShopowncarDAO {
     Connection conn = dbc.getConnection();
 
     public void insert(Shopowncar soc) {
-        String sql = "insert into shopowncar values (?,?,?,?,?)";
+        String sql = "insert into car.shopowncar values (?,?,?,?,?)";
         PreparedStatement ps = null;
         try {
             ps = conn.prepareStatement(sql);
@@ -71,7 +71,7 @@ public class ShopowncarDAOImpl implements ShopowncarDAO {
 
     public Shopowncar findById(String shopuser_id,String car_id){
         Shopowncar soc = new Shopowncar();
-        String sql = "select * from shopowncar where shopuser_id=? and car_id=?";
+        String sql = "select * from car.shopowncar where shopuser_id=? and car_id=?";
         PreparedStatement ps = null;
         ResultSet rs = null;
         try {
