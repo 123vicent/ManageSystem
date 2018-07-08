@@ -37,7 +37,6 @@ public class HandleBookingServlet extends HttpServlet {
 
         HttpSession session = request.getSession();
         String shopuserid = (String)session.getAttribute("userid");
-        System.out.println("16511164646461164");
         System.out.println(shopuserid);
 
         ShopaptDAO shopaptDAO = DAOFactory.getShopaptDAO();
