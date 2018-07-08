@@ -37,7 +37,7 @@ public class Main {
 
         //test carinfoDAO
         CarinfoDAO carinfoDAO = DAOFactory.getCarinfoDAO();
-        List<Carinfo> carinfoList = carinfoDAO.findAllByTag("s1","","");
+        List<Carinfo> carinfoList = carinfoDAO.findAllByTag("s1","","","");
         System.out.print("车店id ");
         System.out.print("品牌 ");
         System.out.print("型号 ");
