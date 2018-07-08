@@ -96,6 +96,32 @@ public class CarDAOImpl implements CarDAO {
         return c;
     }
 
+    public Car findByBrandModel(String brand,String model){
+        Car c = new Car();
+        String sql = "select * from car where brand=? and model=?";
+        PreparedStatement ps = null;
+        ResultSet rs = null;
+        try {
+            ps = conn.prepareStatement(sql);
+            ps.setString(1,brand);
+            ps.setString(2,model);
+            rs = ps.executeQuery();
+            if(rs.next()){
+                c.setCar_id(rs.getString(1));
+                c.setBrand(rs.getString(2));
+                c.setModel(rs.getString(3));
+                c.setColor(rs.getString(4));
+                c.setSeats(rs.getString(5));
+                c.setType(rs.getString(6));
+                c.setPower(rs.getString(7));
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return c;
+    }
+
     public List<Car> findAll(){
         List<Car> carList = new ArrayList<Car>();
         String sql = "select * from car.car";
