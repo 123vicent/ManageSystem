@@ -41,27 +41,46 @@
         <div class="layui-form-item">
             <label class="layui-form-label">确认密码</label>
             <div class="layui-input-inline">
-                <input type="password" style="width:300px" name="password" lay-verify="pass" placeholder="请确保和上方密码一致" autocomplete="off" class="layui-input">
+                <input type="password" style="width:300px" name="chkpassword" lay-verify="pass" placeholder="请确保和上方密码一致" autocomplete="off" class="layui-input">
             </div>
         </div>
-
+        <%if(request.getAttribute("chkpswd")!=null){ %>
+        <%=request.getAttribute("chkpswd")%>
+        <%  }%>
         <div class="layui-form-item">
             <div class="layui-inline">
-                <label class="layui-form-label">验证手机</label>
+                <label class="layui-form-label">店名</label>
                 <div class="layui-input-inline">
-                    <input type="tel" name="phone" style="width: 300px" lay-verify="required|phone" autocomplete="off" class="layui-input">
+                    <input type="tel" name="shopname" style="width: 300px" lay-verify="required|phone" autocomplete="off" class="layui-input">
                 </div>
             </div>
         </div>
         <div class="layui-form-item">
             <div class="layui-inline">
-                <label class="layui-form-label">验证邮箱</label>
+                <label class="layui-form-label">联系方式</label>
                 <div class="layui-input-inline">
-                    <input type="text" name="email" style="width: 300px" lay-verify="email" autocomplete="off" class="layui-input">
+                    <input type="text" name="phone" style="width: 300px" lay-verify="email" autocomplete="off" class="layui-input">
                 </div>
             </div>
         </div>
 
+        <div class="layui-form-item">
+            <div class="layui-inline">
+                <label class="layui-form-label">店址</label>
+                <div class="layui-input-inline">
+                    <input type="text" name="address" style="width: 300px" lay-verify="email" autocomplete="off" class="layui-input">
+                </div>
+            </div>
+        </div>
+
+        <div class="layui-form-item">
+            <div class="layui-inline">
+                <label class="layui-form-label">负责人</label>
+                <div class="layui-input-inline">
+                    <input type="text" name="manager" style="width: 300px" lay-verify="email" autocomplete="off" class="layui-input">
+                </div>
+            </div>
+        </div>
         <div class="layui-form-item">
             <div class="layui-input-block">
                 <input class="layui-btn"  type = "submit" name="submit" value="立即提交">
