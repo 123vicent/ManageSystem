@@ -93,7 +93,7 @@ public class ViewrecordDAOImpl implements ViewrecordDAO {
         try {
             ps = conn.prepareStatement(sql);
             rs = ps.executeQuery();
-            if(rs.next()){
+            while(rs.next()){
                 Viewrecord vr = new Viewrecord();
                 vr.setCar_id(rs.getString(1));
                 vr.setCususer_id(rs.getString(2));

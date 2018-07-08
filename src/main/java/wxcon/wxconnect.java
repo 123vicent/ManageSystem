@@ -120,6 +120,11 @@ public class wxconnect extends HttpServlet {
         String msgType = map.get("MsgType");
         String content = map.get("Content");
 
+        System.out.println(toUserName);
+        System.out.println(fromUserName);
+        System.out.println(msgType);
+        System.out.println(content);
+
         // 对文本消息进行处理
         String message = null;
         if (MessageUtils.MESSAGE_TEXT.equals(msgType)) {

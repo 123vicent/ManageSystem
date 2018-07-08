@@ -1,22 +1,17 @@
 package server;
 
-import DAO.DAOFactory;
-import DAO.ShopuserDAO;
-import DAO.ShopuserDAOImpl;
-import basic.Appointment;
-import basic.Car;
-import dbcon.DBConnect;
-import model.Shopuser;
+import DAO.*;
+import model.*;
 
 import java.io.IOException;
-import java.sql.SQLException;
-import java.sql.Statement;
-import java.sql.ResultSet;
+import java.util.ArrayList;
+import java.util.List;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 
 @SuppressWarnings("serial")
@@ -54,30 +49,26 @@ public class LoginServlet extends HttpServlet {
             else {
                 //rs = stmt.executeQuery("SELECT * FROM user where usr_name = '"+userid+"'and password =  '"+password+"'");
                 //rs.next();
+
                 ShopuserDAO shopuserdao = DAOFactory.getShopuserDAO();
                 Shopuser shopuser = shopuserdao.findById(userid);
+
+                ShopowncarDAO shopowncarDAO = new ShopowncarDAOImpl();
+                //Shopowncar shopowncar = shopowncarDAO.findById(shopuser.getShopuser_id());
+
+
+                CarDAO carDAO = DAOFactory.getCarDAO();
+                List<Car> cars = new ArrayList<Car>();
+                cars = carDAO.findAll();
+
+
                 if (shopuser.getPswd()!=null&&shopuser.getPswd().equals(password)) {
                     //request.setAttribute("msg","登录失败");
                     //view=request.getRequestDispatcher("index.jsp");
-                    Car owncars = new Car();
-                    owncars.setCar_id("0");
-                    owncars.setBrand("RRR");
-                    owncars.setModel("666");
-                    owncars.setSeats("4");
-                    owncars.setType("跑车");
-                    owncars.setColor("red");
-                    owncars.setPower("1000");
+                    HttpSession session = request.getSession();
+                    session.setAttribute("userid",userid);
 
-                    Appointment apm = new Appointment();
-                    apm.setAppoint_id("212");
-                    apm.setAppoint_state("保养预约");
-                    apm.setAppoint_time("2018-08-08");
-                    apm.setAppoint_type("已处理");
-                    apm.setCustomer_call("65165156");
-                    apm.setCustomer_name("sfsdfsf");
-
-                    request.setAttribute("shopcar", owncars);
-                    request.setAttribute("appointment", apm);
+                    request.setAttribute("cars",carDAO.findAll());
 
                     view = request.getRequestDispatcher("WEB-INF/firstpage.jsp");
                 } else {

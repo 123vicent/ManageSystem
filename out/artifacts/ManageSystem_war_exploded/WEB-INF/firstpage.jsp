@@ -6,8 +6,6 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<%@ page language="java" import="basic.Appointment" %>
-<%@ page language="java" import="basic.Car" %>
 <html lang="en">
   <head>
     <meta charset="utf-8">
@@ -46,9 +44,7 @@
   </head>
 
   <body>
-  <%Appointment appointment = new Appointment();
-      appointment=(Appointment)request.getAttribute("appointment");
-  %>
+
   <nav class="navbar navbar-inverse navbar-fixed-top">
       <div class="container-fluid">
           <div class="navbar-header">
@@ -93,7 +89,7 @@
                           <div class="carousel-caption">
                               <h1>标题一</h1>
                               <p>段落一</p>
-                              <p><a class="btn btn-lg btn-primary" data-toggle="tab" href="A" data-toggle="tab"role="button">按钮一</a></p>
+                              <p><a class="btn btn-lg btn-primary" data-toggle="tab" href="#B" data-toggle="tab"role="button">马上使用功能</a></p>
                           </div>
                       </div>
                   </div>
@@ -103,7 +99,7 @@
                           <div class="carousel-caption">
                               <h1>标题二</h1>
                               <p>段落二</p>
-                              <p><a class="btn btn-lg btn-primary" data-toggle="tab" href="#B" data-toggle="tab"role="button">按钮二</a></p>
+                              <p><a class="btn btn-lg btn-primary" data-toggle="tab" href="#C" data-toggle="tab"role="button">查看用户设置</a></p>
                           </div>
                       </div>
                   </div>
@@ -113,7 +109,7 @@
                           <div class="carousel-caption">
                               <h1>标题三</h1>
                               <p>段落三</p>
-                              <p><a class="btn btn-lg btn-primary" data-toggle="tab" href="#C" role="button">按钮三</a></p>
+                              <p><a class="btn btn-lg btn-primary" data-toggle="tab" href="#D" role="button">查看帮助界面</a></p>
                           </div>
                       </div>
                   </div>
@@ -133,68 +129,71 @@
 
           <div class="container marketing">
 
-              <!-- Three columns of text below the carousel -->
-              <div class="row">
-                  <div class="col-lg-4">
-                      <img class="img-circle" src="" alt="Generic placeholder image" width="140" height="140">
-                      <h2>Heading</h2>
-                      <p>Donec sed odio dui. Etiam porta sem malesuada magna mollis euismod. Nullam id dolor id nibh ultricies vehicula ut id elit. Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Praesent commodo cursus magna.</p>
-                      <p><a class="btn btn-default" href="#" role="button">View details &raquo;</a></p>
-                  </div><!-- /.col-lg-4 -->
-                  <div class="col-lg-4">
-                      <img class="img-circle" src="" alt="Generic placeholder image" width="140" height="140">
-                      <h2>Heading</h2>
-                      <p>Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Cras mattis consectetur purus sit amet fermentum. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh.</p>
-                      <p><a class="btn btn-default" href="#" role="button">View details &raquo;</a></p>
-                  </div><!-- /.col-lg-4 -->
-                  <div class="col-lg-4">
-                      <img class="img-circle" src="" alt="Generic placeholder image" width="140" height="140">
-                      <h2>Heading</h2>
-                      <p>Donec sed odio dui. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Vestibulum id ligula porta felis euismod semper. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.</p>
-                      <p><a class="btn btn-default" href="#" role="button">View details &raquo;</a></p>
-                  </div><!-- /.col-lg-4 -->
+      <!-- Three columns of text below the carousel -->
+      <div class="row">
+        <div class="col-lg-4">
+          <img class="img-circle" src="../img/team.jpg" alt="Generic placeholder image" width="140" height="140">
+          <h2>Heading</h2>
+          <p>Donec sed odio dui. Etiam porta sem malesuada magna mollis euismod. Nullam id dolor id nibh ultricies vehicula ut id elit. Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Praesent commodo cursus magna.</p>
+          <p><a class="btn btn-default" href="#" role="button">View details &raquo;</a></p>
+        </div><!-- /.col-lg-4 -->
+        <div class="col-lg-4">
+          <img class="img-circle" src="../img/team.jpg" alt="Generic placeholder image" width="140" height="140">
+          <h2>Heading</h2>
+          <p>Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Cras mattis consectetur purus sit amet fermentum. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh.</p>
+          <p><a class="btn btn-default" href="#" role="button">View details &raquo;</a></p>
+        </div><!-- /.col-lg-4 -->
+        <div class="col-lg-4">
+          <img class="img-circle" src="../img/team.jpg" alt="Generic placeholder image" width="140" height="140">
+          <h2>关于我们</h2>
+          <p>团队介绍</p>
+          <p><a class="btn btn-default" href="#" role="button">View details &raquo;</a></p>
+        </div><!-- /.col-lg-4 -->
+      </div><!-- /.row -->/.col-lg-4 -->
               </div><!-- /.row -->
 
 
-              <!-- START THE FEATURETTES -->
+      <!-- START THE FEATURETTES -->
 
-              <hr class="featurette-divider">
+      <hr class="featurette-divider">
 
-              <div class="row featurette">
-                  <div class="col-md-7">
-                      <h2 class="featurette-heading">First featurette heading. <span class="text-muted">It'll blow your mind.</span></h2>
-                      <p class="lead">Donec ullamcorper nulla non metus auctor fringilla. Vestibulum id ligula porta felis euismod semper. Praesent commodo cursus magna, vel scelerisque nisl consectetur. Fusce dapibus, tellus ac cursus commodo.</p>
-                  </div>
-                  <div class="col-md-5">
-                      <img class="featurette-image img-responsive center-block" data-src="holder.js/500x500/auto" alt="Generic placeholder image">
-                  </div>
-              </div>
+      <div class="row featurette">
+        <div class="col-md-7">
+          <h2 class="featurette-heading">
+          汽车销售管理系统 精细化管理客户</br> <span class="text-muted">  </span></h2>
+          <p class="lead">专为汽车4S店、二手车、新车经销商设计的车辆销售管理系统。系统功能强大、操作简单、容易上手。 程序化快速建档，自有服务器存储海量客户，避免客户数据丢失；意向客户及保险到期及时提醒，方便执行</p>
+        </div>
+        <div class="col-md-5">
+          <img class="featurette-image img-responsive center-block" src="../img/car-manage.png" data-src="holder.js/500x500/auto" alt="Generic placeholder image">
+        </div>
+      </div>
 
-              <hr class="featurette-divider">
+      <hr class="featurette-divider">
 
-              <div class="row featurette">
-                  <div class="col-md-7 col-md-push-5">
-                      <h2 class="featurette-heading">Oh yeah, it's that good. <span class="text-muted">See for yourself.</span></h2>
-                      <p class="lead">Donec ullamcorper nulla non metus auctor fringilla. Vestibulum id ligula porta felis euismod semper. Praesent commodo cursus magna, vel scelerisque nisl consectetur. Fusce dapibus, tellus ac cursus commodo.</p>
-                  </div>
-                  <div class="col-md-5 col-md-pull-7">
-                      <img class="featurette-image img-responsive center-block" data-src="holder.js/500x500/auto" alt="Generic placeholder image">
-                  </div>
-              </div>
+      <div class="row featurette">
+        <div class="col-md-7 col-md-push-5">
+          <h2 class="featurette-heading">精细化管理客户 <span class="text-muted">  </span></h2>
+          <p class="lead">程序化快速建档，自有服务器存储海量客户，避免客户数据丢失；意向客户及保险到期及时提醒，方便执行</p>
+        </div>
+        <div class="col-md-5 col-md-pull-7">
+          <img class="featurette-image img-responsive center-block" src="../img/client_manage.jpg" data-src="holder.js/500x500/auto" alt="Generic placeholder image">
+        </div>
+      </div>
 
-              <hr class="featurette-divider">
+      <hr class="featurette-divider">
 
-              <div class="row featurette">
-                  <div class="col-md-7">
-                      <h2 class="featurette-heading">And lastly, this one. <span class="text-muted">Checkmate.</span></h2>
-                      <p class="lead">Donec ullamcorper nulla non metus auctor fringilla. Vestibulum id ligula porta felis euismod semper. Praesent commodo cursus magna, vel scelerisque nisl consectetur. Fusce dapibus, tellus ac cursus commodo.</p>
-                  </div>
-                  <div class="col-md-5">
-                      <img class="featurette-image img-responsive center-block" data-src="holder.js/500x500/auto" alt="Generic placeholder image">
-                  </div>
-              </div>
+      <div class="row featurette">
+        <div class="col-md-7">
+          <h2 class="featurette-heading">员工满意度提升 <span class="text-muted">  </span></h2>
+          <p class="lead">详细记录客户信息，更好的把控客户进度，以业绩为导向，通过目标管理聚焦关键任务，形成团队协同力。</p>
+        </div>
+        <div class="col-md-5">
+          <img class="featurette-image img-responsive center-block" src="../img/service.jpg" data-src="holder.js/500x500/auto" alt="Generic placeholder image">
+        </div>
+      </div>
 
-              <hr class="featurette-divider">
+
+      <hr class="featurette-divider">
 
               <!-- /END THE FEATURETTES -->
 
@@ -206,7 +205,6 @@
               </footer>
 
           </div><!-- /.container -->
-      </div>
       <div class="tab-pane fade" id="B">
           <!-- 功能主页实现 -->
           <div class="container-fluid">
@@ -225,23 +223,50 @@
                   <div class="tab-content">
                       <div class="tab-pane fade in active" id="0">
                           <p>
-                              功能概览
+							<font size="4">
+							在这里可以看到功能的概览
+							</font>
                           </p>
                       </div>
                       <div class="tab-pane fade" id="1">
-
-                          <p>
-                              <font size="4">
-                                  在这里你可以查看你旗下的车辆信息
-                              </font>
-                          </p></br>
-
-
-                          <form action="/Search">
-                          <div class="btn-group pull-left" style="margin-left: 20px;">
-                              <button id="queryBtn1" type="button" class="btn btn-default" >
-                                  <span class="glyphicon glyphicon-search" aria-hidden="true"></span>查询</button>
-                          </div>
+					<div>
+                    <form action="/Search">
+					<p>
+						<font size="4">
+						在这里你可以查看你旗下的车辆信息
+						</font>
+					</p></br>
+						<form class="navbar-form navbar-left">
+							<select style="width:100px;height:35px">
+								<option value="null"></option>
+								<option value="A1">A1</option>
+								<option value="A2">A2</option>
+								<option value="A3">A3</option>
+							</select>
+							<input type="text" class="form-control" name="customername" placeholder="输入信息..."></input>
+						</form>
+						<form class="navbar-form navbar-left">
+							<select style="width:100px;height:35px">
+								<option value="null"></option>
+								<option value="B1">B1</option>
+								<option value="B2">B2</option>
+								<option value="B3">B3</option>
+							</select>
+							<input type="text" class="form-control" name="customername" placeholder="输入信息..."></input>
+						</form>
+						<form class="navbar-form navbar-left">
+							<select style="width:100px;height:35px">
+								<option value="null"></option>
+								<option value="C1">C1</option>
+								<option value="C2">C2</option>
+								<option value="C3">C3</option>
+							</select>
+							<input type="text" class="form-control" name="customername" placeholder="输入信息..."></input>
+								<button id="queryBtn2" type="button" class="btn btn-default" class="btn-group pull-left" style="margin-left: 10px;">
+								<span class="glyphicon glyphicon-search" aria-hidden="true"></span>查询</button>
+						</form>
+                        </form>
+					</div>
                           <p></br></br>
                               <font size="4">
                                   查询结果
@@ -307,29 +332,35 @@
                       -->
 
                       <div class="tab-pane fade" id="2">
+                        <form action="/addcar">
                           <p>
                               <font size="4">
                                   在这里你可以上传你旗下的车辆信息
                               </font>
                           </p></br>
-                          <form role="form">
-                              <div class="form-group">
-                                  <label for="name">车辆属性一</label>
-                                  <input type="text" class="form-control" id="first"
-                                         placeholder="请输入属性一">
-                              </div>
-                              <div class="form-group">
-                                  <label for="name">车辆属性二</label>
-                                  <input type="text" class="form-control" id="second"
-                                         placeholder="请输入属性二">
-                              </div>
-                              <div class="form-group">
-                                  <label for="name">车辆属性三</label>
-                                  <input type="text" class="form-control" id="third"
-                                         placeholder="请输入属性三">
-                              </div>
-                          </form>
-                          <!--
+					<form role="form">
+						<div>
+	
+							<label for="name">车辆属性一（选择）</label>
+							<div>
+							<select style="width:1000px;height:35px">
+								<option value="value1">11111</option>
+								<option value="value2">22222</option>
+								<option value="value3">33333</option>
+							</select>
+							</div>
+							<div>
+							<label for="name">车辆属性二（自填）</label>
+							<input style="width:1000px" type="text" class="form-control" 
+							placeholder="请输入属性二">
+							</div>
+							<div>
+							<label for="name">车辆属性三</label>
+							<input style="width:1000px" type="text" class="form-control" 
+							placeholder="请输入属性三">
+							</div>
+						</div>
+					</form>                          <!--
                           <div class="form-group">
                               <label for="inputfile">车辆展示图片上传</label>
                               <input type="file" id="inputfile">
@@ -337,11 +368,12 @@
 
                           </div>
                           -->
-
+					</br>
                           <div class="btn-group pull-left" style="margin-left: 20px;">
                               <button id="addBtn" type="button" class="btn btn-default">
                                   <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>上传</button>
                           </div>
+                        </form>
                       </div>
 
                       <div class="tab-pane fade" id="3">
@@ -350,11 +382,24 @@
                                   在这里你可以查看你旗下的客户预约
                               </font>
                           </p></br>
-                          <div class="btn-group pull-left" style="margin-left: 20px;">
-                              <button id="queryBtn2" type="button" class="btn btn-default" >
+                          <form action="/handlebook" class="navbar-form navbar-left">
+                              <select name="appointstate" style="width:100px;height:35px">
+                                  <option value=""></option>
+                                  <option >全部预约</option>
+                                  <option >已处理预约</option>
+                                  <option >未处理预约</option>
+                              </select>
+                              <select name="appointtype" style="width:100px;height:35px">
+                                  <option value=""></option>
+                                  <option >试驾预约</option>
+                                  <option >保养预约</option>
+                                  <option >购车预约</option>
+                              </select>
+                              <input type="text" class="form-control" name="customername" placeholder="输入需要查询的客户姓名"></input>
+                              <button id="queryBtn2" type="submit" class="btn btn-default" class="btn-group pull-left" style="margin-left: 10px;">
                                   <span class="glyphicon glyphicon-search" aria-hidden="true"></span>查询</button>
-                          </div>
-                          <p></br></br>
+                          </form>
+					<p></br></br></br>
                               <font size="4">
                                   查询结果
                               </font>
@@ -364,30 +409,38 @@
 
                               <thead>
                               <tr>
-                                  <th>序号</th>
+                                  <th>预约号</th>
                                   <th>客户姓名</th>
+                                  <th>联系方式</th>
                                   <th>预约类型</th>
                                   <th>预约时间</th>
                                   <th>预约状态</th>
-                                  <th>联系方式</th>
+
                               </tr>
                               </thead>
                               <tbody>
                               <th>序号</th>
-                              <th><%=appointment.getCustomer_name()%></th>
-                              <th><%=appointment.getAppoint_type()%></th>
-                              <th><%=appointment.getAppoint_time()%></th>
-                              <th><%=appointment.getAppoint_state()%></th>
-                              <th><%=appointment.getCustomer_call()%></th>
+
 
                               </tbody>
                           </table>
-                      </div>
-                      <div class="tab-pane fade" id="4">
-                          <p>
-                              功能4
-                          </p>
-                      </div>
+                  </div>
+				<div class="tab-pane fade" id="4">
+					<p>
+						<font size="4">
+							在这里可以进行微信端的消息推送
+						</font>
+					</p>
+					<form role="form">
+						<div>
+							<textarea name="customermessage" style="width:1000px;" rows="5" warp="virtual" placeholder="输入要推送给客户的信息"></textarea>
+						</div>
+						<div class="btn-group pull-left" style="margin-left: 0px;">
+							<button id="addBtn" type="button" class="btn btn-default">
+							<span class="glyphicon glyphicon-plus" aria-hidden="true"></span>推送</button>
+						</div>
+					</form>
+				</div>
                       <!--具体功能实现区-->
                   </div>
               </div>

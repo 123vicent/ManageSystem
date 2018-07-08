@@ -74,7 +74,7 @@ public class ShopuserDAOImpl implements ShopuserDAO {
 
     public Shopuser findById(String shopuser_id){
         Shopuser su = new Shopuser();
-        String sql = "select * from shopuser where shopuser_id=?";
+        String sql = "select * from car.shopuser where shopuser_id=?";
         PreparedStatement ps = null;
         ResultSet rs = null;
         try {
@@ -106,7 +106,7 @@ public class ShopuserDAOImpl implements ShopuserDAO {
         try {
             ps = conn.prepareStatement(sql);
             rs = ps.executeQuery();
-            if(rs.next()){
+            while(rs.next()){
                 Shopuser su = new Shopuser();
                 su.setShopuser_id(rs.getString(1));
                 su.setPswd(rs.getString(2));
