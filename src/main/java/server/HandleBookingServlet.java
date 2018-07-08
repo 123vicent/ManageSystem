@@ -1,4 +1,6 @@
 package server;
+import DAO.DAOFactory;
+import DAO.ShopaptDAO;
 import basic.Shopapt;
 import dbcon.DBConnect;
 import model.Appointment;
@@ -24,20 +26,27 @@ public class HandleBookingServlet extends HttpServlet {
                        HttpServletResponse response)
             throws ServletException, IOException {
 
-        ResultSet rs = null;
+        /*ResultSet rs = null;
         DBConnect db   = new DBConnect();
         Connection con   = db.getConnection();
         PreparedStatement ps = null;
-        List<Shopapt> apList = new ArrayList<Shopapt>();
+        List<Shopapt> apList = new ArrayList<Shopapt>();*/
 
         RequestDispatcher view;
 
 
         HttpSession session = request.getSession();
         String shopuserid = (String)session.getAttribute("userid");
-        System.out.println("16511164646461164");
         System.out.println(shopuserid);
-        //获取用户所查询的内容
+
+        ShopaptDAO shopaptDAO = DAOFactory.getShopaptDAO();
+        String apstate = request.getParameter("appointstate");
+        String aptype = request.getParameter("appointtype");
+        String cusname = request.getParameter("customername");
+
+        List<Shopapt> apList = shopaptDAO.findAllByTag(shopuserid,apstate,aptype,cusname);
+
+       /* //获取用户所查询的内容
         String appointstate = request.getParameter("appointstate");
         String appointtype = request.getParameter("appointtype");
         String customername = request.getParameter("customername");
@@ -75,7 +84,7 @@ public class HandleBookingServlet extends HttpServlet {
             }
         } catch (SQLException e) {
             e.printStackTrace();
-        }
+        }*/
         request.setAttribute("userapoint",apList);
         view=request.getRequestDispatcher("WEB-INF/usershopapoint.jsp");
         String access = request.getParameter("submit");

@@ -25,7 +25,7 @@ public class AppointmentDAOImpl implements AppointmentDAO {
             ps.setString(1,a.getAppointment_id());
             ps.setString(2,a.getCususer_id());
             ps.setString(3,a.getShopuser_id());
-            ps.setDate(4,a.getAp_time());
+            ps.setTimestamp(4,a.getAp_time());
             ps.setString(5,a.getAp_type());
             ps.setString(6,a.getAp_state());
 
@@ -44,7 +44,7 @@ public class AppointmentDAOImpl implements AppointmentDAO {
             ps.setString(1,a.getAppointment_id());
             ps.setString(2,a.getCususer_id());
             ps.setString(3,a.getShopuser_id());
-            ps.setDate(4,a.getAp_time());
+            ps.setTimestamp(4,a.getAp_time());
             ps.setString(5,a.getAp_type());
             ps.setString(6,a.getAp_state());
             ps.setString(7,a.getAppointment_id());
@@ -83,7 +83,7 @@ public class AppointmentDAOImpl implements AppointmentDAO {
                 apt.setAppointment_id(rs.getString(1));
                 apt.setCususer_id(rs.getString(2));
                 apt.setShopuser_id(rs.getString(3));
-                apt.setAp_time(rs.getDate(4));
+                apt.setAp_time(rs.getTimestamp(4));
                 apt.setAp_type(rs.getString(5));
                 apt.setAp_state(rs.getString(6));
             }
@@ -107,7 +107,7 @@ public class AppointmentDAOImpl implements AppointmentDAO {
                 apt.setAppointment_id(rs.getString(1));
                 apt.setCususer_id(rs.getString(2));
                 apt.setShopuser_id(rs.getString(3));
-                apt.setAp_time(rs.getDate(4));
+                apt.setAp_time(rs.getTimestamp(4));
                 apt.setAp_type(rs.getString(5));
                 apt.setAp_state(rs.getString(6));
                 apList.add(apt);

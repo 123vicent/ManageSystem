@@ -1,13 +1,14 @@
 package server;
 
-import DAO.DAOFactory;
-import DAO.ShopaptDAO;
-import DAO.ShopuserDAO;
+import DAO.*;
 import basic.Shopapt;
 import model.Car;
 import model.Shopuser;
 
 import java.io.IOException;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -58,9 +59,13 @@ public class LoginServlet extends HttpServlet {
                 if (shopuser.getPswd()!=null&&shopuser.getPswd().equals(password)) {
                     //request.setAttribute("msg","登录失败");
                     //view=request.getRequestDispatcher("index.jsp");
-
-
-
+                    CarDAO cardao = DAOFactory.getCarDAO();
+                    List<Car> cars = cardao.findAll();
+                    Map<String,String> maps = new HashMap<String,String>();
+                    for(Car car:cars) {
+                        maps.put(car.getBrand(),car.getModel());
+                    }
+                    request.setAttribute("maps",maps);
 
                     view = request.getRequestDispatcher("WEB-INF/firstpage.jsp");
                 } else {
