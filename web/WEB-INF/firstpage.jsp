@@ -379,8 +379,8 @@
                               <label>预约状态</label>
                               <select name="appointstate" style="width:100px;height:35px">
                                   <option >全部预约</option>
-                                  <option >已处理预约</option>
-                                  <option >未处理预约</option>
+                                  <option >已处理</option>
+                                  <option >待处理</option>
                               </select>
                               <label>预约类型</label>
                               <select name="appointtype" style="width:100px;height:35px">
