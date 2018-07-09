@@ -45,11 +45,11 @@ public class ShopaptDAOImpl implements ShopaptDAO {
         String sql = "select * from car.shopapt where shopuser_id=?";
         PreparedStatement ps = null;
         ResultSet rs = null;
-        if(!(apstate.equals("")||apstate.equals("全部预约")))
+        if(!apstate.equals("全部预约"))
         {
             sql+="and ap_state='"+apstate+"'";
         }
-        if(!aptype.equals(""))
+        if(!aptype.equals("全部预约"))
         {
             sql+="and ap_type='"+aptype+"'";
         }

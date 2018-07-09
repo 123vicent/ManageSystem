@@ -233,7 +233,7 @@
                       </div>
               <div class="tab-pane fade" id="1">
                    <div>
-                      <form action="/Search">
+                      <form action="/Search" class="navbar-form navbar-left">
 					    <p>
 						<font size="4">
 						在这里你可以查看你旗下的车辆信息
@@ -241,7 +241,7 @@
 					    </p></br>
                           <label>品牌</label>
                           <select name="Bybrand" style="width:100px;height:35px">
-                              <option value=""></option>
+                              <option value="全部车辆">全部车辆</option>
                               <option value="Benz">Benz</option>
                               <option value="Audi">Audi</option>
                               <option value="Lamborghini">Lamborghini</option>
@@ -249,7 +249,7 @@
                           </select>
                           <label>车型号</label>
                           <select name="Bymodel" style="width:100px;height:35px">
-                              <option value=""></option>
+                              <option value="全部车辆">全部车辆</option>
                               <option value="Benz307">Benz307</option>
                               <option value="A6">A6</option>
                               <option value="URUS">URUS</option>
@@ -257,7 +257,7 @@
                           </select>
                           <label>类型</label>
                           <select name="Bytype" style="width:100px;height:35px">
-                              <option value=""></option>
+                              <option value="全部车辆">全部车辆</option>
                               <option value="轿车">轿车</option>
                               <option value="超级跑车">超级跑车</option>
                               <option value="高级轿车">高级轿车</option>
@@ -265,7 +265,6 @@
 								<button id="queryBtn2" type="submit" class="btn btn-default" class="btn-group pull-left" style="margin-left: 10px;">
 								<span class="glyphicon glyphicon-search" aria-hidden="true"></span>查询</button>
                         </form>
-                      </form>
 					</div>
                           <p></br></br>
                               <font size="4">
@@ -277,12 +276,12 @@
                               <thead>
 
                               <tr>
-                                  <th>brand</th>
-                                  <th>model</th>
-                                  <th>type</th>
-                                  <th>stock</th>
-                                  <th>price</th>
-                                  <th>pic_url</th>
+                                  <th>品牌</th>
+                                  <th>型号</th>
+                                  <th>车型</th>
+                                  <th>库存</th>
+                                  <th>价格</th>
+                                  <th>图片</th>
                               </tr>
                               <c:forEach var="U" items="${cars}">
                                   <tr>
@@ -378,15 +377,17 @@
                               </font>
                           </p></br>
 						<form action="/handlebook" class="navbar-form navbar-left">
+                            <label>预约状态</label>
 							<select name="appointstate" style="width:100px;height:35px">
-								<option value=""></option>
 								<option >全部预约</option>
 								<option >已处理</option>
 								<option >待处理</option>
 							</select>
+                            <label>预约类型</label>
                             <select name="appointtype" style="width:100px;height:35px">
-                                <option value=""></option>
+                                <option >全部预约</option>
                                 <option >试驾预约</option>
+                                <option >维修预约</option>
                                 <option >保养预约</option>
                                 <option >购车预约</option>
                             </select>
