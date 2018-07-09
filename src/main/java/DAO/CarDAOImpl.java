@@ -17,7 +17,7 @@ public class CarDAOImpl implements CarDAO {
     Connection conn = dbc.getConnection();
 
     public void insert(Car c) {
-        String sql = "insert into car.car values (?,?,?,?,?,?,?)";
+        String sql = "insert into car values (?,?,?,?,?,?,?)";
         PreparedStatement ps = null;
         try {
             ps = conn.prepareStatement(sql);
@@ -96,9 +96,53 @@ public class CarDAOImpl implements CarDAO {
         return c;
     }
 
+    public List<String> findModelByBrand(String brand){
+        List<String> modelList = new ArrayList<String>();
+        String sql = "select model from car where brand=?";
+        PreparedStatement ps = null;
+        ResultSet rs = null;
+        try {
+            ps = conn.prepareStatement(sql);
+            ps.setString(1,brand);
+            rs = ps.executeQuery();
+            while(rs.next()){
+                modelList.add(rs.getString(1));
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return modelList;
+    }
+
+    public Car findByBrandModel(String brand,String model){
+        Car c = new Car();
+        String sql = "select * from car where brand=? and model=?";
+        PreparedStatement ps = null;
+        ResultSet rs = null;
+        try {
+            ps = conn.prepareStatement(sql);
+            ps.setString(1,brand);
+            ps.setString(2,model);
+            rs = ps.executeQuery();
+            if(rs.next()){
+                c.setCar_id(rs.getString(1));
+                c.setBrand(rs.getString(2));
+                c.setModel(rs.getString(3));
+                c.setColor(rs.getString(4));
+                c.setSeats(rs.getString(5));
+                c.setType(rs.getString(6));
+                c.setPower(rs.getString(7));
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return c;
+    }
+
     public List<Car> findAll(){
         List<Car> carList = new ArrayList<Car>();
-        String sql = "select * from car.car";
+        String sql = "select * from car";
         PreparedStatement ps = null;
         ResultSet rs = null;
         try {
