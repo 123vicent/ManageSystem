@@ -232,8 +232,7 @@
                           </p>
                       </div>
               <div class="tab-pane fade" id="1">
-                   <div>
-                      <form action="/Search" class="navbar-form navbar-left">
+                      <form action="/Search">
 					    <p>
 						<font size="4">
 						在这里你可以查看你旗下的车辆信息
@@ -241,7 +240,7 @@
 					    </p></br>
                           <label>品牌</label>
                           <select name="Bybrand" style="width:100px;height:35px">
-                              <option value="全部车辆">全部车辆</option>
+                              <option value="全部车辆">所有品牌</option>
                               <option value="Benz">Benz</option>
                               <option value="Audi">Audi</option>
                               <option value="Lamborghini">Lamborghini</option>
@@ -249,7 +248,7 @@
                           </select>
                           <label>车型号</label>
                           <select name="Bymodel" style="width:100px;height:35px">
-                              <option value="全部车辆">全部车辆</option>
+                              <option value="全部车辆">所有型号</option>
                               <option value="Benz307">Benz307</option>
                               <option value="A6">A6</option>
                               <option value="URUS">URUS</option>
@@ -257,7 +256,7 @@
                           </select>
                           <label>类型</label>
                           <select name="Bytype" style="width:100px;height:35px">
-                              <option value="全部车辆">全部车辆</option>
+                              <option value="全部车辆">所有类型</option>
                               <option value="轿车">轿车</option>
                               <option value="超级跑车">超级跑车</option>
                               <option value="高级轿车">高级轿车</option>
@@ -265,7 +264,6 @@
 								<button id="queryBtn2" type="submit" class="btn btn-default" class="btn-group pull-left" style="margin-left: 10px;">
 								<span class="glyphicon glyphicon-search" aria-hidden="true"></span>查询</button>
                         </form>
-					</div>
                           <p></br></br>
                               <font size="4">
                                   查询结果
