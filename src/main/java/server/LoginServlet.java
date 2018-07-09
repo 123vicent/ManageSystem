@@ -1,11 +1,13 @@
 package server;
 
 import DAO.*;
+import basic.KeyValuePair;
 import basic.Shopapt;
 import model.Car;
 import model.Shopuser;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -61,11 +63,11 @@ public class LoginServlet extends HttpServlet {
                     //view=request.getRequestDispatcher("index.jsp");
                     CarDAO cardao = DAOFactory.getCarDAO();
                     List<Car> cars = cardao.findAll();
-                    Map<String,String> maps = new HashMap<String,String>();
+                   List<KeyValuePair> lists =new ArrayList<KeyValuePair>();
                     for(Car car:cars) {
-                        maps.put(car.getBrand(),car.getModel());
+                        lists.add(new KeyValuePair(car.getBrand(),car.getModel()));
                     }
-                    request.setAttribute("maps",maps);
+                    session.setAttribute("list",lists);
 
                     request.setAttribute("userid",userid);//显示用户id
 

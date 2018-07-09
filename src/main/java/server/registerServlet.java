@@ -29,6 +29,7 @@ public class registerServlet extends HttpServlet {
         String phone = request.getParameter("phone");
         String address = request.getParameter("address");
         String manager = request.getParameter("manager");
+        String description  = request.getParameter("description");
 
         RequestDispatcher view;
 
