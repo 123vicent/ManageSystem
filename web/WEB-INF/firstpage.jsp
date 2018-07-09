@@ -1,4 +1,8 @@
-<%--
+<%@ page import="java.util.HashMap" %>
+<%@ page import="java.util.Map" %>
+<%@ page import="java.util.Set" %>
+<%@ page import="basic.KeyValuePair" %>
+<%@ page import="java.util.List" %><%--
   Created by IntelliJ IDEA.
   User: 17308
   Date: 2018/7/3
@@ -6,7 +10,6 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html lang="en">
   <head>
     <meta charset="utf-8">
@@ -52,7 +55,7 @@
               <p class="navbar-brand" ><font size="5">汽车销售管理系统</font></p>
           </div>
           <div>
-              <p id= "huanying" class="navbar-brand" align="right"><font size="4">欢迎您！${userid}</font></p>
+              <p id= "huanying" class="navbar-brand" align="right"><font size="4">欢迎您！<a href="/SearchUserServlet" name="userid">${userid}</a> </font></p>
           </div>
 
           <div id="navbar" class="navbar-collapse collapse">
@@ -219,6 +222,21 @@
                       <!--功能可以继续扩展-->
                   </ul>
               </div>
+
+
+
+              <!--查询所有车的类型型号，设置下拉框-->
+              <%List<KeyValuePair> lists= (List<KeyValuePair>)session.getAttribute("list");
+                  int i = 101;
+                  int num  = lists.size();%>
+              <input type="hidden" id="length" name=<%=num%>>
+              <%for(KeyValuePair pair : lists){ %>
+              <input type="hidden" id=<%=i%> name=<%=pair.key%> value=<%=pair.value%> >
+              <%i++;%>
+              <%}%>
+
+
+
               <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
                   <!-- 控制输出内容在右半部分 -->
                   <div class="tab-content">
@@ -231,40 +249,40 @@
                       </div>
                       <div class="tab-pane fade" id="1">
                           <div>
-                              <form action="/Search" class="navbar-form navbar-left">
-                                  <p>
-                                      <font size="4">
-                                          在这里你可以查看你旗下的车辆信息
-                                      </font>
-                                  </p></br>
-                                  <label>品牌</label>
-                                  <select name="Bybrand" style="width:100px;height:35px">
-                                      <option value=""></option>
-                                      <option value="Benz">Benz</option>
-                                      <option value="Audi">Audi</option>
-                                      <option value="Lamborghini">Lamborghini</option>
-                                      <option value="Rolls-Royce">Rolls-Royce</option>
-                                  </select>
-                                  <label>车型号</label>
-                                  <select name="Bymodel" style="width:100px;height:35px">
-                                      <option value=""></option>
-                                      <option value="Benz307">Benz307</option>
-                                      <option value="A6">A6</option>
-                                      <option value="URUS">URUS</option>
-                                      <option value="幻影">幻影</option>
-                                  </select>
-                                  <label>类型</label>
-                                  <select name="Bytype" style="width:100px;height:35px">
-                                      <option value=""></option>
-                                      <option value="轿车">轿车</option>
-                                      <option value="超级跑车">超级跑车</option>
-                                      <option value="高级轿车">高级轿车</option>
-                                  </select>
-                                  <button id="queryBtn2" type="submit" class="btn btn-default" class="btn-group pull-left" style="margin-left: 10px;">
-                                      <span class="glyphicon glyphicon-search" aria-hidden="true"></span>查询</button>
-                              </form>
-                          </div>
+                    <form action="/Search">
+					<p>
+						<font size="4">
+						在这里你可以查看你旗下的车辆信息
+						</font>
+					</p></br>
+                        <label>品牌</label>
+                        <select name="Bybrand" style="width:100px;height:35px">
+                            <option value=""></option>
+                            <option value="Benz">Benz</option>
+                            <option value="Audi">Audi</option>
+                            <option value="Lamborghini">Lamborghini</option>
+                            <option value="Rolls-Royce">Rolls-Royce</option>
+                        </select>
+                        <label>车型号</label>
+                        <select name="Bymodel" style="width:100px;height:35px">
+                            <option value=""></option>
+                            <option value="Benz307">Benz307</option>
+                            <option value="A6">A6</option>
+                            <option value="URUS">URUS</option>
+                            <option value="幻影">幻影</option>
+                        </select>
+                        <label>类型</label>
+                        <select name="Bytype" style="width:100px;height:35px">
+                            <option value=""></option>
+                            <option value="轿车">轿车</option>
+                            <option value="超级跑车">超级跑车</option>
+                            <option value="高级轿车">高级轿车</option>
+                        </select>
 
+                        <button id="queryBtn2" type="submit" class="btn btn-default" class="btn-group pull-left" style="margin-left: 10px;">
+								<span class="glyphicon glyphicon-search" aria-hidden="true"></span>查询</button>
+                        </form>
+					</div>
                           <p></br></br>
                               <font size="4">
                                   查询结果
@@ -273,7 +291,6 @@
 
                           <table class="table table-bordered table-striped">
                               <thead>
-                              
                               <tr>
                                   <th>brand</th>
                                   <th>model</th>
@@ -282,16 +299,6 @@
                                   <th>price</th>
                                   <th>pic_url</th>
                               </tr>
-                              <c:forEach var="U" items="${cars}">
-                              <tr>
-                                  <td><c:out value="${U.brand}"></c:out></td>
-                                  <td><c:out value="${U.model}"></c:out></td>
-                                  <td><c:out value="${U.type}"></c:out></td>
-                                  <td><c:out value="${U.stock}"></c:out> </td>
-                                  <td><c:out value="${U.price}"></c:out> </td>
-                                  <td><c:out value="${U.pic_url}"></c:out> </td>
-                              </tr>
-                              </c:forEach>
                               </thead>
                           </table>
                               </form>
@@ -316,7 +323,9 @@
                       </div>
                       -->
 
-                      <div class="tab-pane fade" id="2">
+
+
+                    <div class="tab-pane fade" id="2">
                         <form action="/addcar">
                           <p>
                               <font size="4">
@@ -325,29 +334,27 @@
                           </p></br>
 
 						<div>
-
-							<label for="name">车辆属性一（选择）</label>
-							<div>
-							<select name="brand-model" style="width:1000px;height:35px">
+                            <label>选择品牌</label>
+                            <select id="carlist1" name="brand" runat="server" onchange="selectprovince(this);" style=" width:95px;">
                                 <option value=""></option>
-								<option value="Audi-A6">Audi-A6</option>
-								<option value="Benz-Benz307">Benz-Benz307</option>
-								<option value="Lamborghini-URUS">Lamborghini-URUS</option>
-							</select>
-							</div>
+                            </select>
+                            <label>选择型号</label>
+                            <select id="carlist2" name="model" runat="server" style=" width:95px;">
+                                <option value=""></option>
+                            </select>
+                        </div>
+                        <div>
+                           <br><br>
+                            <label for="name">库存（数量）</label>
+                            <input name="stock" style="width:500px" type="text" class="form-control"
+                                   placeholder="请输入库存">
 							<div>
-							<label for="name">车辆属性二（自填）</label>
-							<input style="width:1000px" type="text" class="form-control" 
-							placeholder="请输入属性二" name="stock">
-							</div>
-							<div>
-							<label for="name">车辆属性三</label>
-							<input style="width:1000px" type="text" class="form-control" 
-							placeholder="请输入属性三" name="price">
-							</div>
+							<label for="name">价格（自填）</label>
+							<input name="price" style="width:500px" type="text" class="form-control"
+							placeholder="请输入价格">
 
-						</div>
-					                         <!--
+							</div>
+						</div><!--
                           <div class="form-group">
                               <label for="inputfile">车辆展示图片上传</label>
                               <input type="file" id="inputfile">
@@ -405,11 +412,6 @@
 
                               </tr>
                               </thead>
-                              <tbody>
-                              <th>序号</th>
-
-
-                              </tbody>
                           </table>
                   </div>
 				<div class="tab-pane fade" id="4">
@@ -444,7 +446,67 @@
           </p>
       </div>
   </div>
-
-
   </body>
 </html>
+<script type="text/javascript">
+    var list1 = new Array;
+    var list2 = new Array;
+    var str = document.getElementById("length").name;
+    var lengthid=parseInt(str,10);
+    for(var m=1;m < lengthid  ;m++){
+        if(list1.indexOf(document.getElementById(m+101).name)==-1){
+            list1[list1.length] = document.getElementById(m+101).name;
+       }
+
+    }
+    for(var n=0;n <list1.length ; n++){
+        var num = document.getElementsByName(list1[n]).length;
+        list2[list2.length] = new Array;
+        for(var k=0;k<num;k++)
+        {
+            list2[n][k] = document.getElementsByName(list1[n])[k].value;
+        }
+
+    }
+
+
+    var ddlProvince = document.getElementById("carlist1");
+    var ddlCity = document.getElementById("carlist2");
+    for(var i =0;i<list1.length; i++)
+    {
+        var option = document.createElement("option");
+        option.appendChild(document.createTextNode(list1[i]));
+        option.value = list1[i];
+        ddlProvince.appendChild(option);
+        //city initialize
+        var firstprovince = list2[0];
+        for (var j = 0; j < firstprovince.length; j++) {
+            var optioncity = document.createElement("option");
+            optioncity.appendChild(document.createTextNode(firstprovince[j]));
+            optioncity.value = firstprovince[j];
+            ddlCity.appendChild(optioncity);
+        }
+    }
+    function indexof(obj,value)
+    {
+        var k=0;
+        for(;k<obj.length;k++)
+        {
+            if(obj[k] == value)
+                return k;
+        }
+        return k;
+    }
+    function selectprovince(obj) {
+        ddlCity.options.length = 0;//clear
+        var index = indexof(list1,obj.value);
+        var list2element = list2[index];
+        for(var i =0;i<list2element.length; i++)
+        {
+            var option = document.createElement("option");
+            option.appendChild(document.createTextNode(list2element[i]));
+            option.value = list2element[i];
+            ddlCity.appendChild(option);
+        }
+    }
+</script>

@@ -1,5 +1,7 @@
 package server;
 
+import DAO.DAOFactory;
+import DAO.ShopuserDAO;
 import dbcon.DBConnect;
 
 import javax.servlet.RequestDispatcher;
@@ -8,6 +10,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -15,7 +18,7 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
-import basic.Shopuser;
+import model.Shopuser;
 
 /*
  * 根据id查询用户信息
@@ -23,13 +26,18 @@ import basic.Shopuser;
 @WebServlet(name = "SearchUserServlet",urlPatterns = {"/SearchUserServlet"})//注释方法配置web.xml
 public class SearchUserServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        String userid = request.getParameter("userid");
+        HttpSession session = request.getSession();
+
+        String userid = (String)session.getAttribute("userid");
 
         System.out.println(userid);
         List<Shopuser> shopusers = new ArrayList<Shopuser>();
-        request.setAttribute("",shopusers);
 
-        request.getRequestDispatcher("");
+        ShopuserDAO shopuserDAO = DAOFactory.getShopuserDAO();
+        shopusers.add(shopuserDAO.findById(userid));
+        request.setAttribute("userAll",shopusers);
+
+        request.getRequestDispatcher("WEB-INF/UserInfor.jsp").forward(request,response);
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
