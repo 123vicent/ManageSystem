@@ -5,11 +5,20 @@ import java.sql.Date;
 
 
 public class Cusowncar {
+    private String plate_number;
     private String cususer_id;
     private String shopuser_id;
     private String car_id;
-    private Date buy_time;
-    private double pay_price;
+    private Date register_time;
+    private double payment;
+
+    public String getPlate_number() {
+        return plate_number;
+    }
+
+    public void setPlate_number(String plate_number) {
+        this.plate_number = plate_number;
+    }
 
     public String getCususer_id() {
         return cususer_id;
@@ -35,19 +44,19 @@ public class Cusowncar {
         this.car_id = car_id;
     }
 
-    public Date getBuy_time() {
-        return buy_time;
+    public Date getRegister_time() {
+        return register_time;
     }
 
-    public void setBuy_time(Date buy_time) {
-        this.buy_time = buy_time;
+    public void setRegister_time(Date register_time) {
+        this.register_time = register_time;
     }
 
-    public double getPay_price() {
-        return pay_price;
+    public double getPayment() {
+        return payment;
     }
 
-    public void setPay_price(double pay_price) {
-        this.pay_price = pay_price;
+    public void setPayment(double payment) {
+        this.payment = payment;
     }
 }

@@ -21,10 +21,6 @@ public class DAOFactory {
         return new CustomeruserDAOImpl();
     }
 
-    public static MaintainrecordDAO getMaintainrecordDAO(){
-        return new MaintainrecordDAOImpl();
-    }
-
     public static ShopowncarDAO getShopowncarDAO(){
         return new ShopowncarDAOImpl();
     }

@@ -7,9 +7,13 @@ public class Appointment {
     private String appointment_id;
     private String cususer_id;
     private String shopuser_id;
+    private String car_id;
     private Timestamp ap_time;
     private String ap_type;
     private String ap_state;
+    private Timestamp complete_time;
+    private double payment;
+    private String description;
 
     public String getAppointment_id() {
         return appointment_id;
@@ -35,6 +39,14 @@ public class Appointment {
         this.shopuser_id = shopuser_id;
     }
 
+    public String getCar_id() {
+        return car_id;
+    }
+
+    public void setCar_id(String car_id) {
+        this.car_id = car_id;
+    }
+
     public Timestamp getAp_time() {
         return ap_time;
     }
@@ -57,5 +69,29 @@ public class Appointment {
 
     public void setAp_state(String ap_state) {
         this.ap_state = ap_state;
+    }
+
+    public Timestamp getComplete_time() {
+        return complete_time;
+    }
+
+    public void setComplete_time(Timestamp complete_time) {
+        this.complete_time = complete_time;
+    }
+
+    public double getPayment() {
+        return payment;
+    }
+
+    public void setPayment(double payment) {
+        this.payment = payment;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
     }
 }

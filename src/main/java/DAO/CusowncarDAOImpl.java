@@ -17,15 +17,16 @@ public class CusowncarDAOImpl implements CusowncarDAO {
     Connection conn = dbc.getConnection();
 
     public Boolean insert(Cusowncar coc) {
-        String sql = "insert into cusowncar values (?,?,?,?,?)";
+        String sql = "insert into cusowncar values (?,?,?,?,?,?)";
         PreparedStatement ps = null;
         try {
             ps = conn.prepareStatement(sql);
-            ps.setString(1,coc.getShopuser_id());
-            ps.setString(2,coc.getCususer_id());
-            ps.setString(3,coc.getCar_id());
-            ps.setDate(4,coc.getBuy_time());
-            ps.setDouble(5,coc.getPay_price());
+            ps.setString(1,coc.getPlate_number());
+            ps.setString(2,coc.getShopuser_id());
+            ps.setString(3,coc.getCususer_id());
+            ps.setString(4,coc.getCar_id());
+            ps.setDate(4,coc.getRegister_time());
+            ps.setDouble(5,coc.getPayment());
 
             ps.executeUpdate();
             ps.close();
@@ -37,19 +38,18 @@ public class CusowncarDAOImpl implements CusowncarDAO {
     }
 
     public Boolean update(Cusowncar coc){
-        String sql = "update cusowncar set shopuser_id=?,cususer_id=?,car_id=?,buy_time=?,pay_price=? " +
-                "where shopuser_id=? and cususer_id=? and car_id=?";
+        String sql = "update cusowncar set plate_number=?,shopuser_id=?,cususer_id=?,car_id=?,register_time=?,payment=? " +
+                "where plate_number=?";
         PreparedStatement ps = null;
         try {
             ps = conn.prepareStatement(sql);
-            ps.setString(1,coc.getShopuser_id());
-            ps.setString(2,coc.getCususer_id());
-            ps.setString(3,coc.getCar_id());
-            ps.setDate(4,coc.getBuy_time());
-            ps.setDouble(5,coc.getPay_price());
-            ps.setString(6,coc.getShopuser_id());
-            ps.setString(7,coc.getCususer_id());
-            ps.setString(8,coc.getCar_id());
+            ps.setString(1,coc.getPlate_number());
+            ps.setString(2,coc.getShopuser_id());
+            ps.setString(3,coc.getCususer_id());
+            ps.setString(4,coc.getCar_id());
+            ps.setDate(5,coc.getRegister_time());
+            ps.setDouble(6,coc.getPayment());
+            ps.setString(7,coc.getPlate_number());
 
             ps.executeUpdate();
             ps.close();
@@ -60,14 +60,12 @@ public class CusowncarDAOImpl implements CusowncarDAO {
         }
     }
 
-    public Boolean delete(String shopuser_id,String cususer_id,String car_id){
-        String sql = "delete from cusowncar where shopuser_id=? and cususer_id=? and car_id=?";
+    public Boolean delete(String plate_number){
+        String sql = "delete from cusowncar where plate_number=?";
         PreparedStatement ps = null;
         try {
             ps = conn.prepareStatement(sql);
-            ps.setString(1,shopuser_id);
-            ps.setString(2,cususer_id);
-            ps.setString(3,car_id);
+            ps.setString(1,plate_number);
 
             ps.executeUpdate();
             ps.close();
@@ -78,26 +76,24 @@ public class CusowncarDAOImpl implements CusowncarDAO {
         }
     }
 
-    public Cusowncar findById(String shopuser_id,String cususer_id,String car_id){
+    public Cusowncar findById(String plate_number){
         Cusowncar coc = new Cusowncar();
-        String sql = "select * from cusowncar where shopuser_id=? and cususer_id=? and car_id=?";
+        String sql = "select * from cusowncar where plate_number=?";
         PreparedStatement ps = null;
         ResultSet rs = null;
         try {
             ps = conn.prepareStatement(sql);
-            ps.setString(1,shopuser_id);
-            ps.setString(2,cususer_id);
-            ps.setString(3,car_id);
+            ps.setString(1,plate_number);
+
             rs = ps.executeQuery();
-            if(rs.next()){
-                coc.setShopuser_id(rs.getString(1));
-                coc.setCususer_id(rs.getString(2));
-                coc.setCar_id(rs.getString(3));
-                coc.setBuy_time(rs.getDate(4));
-                coc.setPay_price(rs.getDouble(5));
+            while(rs.next()){
+                coc.setPlate_number(rs.getString(1));
+                coc.setShopuser_id(rs.getString(2));
+                coc.setCususer_id(rs.getString(3));
+                coc.setCar_id(rs.getString(4));
+                coc.setRegister_time(rs.getDate(5));
+                coc.setPayment(rs.getDouble(6));
             }
-
-
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -114,11 +110,12 @@ public class CusowncarDAOImpl implements CusowncarDAO {
             rs = ps.executeQuery();
             while(rs.next()){
                 Cusowncar coc = new Cusowncar();
-                coc.setShopuser_id(rs.getString(1));
-                coc.setCususer_id(rs.getString(2));
-                coc.setCar_id(rs.getString(3));
-                coc.setBuy_time(rs.getDate(4));
-                coc.setPay_price(rs.getDouble(5));
+                coc.setPlate_number(rs.getString(1));
+                coc.setShopuser_id(rs.getString(2));
+                coc.setCususer_id(rs.getString(3));
+                coc.setCar_id(rs.getString(4));
+                coc.setRegister_time(rs.getDate(5));
+                coc.setPayment(rs.getDouble(6));
 
                 cocList.add(coc);
             }
