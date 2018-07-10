@@ -42,7 +42,7 @@ public class ShopaptDAOImpl implements ShopaptDAO {
 
     public List<Shopapt> findAllByTag(String shopuser_id,String apstate,String aptype,String cusname){
         List<Shopapt> shopaptList = new ArrayList<Shopapt>();
-        String sql = "select * from car.shopapt where shopuser_id=?";
+        String sql = "select * from shopapt where shopuser_id=?";
         PreparedStatement ps = null;
         ResultSet rs = null;
         if(!apstate.equals("全部预约"))

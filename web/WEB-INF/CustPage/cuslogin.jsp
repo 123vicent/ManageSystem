@@ -11,8 +11,8 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>登录</title>
-    <link rel="stylesheet" type="text/css" href="../style/css/bootstrap.min.css">
-    <link href="../style/css/signin.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="../../style/css/bootstrap.min.css">
+    <link href="../../style/css/signin.css" rel="stylesheet">
 </head>
 <body>
 <nav class="navbar navbar-inverse navbar-fixed-top">

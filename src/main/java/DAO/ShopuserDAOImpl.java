@@ -80,7 +80,7 @@ public class ShopuserDAOImpl implements ShopuserDAO {
 
     public Shopuser findById(String shopuser_id){
         Shopuser su = new Shopuser();
-        String sql = "select * from car.shopuser where shopuser_id=?";
+        String sql = "select * from shopuser where shopuser_id=?";
         PreparedStatement ps = null;
         ResultSet rs = null;
         try {
