@@ -69,6 +69,11 @@ public class LoginServlet extends HttpServlet {
                     }
                     session.setAttribute("list",lists);
 
+                    request.setAttribute("userid",userid);//显示用户id
+
+                    CarinfoDAO carinfoDAO = DAOFactory.getCarinfoDAO();
+                    request.setAttribute("cars",carinfoDAO.findAllByShopId(userid));
+
                     view = request.getRequestDispatcher("WEB-INF/firstpage.jsp");
                 } else {
                     request.setAttribute("msg2", "登录失败");

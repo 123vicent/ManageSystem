@@ -122,7 +122,7 @@ public class CarDAOImpl implements CarDAO {
 
     public Car findByBrandModel(String brand,String model){
         Car c = new Car();
-        String sql = "select * from car where brand=? and model=?";
+        String sql = "select * from car.car where brand=? and model=?";
         PreparedStatement ps = null;
         ResultSet rs = null;
         try {
