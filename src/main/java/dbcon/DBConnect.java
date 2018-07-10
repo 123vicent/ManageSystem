@@ -18,9 +18,9 @@ public class DBConnect {
     }
 
     public Connection getConnection() {
-        url ="jdbc:mysql://39.108.73.154:3306/car";
-        user = "test";
-        password = "123456";
+        url ="jdbc:mysql://localhost/car";
+        user = "root";
+        password = "root";
         try {
             conn = DriverManager.getConnection(url,user,password);
         } catch (SQLException e) {

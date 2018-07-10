@@ -25,12 +25,15 @@ public class ShopaptDAOImpl implements ShopaptDAO {
             rs = ps.executeQuery();
             while(rs.next()){
                 Shopapt shopapt = new Shopapt();
-                shopapt.setShopuser_id(rs.getString(1));
-                shopapt.setCus_name(rs.getString(2));
-                shopapt.setCus_phone(rs.getString(3));
-                shopapt.setAp_type(rs.getString(4));
-                shopapt.setAp_time(rs.getTimestamp(5));
-                shopapt.setAp_state(rs.getString(6));
+                shopapt.setAppointment_id(rs.getString(1));
+                shopapt.setShopuser_id(rs.getString(2));
+                shopapt.setBrand(rs.getString(3));
+                shopapt.setModel(rs.getString(4));
+                shopapt.setCus_name(rs.getString(5));
+                shopapt.setCus_phone(rs.getString(6));
+                shopapt.setAp_type(rs.getString(7));
+                shopapt.setAp_time(rs.getTimestamp(8));
+                shopapt.setAp_state(rs.getString(9));
 
                 shopaptList.add(shopapt);
             }
@@ -40,7 +43,7 @@ public class ShopaptDAOImpl implements ShopaptDAO {
         return shopaptList;
     }
 
-    public List<Shopapt> findAllByTag(String shopuser_id,String apstate,String aptype,String cusname){
+    public List<Shopapt> findAllByTag(String shopuser_id,String apstate,String aptype,String cusname,String ap_id){
         List<Shopapt> shopaptList = new ArrayList<Shopapt>();
         String sql = "select * from shopapt where shopuser_id=?";
         PreparedStatement ps = null;
@@ -57,18 +60,24 @@ public class ShopaptDAOImpl implements ShopaptDAO {
         {
             sql+="and cus_name='"+cusname+"'";
         }
+        if(!ap_id.equals("")){
+            sql+="and appointment_id='"+ap_id+"'";
+        }
         try {
             ps = conn.prepareStatement(sql);
             ps.setString(1,shopuser_id);
             rs = ps.executeQuery();
             while(rs.next()){
                 Shopapt shopapt = new Shopapt();
-                shopapt.setShopuser_id(rs.getString(1));
-                shopapt.setCus_name(rs.getString(2));
-                shopapt.setCus_phone(rs.getString(3));
-                shopapt.setAp_type(rs.getString(4));
-                shopapt.setAp_time(rs.getTimestamp(5));
-                shopapt.setAp_state(rs.getString(6));
+                shopapt.setAppointment_id(rs.getString(1));
+                shopapt.setShopuser_id(rs.getString(2));
+                shopapt.setBrand(rs.getString(3));
+                shopapt.setModel(rs.getString(4));
+                shopapt.setCus_name(rs.getString(5));
+                shopapt.setCus_phone(rs.getString(6));
+                shopapt.setAp_type(rs.getString(7));
+                shopapt.setAp_time(rs.getTimestamp(8));
+                shopapt.setAp_state(rs.getString(9));
 
                 shopaptList.add(shopapt);
             }
@@ -79,15 +88,13 @@ public class ShopaptDAOImpl implements ShopaptDAO {
     }
 
     public Boolean update(Shopapt shopapt) {
-        String sql = "update shopapt set ap_state=? where shopuser_id=?,cus_name=?,ap_time=?";
+        String sql = "update shopapt set ap_state=? where appointment_id=?";
         PreparedStatement ps = null;
 
         try {
             ps = conn.prepareStatement(sql);
             ps.setString(1,shopapt.getAp_state());
-            ps.setString(2,shopapt.getShopuser_id());
-            ps.setString(3,shopapt.getCus_name());
-            ps.setTimestamp(4,shopapt.getAp_time());
+            ps.setString(2,shopapt.getAppointment_id());
 
             ps.execute();
             return true;

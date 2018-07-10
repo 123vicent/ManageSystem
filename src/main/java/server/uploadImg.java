@@ -24,9 +24,10 @@ public class uploadImg extends HttpServlet {
     private static final int MAX_FILE_SIZE      = 1024 * 1024 * 40; // 40MB
     private static final int MAX_REQUEST_SIZE   = 1024 * 1024 * 50; // 50MB
 
-    /**
-     * 上传数据及保存文件
-     */
+/**
+     * 上传数据及保存文件*/
+
+
     public void doPost(HttpServletRequest request,
                           HttpServletResponse response) throws ServletException, IOException {
         // 检测是否为多媒体上传

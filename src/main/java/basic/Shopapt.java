@@ -5,12 +5,23 @@ import java.sql.Date;
 import java.sql.Timestamp;
 
 public class Shopapt {
+    private String appointment_id;
     private String shopuser_id;
+    private String brand;
+    private String model;
     private String cus_name;
     private String cus_phone;
     private String ap_type;
     private Timestamp ap_time;
     private String ap_state;
+
+    public String getAppointment_id() {
+        return appointment_id;
+    }
+
+    public void setAppointment_id(String appointment_id) {
+        this.appointment_id = appointment_id;
+    }
 
     public String getShopuser_id() {
         return shopuser_id;
@@ -18,6 +29,22 @@ public class Shopapt {
 
     public void setShopuser_id(String shopuser_id) {
         this.shopuser_id = shopuser_id;
+    }
+
+    public String getBrand() {
+        return brand;
+    }
+
+    public void setBrand(String brand) {
+        this.brand = brand;
+    }
+
+    public String getModel() {
+        return model;
+    }
+
+    public void setModel(String model) {
+        this.model = model;
     }
 
     public String getCus_name() {

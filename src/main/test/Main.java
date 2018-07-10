@@ -14,7 +14,7 @@ public class Main {
     public static void main(String []args){
         //test shopaptDAO
         ShopaptDAO shopaptdao = DAOFactory.getShopaptDAO();
-        List<Shopapt> shopaptList = shopaptdao.findAllByTag("s1","","","");
+        List<Shopapt> shopaptList = shopaptdao.findAllByTag("s1","","","","");
         System.out.print("车店id ");
         System.out.print("客户姓名 ");
         System.out.print("联系方式 ");
