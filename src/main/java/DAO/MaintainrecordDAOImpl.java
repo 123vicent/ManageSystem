@@ -16,7 +16,7 @@ public class MaintainrecordDAOImpl implements MaintainrecordDAO {
     DBConnect dbc = new DBConnect();
     Connection conn = dbc.getConnection();
 
-    public void insert(Maintainrecord m) {
+    public Boolean insert(Maintainrecord m) {
         String sql = "insert into maintainrecord values (?,?,?,?,?,?,?)";
         PreparedStatement ps = null;
         try {
@@ -31,12 +31,14 @@ public class MaintainrecordDAOImpl implements MaintainrecordDAO {
 
             ps.executeUpdate();
             ps.close();
+            return true;
         } catch (SQLException e) {
             e.printStackTrace();
+            return false;
         }
     }
 
-    public void update(Maintainrecord m){
+    public Boolean update(Maintainrecord m){
         String sql = "update maintainrecord set maintainrecord_id=?,shopuser_id=?,cususer_id=?,car_id=?," +
                 "maintain_time=?,payment=?,description=? where maintainrecord_id=?";
         PreparedStatement ps = null;
@@ -52,12 +54,14 @@ public class MaintainrecordDAOImpl implements MaintainrecordDAO {
 
             ps.executeUpdate();
             ps.close();
+            return true;
         } catch (SQLException e) {
             e.printStackTrace();
+            return false;
         }
     }
 
-    public void delete(String matintainrecord_id){
+    public Boolean delete(String matintainrecord_id){
         String sql = "delete from maintainrecord where maintainrecord_id=?";
         PreparedStatement ps = null;
         try {
@@ -66,8 +70,10 @@ public class MaintainrecordDAOImpl implements MaintainrecordDAO {
 
             ps.executeUpdate();
             ps.close();
+            return true;
         } catch (SQLException e) {
             e.printStackTrace();
+            return false;
         }
     }
 

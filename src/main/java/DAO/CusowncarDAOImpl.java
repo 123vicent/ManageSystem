@@ -16,7 +16,7 @@ public class CusowncarDAOImpl implements CusowncarDAO {
     DBConnect dbc = new DBConnect();
     Connection conn = dbc.getConnection();
 
-    public void insert(Cusowncar coc) {
+    public Boolean insert(Cusowncar coc) {
         String sql = "insert into cusowncar values (?,?,?,?,?)";
         PreparedStatement ps = null;
         try {
@@ -29,12 +29,14 @@ public class CusowncarDAOImpl implements CusowncarDAO {
 
             ps.executeUpdate();
             ps.close();
+            return true;
         } catch (SQLException e) {
             e.printStackTrace();
+            return false;
         }
     }
 
-    public void update(Cusowncar coc){
+    public Boolean update(Cusowncar coc){
         String sql = "update cusowncar set shopuser_id=?,cususer_id=?,car_id=?,buy_time=?,pay_price=? " +
                 "where shopuser_id=? and cususer_id=? and car_id=?";
         PreparedStatement ps = null;
@@ -51,12 +53,14 @@ public class CusowncarDAOImpl implements CusowncarDAO {
 
             ps.executeUpdate();
             ps.close();
+            return true;
         } catch (SQLException e) {
             e.printStackTrace();
+            return false;
         }
     }
 
-    public void delete(String shopuser_id,String cususer_id,String car_id){
+    public Boolean delete(String shopuser_id,String cususer_id,String car_id){
         String sql = "delete from cusowncar where shopuser_id=? and cususer_id=? and car_id=?";
         PreparedStatement ps = null;
         try {
@@ -67,8 +71,10 @@ public class CusowncarDAOImpl implements CusowncarDAO {
 
             ps.executeUpdate();
             ps.close();
+            return true;
         } catch (SQLException e) {
             e.printStackTrace();
+            return false;
         }
     }
 

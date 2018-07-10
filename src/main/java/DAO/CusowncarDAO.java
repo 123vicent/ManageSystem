@@ -6,9 +6,9 @@ import java.util.List;
 
 //Cusowncar表DAO接口
 public interface CusowncarDAO {
-    public void insert(Cusowncar coc);
-    public void update(Cusowncar coc);
-    public void delete(String shopuser_id,String cususer_id,String car_id);
+    public Boolean insert(Cusowncar coc);
+    public Boolean update(Cusowncar coc);
+    public Boolean delete(String shopuser_id,String cususer_id,String car_id);
     public Cusowncar findById(String shopuser_id,String cususer_id,String car_id);
     public List<Cusowncar> findAll();
 }

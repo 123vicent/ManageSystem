@@ -7,5 +7,5 @@ import java.util.List;
 public interface ShopaptDAO {
     public List<Shopapt> findAllByShopId(String shopuser_id);
     public List<Shopapt> findAllByTag(String shopuser_id,String apstate,String aptype,String cusname);
-    public void update(Shopapt shopapt);
+    public Boolean update(Shopapt shopapt);
 }

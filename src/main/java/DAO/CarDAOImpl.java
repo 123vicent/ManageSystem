@@ -16,7 +16,7 @@ public class CarDAOImpl implements CarDAO {
     DBConnect dbc = new DBConnect();
     Connection conn = dbc.getConnection();
 
-    public void insert(Car c) {
+    public Boolean insert(Car c) {
         String sql = "insert into car values (?,?,?,?,?,?,?)";
         PreparedStatement ps = null;
         try {
@@ -31,12 +31,14 @@ public class CarDAOImpl implements CarDAO {
 
             ps.executeUpdate();
             ps.close();
+            return true;
         } catch (SQLException e) {
             e.printStackTrace();
+            return false;
         }
     }
 
-    public void update(Car c){
+    public Boolean update(Car c){
         String sql = "update car set car_id=?,brand=?,model=?,color=?,seats=?,type=?,power=? where car_id=?";
         PreparedStatement ps = null;
         try {
@@ -52,12 +54,14 @@ public class CarDAOImpl implements CarDAO {
 
             ps.executeUpdate();
             ps.close();
+            return true;
         } catch (SQLException e) {
             e.printStackTrace();
+            return false;
         }
     }
 
-    public void delete(String car_id){
+    public Boolean delete(String car_id){
         String sql = "delete from car where car_id=?";
         PreparedStatement ps = null;
         try {
@@ -66,8 +70,10 @@ public class CarDAOImpl implements CarDAO {
 
             ps.executeUpdate();
             ps.close();
+            return true;
         } catch (SQLException e) {
             e.printStackTrace();
+            return false;
         }
     }
 

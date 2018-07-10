@@ -16,7 +16,7 @@ public class CustomeruserDAOImpl implements CustomeruserDAO {
     DBConnect dbc = new DBConnect();
     Connection conn = dbc.getConnection();
 
-    public void insert(Customeruser cu) {
+    public Boolean insert(Customeruser cu) {
         String sql = "insert into customeruser values (?,?,?)";
         PreparedStatement ps = null;
         try {
@@ -27,12 +27,14 @@ public class CustomeruserDAOImpl implements CustomeruserDAO {
 
             ps.executeUpdate();
             ps.close();
+            return true;
         } catch (SQLException e) {
             e.printStackTrace();
+            return false;
         }
     }
 
-    public void update(Customeruser cu){
+    public Boolean update(Customeruser cu){
         String sql = "update customeruser set cususer_id=?,cus_name=?,cus_phone=? where cususer_id=?";
         PreparedStatement ps = null;
         try {
@@ -44,12 +46,14 @@ public class CustomeruserDAOImpl implements CustomeruserDAO {
 
             ps.executeUpdate();
             ps.close();
+            return true;
         } catch (SQLException e) {
             e.printStackTrace();
+            return false;
         }
     }
 
-    public void delete(String cususer_id){
+    public Boolean delete(String cususer_id){
         String sql = "delete from customeruser where cususer_id=?";
         PreparedStatement ps = null;
         try {
@@ -58,8 +62,10 @@ public class CustomeruserDAOImpl implements CustomeruserDAO {
 
             ps.executeUpdate();
             ps.close();
+            return true;
         } catch (SQLException e) {
             e.printStackTrace();
+            return false;
         }
     }
 

@@ -17,7 +17,7 @@ public class AppointmentDAOImpl implements AppointmentDAO {
     DBConnect dbc = new DBConnect();
     Connection conn = dbc.getConnection();
 
-    public void insert(Appointment a) {
+    public Boolean insert(Appointment a) {
         String sql = "insert into appointment values (?,?,?,?,?,?)";
         PreparedStatement ps = null;
         try {
@@ -31,12 +31,14 @@ public class AppointmentDAOImpl implements AppointmentDAO {
 
             ps.executeUpdate();
             ps.close();
+            return true;
         } catch (SQLException e) {
             e.printStackTrace();
+            return false;
         }
     }
 
-    public void update(Appointment a){
+    public Boolean update(Appointment a){
         String sql = "update appointment set appointment_id=?,cosuser_id=?,shopuser_id=?,ap_time=?,ap_type=?,ap_state=? where appointment_id=?";
         PreparedStatement ps = null;
         try {
@@ -51,12 +53,14 @@ public class AppointmentDAOImpl implements AppointmentDAO {
 
             ps.executeUpdate();
             ps.close();
+            return true;
         } catch (SQLException e) {
             e.printStackTrace();
+            return false;
         }
     }
 
-    public void delete(String ap_id){
+    public Boolean delete(String ap_id){
         String sql = "delete from appointment where appointment_id=?";
         PreparedStatement ps = null;
         try {
@@ -65,8 +69,10 @@ public class AppointmentDAOImpl implements AppointmentDAO {
 
             ps.executeUpdate();
             ps.close();
+            return true;
         } catch (SQLException e) {
             e.printStackTrace();
+            return false;
         }
     }
 

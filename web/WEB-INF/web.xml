@@ -92,4 +92,13 @@
         <servlet-name>handlebook</servlet-name>
         <url-pattern>/handlebook</url-pattern>
     </servlet-mapping>
+
+    <servlet>
+        <servlet-name>uploadimg</servlet-name>
+        <servlet-class>server.uploadImg</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>uploadimg</servlet-name>
+        <url-pattern>/uploadimg</url-pattern>
+    </servlet-mapping>
 </web-app>

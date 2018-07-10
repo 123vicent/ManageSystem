@@ -16,7 +16,7 @@ public class ShopowncarDAOImpl implements ShopowncarDAO {
     DBConnect dbc = new DBConnect();
     Connection conn = dbc.getConnection();
 
-    public void insert(Shopowncar soc) {
+    public Boolean insert(Shopowncar soc) {
         String sql = "insert into shopowncar values (?,?,?,?,?)";
         PreparedStatement ps = null;
         try {
@@ -29,12 +29,14 @@ public class ShopowncarDAOImpl implements ShopowncarDAO {
 
             ps.executeUpdate();
             ps.close();
+            return true;
         } catch (SQLException e) {
             e.printStackTrace();
+            return false;
         }
     }
 
-    public void update(Shopowncar soc){
+    public Boolean update(Shopowncar soc){
         String sql = "update shopowncar set shopuser_id=?,car_id=?,stock=?,price=?,pic_url=? where shopuser_id=? and car_id=?";
         PreparedStatement ps = null;
         try {
@@ -49,12 +51,14 @@ public class ShopowncarDAOImpl implements ShopowncarDAO {
 
             ps.executeUpdate();
             ps.close();
+            return true;
         } catch (SQLException e) {
             e.printStackTrace();
+            return false;
         }
     }
 
-    public void delete(String shopuser_id,String car_id){
+    public Boolean delete(String shopuser_id,String car_id){
         String sql = "delete from shopowncar where shopuser_id=? and car_id=?";
         PreparedStatement ps = null;
         try {
@@ -64,8 +68,10 @@ public class ShopowncarDAOImpl implements ShopowncarDAO {
 
             ps.executeUpdate();
             ps.close();
+            return true;
         } catch (SQLException e) {
             e.printStackTrace();
+            return false;
         }
     }
 

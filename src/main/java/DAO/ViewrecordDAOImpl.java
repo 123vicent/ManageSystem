@@ -13,7 +13,7 @@ public class ViewrecordDAOImpl implements ViewrecordDAO {
     DBConnect dbc = new DBConnect();
     Connection conn = dbc.getConnection();
 
-    public void insert(Viewrecord vr) {
+    public Boolean insert(Viewrecord vr) {
         String sql = "insert into viewrecord values (?,?,?)";
         PreparedStatement ps = null;
         try {
@@ -24,12 +24,14 @@ public class ViewrecordDAOImpl implements ViewrecordDAO {
 
             ps.executeUpdate();
             ps.close();
+            return true;
         } catch (SQLException e) {
             e.printStackTrace();
+            return false;
         }
     }
 
-    public void update(Viewrecord vr){
+    public Boolean update(Viewrecord vr){
         String sql = "update viewrecord set car_id=?,cususer_id=?,view_date=?";
         PreparedStatement ps = null;
         try {
@@ -40,12 +42,14 @@ public class ViewrecordDAOImpl implements ViewrecordDAO {
 
             ps.executeUpdate();
             ps.close();
+            return true;
         } catch (SQLException e) {
             e.printStackTrace();
+            return false;
         }
     }
 
-    public void delete(String car_id, String cususer_id,Timestamp view_time){
+    public Boolean delete(String car_id, String cususer_id,Timestamp view_time){
         String sql = "delete from viewrecord where car_id=?,cususer_id=?,view_time=?";
         PreparedStatement ps = null;
         try {
@@ -56,8 +60,10 @@ public class ViewrecordDAOImpl implements ViewrecordDAO {
 
             ps.executeUpdate();
             ps.close();
+            return true;
         } catch (SQLException e) {
             e.printStackTrace();
+            return false;
         }
     }
 

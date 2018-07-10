@@ -6,9 +6,9 @@ import java.util.List;
 
 //Appointment表DAO接口
 public interface AppointmentDAO {
-    public void insert(Appointment a);
-    public void update(Appointment a);
-    public void delete(String ap_id);
+    public Boolean insert(Appointment a);
+    public Boolean update(Appointment a);
+    public Boolean delete(String ap_id);
     public Appointment findById(String ap_id);
     public List<Appointment> findAll();
 }
