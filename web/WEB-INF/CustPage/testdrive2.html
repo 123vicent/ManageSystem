@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>Fortune Estates a Mobile App Flat Bootstrap Responsive Website Template | Gallery :: 小贝壳网站模板</title> 
+<title>testdrive2</title> 
 <!-- For-Mobile-Apps-and-Meta-Tags -->
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -50,14 +50,12 @@
 		<div class="menu-wrap" id="style-1">  
 			<nav class="top-nav">
 				<ul class="icon-list">
-					<li class="menu-title">Fortune Estates</li>
-					<li><a href="main.html"><i class="glyphicon glyphicon-home"></i> Home </a></li>
-					<li><a href="about.html"><i class="glyphicon glyphicon-info-sign"></i> About </a></li>
-					<li><a href="property.html"><i class="glyphicon glyphicon-briefcase"></i> properties </a></li>
-					<li><a href="agents.html"><i class="glyphicon glyphicon-eye-open"></i> Agents </a></li>
-					<li><a class="active" href="gallery.html"><i class="glyphicon glyphicon-picture"></i> Gallery</a></li>																						
-					<li><a href="codes.html"><i class="glyphicon glyphicon-list-alt"></i> Short Codes</a></li> 
-					<li><a href="contact.html"><i class="glyphicon glyphicon-envelope"></i> Contact </a></li>
+					<li class="menu-title">CarManage</li>
+					<li><a href="/jump?action=主页"><i class="glyphicon glyphicon-home"></i> 主页 </a></li>
+					<li><a href="/jump?action=个人信息"><i class="glyphicon glyphicon-info-sign"></i> 个人信息 </a></li>
+					<li><a href="/jump?action=寻车试驾"><i class="glyphicon glyphicon-eye-open"></i> 寻车试驾 </a></li>
+					<li><a href="/jump?action=豪车鉴赏"><i class="glyphicon glyphicon-picture"></i> 豪车鉴赏</a></li>
+					<li><a href="/jump?action=养修预约"><i class="glyphicon glyphicon-envelope"></i> 养修预约 </a></li>
 				</ul>
 			</nav>
 			<button class="close-button" id="close-button">C</button>
@@ -67,16 +65,14 @@
 				<div class="menu-icon">   
 					<button class="menu-button" id="open-button">O</button>
 				</div>
-				<div class="logo">
-					<h2><a href="main.html">FE</a></h2>
-				</div> 
+
 				<div class="clearfix"> </div>
 			</div>
 			<div class="content">
 				<!-- banner -->
 				<div class="banner about-banner"> 
 					<div class="banner-img">  
-						<h3>预约试驾</h3>   
+						<h3>填写预约</h3>   
 					</div> 
 				</div>
 				<!-- //banner -->
@@ -84,31 +80,31 @@
 				<div class="w3agile contact"> 
 					<h3 class="w3ls-title">预约信息</h3>
 					<div class="contact-form"> 
-						<form action="#" method="post" class="navbar-form">
+						<form action="#" method="post">
 							<span style="font-size: 14px;">意向车型</span>
-								<select style="width:100%;height:40px">
-									<option value=""> </option>
+								<select class="select-form">
+									<option value="">请选择合作品牌..</option>
 									<option value="宝马">宝马</option>
 									<option value="奔驰">奔驰</option>
 								</select>
-								<select style="width:100%;height:40px">
-									<option value=""> </option>
+								<select class="select-form">
+									<option value="">请选择车型..</option>
 									<option value="宝马X3">X3</option>
 									<option value="宝马X6">X6</option>
 								</select>
 								<span style="font-size: 14px;">意向经销商</span>
-									<select style="width:100%;height:40px">
-										<option value=""> </option>
+									<select class="select-form">
+										<option value="">经销商省</option>
 										<option value="北京">北京</option>
 										<option value="湖北">湖北</option>
 									</select>
-									<select style="width:100%;height:40px">
-										<option value=""> </option>
+									<select class="select-form">
+										<option value="">经销商市</option>
 										<option value="武汉">武汉</option>
 										<option value="宜昌">宜昌</option>
 									</select>
-									<select style="width:100%;height:40px">
-										<option value=""> </option>
+									<select class="select-form">
+										<option value="">经销商</option>
 										<option value="任意一家">任意一家</option>
 										<option value="AA汽车销售服务公司">AA汽车销售服务公司</option>
 									</select>
@@ -124,8 +120,8 @@
 										<input type="text" name="name" placeholder="请填写您的手机号码" maxlength="11" required="" />
 									</div>
 									<span style="font-size: 14px;">计划试驾时间</span>
-										<select style="width:100%;height:40px">
-											<option value=""> </option>
+										<select class="select-form">
+											<option value="">计划试驾时间..</option>
 											<option value="当天">当天</option>
 											<option value="三天内">三天内</option>
 											<option value="一周内">一周内</option>
@@ -139,7 +135,7 @@
 				<!-- //contact --> 
 				<!-- brands -->
 				<div class="w3agile brands"> 
-					<h3 class="w3ls-title">Our Clients</h3> 
+					<h3 class="w3ls-title">合作品牌</h3> 
 					<div class="brands-info">
 						<div class="brand-grids">
 							<a href="#"><img src="../../style/images/b1.jpg" alt=""/></a>
@@ -163,31 +159,7 @@
 					</div>
 				</div>
 				<!-- //brands -->
-				<!-- footer -->
-				<div class="w3agile footer"> 
-					<div class="social-icons">
-						<ul>
-							<li><a href="#"> </a></li>
-							<li><a href="#" class="fb"> </a></li>
-							<li><a href="#" class="gp"> </a></li>
-							<li><a href="#" class="drb"> </a></li>
-						</ul>
-						<div class="clearfix"> </div>
-					</div>
-					<div class="footer-nav">
-						<ul>  
-							<li><a href="main.html"> Home </a></li>
-							<li><a href="about.html"> About </a> </li>
-							<li><a href="property.html"> Properties </a></li>
-							<li><a href="gallery.html"> Gallery</a></li>
-							<li><a href="contact.html"> Contact </a></li>
-						</ul> 
-						<div class="clearfix"> </div>
-					</div> 
-					<div class="footer-text">
-						<p>&copy; 2016 Fortune Estates . All Rights Reserved | Design by <a href="http://www.smallseashell.com" target="_blank">小贝壳网站模板</a></p>
-					</div>
-				</div> 
+
 			</div>
 		</div>
 	</div> 

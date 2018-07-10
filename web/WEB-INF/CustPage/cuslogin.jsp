@@ -26,7 +26,7 @@
 
 <div class="container" style="margin-top: 120px">
 
-    <form class="form-signin"  action="/">
+    <form class="form-signin"  action="/log">
         <h2 class="form-signin-heading" id="sign_top">登录</h2>  <br><br>
         <label for="username" class="sr-only">username</label>
         <input type="text" id="username" name="username" class="form-control" placeholder="请输入用户名" autofocus>

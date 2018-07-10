@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>Fortune Estates a Mobile App Flat Bootstrap Responsive Website Template | Single Page :: 小贝壳网站模板</title> 
+<title>testdrive</title> 
 <!-- For-Mobile-Apps-and-Meta-Tags -->
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -11,7 +11,6 @@
 <!-- Custom Theme files -->
 <link href="../../style/css/bootstrap.css" type="text/css" rel="stylesheet" media="all">
 <link href="../../style/css/style.css" type="text/css" rel="stylesheet" media="all">
-<link rel="stylesheet" href="../../style/css/ken-burns.css" type="text/css" media="all" />
 <!-- //Custom Theme files -->
 <!-- js -->
 <script src="../../style/js/jquery-2.2.3.min.js"></script>
@@ -45,12 +44,11 @@
 			<nav class="top-nav">
 				<ul class="icon-list">
 					<li class="menu-title">CarManage</li>
-					<li><a class="active" href="main.html"><i class="glyphicon glyphicon-home"></i> 主页 </a></li>
-					<li><a href="about.html"><i class="glyphicon glyphicon-info-sign"></i> 个人信息 </a></li>
-					<li><a href="property.html"><i class="glyphicon glyphicon-briefcase"></i> 登记车辆 </a></li>
-					<li><a href="agents.html"><i class="glyphicon glyphicon-eye-open"></i> 寻车试驾 </a></li>
-					<li><a href="gallery.html"><i class="glyphicon glyphicon-picture"></i> 豪车鉴赏</a></li>																					
-					<li><a href="contact.html"><i class="glyphicon glyphicon-envelope"></i> 养修预约 </a></li>
+					<li><a href="/jump?action=主页"><i class="glyphicon glyphicon-home"></i> 主页 </a></li>
+					<li><a href="/jump?action=个人信息"><i class="glyphicon glyphicon-info-sign"></i> 个人信息 </a></li>
+					<li><a class="active"  href="/jump?action=寻车试驾"><i class="glyphicon glyphicon-eye-open"></i> 寻车试驾 </a></li>
+					<li><a href="/jump?action=豪车鉴赏"><i class="glyphicon glyphicon-picture"></i> 豪车鉴赏</a></li>
+					<li><a href="/jump?action=养修预约"><i class="glyphicon glyphicon-envelope"></i> 养修预约 </a></li>
 				</ul>
 			</nav>
 			<button class="close-button" id="close-button">C</button>
@@ -60,89 +58,52 @@
 				<div class="menu-icon">   
 					<button class="menu-button" id="open-button">O</button>
 				</div>
-				<div class="logo">
-					<h2><a href="main.html">FE</a></h2>
-				</div>
+
 				<div class="clearfix"> </div>
 			</div>
 			<div class="content">
 				<!-- banner -->
 				<div class="banner about-banner"> 
 					<div class="banner-img">  
-						<h3>车辆信息</h3>   
+						<h3>寻车试驾</h3>   
 					</div> 
 				</div>
 				<!-- //banner -->
-				<!-- properties --> 
-				<div class="w3agile properties">   
-					<div class="properties-img properties-img-single">
-						<img src="../../style/images/audiA6.png" alt="">
-						<div class="view-caption">
-							<!--h4><span class="glyphicon glyphicon-map-marker"></span> Broome St, Canada, USA </h4==-->  
-						</div> 
-					</div>
-					<div class="w3ls-details">   
-					<!--这里需要动态展示当前车辆的信息-->
-						<h4>奥迪A6</h4> 
-						<p class="agile-text">奥迪A6是一种小轿车 </p>
-						<div class="w3ls-text">
-							<h4>基本参数</h4>  
-							<p><b>车辆类型 :</b> 轿车 </p>
-							<p><b>座位数 :</b> 5座 </p>
-							<p><b>动力类型 :</b> 燃油 </p>
-							<p><b>参考价格 :</b> ¥300,000 </p>
+				<div class="w3agile agents">
+					<h3 class="w3ls-title">寻找爱车</h3> 
+					<div class="input-group">
+						<input type="text" class="form-control" placeholder="查找..." >
+						<span class="input-group-btn">
+							<button class="btn btn-default" type="button" onclick="window.location.href='testsingle.html'">Go!</button>
+						</span>
+					</div><!-- /input-group -->
+					<h3 class="w3ls-title">试驾预约</h3>
+						<div align="center">
+						<button class="btn btn-default" type="button" onclick="window.location.href='testdrive2.html'">进行预约</button>
 						</div>
-					</div>
-					<div class="w3ls-features">   
-						<h3 class="w3ls-title">供货经销商</h3> 
-						<!--这里展示能够提供当前车辆的经销商列表-->
-						<ul> 
-							<li><span class="glyphicon glyphicon-ok"> </span> 经销商1 </li>
-							<li><span class="glyphicon glyphicon-ok"> </span> 经销商2 </li>
-							<li><span class="glyphicon glyphicon-ok"> </span> 经销商3 </li>
-							
-						</ul>
-					</div>
-					
-					
-					
-					<div class="w3ls-related">   
-						<h3 class="w3ls-title">试驾预约</h3>
-						<div class="contact-form"> 
-							<form action="#" method="post">
-								<input type="text" name="carmodel" value="AudiA6" required="">
-								<input type="text" name="cusname" placeholder="姓名" required=""> 
-								<input type="text" name="shopuser" placeholder="经销商" required="">
-								<input type="text" name="date" placeholder="日期:(格式2016-01-01)" required=""> 
-								<input type="text" name="phone" placeholder="联系电话" required=""> 
-								<!--textarea name="Message" placeholder="Message" required=""></textarea-->
-								<input type="submit" value="提交">
-							</form> 
-						</div> 
-					</div>
 				</div>
-				<!-- //about --> 
+				
 				<!-- brands -->
 				<div class="w3agile brands"> 
 					<h3 class="w3ls-title">合作品牌</h3> 
 					<div class="brands-info">
 						<div class="brand-grids">
-							<a href="#"><img src="../../style/images/audi.jpg" alt=""/></a>
+							<a href="#"><img src="../../style/images/b1.jpg" alt=""/></a>
 						</div>
 						<div class="brand-grids">
-							<a href="#"><img src="../../style/images/benz.jpg" alt=""/></a>
+							<a href="#"><img src="../../style/images/b2.jpg" alt=""/></a>
 						</div>
 						<div class="brand-grids">
-							<a href="#"><img src="../../style/images/landrover.jpg" alt=""/></a>
+							<a href="#"><img src="../../style/images/b3.jpg" alt=""/></a>
 						</div>
 						<div class="brand-grids">
-							<a href="#"><img src="../../style/images/brand-bmw.jpg" alt=""/></a>
+							<a href="#"><img src="../../style/images/b4.jpg" alt=""/></a>
 						</div>
 						<div class="brand-grids">
-							<a href="#"><img src="../../style/images/chevrolet.jpg" alt=""/></a>
+							<a href="#"><img src="../../style/images/b5.jpg" alt=""/></a>
 						</div>
 						<div class="brand-grids">
-							<a href="#"><img src="../../style/images/honda.jpg" alt=""/></a>
+							<a href="#"><img src="../../style/images/b6.jpg" alt=""/></a>
 						</div>
 						<div class="clearfix"> </div>
 					</div>
@@ -150,8 +111,7 @@
 				<!-- //brands -->
 				<!-- footer -->
 				<div class="w3agile footer"> 
-					 
-					
+
 				</div> 
 			</div>
 		</div>
