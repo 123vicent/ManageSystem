@@ -16,40 +16,52 @@ public class CustomeruserDAOImpl implements CustomeruserDAO {
     DBConnect dbc = new DBConnect();
     Connection conn = dbc.getConnection();
 
-    public void insert(Customeruser cu) {
-        String sql = "insert into customeruser values (?,?,?)";
+    public Boolean insert(Customeruser cu) {
+        String sql = "insert into customeruser values (?,?,?,?,?,?,?)";
         PreparedStatement ps = null;
         try {
             ps = conn.prepareStatement(sql);
             ps.setString(1,cu.getCususer_id());
-            ps.setString(2,cu.getCus_name());
-            ps.setString(3,cu.getCus_phone());
+            ps.setString(2,cu.getPswd());
+            ps.setString(3,cu.getCus_name());
+            ps.setString(4,cu.getCus_phone());
+            ps.setString(5,cu.getSex());
+            ps.setDate(6,cu.getBirthday());
+            ps.setString(7,cu.getAddress());
 
             ps.executeUpdate();
             ps.close();
+            return true;
         } catch (SQLException e) {
             e.printStackTrace();
+            return false;
         }
     }
 
-    public void update(Customeruser cu){
-        String sql = "update customeruser set cususer_id=?,cus_name=?,cus_phone=? where cususer_id=?";
+    public Boolean update(Customeruser cu){
+        String sql = "update customeruser set cususer_id=?,pswd=?,cus_name=?,cus_phone=?,sex=?,birthday=?,address=? where cususer_id=?";
         PreparedStatement ps = null;
         try {
             ps = conn.prepareStatement(sql);
             ps.setString(1,cu.getCususer_id());
-            ps.setString(2,cu.getCus_name());
-            ps.setString(3,cu.getCus_phone());
-            ps.setString(4,cu.getCususer_id());
+            ps.setString(2,cu.getPswd());
+            ps.setString(3,cu.getCus_name());
+            ps.setString(4,cu.getCus_phone());
+            ps.setString(5,cu.getSex());
+            ps.setDate(6,cu.getBirthday());
+            ps.setString(7,cu.getAddress());
+            ps.setString(8,cu.getCususer_id());
 
             ps.executeUpdate();
             ps.close();
+            return true;
         } catch (SQLException e) {
             e.printStackTrace();
+            return false;
         }
     }
 
-    public void delete(String cususer_id){
+    public Boolean delete(String cususer_id){
         String sql = "delete from customeruser where cususer_id=?";
         PreparedStatement ps = null;
         try {
@@ -58,8 +70,10 @@ public class CustomeruserDAOImpl implements CustomeruserDAO {
 
             ps.executeUpdate();
             ps.close();
+            return true;
         } catch (SQLException e) {
             e.printStackTrace();
+            return false;
         }
     }
 
@@ -72,10 +86,14 @@ public class CustomeruserDAOImpl implements CustomeruserDAO {
             ps = conn.prepareStatement(sql);
             ps.setString(1,cususer_id);
             rs = ps.executeQuery();
-            if(rs.next()){
+            while(rs.next()){
                 cu.setCususer_id(rs.getString(1));
-                cu.setCus_name(rs.getString(2));
-                cu.setCus_phone(rs.getString(3));
+                cu.setPswd(rs.getString(2));
+                cu.setCus_name(rs.getString(3));
+                cu.setCus_phone(rs.getString(4));
+                cu.setSex(rs.getString(5));
+                cu.setBirthday(rs.getDate(6));
+                cu.setAddress(rs.getString(7));
             }
 
         } catch (SQLException e) {
@@ -95,8 +113,12 @@ public class CustomeruserDAOImpl implements CustomeruserDAO {
             while(rs.next()){
                 Customeruser cu = new Customeruser();
                 cu.setCususer_id(rs.getString(1));
-                cu.setCus_name(rs.getString(2));
-                cu.setCus_phone(rs.getString(3));
+                cu.setPswd(rs.getString(2));
+                cu.setCus_name(rs.getString(3));
+                cu.setCus_phone(rs.getString(4));
+                cu.setSex(rs.getString(5));
+                cu.setBirthday(rs.getDate(6));
+                cu.setAddress(rs.getString(7));
 
                 cusList.add(cu);
             }

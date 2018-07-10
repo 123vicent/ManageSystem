@@ -1,5 +1,7 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page import="basic.Shopapt" %>
-<%@ page import="java.util.List" %><%--
+<%@ page import="java.util.List" %>
+<%@ page import="basic.KeyValuePair" %><%--
   Created by IntelliJ IDEA.
   User: 17308
   Date: 2018/7/3
@@ -52,7 +54,7 @@
               <p class="navbar-brand" ><font size="5">汽车销售管理系统</font></p>
           </div>
           <div>
-              <p id= "huanying" class="navbar-brand" align="right"><font size="4">欢迎您！XXX</font></p>
+              <p id= "huanying" class="navbar-brand" align="right"><font size="4">欢迎您！<a href="/SearchUserServlet" name="userid">${userid}</a></font></p>
           </div>
 
           <div id="navbar" class="navbar-collapse collapse">
@@ -231,42 +233,38 @@
                       </div>
               <div class="tab-pane fade" id="1">
                    <div>
-                      <form action="/Search">
+                      <form action="/Search" class="navbar-form navbar-left">
 					    <p>
 						<font size="4">
 						在这里你可以查看你旗下的车辆信息
 						</font>
 					    </p></br>
-						<form class="navbar-form navbar-left">
-							<select style="width:100px;height:35px">
-								<option value="null"></option>
-								<option value="A1">A1</option>
-								<option value="A2">A2</option>
-								<option value="A3">A3</option>
-							</select>
-							<input type="text" class="form-control" name="customername" placeholder="输入信息..."></input>
-						</form>
-						<form class="navbar-form navbar-left">
-							<select style="width:100px;height:35px">
-								<option value="null"></option>
-								<option value="B1">B1</option>
-								<option value="B2">B2</option>
-								<option value="B3">B3</option>
-							</select>
-							<input type="text" class="form-control" name="customername" placeholder="输入信息..."></input>
-						</form>
-						<form class="navbar-form navbar-left">
-							<select style="width:100px;height:35px">
-								<option value="null"></option>
-								<option value="C1">C1</option>
-								<option value="C2">C2</option>
-								<option value="C3">C3</option>
-							</select>
-							<input type="text" class="form-control" name="customername" placeholder="输入信息..."></input>
-								<button id="queryBtn2" type="button" class="btn btn-default" class="btn-group pull-left" style="margin-left: 10px;">
+                          <label>品牌</label>
+                          <select name="Bybrand" style="width:100px;height:35px">
+                              <option value="全部车辆">全部车辆</option>
+                              <option value="Benz">Benz</option>
+                              <option value="Audi">Audi</option>
+                              <option value="Lamborghini">Lamborghini</option>
+                              <option value="Rolls-Royce">Rolls-Royce</option>
+                          </select>
+                          <label>车型号</label>
+                          <select name="Bymodel" style="width:100px;height:35px">
+                              <option value="全部车辆">全部车辆</option>
+                              <option value="Benz307">Benz307</option>
+                              <option value="A6">A6</option>
+                              <option value="URUS">URUS</option>
+                              <option value="幻影">幻影</option>
+                          </select>
+                          <label>类型</label>
+                          <select name="Bytype" style="width:100px;height:35px">
+                              <option value="全部车辆">全部车辆</option>
+                              <option value="轿车">轿车</option>
+                              <option value="超级跑车">超级跑车</option>
+                              <option value="高级轿车">高级轿车</option>
+                          </select>
+								<button id="queryBtn2" type="submit" class="btn btn-default" class="btn-group pull-left" style="margin-left: 10px;">
 								<span class="glyphicon glyphicon-search" aria-hidden="true"></span>查询</button>
                         </form>
-                      </form>
 					</div>
                           <p></br></br>
                               <font size="4">
@@ -276,38 +274,25 @@
 
                           <table class="table table-bordered table-striped">
                               <thead>
+
                               <tr>
-                                  <th>#</th>
-                                  <th>first</th>
-                                  <th>second</th>
-                                  <th>thrid</th>
-                                  <th>fourth</th>
-                                  <th>fifth</th>
+                                  <th>品牌</th>
+                                  <th>型号</th>
+                                  <th>车型</th>
+                                  <th>库存</th>
+                                  <th>价格</th>
+                                  <th>图片</th>
                               </tr>
-                              <tr>
-                                  <td>1</td>
-                                  <td> </td>
-                                  <td> </td>
-                                  <td> </td>
-                                  <td> </td>
-                                  <td> </td>
-                              </tr>
-                              <tr>
-                                  <td>2</td>
-                                  <td> </td>
-                                  <td> </td>
-                                  <td> </td>
-                                  <td> </td>
-                                  <td> </td>
-                              </tr>
-                              <tr>
-                                  <td>3</td>
-                                  <td> </td>
-                                  <td> </td>
-                                  <td> </td>
-                                  <td> </td>
-                                  <td> </td>
-                              </tr>
+                              <c:forEach var="U" items="${cars}">
+                                  <tr>
+                                      <td><c:out value="${U.brand}"></c:out></td>
+                                      <td><c:out value="${U.model}"></c:out></td>
+                                      <td><c:out value="${U.type}"></c:out></td>
+                                      <td><c:out value="${U.stock}"></c:out> </td>
+                                      <td><c:out value="${U.price}"></c:out> </td>
+                                      <td><c:out value="${U.pic_url}"></c:out> </td>
+                                  </tr>
+                              </c:forEach>
                               </thead>
                           </table>
                               </form>
@@ -339,29 +324,37 @@
                                   在这里你可以上传你旗下的车辆信息
                               </font>
                           </p></br>
-					<form role="form">
-						<div>
-	
-							<label for="name">车辆属性一（选择）</label>
-							<div>
-							<select style="width:1000px;height:35px">
-								<option value="value1">11111</option>
-								<option value="value2">22222</option>
-								<option value="value3">33333</option>
-							</select>
-							</div>
-							<div>
-							<label for="name">车辆属性二（自填）</label>
-							<input style="width:1000px" type="text" class="form-control" 
-							placeholder="请输入属性二">
-							</div>
-							<div>
-							<label for="name">车辆属性三</label>
-							<input style="width:1000px" type="text" class="form-control" 
-							placeholder="请输入属性三">
-							</div>
-						</div>
-					</form>                          <!--
+                                  <div>
+                                      <!--查询所有车的类型型号，设置下拉框-->
+                                      <%List<KeyValuePair> lists= (List<KeyValuePair>)session.getAttribute("list");
+                                          int i = 101;
+                                          int num  = lists.size();%>
+                                      <input type="hidden" id="length" name=<%=num%>>
+                                      <%for(KeyValuePair pair : lists){ %>
+                                      <input type="hidden" id=<%=i%> name=<%=pair.key%> value=<%=pair.value%> >
+                                      <%i++;%>
+                                      <%}%>
+                                      <label>选择品牌</label>
+                                      <select id="carlist1" name="brand" runat="server" onchange="selectprovince(this);" style=" width:95px;">
+                                          <option value=""></option>
+                                      </select>
+                                      <label>选择型号</label>
+                                      <select id="carlist2" name="model" runat="server" style=" width:95px;">
+                                          <option value=""></option>
+                                      </select>
+                                  </div>
+                                  <div>
+                                      <br><br>
+                                      <label for="name">库存（数量）</label>
+                                      <input name="stock" style="width:500px" type="text" class="form-control"
+                                             placeholder="请输入库存">
+                                      <div>
+                                          <label for="name">价格（自填）</label>
+                                          <input name="price" style="width:500px" type="text" class="form-control"
+                                                 placeholder="请输入价格">
+
+                                      </div>
+                                  </div><!--
                           <div class="form-group">
                               <label for="inputfile">车辆展示图片上传</label>
                               <input type="file" id="inputfile">
@@ -371,7 +364,7 @@
                           -->
 					</br>
                           <div class="btn-group pull-left" style="margin-left: 20px;">
-                              <button id="addBtn" type="button" class="btn btn-default">
+                              <button id="addBtn" type="submit" class="btn btn-default">
                                   <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>上传</button>
                           </div>
                           </form>
@@ -384,15 +377,17 @@
                               </font>
                           </p></br>
 						<form action="/handlebook" class="navbar-form navbar-left">
+                            <label>预约状态</label>
 							<select name="appointstate" style="width:100px;height:35px">
-								<option value=""></option>
 								<option >全部预约</option>
 								<option >已处理</option>
 								<option >待处理</option>
 							</select>
+                            <label>预约类型</label>
                             <select name="appointtype" style="width:100px;height:35px">
-                                <option value=""></option>
+                                <option >全部预约</option>
                                 <option >试驾预约</option>
+                                <option >维修预约</option>
                                 <option >保养预约</option>
                                 <option >购车预约</option>
                             </select>
@@ -419,7 +414,7 @@
                               </tr>
                               </thead>
                               <%List<Shopapt> shopapts = (List<Shopapt>) request.getAttribute("userapoint");
-                                  int i = 0;%>
+                                  i = 0;%>
                               <%for(Shopapt shopapt:shopapts){%>
                               <tr>
                               <th><%=i%></th>
@@ -470,3 +465,65 @@
 
   </body>
 </html>
+<script type="text/javascript">
+    var list1 = new Array;
+    var list2 = new Array;
+    var str = document.getElementById("length").name;
+    var lengthid=parseInt(str,10);
+    for(var m=1;m < lengthid  ;m++){
+        if(list1.indexOf(document.getElementById(m+101).name)==-1){
+            list1[list1.length] = document.getElementById(m+101).name;
+        }
+
+    }
+    for(var n=0;n <list1.length ; n++){
+        var num = document.getElementsByName(list1[n]).length;
+        list2[list2.length] = new Array;
+        for(var k=0;k<num;k++)
+        {
+            list2[n][k] = document.getElementsByName(list1[n])[k].value;
+        }
+
+    }
+
+
+    var ddlProvince = document.getElementById("carlist1");
+    var ddlCity = document.getElementById("carlist2");
+    for(var i =0;i<list1.length; i++)
+    {
+        var option = document.createElement("option");
+        option.appendChild(document.createTextNode(list1[i]));
+        option.value = list1[i];
+        ddlProvince.appendChild(option);
+        //city initialize
+        var firstprovince = list2[0];
+        for (var j = 0; j < firstprovince.length; j++) {
+            var optioncity = document.createElement("option");
+            optioncity.appendChild(document.createTextNode(firstprovince[j]));
+            optioncity.value = firstprovince[j];
+            ddlCity.appendChild(optioncity);
+        }
+    }
+    function indexof(obj,value)
+    {
+        var k=0;
+        for(;k<obj.length;k++)
+        {
+            if(obj[k] == value)
+                return k;
+        }
+        return k;
+    }
+    function selectprovince(obj) {
+        ddlCity.options.length = 0;//clear
+        var index = indexof(list1,obj.value);
+        var list2element = list2[index];
+        for(var i =0;i<list2element.length; i++)
+        {
+            var option = document.createElement("option");
+            option.appendChild(document.createTextNode(list2element[i]));
+            option.value = list2element[i];
+            ddlCity.appendChild(option);
+        }
+    }
+</script>

@@ -92,4 +92,23 @@
         <servlet-name>handlebook</servlet-name>
         <url-pattern>/handlebook</url-pattern>
     </servlet-mapping>
+
+    <servlet>
+        <servlet-name>uploadimg</servlet-name>
+        <servlet-class>server.uploadImg</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>uploadimg</servlet-name>
+        <url-pattern>/uploadimg</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>webToWx</servlet-name>
+        <servlet-class>wxcon.webToWx</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>webToWx</servlet-name>
+        <url-pattern>/webToWx</url-pattern>
+    </servlet-mapping>
+
 </web-app>

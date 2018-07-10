@@ -16,7 +16,7 @@ public class ShopuserDAOImpl implements ShopuserDAO {
     DBConnect dbc = new DBConnect();
     Connection conn = dbc.getConnection();
 
-    public void insert(Shopuser su) {
+    public Boolean insert(Shopuser su) {
         String sql = "insert into shopuser values (?,?,?,?,?,?,?)";
         PreparedStatement ps = null;
         try {
@@ -31,12 +31,14 @@ public class ShopuserDAOImpl implements ShopuserDAO {
 
             ps.executeUpdate();
             ps.close();
+            return true;
         } catch (SQLException e) {
             e.printStackTrace();
+            return false;
         }
     }
 
-    public void update(Shopuser su){
+    public Boolean update(Shopuser su){
         String sql = "update shopuser set shopuser_id=?,pswd=?,shop_name=?,shop_phone=?,shop_address=?,shop_manager," +
                 "description where shopuser_id=?";
         PreparedStatement ps = null;
@@ -53,12 +55,14 @@ public class ShopuserDAOImpl implements ShopuserDAO {
 
             ps.executeUpdate();
             ps.close();
+            return true;
         } catch (SQLException e) {
             e.printStackTrace();
+            return false;
         }
     }
 
-    public void delete(String shopuser_id){
+    public Boolean delete(String shopuser_id){
         String sql = "delete from shopuser where shopuser_id=?";
         PreparedStatement ps = null;
         try {
@@ -67,14 +71,16 @@ public class ShopuserDAOImpl implements ShopuserDAO {
 
             ps.executeUpdate();
             ps.close();
+            return true;
         } catch (SQLException e) {
             e.printStackTrace();
+            return false;
         }
     }
 
     public Shopuser findById(String shopuser_id){
         Shopuser su = new Shopuser();
-        String sql = "select * from car.shopuser where shopuser_id=?";
+        String sql = "select * from shopuser where shopuser_id=?";
         PreparedStatement ps = null;
         ResultSet rs = null;
         try {

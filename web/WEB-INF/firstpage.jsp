@@ -48,14 +48,23 @@
   </head>
 
   <body>
-
+  <style type="text/css">
+      #result{
+          width: 800px;
+          height:500px;
+          border:1px solid #eee;
+      }
+      #result img{
+          height:500px;
+      }
+  </style>
   <nav class="navbar navbar-inverse navbar-fixed-top">
       <div class="container-fluid">
           <div class="navbar-header">
               <p class="navbar-brand" ><font size="5">汽车销售管理系统</font></p>
           </div>
           <div>
-              <p id= "huanying" class="navbar-brand" align="right"><font size="4">欢迎您！XXX</font></p>
+              <p id= "huanying" class="navbar-brand" align="right"><font size="4">欢迎您！<a href="/SearchUserServlet" name="userid">${userid}</a> </font></p>
           </div>
 
           <div id="navbar" class="navbar-collapse collapse">
@@ -248,7 +257,6 @@
                           </p>
                       </div>
                       <div class="tab-pane fade" id="1">
-                          <div>
                     <form action="/Search">
 					<p>
 						<font size="4">
@@ -257,7 +265,7 @@
 					</p></br>
                         <label>品牌</label>
                         <select name="Bybrand" style="width:100px;height:35px">
-                            <option value=""></option>
+                            <option value="全部车辆">所有品牌</option>
                             <option value="Benz">Benz</option>
                             <option value="Audi">Audi</option>
                             <option value="Lamborghini">Lamborghini</option>
@@ -265,7 +273,7 @@
                         </select>
                         <label>车型号</label>
                         <select name="Bymodel" style="width:100px;height:35px">
-                            <option value=""></option>
+                            <option value="全部车辆">所有型号</option>
                             <option value="Benz307">Benz307</option>
                             <option value="A6">A6</option>
                             <option value="URUS">URUS</option>
@@ -273,16 +281,14 @@
                         </select>
                         <label>类型</label>
                         <select name="Bytype" style="width:100px;height:35px">
-                            <option value=""></option>
+                            <option value="全部车辆">所有类型</option>
                             <option value="轿车">轿车</option>
                             <option value="超级跑车">超级跑车</option>
                             <option value="高级轿车">高级轿车</option>
                         </select>
-
                         <button id="queryBtn2" type="submit" class="btn btn-default" class="btn-group pull-left" style="margin-left: 10px;">
 								<span class="glyphicon glyphicon-search" aria-hidden="true"></span>查询</button>
                         </form>
-					</div>
                           <p></br></br>
                               <font size="4">
                                   查询结果
@@ -292,12 +298,12 @@
                           <table class="table table-bordered table-striped">
                               <thead>
                               <tr>
-                                  <th>brand</th>
-                                  <th>model</th>
-                                  <th>type</th>
-                                  <th>stock</th>
-                                  <th>price</th>
-                                  <th>pic_url</th>
+                                  <th>品牌</th>
+                                  <th>型号</th>
+                                  <th>车型</th>
+                                  <th>库存</th>
+                                  <th>价格</th>
+                                  <th>图片</th>
                               </tr>
                               </thead>
                           </table>
@@ -326,13 +332,61 @@
 
 
                     <div class="tab-pane fade" id="2">
-                        <form action="/addcar">
+
+
+                        <form action="/addcar" enctype="multipart/form-data">
                           <p>
                               <font size="4">
                                   在这里你可以上传你旗下的车辆信息
                               </font>
                           </p></br>
+                                <!--<label for="name">上传车辆图片</label>
+                                <div id = "result"></div>
+                                <input id="pic" type="file" name = "uploadFile" accept = "image/*" onchange = "selectFile()"/>
+                                <input type="submit" name="upload" value = "上传图片">
 
+
+                            <script type="text/javascript">
+                                //var files = document.getElementById('pic').files;
+                                var form = new FormData();//通过HTML表单创建FormData对象
+                                var url = '127.0.0.1:8080/'
+                                function selectFile(){
+                                    var files = document.getElementById('pic').files;
+                                    console.log(files[0]);
+                                    if(files.length == 0){
+                                        return;
+                                    }
+                                    var file = files[0];
+                                    //把上传的图片显示出来
+                                    var reader = new FileReader();
+                                    // 将文件以Data URL形式进行读入页面
+                                    console.log(reader);
+                                    reader.readAsBinaryString(file);
+                                    reader.onload = function(f){
+                                        var result = document.getElementById("result");
+                                        var src = "data:" + file.type + ";base64," + window.btoa(this.result);
+                                        result.innerHTML = '<img src ="'+src+'"/>';
+                                    }
+                                    console.log('file',file);
+                                    ///////////////////
+                                    form.append('file',file);
+                                    console.log(form.get('file'));
+                                }
+                                //var xhr = new XMLHttpRequest();
+                                // function handIn(){
+                                //  console.log(form.get('file'));
+                                //  xhr.open("post", url, true);
+                                //  xhr.addEventListener("readystatechange", function() {
+                                //      var result = xhr;
+                                //      if (result.status != 200) { //error
+                                //          console.log('上传失败', result.status, result.statusText, result.response);
+                                //      }
+                                //      else if (result.readyState == 4) { //finished
+                                //          console.log('上传成功', result);
+                                //      }
+                                //  });
+                                // }
+                            </script>-->
 						<div>
                             <label>选择品牌</label>
                             <select id="carlist1" name="brand" runat="server" onchange="selectprovince(this);" style=" width:95px;">
@@ -377,15 +431,17 @@
                               </font>
                           </p></br>
                           <form action="/handlebook" class="navbar-form navbar-left">
+                              <label>预约状态</label>
                               <select name="appointstate" style="width:100px;height:35px">
-                                  <option value=""></option>
                                   <option >全部预约</option>
-                                  <option >已处理预约</option>
-                                  <option >未处理预约</option>
+                                  <option >已处理</option>
+                                  <option >待处理</option>
                               </select>
+                              <label>预约类型</label>
                               <select name="appointtype" style="width:100px;height:35px">
-                                  <option value=""></option>
+                                  <option >全部预约</option>
                                   <option >试驾预约</option>
+                                  <option >维修预约</option>
                                   <option >保养预约</option>
                                   <option >购车预约</option>
                               </select>
@@ -453,7 +509,7 @@
     var list2 = new Array;
     var str = document.getElementById("length").name;
     var lengthid=parseInt(str,10);
-    for(var m=1;m < lengthid  ;m++){
+    for(var m=0;m < lengthid  ;m++){
         if(list1.indexOf(document.getElementById(m+101).name)==-1){
             list1[list1.length] = document.getElementById(m+101).name;
        }

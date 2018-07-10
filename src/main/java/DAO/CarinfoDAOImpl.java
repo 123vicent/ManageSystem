@@ -50,11 +50,11 @@ public class CarinfoDAOImpl implements CarinfoDAO{
         {
             sql+="and brand='"+brand+"'";
         }
-        if(!model.equals(""))
+        if(!model.equals("全部车辆"))
         {
             sql+="and model='"+model+"'";
         }
-        if(!type.equals("")){
+        if(!type.equals("全部车辆")){
             sql+="and type='"+type+"'";
         }
         try {

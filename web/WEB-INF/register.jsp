@@ -22,7 +22,7 @@
         <div class="navbar-header">
             <p class="navbar-brand" ><font size="5">汽车销售管理系统</font></p>
         </div>
-        
+
     </div>
 </nav>
 
@@ -36,7 +36,9 @@
                     <span class="input-group-addon"><span class="glyphicon glyphicon-user"></span></span>
                     <input id="username" name="identity" class="form-control" placeholder="请输入用户名" maxlength="20" type="text">
                 </div>
-
+                <%if(request.getAttribute("msg")!=null){ %>
+                <%=request.getAttribute("msg")%>
+                <%  }%>
                 <span style="color:red;display: none;" class="tips"></span>
                 <span style="display: none;" class=" glyphicon glyphicon-remove form-control-feedback"></span>
                 <span style="display: none;" class="glyphicon glyphicon-ok form-control-feedback"></span>

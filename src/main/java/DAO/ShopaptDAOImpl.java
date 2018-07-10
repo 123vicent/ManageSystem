@@ -45,11 +45,11 @@ public class ShopaptDAOImpl implements ShopaptDAO {
         String sql = "select * from shopapt where shopuser_id=?";
         PreparedStatement ps = null;
         ResultSet rs = null;
-        if(!(apstate.equals("")||apstate.equals("全部预约")))
+        if(!apstate.equals("全部预约"))
         {
             sql+="and ap_state='"+apstate+"'";
         }
-        if(!aptype.equals(""))
+        if(!aptype.equals("全部预约"))
         {
             sql+="and ap_type='"+aptype+"'";
         }
@@ -78,7 +78,7 @@ public class ShopaptDAOImpl implements ShopaptDAO {
         return shopaptList;
     }
 
-    public void update(Shopapt shopapt) {
+    public Boolean update(Shopapt shopapt) {
         String sql = "update shopapt set ap_state=? where shopuser_id=?,cus_name=?,ap_time=?";
         PreparedStatement ps = null;
 
@@ -90,8 +90,10 @@ public class ShopaptDAOImpl implements ShopaptDAO {
             ps.setTimestamp(4,shopapt.getAp_time());
 
             ps.execute();
+            return true;
         } catch (SQLException e) {
             e.printStackTrace();
+            return false;
         }
     }
 }
