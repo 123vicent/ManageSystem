@@ -101,4 +101,14 @@
         <servlet-name>uploadimg</servlet-name>
         <url-pattern>/uploadimg</url-pattern>
     </servlet-mapping>
+
+    <servlet>
+        <servlet-name>webToWx</servlet-name>
+        <servlet-class>wxcon.webToWx</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>webToWx</servlet-name>
+        <url-pattern>/webToWx</url-pattern>
+    </servlet-mapping>
+
 </web-app>

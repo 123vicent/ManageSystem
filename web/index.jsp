@@ -56,7 +56,9 @@
 
       </span>
   </form>
-
+  <form action="/webToWx">
+    <input type="submit" value="顾客登陆">
+  </form>
 
 
 </div>

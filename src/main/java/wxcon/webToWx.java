@@ -1,5 +1,6 @@
-package custo_server;
+package wxcon;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -7,15 +8,18 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-@WebServlet(name = "repair_book",urlPatterns = {"/repair_book"})
-public class repair_book extends HttpServlet {
+@WebServlet(name = "webToWx")
+public class webToWx extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-
+        RequestDispatcher view;
+        //response.sendRedirect("WEB-INF/CustPage/login.html");
+        view = request.getRequestDispatcher("WEB-INF/CustPage/cuslogin.jsp");
+        view.forward(request,response);
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-
+        doPost(request,response);
     }
 }
