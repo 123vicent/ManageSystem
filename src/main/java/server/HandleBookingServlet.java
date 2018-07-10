@@ -43,8 +43,9 @@ public class HandleBookingServlet extends HttpServlet {
         String apstate = request.getParameter("appointstate");
         String aptype = request.getParameter("appointtype");
         String cusname = request.getParameter("customername");
+        String ap_id = request.getParameter("ap_id");
 
-        List<Shopapt> apList = shopaptDAO.findAllByTag(shopuserid,apstate,aptype,cusname);
+        List<Shopapt> apList = shopaptDAO.findAllByTag(shopuserid,apstate,aptype,cusname,ap_id);
 
        /* //获取用户所查询的内容
         String appointstate = request.getParameter("appointstate");
