@@ -462,7 +462,7 @@
     var list2 = new Array;
     var str = document.getElementById("length").name;
     var lengthid=parseInt(str,10);
-    for(var m=1;m < lengthid  ;m++){
+    for(var m=0;m < lengthid ;m++){
         if(list1.indexOf(document.getElementById(m+101).name)==-1){
             list1[list1.length] = document.getElementById(m+101).name;
         }

@@ -1,4 +1,4 @@
-package custo_server;
+package custo_server.func_server;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -7,8 +7,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-@WebServlet(name = "maintian_book",urlPatterns = {"/maintian_book"})
-public class maintian_book extends HttpServlet {
+@WebServlet(name = "searchcar",urlPatterns = {"/searchcar"})
+public class searchcar extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
     }

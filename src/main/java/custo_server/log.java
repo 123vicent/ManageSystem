@@ -1,11 +1,9 @@
 package custo_server;
 
-import DAO.CarDAO;
-import DAO.CarinfoDAO;
-import DAO.DAOFactory;
-import DAO.ShopuserDAO;
+import DAO.*;
 import basic.KeyValuePair;
 import model.Car;
+import model.Customeruser;
 import model.Shopuser;
 
 import javax.servlet.RequestDispatcher;
@@ -32,7 +30,7 @@ public class log extends HttpServlet {
         String access = request.getParameter("submit");
         RequestDispatcher view;
         if(access.equals("立即注册")){
-            view = request.getRequestDispatcher("WEB-INF/register.jsp");
+            view = request.getRequestDispatcher("WEB-INF/CustPage/cusregister.jsp");
         }
         else if(access.equals("忘记密码"))
         {
@@ -43,40 +41,41 @@ public class log extends HttpServlet {
             if(userid.equals(""))
             {
                 request.setAttribute("msg0", "请输入用户名");
-                view  = request.getRequestDispatcher("index.jsp");
+                view  = request.getRequestDispatcher("WEB-INF/CustPage/cuslogin.jsp");
             }
             else if(password.equals(""))
             {
                 request.setAttribute("msg1", "请输入密码");
-                view  = request.getRequestDispatcher("index.jsp");
+                view  = request.getRequestDispatcher("WEB-INF/CustPage/cuslogin.jsp");
             }
             else {
                 //rs = stmt.executeQuery("SELECT * FROM user where usr_name = '"+userid+"'and password =  '"+password+"'");
                 //rs.next();
                 HttpSession session = request.getSession();
                 session.setAttribute("userid",userid);
-                ShopuserDAO shopuserdao = DAOFactory.getShopuserDAO();
-                Shopuser shopuser = shopuserdao.findById(userid);
-                if (shopuser.getPswd()!=null&&shopuser.getPswd().equals(password)) {
+                CustomeruserDAO customeruserdao  = DAOFactory.getCustometuserDAO();
+                Customeruser customeruser = customeruserdao.findById(userid);
+                //ShopuserDAO shopuserdao = DAOFactory.getShopuserDAO();
+                //Shopuser shopuser = shopuserdao.findById(userid);
+                if (customeruser.getPswd()!=null&&customeruser.getPswd().equals(password)) {
                     //request.setAttribute("msg","登录失败");
                     //view=request.getRequestDispatcher("index.jsp");
-                    CarDAO cardao = DAOFactory.getCarDAO();
+                    /*CarDAO cardao = DAOFactory.getCarDAO();
                     List<Car> cars = cardao.findAll();
                     List<KeyValuePair> lists =new ArrayList<KeyValuePair>();
                     for(Car car:cars) {
                         lists.add(new KeyValuePair(car.getBrand(),car.getModel()));
                     }
                     session.setAttribute("list",lists);
-
-                    request.setAttribute("userid",userid);//显示用户id
-
+                    request.setAttribute("userid",userid);//显示用户i
                     CarinfoDAO carinfoDAO = DAOFactory.getCarinfoDAO();
-                    request.setAttribute("cars",carinfoDAO.findAllByShopId(userid));
+                    request.setAttribute("cars",carinfoDAO.findAllByShopId(userid));*/
 
-                    view = request.getRequestDispatcher("WEB-INF/firstpage.jsp");
+
+                    view = request.getRequestDispatcher("WEB-INF/CustPage/firstpage.jsp");
                 } else {
                     request.setAttribute("msg2", "登录失败");
-                    view = request.getRequestDispatcher("index.jsp");
+                    view = request.getRequestDispatcher("WEB-INF/CustPage/cuslogin.jsp");
 
                 }
             }

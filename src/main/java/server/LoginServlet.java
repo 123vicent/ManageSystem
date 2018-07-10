@@ -66,6 +66,7 @@ public class LoginServlet extends HttpServlet {
                    List<KeyValuePair> lists =new ArrayList<KeyValuePair>();
                     for(Car car:cars) {
                         lists.add(new KeyValuePair(car.getBrand(),car.getModel()));
+                        System.out.println(car.getBrand());
                     }
                     session.setAttribute("list",lists);
 
