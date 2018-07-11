@@ -246,14 +246,6 @@
                               <option value="Lamborghini">Lamborghini</option>
                               <option value="Rolls-Royce">Rolls-Royce</option>
                           </select>
-                          <label>车型号</label>
-                          <select name="Bymodel" style="width:100px;height:35px">
-                              <option value="全部车辆">所有型号</option>
-                              <option value="Benz307">Benz307</option>
-                              <option value="A6">A6</option>
-                              <option value="URUS">URUS</option>
-                              <option value="幻影">幻影</option>
-                          </select>
                           <label>类型</label>
                           <select name="Bytype" style="width:100px;height:35px">
                               <option value="全部车辆">所有类型</option>

@@ -2,6 +2,8 @@ package server;
 
 import DAO.AppointmentDAO;
 import DAO.DAOFactory;
+import DAO.ShopaptDAO;
+import basic.Shopapt;
 import model.Appointment;
 
 import javax.servlet.RequestDispatcher;
@@ -21,9 +23,13 @@ public class dealingaptServlet extends HttpServlet {
         AppointmentDAO apDAO = DAOFactory.getAppointmentDAO();
         Appointment ap = apDAO.findById(ap_id);
         RequestDispatcher view;
+        ShopaptDAO shopaptDAO = DAOFactory.getShopaptDAO();
+        Shopapt shopapt = shopaptDAO.findByApid(ap_id);
+        request.setAttribute("shopapt",shopapt);
         if(access.equals("接受预约")){
             ap.setAp_state("已接受");
             view = request.getRequestDispatcher("WEB-INF/usershopapoint.jsp");
+            apDAO.update(ap);
         }else if(access.equals("拒绝预约")){
             String refusemsg = request.getParameter("refusemsg");
             if(refusemsg.equals("")){
@@ -34,25 +40,29 @@ public class dealingaptServlet extends HttpServlet {
                 ap.setAp_state("已拒绝");
                 ap.setPayment(0);
                 view = request.getRequestDispatcher("WEB-INF/usershopapoint.jsp");
+                apDAO.update(ap);
             }
-        }else{
+        }else if(access.equals("完成预约")){
             String completetime = request.getParameter("complete_time");
             String pay_ment = request.getParameter("payment");
-            Timestamp complete_time = Timestamp.valueOf(completetime);
-            double payment = Double.parseDouble(pay_ment);
             String description = request.getParameter("description");
             if(completetime.equals("")||pay_ment.equals("")||description.equals("")){
                 request.setAttribute("error","请输入完整信息");
                 view = request.getRequestDispatcher("WEB-INF/dealersPage/handlebook.jsp");
             }else{
+                double payment = Double.parseDouble(pay_ment);
+                Timestamp complete_time = Timestamp.valueOf(completetime);
                 ap.setAp_state("已完成");
                 ap.setComplete_time(complete_time);
                 ap.setPayment(payment);
                 ap.setDescription(description);
                 view = request.getRequestDispatcher("WEB-INF/usershopapoint.jsp");
+                apDAO.update(ap);
             }
+        }else{
+            view = request.getRequestDispatcher("WEB-INF/usershopapoint.jsp");
         }
-        apDAO.update(ap);
+
         view.forward(request,response);
 
     }
