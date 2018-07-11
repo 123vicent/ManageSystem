@@ -18,7 +18,7 @@ public class DBConnect {
     }
 
     public Connection getConnection() {
-        url ="jdbc:mysql://localhost/car";
+        url ="jdbc:mysql://localhost:3306/car";
         user = "root";
         password = "root";
         try {

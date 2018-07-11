@@ -43,8 +43,8 @@ public class AppointmentDAOImpl implements AppointmentDAO {
     }
 
     public Boolean update(Appointment a){
-        String sql = "update appointment set appointment_id=?,cosuser_id=?,shopuser_id=?,car_id=?,ap_time=?," +
-                "ap_type=?,ap_state=?,complete_time=?,payyment=?,description=? where appointment_id=?";
+        String sql = "update appointment set appointment_id=?,cususer_id=?,shopuser_id=?,car_id=?,ap_time=?," +
+                "ap_type=?,ap_state=?,complete_time=?,payment=?,description=? where appointment_id=?";
         PreparedStatement ps = null;
         try {
             ps = conn.prepareStatement(sql);
