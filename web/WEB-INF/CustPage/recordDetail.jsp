@@ -95,10 +95,12 @@
 						<!--车辆信息-->
 						<br/><br/>
 						<center>
+							<form action="/apt_op">
 							<%if(cususerapt.getAp_state().equals("待接受")){%>
-								<input type="button" class="btn btn-danger"  value="撤销"></button>
+									<button type="submit" name="action" class="btn btn-danger"  value=<%=cususerapt.getAppointment_id()%>>取消预约</button>
 							<%}%>
-							<input type="button" class="btn btn-success"  value="返回"></button>
+							<button type="submit" name="action" class="btn btn-success"  value="return">返回</button>
+							</form>
 						</center>
 												
 						
