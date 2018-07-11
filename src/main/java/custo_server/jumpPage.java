@@ -27,22 +27,22 @@ public class jumpPage extends HttpServlet {
         HttpSession session = request.getSession();
         String user_id = (String)session.getAttribute("userid");
         System.out.println(pagename);
-        if(pagename.equals("主页"))
+        if(pagename.equals("homepage"))
         {
             view = request.getRequestDispatcher("WEB-INF/CustPage/main.html");
-        }else if(pagename.equals("个人信息")){
+        }else if(pagename.equals("personal_info")){
             CustomeruserDAO customeruserDAO = DAOFactory.getCustometuserDAO();
             Customeruser customeruser = customeruserDAO.findById(user_id);
             request.setAttribute("user_info",customeruser);
             view = request.getRequestDispatcher("WEB-INF/CustPage/information.jsp");
         }
-        else if(pagename.equals("寻车试驾")){
+        else if(pagename.equals("testdrive")){
             view = request.getRequestDispatcher("WEB-INF/CustPage/testdrive.html");
         }
-        else if(pagename.equals("豪车鉴赏")){
+        else if(pagename.equals("viewcar")){
             view = request.getRequestDispatcher("WEB-INF/CustPage/gallery.html");
         }
-        else if(pagename.equals("预约历史")){
+        else if(pagename.equals("apt_record")){
             CususeraptDAO cususeraptDAO  = DAOFactory.getCususeraptDAO();
             List<Cususerapt> cususerapts = cususeraptDAO.findAllByCusid(user_id);
             request.setAttribute("cususerapts",cususerapts);
