@@ -72,7 +72,7 @@ public class log extends HttpServlet {
                     request.setAttribute("cars",carinfoDAO.findAllByShopId(userid));*/
 
 
-                    view = request.getRequestDispatcher("WEB-INF/CustPage/firstpage.jsp");
+                    view = request.getRequestDispatcher("WEB-INF/CustPage/main.html");
                 } else {
                     request.setAttribute("msg2", "登录失败");
                     view = request.getRequestDispatcher("WEB-INF/CustPage/cuslogin.jsp");

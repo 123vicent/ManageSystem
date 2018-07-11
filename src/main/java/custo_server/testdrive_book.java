@@ -1,4 +1,4 @@
-package custo_server.func_server;
+package custo_server;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
