@@ -1,7 +1,10 @@
+<%@ page import="java.util.List" %>
+<%@ page import="basic.Cususerapt" %>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <!DOCTYPE html>
 <html>
 <head>
-<title>reserve</title> 
+<title>appointmentView</title> 
 <!-- For-Mobile-Apps-and-Meta-Tags -->
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -11,6 +14,7 @@
 <!-- Custom Theme files -->
 <link href="../../style/css/bootstrap.css" type="text/css" rel="stylesheet" media="all">
 <link href="../../style/css/style.css" type="text/css" rel="stylesheet" media="all">
+<link rel="stylesheet" href="../../style/css/ken-burns.css" type="text/css" media="all" />
 <!-- //Custom Theme files -->
 <!-- js -->
 <script src="../../style/js/jquery-2.2.3.min.js"></script>
@@ -43,13 +47,12 @@
 		<div class="menu-wrap" id="style-1">  
 			<nav class="top-nav">
 				<ul class="icon-list">
-					<li class="menu-title">CarManage</li>
 					<li><a href="/jump?action=主页"><i class="glyphicon glyphicon-home"></i> 主页 </a></li>
 					<li><a href="/jump?action=个人信息"><i class="glyphicon glyphicon-info-sign"></i> 个人信息 </a></li>
 					<li><a href="/jump?action=寻车试驾"><i class="glyphicon glyphicon-eye-open"></i> 寻车试驾 </a></li>
 					<li><a href="/jump?action=豪车鉴赏"><i class="glyphicon glyphicon-picture"></i> 豪车鉴赏</a></li>
-					<li><a class="active"  href="/jump?action=养修预约"><i class="glyphicon glyphicon-envelope"></i> 养修预约 </a></li>
-					<li><a href="/jump?action=预约历史"><i class="glyphicon glyphicon-briefcase"></i> 预约历史 </a></li>
+					<li><a href="/jump?action=养修预约"><i class="glyphicon glyphicon-envelope"></i> 养修预约 </a></li>
+					<li><a class="active" href="/jump?action=预约历史"><i class="glyphicon glyphicon-briefcase"></i> 预约历史 </a> </li>
 				</ul>
 			</nav>
 			<button class="close-button" id="close-button">C</button>
@@ -66,34 +69,44 @@
 				<!-- banner -->
 				<div class="banner about-banner"> 
 					<div class="banner-img">  
-						<h3>养修预约</h3>   
+						<h3>预约历史</h3>   
 					</div> 
 				</div>
 				<!-- //banner -->
-				<!-- contact -->
-				<div class="w3agile contact"> 
-					<h3 class="w3ls-title">未完成</h3>
-					<div class="contact-form"> 
-						<form action="#" method="post">
-							<input type="text" name="Name" placeholder="Name" required="">
-							<input type="text" name="Email" placeholder="Email" required="">
-							<input type="text" name="Subject" placeholder="Subject" required="">
-							<textarea name="Message" placeholder="Message" required=""></textarea>
-							<input type="submit" value="SEND">
-						</form> 
-					</div>
-					<div class="contact-form"> 
-						<h3 class="w3ls-title">Contact Info</h3>
-						<p><b>Address :</b> Lorem St, NY 10002, Canada. </p>
-						<p><b>Telephone :</b> (2345) 111 222 3333</p>
-						<p><b>Fax :</b> (1234) 888 8884</p>
-						<p><b>Email :</b> <a href="mailto:example@mail.com">mail@example.com</a></p>
-					</div>
+				<!-- properties --> 
+				<div class="w3agile properties">   
+					<div class="w3ls-text">
+					<table class="table table-striped">
+						<%List<Cususerapt> cususerapts = (List<Cususerapt>) request.getAttribute("cususerapts");%>
+							<tr>
+								<th>预约号</th>
+								<th>类型</th>
+								<th>状态</th>
+								<th>详情</th>
+							</tr>
+						</thead>
+						<tbody>
+						<%for(Cususerapt cususerapt:cususerapts){%>
+							<tr>
+								<td><%=cususerapt.getAppointment_id()%></td>
+								<td><%=cususerapt.getAp_type()%></td>
+								<td><%=cususerapt.getAp_state()%></td>
+								<td>
+									<a href = "/jump?action=appoint_detail&value=<%=cususerapt.getAppointment_id()%>"><!--这里进入详细预约信息的页面-->
+									详情>>
+									<!--input type="button" class="btn btn-success"  value="返回"></button-->
+									</a>
+								</td>
+							</tr>
+						<%}%>
+						</tbody>
+					</table>
+					</div>	
 				</div>
-				<!-- //contact --> 
+				<!-- //about --> 
 				<!-- brands -->
 				<div class="w3agile brands"> 
-					<h3 class="w3ls-title">Our Clients</h3> 
+					<h3 class="w3ls-title">合作品牌</h3> 
 					<div class="brands-info">
 						<div class="brand-grids">
 							<a href="#"><img src="../../style/images/b1.jpg" alt=""/></a>
@@ -119,8 +132,8 @@
 				<!-- //brands -->
 				<!-- footer -->
 				<div class="w3agile footer"> 
-
-
+					 
+					
 				</div> 
 			</div>
 		</div>

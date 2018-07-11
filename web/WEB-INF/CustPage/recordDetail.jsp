@@ -1,7 +1,9 @@
+<%@ page import="basic.Cususerapt" %>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <!DOCTYPE html>
 <html>
 <head>
-<title>testdrive</title> 
+<title>recordDetail</title> 
 <!-- For-Mobile-Apps-and-Meta-Tags -->
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -11,6 +13,7 @@
 <!-- Custom Theme files -->
 <link href="../../style/css/bootstrap.css" type="text/css" rel="stylesheet" media="all">
 <link href="../../style/css/style.css" type="text/css" rel="stylesheet" media="all">
+<link rel="stylesheet" href="../../style/css/ken-burns.css" type="text/css" media="all" />
 <!-- //Custom Theme files -->
 <!-- js -->
 <script src="../../style/js/jquery-2.2.3.min.js"></script>
@@ -46,10 +49,10 @@
 					<li class="menu-title">CarManage</li>
 					<li><a href="/jump?action=主页"><i class="glyphicon glyphicon-home"></i> 主页 </a></li>
 					<li><a href="/jump?action=个人信息"><i class="glyphicon glyphicon-info-sign"></i> 个人信息 </a></li>
-					<li><a class="active"  href="/jump?action=寻车试驾"><i class="glyphicon glyphicon-eye-open"></i> 寻车试驾 </a></li>
+					<li><a href="/jump?action=寻车试驾"><i class="glyphicon glyphicon-eye-open"></i> 寻车试驾 </a></li>
 					<li><a href="/jump?action=豪车鉴赏"><i class="glyphicon glyphicon-picture"></i> 豪车鉴赏</a></li>
 					<li><a href="/jump?action=养修预约"><i class="glyphicon glyphicon-envelope"></i> 养修预约 </a></li>
-					<li><a href="/jump?action=预约历史"><i class="glyphicon glyphicon-briefcase"></i> 预约历史 </a></li>
+					<li><a href="/jump?action=预约历史"><i class="glyphicon glyphicon-briefcase"></i> 预约历史 </a> </li>
 				</ul>
 			</nav>
 			<button class="close-button" id="close-button">C</button>
@@ -66,24 +69,43 @@
 				<!-- banner -->
 				<div class="banner about-banner"> 
 					<div class="banner-img">  
-						<h3>寻车试驾</h3>   
+						<h3>我的预约</h3>   
 					</div> 
 				</div>
 				<!-- //banner -->
-				<div class="w3agile agents">
-					<h3 class="w3ls-title">寻找爱车</h3> 
-					<div class="input-group">
-						<input type="text" class="form-control" placeholder="查找..." >
-						<span class="input-group-btn">
-							<button class="btn btn-default" type="button" onclick="window.location.href='testsingle.html'">Go!</button>
-						</span>
-					</div><!-- /input-group -->
-					<h3 class="w3ls-title">试驾预约</h3>
-						<div align="center">
-						<button class="btn btn-default" type="button" onclick="window.location.href='testdrive2.html'">进行预约</button>
+				<!-- properties --> 
+				<div class="w3agile properties">   
+					
+					<div class="w3ls-details">   
+						<!--车辆信息-->
+						<%Cususerapt cususerapt = (Cususerapt)request.getAttribute("cususerapt");%>
+						<div class="w3ls-text">
+							<h4>预约信息</h4>  
+							<p><b>预约车型 :</b><%=cususerapt.getBrand()%> <%=cususerapt.getModel()%> </p>
+							<p><b>预约时间 :</b> <%=cususerapt.getAp_time()%></p>
+							<p><b>预约经销商 :</b> <%=cususerapt.getShop_name()%> </p>
+							<p><b>预约类型 :</b> <%=cususerapt.getAp_type()%> </p>
+							<p><b>预约状态 :</b>  <%=cususerapt.getAp_state()%> </p>
+							<p><b>完成时间 :</b> <%=cususerapt.getComplete_time()%></p>
+							<p><b>支付金额 :</b> <%=cususerapt.getPayment()%> </p>
+							<br/>
+							<h4>备注</h4> 
+							<p class="agile-text"><%=cususerapt.getDescription()%></p>
 						</div>
+						<!--车辆信息-->
+						<br/><br/>
+						<center>
+							<%if(cususerapt.getAp_state().equals("待接受")){%>
+								<input type="button" class="btn btn-danger"  value="撤销"></button>
+							<%}%>
+							<input type="button" class="btn btn-success"  value="返回"></button>
+						</center>
+												
+						
+					</div>
+						
 				</div>
-				
+				<!-- //about --> 
 				<!-- brands -->
 				<div class="w3agile brands"> 
 					<h3 class="w3ls-title">合作品牌</h3> 
@@ -112,7 +134,8 @@
 				<!-- //brands -->
 				<!-- footer -->
 				<div class="w3agile footer"> 
-
+					 
+					
 				</div> 
 			</div>
 		</div>

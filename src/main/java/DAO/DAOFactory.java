@@ -27,6 +27,8 @@ public class DAOFactory {
 
     public static ShopuserDAO getShopuserDAO(){ return new ShopuserDAOImpl(); }
 
+    public  static  CususeraptDAO getCususeraptDAO(){return new CususeraptDAOImpl();}
+
     public static ViewrecordDAO getViewrecordDAO(){
         return new ViewrecordDAOImpl();
     }
