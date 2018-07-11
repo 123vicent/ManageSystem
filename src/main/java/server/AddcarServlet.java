@@ -5,9 +5,9 @@ import DAO.DAOFactory;
 import DAO.ShopowncarDAO;
 import model.Car;
 import model.Shopowncar;
-import org.apache.commons.fileupload.FileItem;
+/*import org.apache.commons.fileupload.FileItem;
 import org.apache.commons.fileupload.disk.DiskFileItemFactory;
-import org.apache.commons.fileupload.servlet.ServletFileUpload;
+import org.apache.commons.fileupload.servlet.ServletFileUpload;*/
 
 import java.io.File;
 import java.io.IOException;

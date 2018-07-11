@@ -134,8 +134,12 @@
             </div>
         </div>
 
-    </form>
 </div>
 <%;}%>
+<div align="center">
+    <button id="addBtn" type="submit" name="submit" value="返回上一层" class="btn btn-default">
+        <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>返回上一层</button>
+</div>
+</form>
 </body>
 </html>
