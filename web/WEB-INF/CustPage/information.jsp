@@ -1,3 +1,5 @@
+<%@ page import="model.Customeruser" %>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -24,7 +26,6 @@
 			type: 'inline',
 			fixedContentPos: false,
 			fixedBgPos: true,
-			overflowY: 'auto',
 			closeBtnInside: true,
 			preloader: false,
 			midClick: true,
@@ -40,6 +41,7 @@
 <!-- //web-fonts -->
 </head>
 <body class="bg">
+
 	<div class="agile-main"> 
 		<div class="menu-wrap" id="style-1"> 
 			<nav class="top-nav">
@@ -48,8 +50,9 @@
 					<li><a href="/jump?action=主页"><i class="glyphicon glyphicon-home"></i> 主页 </a></li>
 					<li><a class="active" href="/jump?action=个人信息"><i class="glyphicon glyphicon-info-sign"></i> 个人信息 </a></li>
 					<li><a href="/jump?action=寻车试驾"><i class="glyphicon glyphicon-eye-open"></i> 寻车试驾 </a></li>
-					<li><a class="active"  href="/jump?action=豪车鉴赏"><i class="glyphicon glyphicon-picture"></i> 豪车鉴赏</a></li>
+					<li><a href="/jump?action=豪车鉴赏"><i class="glyphicon glyphicon-picture"></i> 豪车鉴赏</a></li>
 					<li><a href="/jump?action=养修预约"><i class="glyphicon glyphicon-envelope"></i> 养修预约 </a></li>
+					<li><a href="/jump?action=预约历史"><i class="glyphicon glyphicon-briefcase"></i> 预约历史 </a> </li>
 				</ul>
 			</nav>
 			<button class="close-button" id="close-button">C</button>
@@ -78,12 +81,13 @@
 						<div class="stack twisted">	
 							<img src="../../style/images/a1.jpg" alt=" " class="img-responsive">
 						</div>   						
-						<div class="w3agent-text"> 
-							<h4>王大锤</h4>
-							<p><i class="glyphicon glyphicon-earphone"></i> 1234567</p>
-							<p><i class="glyphicon glyphicon-info-sign"></i> 男士</p>
-							<p><i class="glyphicon glyphicon-envelope" aria-hidden="true"></i><a href="mailto:info@example.com"> mail@example.com</a></p>
-							<p><i class="glyphicon glyphicon-map-marker" aria-hidden="true"></i>街道口</p>
+						<div class="w3agent-text">
+							<%Customeruser customeruser = (Customeruser)request.getAttribute("user_info");%>
+							<h4><%=customeruser.getCus_name()%></h4>
+							<p><i class="glyphicon glyphicon-earphone"></i><%=customeruser.getCus_phone()%></p>
+							<p><i class="glyphicon glyphicon-info-sign"></i> <%=customeruser.getSex()%></p>
+							<p><i class="glyphicon glyphicon-user" aria-hidden="true"></i><a href="mailto:info@example.com"><%=customeruser.getBirthday()%></a></p>
+							<p><i class="glyphicon glyphicon-map-marker" aria-hidden="true"></i><%=customeruser.getAddress()%></p>
 						</div>
 					</div>
 					
@@ -108,7 +112,7 @@
 							<div class="w3ls-related">   
 								<h3 class="w3ls-title">用户信息</h3>
 								<div class="contact-form"> 
-									<form action="#" method="post">
+									<form action="/modify">
 										<input type="text" name="phone" placeholder="联系方式" required=""> 
 										<input type="text" name="sex" placeholder="性别" required="">
 										<input type="text" name="address" placeholder="地址" required=""> 
@@ -119,19 +123,6 @@
 								</div> 
 							</div>
 						</div>
-							
-						<!--提交表-->
-						<!--关闭按钮->
-						<div class="lightbox" style="display: block; top: 500.8px; left: 0px;">
-							<div class="lb-dataContainer" style="display: block; width: 380px;">
-								<div class="lb-data">
-									<div class="lb-closeContainer">
-										<a class="lb-close"></a>
-									</div>
-								</div>
-							</div>
-						</div>
-						<--//关闭按钮-->
 
 					</div>
 
@@ -139,42 +130,7 @@
 					<script src="../../style/js/lightbox-plus-jquery.min.js"> </script>
 					<!-- //light box js--> 					 
 				</div>
-				<!-- //gallery --> 
-				
-				<!-- brands -->
-				<div class="w3agile brands"> 
-					<h3 class="w3ls-title">合作合作品牌</h3> 
-					<div class="brands-info">
-						<div class="brand-grids">
-							<a href="#"><img src="../../style/images/b1.jpg" alt=""/></a>
-						</div>
-						<div class="brand-grids">
-							<a href="#"><img src="../../style/images/b2.jpg" alt=""/></a>
-						</div>
-						<div class="brand-grids">
-							<a href="#"><img src="../../style/images/b3.jpg" alt=""/></a>
-						</div>
-						<div class="brand-grids">
-							<a href="#"><img src="../../style/images/b4.jpg" alt=""/></a>
-						</div>
-						<div class="brand-grids">
-							<a href="#"><img src="../../style/images/b5.jpg" alt=""/></a>
-						</div>
-						<div class="brand-grids">
-							<a href="#"><img src="../../style/images/b6.jpg" alt=""/></a>
-						</div>
-						<div class="clearfix"> </div>
-					</div>
-				</div>
-				<!-- //brands -->
-				
-				
-				
-				<!-- footer -->
-				<div class="w3agile footer"> 
-					 
-					
-				</div> 
+				<!-- //gallery -->
 			</div>
 		</div>
 	</div> 
@@ -183,21 +139,6 @@
 	<script src="../../style/js/main.js"></script>
 	<!-- //menu-js -->
 	<script src="../../style/js/jquery.magnific-popup.js" type="text/javascript"></script>
-	<script>
-		$(document).ready(function() {
-			$('.popup-top-anim').magnificPopup({
-				type: 'inline',
-				fixedContentPos: false,
-				fixedBgPos: true,
-				overflowY: 'auto',
-				closeBtnInside: true,
-				preloader: false,
-				midClick: true,
-				removalDelay: 300,
-				mainClass: 'my-mfp-zoom-in'
-			});																							
-		}); 
-	</script>
 	<!--//pop-up-box -->
 	<!-- nicescroll-js -->
 	<script src="../../style/js/jquery.nicescroll.min.js"></script>

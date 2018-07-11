@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>testsingle</title> 
+<title>appointmentView</title> 
 <!-- For-Mobile-Apps-and-Meta-Tags -->
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -44,13 +44,12 @@
 		<div class="menu-wrap" id="style-1">  
 			<nav class="top-nav">
 				<ul class="icon-list">
-					<li class="menu-title">CarManage</li>
 					<li><a href="/jump?action=主页"><i class="glyphicon glyphicon-home"></i> 主页 </a></li>
 					<li><a href="/jump?action=个人信息"><i class="glyphicon glyphicon-info-sign"></i> 个人信息 </a></li>
 					<li><a href="/jump?action=寻车试驾"><i class="glyphicon glyphicon-eye-open"></i> 寻车试驾 </a></li>
 					<li><a href="/jump?action=豪车鉴赏"><i class="glyphicon glyphicon-picture"></i> 豪车鉴赏</a></li>
 					<li><a href="/jump?action=养修预约"><i class="glyphicon glyphicon-envelope"></i> 养修预约 </a></li>
-					<li><a href="/jump?action=预约历史"><i class="glyphicon glyphicon-briefcase"></i> 预约历史 </a> </li>
+					<li><a class="active" href="/jump?action=预约历史"><i class="glyphicon glyphicon-briefcase"></i> 预约历史 </a> </li>
 				</ul>
 			</nav>
 			<button class="close-button" id="close-button">C</button>
@@ -67,49 +66,65 @@
 				<!-- banner -->
 				<div class="banner about-banner"> 
 					<div class="banner-img">  
-						<h3>车辆信息</h3>   
+						<h3>预约历史</h3>   
 					</div> 
 				</div>
 				<!-- //banner -->
 				<!-- properties --> 
 				<div class="w3agile properties">   
-					<div class="properties-img properties-img-single">
-						<img src="../../style/images/car1.png" alt="">
-						<!-- 需要根据car的id去加载car的图片 -->
-						<div class="view-caption">
-							<!--h4><span class="glyphicon glyphicon-map-marker"></span> Broome St, Canada, USA </h4==-->  
-						</div> 
-					</div>
-					<div class="w3ls-details">   
-					<!--这里需要动态展示当前车辆的信息-->
-						<h4>奥迪A6</h4> 
-						<p class="agile-text">奥迪A6是一种小轿车 </p>
-						<div class="w3ls-text">
-							<h4>基本参数</h4>  
-							<p><b>车辆类型 :</b> 轿车 </p>
-							<p><b>座位数 :</b> 5座 </p>
-							<p><b>动力类型 :</b> 燃油 </p>
-							<p><b>参考价格 :</b> ¥300,000 </p>
-						</div>
-					</div>
-					<div class="w3ls-features">   
-						<h3 class="w3ls-title">供货经销商</h3> 
-						<!--这里展示能够提供当前车辆的经销商列表-->
-						<ul> 
-							<li><span class="glyphicon glyphicon-ok"> </span> 经销商1 </li>
-							<li><span class="glyphicon glyphicon-ok"> </span> 经销商2 </li>
-							<li><span class="glyphicon glyphicon-ok"> </span> 经销商3 </li>
-							
-						</ul>
-					</div>
-					
-					
-					
+					<div class="w3ls-text">
+					<table class="table table-striped">
+						
+						<thead>
+							<tr>
+								<th>预约号</th>
+								<th>类型</th>
+								<th>状态</th>
+								<th>详情</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td>a1001</td>
+								<td>保养</td>
+								<td>待处理</td>
+								<td>
+									<a href = "recordDetail.html"><!--这里进入详细预约信息的页面-->
+									详情>>
+									<!--input type="button" class="btn btn-success"  value="返回"></button-->
+									</a>
+								</td>
+							</tr>
+							<tr>
+								<td>a1023</td>
+								<td>维修</td>
+								<td>已完成</td>
+								<td>
+									<a href = "recordDetail.html"><!--这里进入详细预约信息的页面-->
+									详情>>
+									<!--input type="button" class="btn btn-success"  value="返回"></button-->
+									</a>
+								</td>
+							</tr>
+							<tr>
+								<td>a1835</td>
+								<td>试驾</td>
+								<td>已取消</td>
+								<td>
+									<a href = "recordDetail.html"><!--这里进入详细预约信息的页面-->
+									详情>>
+									<!--input type="button" class="btn btn-success"  value="返回"></button-->
+									</a>
+								</td>
+							</tr>
+						</tbody>
+					</table>
+					</div>	
 				</div>
 				<!-- //about --> 
 				<!-- brands -->
 				<div class="w3agile brands"> 
-					<h3 class="w3ls-title">合作合作品牌</h3> 
+					<h3 class="w3ls-title">合作品牌</h3> 
 					<div class="brands-info">
 						<div class="brand-grids">
 							<a href="#"><img src="../../style/images/b1.jpg" alt=""/></a>

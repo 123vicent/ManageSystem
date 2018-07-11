@@ -55,23 +55,10 @@ public class log extends HttpServlet {
                 session.setAttribute("userid",userid);
                 CustomeruserDAO customeruserdao  = DAOFactory.getCustometuserDAO();
                 Customeruser customeruser = customeruserdao.findById(userid);
-                //ShopuserDAO shopuserdao = DAOFactory.getShopuserDAO();
-                //Shopuser shopuser = shopuserdao.findById(userid);
+
+
                 if (customeruser.getPswd()!=null&&customeruser.getPswd().equals(password)) {
-                    //request.setAttribute("msg","登录失败");
-                    //view=request.getRequestDispatcher("index.jsp");
-                    /*CarDAO cardao = DAOFactory.getCarDAO();
-                    List<Car> cars = cardao.findAll();
-                    List<KeyValuePair> lists =new ArrayList<KeyValuePair>();
-                    for(Car car:cars) {
-                        lists.add(new KeyValuePair(car.getBrand(),car.getModel()));
-                    }
-                    session.setAttribute("list",lists);
-                    request.setAttribute("userid",userid);//显示用户i
-                    CarinfoDAO carinfoDAO = DAOFactory.getCarinfoDAO();
-                    request.setAttribute("cars",carinfoDAO.findAllByShopId(userid));*/
-
-
+                  //密码正确进入主页面
                     view = request.getRequestDispatcher("WEB-INF/CustPage/main.html");
                 } else {
                     request.setAttribute("msg2", "登录失败");

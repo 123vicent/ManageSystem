@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>testsingle</title> 
+<title>recordDetail</title> 
 <!-- For-Mobile-Apps-and-Meta-Tags -->
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -67,49 +67,45 @@
 				<!-- banner -->
 				<div class="banner about-banner"> 
 					<div class="banner-img">  
-						<h3>车辆信息</h3>   
+						<h3>我的预约</h3>   
 					</div> 
 				</div>
 				<!-- //banner -->
 				<!-- properties --> 
 				<div class="w3agile properties">   
-					<div class="properties-img properties-img-single">
-						<img src="../../style/images/car1.png" alt="">
-						<!-- 需要根据car的id去加载car的图片 -->
-						<div class="view-caption">
-							<!--h4><span class="glyphicon glyphicon-map-marker"></span> Broome St, Canada, USA </h4==-->  
-						</div> 
-					</div>
+					
 					<div class="w3ls-details">   
-					<!--这里需要动态展示当前车辆的信息-->
-						<h4>奥迪A6</h4> 
-						<p class="agile-text">奥迪A6是一种小轿车 </p>
+						<!--车辆信息-->	
 						<div class="w3ls-text">
-							<h4>基本参数</h4>  
-							<p><b>车辆类型 :</b> 轿车 </p>
-							<p><b>座位数 :</b> 5座 </p>
-							<p><b>动力类型 :</b> 燃油 </p>
-							<p><b>参考价格 :</b> ¥300,000 </p>
+							<h4>预约信息</h4>  
+							<p><b>预约车型 :</b> AudiA6 </p>
+							<p><b>预约时间 :</b> 2016-07-11 9:30:00</p>
+							<p><b>预约经销商 :</b> XX车行光谷店 </p>
+							<p><b>预约类型 :</b> 汽车保养 </p>
+							<p><b>预约状态 :</b> 已完成 </p>
+							<p><b>完成时间 :</b> 201-07-11 17:30:00 (未完成则显示空格)</p>
+							<p><b>支付金额 :</b> 人民币1300元(未完成则显示空格) </p>
+							<br/>
+							<h4>备注</h4> 
+							<p class="agile-text">车辆表面的抛光打蜡</p>
 						</div>
+						<!--车辆信息-->
+						<br/><br/>
+						<center>
+							<a href = "appointmentView.html"><!--这里是返回预约列表的页面，两个按钮在<a>标签里，都是返回之前界面，需要修改-->
+							<input type="button" class="btn btn-danger"  value="撤销"></button>
+							<input type="button" class="btn btn-success"  value="返回"></button>
+							</a>
+						</center>
+												
+						
 					</div>
-					<div class="w3ls-features">   
-						<h3 class="w3ls-title">供货经销商</h3> 
-						<!--这里展示能够提供当前车辆的经销商列表-->
-						<ul> 
-							<li><span class="glyphicon glyphicon-ok"> </span> 经销商1 </li>
-							<li><span class="glyphicon glyphicon-ok"> </span> 经销商2 </li>
-							<li><span class="glyphicon glyphicon-ok"> </span> 经销商3 </li>
-							
-						</ul>
-					</div>
-					
-					
-					
+						
 				</div>
 				<!-- //about --> 
 				<!-- brands -->
 				<div class="w3agile brands"> 
-					<h3 class="w3ls-title">合作合作品牌</h3> 
+					<h3 class="w3ls-title">合作品牌</h3> 
 					<div class="brands-info">
 						<div class="brand-grids">
 							<a href="#"><img src="../../style/images/b1.jpg" alt=""/></a>
