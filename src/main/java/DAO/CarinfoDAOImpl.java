@@ -41,7 +41,7 @@ public class CarinfoDAOImpl implements CarinfoDAO{
         return  carinfoList;
     }
 
-    public List<Carinfo> findAllByTag(String shopuser_id,String brand,String model,String type){
+    public List<Carinfo> findAllByTag(String shopuser_id,String brand,String type){
         List<Carinfo> carinfos = new ArrayList<Carinfo>();
         String sql = "select * from carinfo where shopuser_id=?";
         PreparedStatement ps = null;
@@ -49,10 +49,6 @@ public class CarinfoDAOImpl implements CarinfoDAO{
         if(!(brand.equals("")||brand.equals("全部车辆")))
         {
             sql+="and brand='"+brand+"'";
-        }
-        if(!model.equals("全部车辆"))
-        {
-            sql+="and model='"+model+"'";
         }
         if(!type.equals("全部车辆")){
             sql+="and type='"+type+"'";

@@ -1,3 +1,4 @@
+/*
 package server;
 
 import org.apache.commons.fileupload.FileItem;
@@ -24,8 +25,10 @@ public class uploadImg extends HttpServlet {
     private static final int MAX_FILE_SIZE      = 1024 * 1024 * 40; // 40MB
     private static final int MAX_REQUEST_SIZE   = 1024 * 1024 * 50; // 50MB
 
+*/
 /**
-     * 上传数据及保存文件*/
+     * 上传数据及保存文件*//*
+
 
 
     public void doPost(HttpServletRequest request,
@@ -103,3 +106,4 @@ public class uploadImg extends HttpServlet {
         doPost(request,response);
     }
 }
+*/

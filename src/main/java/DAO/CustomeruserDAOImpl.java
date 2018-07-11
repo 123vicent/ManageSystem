@@ -3,6 +3,7 @@ package DAO;
 import dbcon.DBConnect;
 import model.Customeruser;
 
+import javax.servlet.RequestDispatcher;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -126,5 +127,30 @@ public class CustomeruserDAOImpl implements CustomeruserDAO {
             e.printStackTrace();
         }
         return cusList;
+    }
+
+    public Customeruser findByNamePhone(String cus_name, String cus_phone) {
+        Customeruser cu = new Customeruser();
+        String sql = "select * from customeruser where cus_name=? and cus_phone=?";
+        PreparedStatement ps = null;
+        ResultSet rs = null;
+        try {
+            ps = conn.prepareStatement(sql);
+            ps.setString(1,cus_name);
+            ps.setString(2,cus_phone);
+            rs = ps.executeQuery();
+            while(rs.next()){
+                cu.setCususer_id(rs.getString(1));
+                cu.setPswd(rs.getString(2));
+                cu.setCus_name(rs.getString(3));
+                cu.setCus_phone(rs.getString(4));
+                cu.setSex(rs.getString(5));
+                cu.setBirthday(rs.getDate(6));
+                cu.setAddress(rs.getString(7));
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return cu;
     }
 }

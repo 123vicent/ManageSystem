@@ -2,13 +2,9 @@ package server;
 
 import DAO.DAOFactory;
 import DAO.ShopuserDAO;
-import dbcon.DBConnect;
 import model.Shopuser;
 
 import java.io.IOException;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;

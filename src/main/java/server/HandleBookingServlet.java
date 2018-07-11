@@ -2,15 +2,8 @@ package server;
 import DAO.DAOFactory;
 import DAO.ShopaptDAO;
 import basic.Shopapt;
-import dbcon.DBConnect;
-import model.Appointment;
 
 import java.io.IOException;
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.util.ArrayList;
 import java.util.List;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;

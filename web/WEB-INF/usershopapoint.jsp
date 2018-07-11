@@ -246,14 +246,6 @@
                               <option value="Lamborghini">Lamborghini</option>
                               <option value="Rolls-Royce">Rolls-Royce</option>
                           </select>
-                          <label>车型号</label>
-                          <select name="Bymodel" style="width:100px;height:35px">
-                              <option value="全部车辆">所有型号</option>
-                              <option value="Benz307">Benz307</option>
-                              <option value="A6">A6</option>
-                              <option value="URUS">URUS</option>
-                              <option value="幻影">幻影</option>
-                          </select>
                           <label>类型</label>
                           <select name="Bytype" style="width:100px;height:35px">
                               <option value="全部车辆">所有类型</option>
@@ -377,9 +369,9 @@
 						<form action="/handlebook" class="navbar-form navbar-left">
                             <label>预约状态</label>
 							<select name="appointstate" style="width:100px;height:35px">
-								<option >全部预约</option>
-								<option >已处理</option>
-								<option >待处理</option>
+                                <option >全部预约</option>
+                                <option >已接受</option>
+                                <option >待接受</option>
 							</select>
                             <label>预约类型</label>
                             <select name="appointtype" style="width:100px;height:35px">
@@ -390,42 +382,53 @@
                                 <option >购车预约</option>
                             </select>
 							<input type="text" class="form-control" name="customername" placeholder="输入需要查询的客户姓名"></input>
-								<button id="queryBtn2" type="submit" class="btn btn-default" class="btn-group pull-left" style="margin-left: 10px;">
+                            <input type="text" class="form-control" name="ap_id" placeholder="输入需要查询的预约号"></input>
+                            <button id="queryBtn2" type="submit" class="btn btn-default" class="btn-group pull-left" style="margin-left: 10px;">
 								<span class="glyphicon glyphicon-search" aria-hidden="true"></span>查询</button>
 						</form>
 					<p></br></br></br>
                               <font size="4">
                                   查询结果
                               </font>
-                          </p></br>
+                          </p></br><br>
+                          <form action="/dealapt">
 
-                          <table class="table table-bordered table-striped">
+                              <table class="table table-bordered table-striped">
 
-                              <thead>
-                              <tr>
-                                  <th>预约号</th>
-                                  <th>客户姓名</th>
-                                  <th>联系方式</th>
-                                  <th>预约类型</th>
-                                  <th>预约时间</th>
-                                  <th>预约状态</th>
-                              </tr>
-                              </thead>
-                              <%List<Shopapt> shopapts = (List<Shopapt>) request.getAttribute("userapoint");
-                                  i = 0;%>
-                              <%for(Shopapt shopapt:shopapts){%>
-                              <tr>
-                              <th><%=i%></th>
-                              <th><%=shopapt.getCus_name()%></th>
-                              <th><%=shopapt.getCus_phone()%></th>
-                              <th><%=shopapt.getAp_type()%></th>
-                              <th><%=shopapt.getAp_time()%></th>
-                              <th><%=shopapt.getAp_state()%></th>
-                              <%i++;%>
-                              <%}%>
-                              </tr>
-                              </tbody>
-                          </table>
+                                  <thead>
+                                  <tr>
+                                      <th>预约号</th>
+                                      <th>品牌</th>
+                                      <th>型号</th>
+                                      <th>客户姓名</th>
+                                      <th>联系方式</th>
+                                      <th>预约类型</th>
+                                      <th>预约时间</th>
+                                      <th>预约状态</th>
+                                  </tr>
+                                  </thead>
+                                  <%List<Shopapt> shopapts = (List<Shopapt>) request.getAttribute("userapoint");
+                                      i = 0;%>
+                                  <%for(Shopapt shopapt:shopapts){%>
+                                  <tr>
+                                      <th><%=shopapt.getAppointment_id()%></th>
+                                      <th><%=shopapt.getBrand()%></th>
+                                      <th><%=shopapt.getModel()%></th>
+                                      <th><%=shopapt.getCus_name()%></th>
+                                      <th><%=shopapt.getCus_phone()%></th>
+                                      <th><%=shopapt.getAp_type()%></th>
+                                      <th><%=shopapt.getAp_time()%></th>
+                                      <th><%=shopapt.getAp_state()%>
+                                          <button id="queryBtn2" name="deal" value=<%=shopapt.getAppointment_id()%> type="submit" class="btn btn-default" class="btn-group pull-left" style="margin-left: 10px;">
+                                              处理<tton></th>
+
+                                      <%i++;%>
+                                      <%}%>
+                                  </tr>
+                                  </tbody>
+                              </table>
+                          </form>
+
                       </div>
 				<div class="tab-pane fade" id="4">
 					<p>

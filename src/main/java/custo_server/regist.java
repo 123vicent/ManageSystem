@@ -1,19 +1,87 @@
 package custo_server;
 
+import DAO.CustomeruserDAO;
+import DAO.DAOFactory;
+import model.Customeruser;
+
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.sql.Date;
 
 @WebServlet(name = "regist",urlPatterns = {"/regist"})
 public class regist extends HttpServlet {
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    public void doPost(HttpServletRequest request,
+                       HttpServletResponse response)
+            throws ServletException, IOException {
+        String id = request.getParameter("id");
+        String pswd = request.getParameter("password");
+        String chkpswd = request.getParameter("chkpassword");
+        String phone = request.getParameter("phone");
+        String name = request.getParameter("name");
+        String address = null;
+        String birthday = "2018-01-01";
+        String sex = null;
 
+        RequestDispatcher view;
+
+        CustomeruserDAO customeruserdao = DAOFactory.getCustometuserDAO();
+        Customeruser customeruser = customeruserdao.findById(id);
+
+        if(customeruser.getCususer_id()!=null)
+        {
+            request.setAttribute("msg","该用户名已被注册!");
+            view=request.getRequestDispatcher("WEB-INF/CustPage/cusregister.jsp");
+
+        }else if(!pswd.equals(chkpswd)){
+            request.setAttribute("chkpswd","请确认两次密码保持一致!");
+            view=request.getRequestDispatcher("WEB-INF/CustPage/cusregister.jsp");
+        }
+        else
+        {
+            customeruser = new Customeruser();
+            customeruser.setCususer_id(id);
+            customeruser.setPswd(pswd);
+            customeruser.setCus_phone(phone);
+            customeruser.setAddress(address);
+            customeruser.setBirthday(Date.valueOf(birthday));
+            customeruser.setSex(sex);
+            customeruser.setCus_name(name);
+
+
+            customeruserdao.insert(customeruser);
+            view = request.getRequestDispatcher("WEB-INF/CustPage/cuslogin.jsp");
+        }
+        /*try {
+            rs = stmt.executeQuery("select * from user");
+            while(rs.next())
+            {
+                if(rs.getString(2).equals(identity)) {
+                    request.setAttribute("msg","该用户名已被注册!");
+                    view=request.getRequestDispatcher("WEB-INF/register.jsp");
+                    view.forward(request,response);
+                }
+            }
+            int i=(int)(Math.random()*900)+100;
+            String id =  Integer.toString(i);
+            String sql  = "insert into user values ('"+id+"','"+identity+"','"+password+"','"+phone+"','"+email+"')";
+            stmt.execute(sql);
+        } catch (SQLException e) {
+            e.printStackTrace();
+            request.setAttribute("msg","注册失败");
+            view=request.getRequestDispatcher("WEB-INF/register.jsp");
+            view.forward(request,response);
+        }*/
+        view.forward(request,response);
     }
 
-    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
+    public void doGet(HttpServletRequest request,
+                      HttpServletResponse response)
+            throws ServletException, IOException {
+        doPost(request,response);
     }
 }
