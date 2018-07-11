@@ -434,8 +434,8 @@
                               <label>预约状态</label>
                               <select name="appointstate" style="width:100px;height:35px">
                                   <option >全部预约</option>
-                                  <option >已处理</option>
-                                  <option >待处理</option>
+                                  <option >已接受</option>
+                                  <option >待接受</option>
                               </select>
                               <label>预约类型</label>
                               <select name="appointtype" style="width:100px;height:35px">
@@ -446,6 +446,7 @@
                                   <option >购车预约</option>
                               </select>
                               <input type="text" class="form-control" name="customername" placeholder="输入需要查询的客户姓名"></input>
+                              <input type="text" class="form-control" name="ap_id" placeholder="输入需要查询的预约号"></input>
                               <button id="queryBtn2" type="submit" class="btn btn-default" class="btn-group pull-left" style="margin-left: 10px;">
                                   <span class="glyphicon glyphicon-search" aria-hidden="true"></span>查询</button>
                           </form>
@@ -460,6 +461,8 @@
                               <thead>
                               <tr>
                                   <th>预约号</th>
+                                  <th>品牌</th>
+                                  <th>型号</th>
                                   <th>客户姓名</th>
                                   <th>联系方式</th>
                                   <th>预约类型</th>
