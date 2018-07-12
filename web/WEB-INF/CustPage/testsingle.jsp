@@ -1,3 +1,5 @@
+<%@ page import="basic.Carview" %>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -7,6 +9,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="keywords" content="Fortune Estates Widget Responsive, Login Form Web Template, Flat Pricing Tables, Flat Drop-Downs, Sign-Up Web Templates, Flat Web Templates, Login Sign-up Responsive Web Template, SmartPhone Compatible Web Template, Free Web Designs for Nokia, Samsung, LG, Sony Ericsson, Motorola Web Design" />
 <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
+	<script language="javascript" type="text/javascript" src="../../style/js/My97DatePicker/WdatePicker.js"></script>
 <!-- //For-Mobile-Apps-and-Meta-Tags -->
 <!-- Custom Theme files -->
 <link href="../../style/css/bootstrap.css" type="text/css" rel="stylesheet" media="all">
@@ -45,12 +48,12 @@
 			<nav class="top-nav">
 				<ul class="icon-list">
 					<li class="menu-title">CarManage</li>
-					<li><a href="/jump?action=主页"><i class="glyphicon glyphicon-home"></i> 主页 </a></li>
-					<li><a href="/jump?action=个人信息"><i class="glyphicon glyphicon-info-sign"></i> 个人信息 </a></li>
-					<li><a href="/jump?action=寻车试驾"><i class="glyphicon glyphicon-eye-open"></i> 寻车试驾 </a></li>
-					<li><a href="/jump?action=豪车鉴赏"><i class="glyphicon glyphicon-picture"></i> 豪车鉴赏</a></li>
-					<li><a href="/jump?action=养修预约"><i class="glyphicon glyphicon-envelope"></i> 养修预约 </a></li>
-					<li><a href="/jump?action=预约历史"><i class="glyphicon glyphicon-briefcase"></i> 预约历史 </a> </li>
+					<li><a href="/jump?action=homepage"><i class="glyphicon glyphicon-home"></i> 主页 </a></li>
+					<li><a href="/jump?action=personal_info"><i class="glyphicon glyphicon-info-sign"></i> 个人信息 </a></li>
+					<li><a href="/jump?action=testdrive"><i class="glyphicon glyphicon-eye-open"></i> 寻车试驾 </a></li>
+					<li><a href="/jump?action=viewcar"><i class="glyphicon glyphicon-picture"></i> 豪车鉴赏</a></li>
+					<li><a href="/jump?action=reserve"><i class="glyphicon glyphicon-envelope"></i> 养修预约 </a></li>
+					<li><a href="/jump?action=apt_record"><i class="glyphicon glyphicon-briefcase"></i> 预约历史 </a> </li>
 				</ul>
 			</nav>
 			<button class="close-button" id="close-button">C</button>
@@ -71,7 +74,8 @@
 					</div> 
 				</div>
 				<!-- //banner -->
-				<!-- properties --> 
+				<!-- properties -->
+				<%Carview car = (Carview)request.getAttribute("car");%>
 				<div class="w3agile properties">   
 					<div class="properties-img properties-img-single">
 						<img src="../../style/images/car1.png" alt="">
@@ -82,29 +86,32 @@
 					</div>
 					<div class="w3ls-details">   
 					<!--这里需要动态展示当前车辆的信息-->
-						<h4>奥迪A6</h4> 
+						<h4><%=car.getBrand()%></h4>
 						<p class="agile-text">奥迪A6是一种小轿车 </p>
 						<div class="w3ls-text">
+							<p><b>经销商 :</b><%=car.getShop_name()%></p>
+							<p><b>联系电话 :</b><%=car.getShop_phone()%></p>
+							<p><b>地址 :</b><%=car.getShop_address()%></p>
 							<h4>基本参数</h4>  
-							<p><b>车辆类型 :</b> 轿车 </p>
-							<p><b>座位数 :</b> 5座 </p>
-							<p><b>动力类型 :</b> 燃油 </p>
-							<p><b>参考价格 :</b> ¥300,000 </p>
+							<p><b>车辆类型 :</b> <%=car.getType()%> </p>
+							<p><b>座位数 :</b> <%=car.getSeats()%> </p>
+							<p><b>动力类型 :</b> <%=car.getPower()%> </p>
+							<p><b>参考价格 :</b> ¥<%=car.getPrice()%> </p>
+							<p><b>详细描述 :</b><%=car.getDescription()%></p>
 						</div>
 					</div>
-					<div class="w3ls-features">   
-						<h3 class="w3ls-title">供货经销商</h3> 
-						<!--这里展示能够提供当前车辆的经销商列表-->
-						<ul> 
-							<li><span class="glyphicon glyphicon-ok"> </span> 经销商1 </li>
-							<li><span class="glyphicon glyphicon-ok"> </span> 经销商2 </li>
-							<li><span class="glyphicon glyphicon-ok"> </span> 经销商3 </li>
-							
-						</ul>
+					<div class="w3ls-related">
+						<h3 class="w3ls-title">试驾预约</h3>
+						<div class="contact-form">
+							<form action="/testdrive_book" method="post">
+								<input class="Wdate" style="height: 35px;" name="ap_time" type="text" id="d15" onfocus="WdatePicker({dateFmt:'yyyy-MM-dd HH:mm:ss'})" placeholder="选择日期" required=""/>
+								<input type="text" name="phone" placeholder="联系电话" maxlength="11" required="">
+								<!--textarea name="Message" placeholder="Message" required=""></textarea-->
+								<textarea name="Message" placeholder="问题描述" required></textarea>
+								<center><input type="submit" value="提交"></center>
+							</form>
+						</div>
 					</div>
-					
-					
-					
 				</div>
 				<!-- //about --> 
 				<!-- brands -->

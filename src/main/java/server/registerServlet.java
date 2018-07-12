@@ -35,11 +35,11 @@ public class registerServlet extends HttpServlet {
         if(shopuser.getShopuser_id()!=null)
         {
             request.setAttribute("msg","该用户名已被注册!");
-            view=request.getRequestDispatcher("WEB-INF/register.jsp");
+            view=request.getRequestDispatcher("ShopPage/register.jsp");
 
         }else if(!pswd.equals(chkpswd)){
             request.setAttribute("chkpswd","请确认两次密码保持一致!");
-            view=request.getRequestDispatcher("WEB-INF/register.jsp");
+            view=request.getRequestDispatcher("ShopPage/register.jsp");
         }
         else
             {

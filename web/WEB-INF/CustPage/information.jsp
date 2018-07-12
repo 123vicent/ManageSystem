@@ -47,12 +47,12 @@
 			<nav class="top-nav">
 				<ul class="icon-list">
 					<li class="menu-title">CarManage</li>
-					<li><a href="/jump?action=主页"><i class="glyphicon glyphicon-home"></i> 主页 </a></li>
-					<li><a class="active" href="/jump?action=个人信息"><i class="glyphicon glyphicon-info-sign"></i> 个人信息 </a></li>
-					<li><a href="/jump?action=寻车试驾"><i class="glyphicon glyphicon-eye-open"></i> 寻车试驾 </a></li>
-					<li><a href="/jump?action=豪车鉴赏"><i class="glyphicon glyphicon-picture"></i> 豪车鉴赏</a></li>
-					<li><a href="/jump?action=养修预约"><i class="glyphicon glyphicon-envelope"></i> 养修预约 </a></li>
-					<li><a href="/jump?action=预约历史"><i class="glyphicon glyphicon-briefcase"></i> 预约历史 </a> </li>
+					<li><a href="/jump?action=homepage"><i class="glyphicon glyphicon-home"></i> 主页 </a></li>
+					<li><a class="active" href="/jump?action=personal_info"><i class="glyphicon glyphicon-info-sign"></i> 个人信息 </a></li>
+					<li><a href="/jump?action=testdrive"><i class="glyphicon glyphicon-eye-open"></i> 寻车试驾 </a></li>
+					<li><a href="/jump?action=viewcar"><i class="glyphicon glyphicon-picture"></i> 豪车鉴赏</a></li>
+					<li><a href="/jump?action=reserve"><i class="glyphicon glyphicon-envelope"></i> 养修预约 </a></li>
+					<li><a href="/jump?action=apt_record"><i class="glyphicon glyphicon-briefcase"></i> 预约历史 </a> </li>
 				</ul>
 			</nav>
 			<button class="close-button" id="close-button">C</button>
@@ -77,10 +77,11 @@
 				<!--这里需要动态显示用户的信息-->
 				<div class="w3agile agents"> 
 					<h3 class="w3ls-title">个人信息</h3> 
-					<div class="w3agent-grid"> 
-						<div class="stack twisted">	
-							<img src="../../style/images/a1.jpg" alt=" " class="img-responsive">
-						</div>   						
+					<div class="w3agent-grid">
+						<div class="form-group">
+							<input type="file" id="inputfile" style="width:100%" ></br>
+							<button type="button" class="btn btn-primary" data-dismiss="modal">上传头像</button>
+						</div>
 						<div class="w3agent-text">
 							<%Customeruser customeruser = (Customeruser)request.getAttribute("user_info");%>
 							<h4><%=customeruser.getCus_name()%></h4>

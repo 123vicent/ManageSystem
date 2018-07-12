@@ -1,7 +1,10 @@
+<%@ page import="java.util.List" %>
+<%@ page import="basic.Carview" %>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <!DOCTYPE html>
 <html>
 <head>
-<title>reserve</title> 
+<title>testdrive</title> 
 <!-- For-Mobile-Apps-and-Meta-Tags -->
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -44,12 +47,12 @@
 			<nav class="top-nav">
 				<ul class="icon-list">
 					<li class="menu-title">CarManage</li>
-					<li><a href="/jump?action=主页"><i class="glyphicon glyphicon-home"></i> 主页 </a></li>
-					<li><a href="/jump?action=个人信息"><i class="glyphicon glyphicon-info-sign"></i> 个人信息 </a></li>
-					<li><a href="/jump?action=寻车试驾"><i class="glyphicon glyphicon-eye-open"></i> 寻车试驾 </a></li>
-					<li><a href="/jump?action=豪车鉴赏"><i class="glyphicon glyphicon-picture"></i> 豪车鉴赏</a></li>
-					<li><a class="active"  href="/jump?action=养修预约"><i class="glyphicon glyphicon-envelope"></i> 养修预约 </a></li>
-					<li><a href="/jump?action=预约历史"><i class="glyphicon glyphicon-briefcase"></i> 预约历史 </a></li>
+					<li><a href="/jump?action=homepage"><i class="glyphicon glyphicon-home"></i> 主页 </a></li>
+					<li><a href="/jump?action=personal_info"><i class="glyphicon glyphicon-info-sign"></i> 个人信息 </a></li>
+					<li><a class="active" href="/jump?action=testdrive"><i class="glyphicon glyphicon-eye-open"></i> 寻车试驾 </a></li>
+					<li><a href="/jump?action=viewcar"><i class="glyphicon glyphicon-picture"></i> 豪车鉴赏</a></li>
+					<li><a href="/jump?action=reserve"><i class="glyphicon glyphicon-envelope"></i> 养修预约 </a></li>
+					<li><a href="/jump?action=apt_record"><i class="glyphicon glyphicon-briefcase"></i> 预约历史 </a> </li>
 				</ul>
 			</nav>
 			<button class="close-button" id="close-button">C</button>
@@ -66,34 +69,73 @@
 				<!-- banner -->
 				<div class="banner about-banner"> 
 					<div class="banner-img">  
-						<h3>养修预约</h3>   
+						<h3>寻车试驾</h3>   
 					</div> 
 				</div>
 				<!-- //banner -->
-				<!-- contact -->
-				<div class="w3agile contact"> 
-					<h3 class="w3ls-title">未完成</h3>
-					<div class="contact-form"> 
-						<form action="#" method="post">
-							<input type="text" name="Name" placeholder="Name" required="">
-							<input type="text" name="Email" placeholder="Email" required="">
-							<input type="text" name="Subject" placeholder="Subject" required="">
-							<textarea name="Message" placeholder="Message" required=""></textarea>
-							<input type="submit" value="SEND">
-						</form> 
+
+				<div class="w3agile agents">
+					<h3 class="w3ls-title">寻找爱车</h3>
+					<form action="/searchcar">
+						<div class="input-group">
+							<input type="text" name= "con" class="form-control" placeholder="查找..." style="width:80%" >
+							<span class="input-group-btn">
+							<button class="btn btn-default" type="submit">Go!</button>
+							</span>
+						</div><!-- /input-group -->
+						<div>
+							<lable>价格区间：¥</lable>
+							<input type="text" name="min_price" style="width: 20%">--<input name="max_price"type="text"  style="width:20%">
+						</div>
+					</form>
+
+					<% List<Carview> cars = (List<Carview>)request.getAttribute("cars");%>
+					<%if(cars!=null){
+					  	for(Carview car:cars){%>
+					<div class="properties-bottom">
+						<div class="properties-img">
+							<img src="../../style/images/1.jpg" alt="">
+							<div class="view-caption"><!--加rent-caption为蓝色-->
+								<h4><span class="glyphicon glyphicon-eye-open"></span> <%=car.getBrand()%> </h4> <!--车辆简介-->
+							</div>
+							<div class="w3ls-buy">
+								<a href="/jump?action=car_detail&carid=<%=car.getCar_id()%>&shopuserid=<%=car.getShopuser_id()%>">详细</a> <!--加class="rent"为蓝色-->
+							</div>
+						</div>
+						<div class="w3ls-text">
+							<h5><%=car.getModel()%></h5><!--车名-->
+							<h6>¥<%=car.getPrice()%></h6><!--价格-->
+						</div>
 					</div>
-					<div class="contact-form"> 
-						<h3 class="w3ls-title">Contact Info</h3>
-						<p><b>Address :</b> Lorem St, NY 10002, Canada. </p>
-						<p><b>Telephone :</b> (2345) 111 222 3333</p>
-						<p><b>Fax :</b> (1234) 888 8884</p>
-						<p><b>Email :</b> <a href="mailto:example@mail.com">mail@example.com</a></p>
-					</div>
+					<%}}%>
+					<!--<div class="properties-bottom">
+						<div class="properties-img">
+							<img src="../../style/images/1.jpg" alt="">
+							<div class="view-caption rent-caption">
+								<h4><span class="glyphicon glyphicon-eye-open"></span> 123 </h4>
+							</div>
+							<div class="w3ls-buy" >
+								<a href="/jump?action=车辆信息" class="rent">详细</a>
+							</div>
+						</div>
+						<div class="w3ls-text">
+							<h5>Car2</h5>
+							<h6>¥500k</h6>
+						</div>
+					</div>-->
+					<div class="clearfix"> </div>
 				</div>
-				<!-- //contact --> 
+				<!--<form action="/testdrive_book">
+				<div class="w3agile agents">
+					<h3 class="w3ls-title">试驾预约</h3>
+						<div align="center">
+						<button class="btn btn-default" type="submit" onclick="window.location.href='testdrive2.html'">进行预约</button>
+						</div>
+				</div>
+				</form>-->
 				<!-- brands -->
 				<div class="w3agile brands"> 
-					<h3 class="w3ls-title">Our Clients</h3> 
+					<h3 class="w3ls-title">合作品牌</h3> 
 					<div class="brands-info">
 						<div class="brand-grids">
 							<a href="#"><img src="../../style/images/b1.jpg" alt=""/></a>
@@ -119,7 +161,6 @@
 				<!-- //brands -->
 				<!-- footer -->
 				<div class="w3agile footer"> 
-
 
 				</div> 
 			</div>

@@ -32,7 +32,7 @@ public class SearchUserServlet extends HttpServlet {
         shopusers.add(shopuserDAO.findById(userid));
         request.setAttribute("userAll",shopusers);
 
-        request.getRequestDispatcher("WEB-INF/UserInfor.jsp").forward(request,response);
+        request.getRequestDispatcher("ShopPage/UserInfor.jsp").forward(request,response);
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

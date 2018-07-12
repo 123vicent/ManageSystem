@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>recordDetail</title> 
+<title>Fortune Estates a Mobile App Flat Bootstrap Responsive Website Template | Single Page :: 小贝壳网站模板</title> 
 <!-- For-Mobile-Apps-and-Meta-Tags -->
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -45,12 +45,12 @@
 			<nav class="top-nav">
 				<ul class="icon-list">
 					<li class="menu-title">CarManage</li>
-					<li><a href="/jump?action=主页"><i class="glyphicon glyphicon-home"></i> 主页 </a></li>
-					<li><a href="/jump?action=个人信息"><i class="glyphicon glyphicon-info-sign"></i> 个人信息 </a></li>
-					<li><a href="/jump?action=寻车试驾"><i class="glyphicon glyphicon-eye-open"></i> 寻车试驾 </a></li>
-					<li><a href="/jump?action=豪车鉴赏"><i class="glyphicon glyphicon-picture"></i> 豪车鉴赏</a></li>
-					<li><a href="/jump?action=养修预约"><i class="glyphicon glyphicon-envelope"></i> 养修预约 </a></li>
-					<li><a href="/jump?action=预约历史"><i class="glyphicon glyphicon-briefcase"></i> 预约历史 </a> </li>
+					<li><a href="/jump?action=homepage"><i class="glyphicon glyphicon-home"></i> 主页 </a></li>
+					<li><a href="/jump?action=personal_info"><i class="glyphicon glyphicon-info-sign"></i> 个人信息 </a></li>
+					<li><a href="/jump?action=testdrive"><i class="glyphicon glyphicon-eye-open"></i> 寻车试驾 </a></li>
+					<li><a href="/jump?action=viewcar"><i class="glyphicon glyphicon-picture"></i> 豪车鉴赏</a></li>
+					<li><a href="/jump?action=reserve"><i class="glyphicon glyphicon-envelope"></i> 养修预约 </a></li>
+					<li><a href="/jump?action=apt_record"><i class="glyphicon glyphicon-briefcase"></i> 预约历史 </a> </li>
 				</ul>
 			</nav>
 			<button class="close-button" id="close-button">C</button>
@@ -60,7 +60,9 @@
 				<div class="menu-icon">   
 					<button class="menu-button" id="open-button">O</button>
 				</div>
-
+				<div class="logo">
+					<h2><a href="main.html">FE</a></h2>
+				</div>
 				<div class="clearfix"> </div>
 			</div>
 			<div class="content">
@@ -77,24 +79,15 @@
 					<div class="w3ls-details">   
 						<!--车辆信息-->	
 						<div class="w3ls-text">
-							<h4>预约信息</h4>  
-							<p><b>预约车型 :</b> AudiA6 </p>
-							<p><b>预约时间 :</b> 2016-07-11 9:30:00</p>
-							<p><b>预约经销商 :</b> XX车行光谷店 </p>
-							<p><b>预约类型 :</b> 汽车保养 </p>
-							<p><b>预约状态 :</b> 已完成 </p>
-							<p><b>完成时间 :</b> 201-07-11 17:30:00 (未完成则显示空格)</p>
-							<p><b>支付金额 :</b> 人民币1300元(未完成则显示空格) </p>
-							<br/>
-							<h4>备注</h4> 
-							<p class="agile-text">车辆表面的抛光打蜡</p>
+							<center><h2>提交成功!</h2> </center> 
+							 
+							
 						</div>
 						<!--车辆信息-->
 						<br/><br/>
 						<center>
-							<a href = "appointmentView.html"><!--这里是返回预约列表的页面，两个按钮在<a>标签里，都是返回之前界面，需要修改-->
-							<input type="button" class="btn btn-danger"  value="撤销"></button>
-							<input type="button" class="btn btn-success"  value="返回"></button>
+							<a href = "/jump?action=apt_record"><!--这里是返回预约列表的页面-->
+							<input type="button" class="btn btn-success"  value="确认"></button>
 							</a>
 						</center>
 												
@@ -102,7 +95,6 @@
 					</div>
 						
 				</div>
-				<!-- //about --> 
 				<!-- brands -->
 				<div class="w3agile brands"> 
 					<h3 class="w3ls-title">合作品牌</h3> 

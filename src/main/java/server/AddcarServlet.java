@@ -140,7 +140,7 @@ public class AddcarServlet extends HttpServlet {
             }
         }
 
-            request.getRequestDispatcher("WEB-INF/shopaddcar.jsp").forward(request, response);
+            request.getRequestDispatcher("ShopPage/funcUploadCar.jsp").forward(request, response);
 
     }
 

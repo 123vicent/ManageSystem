@@ -59,6 +59,18 @@ public class log extends HttpServlet {
 
                 if (customeruser.getPswd()!=null&&customeruser.getPswd().equals(password)) {
                   //密码正确进入主页面
+                    CarDAO cardao = DAOFactory.getCarDAO();
+                    List<Car> cars = cardao.findAll();
+                    List<KeyValuePair> lists =new ArrayList<KeyValuePair>();
+                    for(Car car:cars) {
+                        lists.add(new KeyValuePair(car.getBrand(),car.getModel()));
+                    }
+                    session.setAttribute("lists",lists);
+
+                    ShopuserDAO shopuserDAO  = DAOFactory.getShopuserDAO();
+                    List<Shopuser> shopusers = shopuserDAO.findAll();
+                    session.setAttribute("shopusers",shopusers);
+
                     view = request.getRequestDispatcher("WEB-INF/CustPage/main.html");
                 } else {
                     request.setAttribute("msg2", "登录失败");
