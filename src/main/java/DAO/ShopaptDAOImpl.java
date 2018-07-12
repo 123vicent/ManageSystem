@@ -33,6 +33,9 @@ public class ShopaptDAOImpl implements ShopaptDAO {
                 shopapt.setAp_type(rs.getString(7));
                 shopapt.setAp_time(rs.getTimestamp(8));
                 shopapt.setAp_state(rs.getString(9));
+                shopapt.setComplete_time(rs.getTimestamp(10));
+                shopapt.setPayment(rs.getDouble(11));
+                shopapt.setDescription(rs.getString(12));
 
             }
         } catch (SQLException e) {
@@ -43,7 +46,7 @@ public class ShopaptDAOImpl implements ShopaptDAO {
 
     public List<Shopapt> findAllByShopId(String shopuser_id){
         List<Shopapt> shopaptList = new ArrayList<Shopapt>();
-        String sql = "select * from shopapt where shopuser_id =?";
+        String sql = "select * from shopapt where shopuser_id =? order by ap_time desc";
         PreparedStatement ps = null;
         ResultSet rs = null;
         try {
@@ -61,6 +64,9 @@ public class ShopaptDAOImpl implements ShopaptDAO {
                 shopapt.setAp_type(rs.getString(7));
                 shopapt.setAp_time(rs.getTimestamp(8));
                 shopapt.setAp_state(rs.getString(9));
+                shopapt.setComplete_time(rs.getTimestamp(10));
+                shopapt.setPayment(rs.getDouble(11));
+                shopapt.setDescription(rs.getString(12));
 
                 shopaptList.add(shopapt);
             }
@@ -90,6 +96,7 @@ public class ShopaptDAOImpl implements ShopaptDAO {
         if(!ap_id.equals("")){
             sql+="and appointment_id='"+ap_id+"'";
         }
+        sql += " order by ap_time desc";
         try {
             ps = conn.prepareStatement(sql);
             ps.setString(1,shopuser_id);
@@ -105,6 +112,9 @@ public class ShopaptDAOImpl implements ShopaptDAO {
                 shopapt.setAp_type(rs.getString(7));
                 shopapt.setAp_time(rs.getTimestamp(8));
                 shopapt.setAp_state(rs.getString(9));
+                shopapt.setComplete_time(rs.getTimestamp(10));
+                shopapt.setPayment(rs.getDouble(11));
+                shopapt.setDescription(rs.getString(12));
 
                 shopaptList.add(shopapt);
             }
@@ -113,23 +123,5 @@ public class ShopaptDAOImpl implements ShopaptDAO {
         }
         return shopaptList;
     }
-
-    public Boolean update(Shopapt shopapt) {
-        String sql = "update shopapt set ap_state=? where appointment_id=?";
-        PreparedStatement ps = null;
-
-        try {
-            ps = conn.prepareStatement(sql);
-            ps.setString(1,shopapt.getAp_state());
-            ps.setString(2,shopapt.getAppointment_id());
-
-            ps.execute();
-            return true;
-        } catch (SQLException e) {
-            e.printStackTrace();
-            return false;
-        }
-    }
-
 
 }

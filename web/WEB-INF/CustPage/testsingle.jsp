@@ -105,7 +105,6 @@
 						<div class="contact-form">
 							<form action="/testdrive_book" method="post">
 								<input class="Wdate" style="height: 35px;" name="ap_time" type="text" id="d15" onfocus="WdatePicker({dateFmt:'yyyy-MM-dd HH:mm:ss'})" placeholder="选择日期" required=""/>
-								<input type="text" name="phone" placeholder="联系电话" maxlength="11" required="">
 								<!--textarea name="Message" placeholder="Message" required=""></textarea-->
 								<textarea name="Message" placeholder="问题描述" required></textarea>
 								<center><input type="submit" value="提交"></center>

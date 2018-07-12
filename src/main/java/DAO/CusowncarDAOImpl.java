@@ -25,8 +25,8 @@ public class CusowncarDAOImpl implements CusowncarDAO {
             ps.setString(2,coc.getShopuser_id());
             ps.setString(3,coc.getCususer_id());
             ps.setString(4,coc.getCar_id());
-            ps.setDate(4,coc.getRegister_time());
-            ps.setDouble(5,coc.getPayment());
+            ps.setDate(5,coc.getRegister_time());
+            ps.setDouble(6,coc.getPayment());
 
             ps.executeUpdate();
             ps.close();

@@ -14,6 +14,9 @@ public class Shopapt {
     private String ap_type;
     private Timestamp ap_time;
     private String ap_state;
+    private Timestamp complete_time;
+    private double payment;
+    private String description;
 
     public String getAppointment_id() {
         return appointment_id;
@@ -85,5 +88,29 @@ public class Shopapt {
 
     public void setAp_state(String ap_state) {
         this.ap_state = ap_state;
+    }
+
+    public Timestamp getComplete_time() {
+        return complete_time;
+    }
+
+    public void setComplete_time(Timestamp complete_time) {
+        this.complete_time = complete_time;
+    }
+
+    public double getPayment() {
+        return payment;
+    }
+
+    public void setPayment(double payment) {
+        this.payment = payment;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
     }
 }

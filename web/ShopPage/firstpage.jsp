@@ -102,7 +102,7 @@
                           <div class="carousel-caption">
                               <h1>标题一</h1>
                               <p>段落一</p>
-                              <p><a class="btn btn-lg btn-primary" data-toggle="tab" href="#B" data-toggle="tab"role="button">马上使用功能</a></p>
+                              <p><a class="btn btn-lg btn-primary" data-toggle="tab" href="/SwitchPage?page=funcpage" data-toggle="tab"role="button">马上使用功能</a></p>
                           </div>
                       </div>
                   </div>
