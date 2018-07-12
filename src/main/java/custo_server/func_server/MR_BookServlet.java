@@ -91,7 +91,7 @@ public class MR_BookServlet extends HttpServlet {
 
         String ap_state = "待接受";
 
-        String Message = request.getParameter("Message");
+        String Message = new String(request.getParameter("Message").getBytes("ISO8859-1"),"UTF-8");
         System.out.println("描述："+Message);
 
         Appointment appointment = new Appointment();

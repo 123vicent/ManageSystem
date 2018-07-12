@@ -1,3 +1,6 @@
+<%@ page import="java.util.List" %>
+<%@ page import="model.Car" %>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -74,29 +77,37 @@
 				<div class="w3agile agents">
 					<h3 class="w3ls-title">寻找爱车</h3>
 					<form action="/searchcar">
-					<div class="input-group">
-						<input type="text" class="form-control" placeholder="查找..." >
-						<span class="input-group-btn">
-							<button class="btn btn-default" type="submit">Go!</button>
-						</span>
-					</div><!-- /input-group -->
+						<div class="input-group">
+							<input type="text" class="form-control" placeholder="查找..." style="width:80%" >
+							<span class="input-group-btn">
+							<button class="btn btn-default" type="button" onclick="window.location.href='testsingle.html'">Go!</button>
+							</span>
+						</div><!-- /input-group -->
+						<div>
+							<lable>价格区间：¥</lable>
+							<input type="text" style="width: 20%">--<input type="text"  style="width:20%">
+						</div>
 					</form>
+
+					<% List<Car> cars = (List<Car>)request.getAttribute("cars");%>
+					<%for(Car car:cars){%>
 					<div class="properties-bottom">
 						<div class="properties-img">
 							<img src="../../style/images/1.jpg" alt="">
 							<div class="view-caption"><!--加rent-caption为蓝色-->
-								<h4><span class="glyphicon glyphicon-eye-open"></span> 123 </h4> <!--车辆简介-->
+								<h4><span class="glyphicon glyphicon-eye-open"></span> <%=car.getBrand()%> </h4> <!--车辆简介-->
 							</div>
 							<div class="w3ls-buy">
-								<a href="/jump?action=车辆信息">详细</a> <!--加class="rent"为蓝色-->
+								<a href="/jump?action=car_detail&carid=<%=car.getCar_id()%>">详细</a> <!--加class="rent"为蓝色-->
 							</div>
 						</div>
 						<div class="w3ls-text">
-							<h5>Car1</h5><!--车名-->
-							<h6>¥500k</h6><!--价格-->
+							<h5><%=car.getModel()%></h5><!--车名-->
+							<h6><%=car.getColor()%></h6><!--价格-->
 						</div>
 					</div>
-					<div class="properties-bottom">
+					<%}%>
+					<!--<div class="properties-bottom">
 						<div class="properties-img">
 							<img src="../../style/images/1.jpg" alt="">
 							<div class="view-caption rent-caption">
@@ -110,17 +121,17 @@
 							<h5>Car2</h5>
 							<h6>¥500k</h6>
 						</div>
-					</div>
+					</div>-->
 					<div class="clearfix"> </div>
 				</div>
-				<form action="/testdrive_book">
+				<!--<form action="/testdrive_book">
 				<div class="w3agile agents">
 					<h3 class="w3ls-title">试驾预约</h3>
 						<div align="center">
 						<button class="btn btn-default" type="submit" onclick="window.location.href='testdrive2.html'">进行预约</button>
 						</div>
 				</div>
-				</form>
+				</form>-->
 				<!-- brands -->
 				<div class="w3agile brands"> 
 					<h3 class="w3ls-title">合作品牌</h3> 

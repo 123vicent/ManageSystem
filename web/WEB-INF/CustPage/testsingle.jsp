@@ -1,3 +1,5 @@
+<%@ page import="model.Car" %>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -71,7 +73,8 @@
 					</div> 
 				</div>
 				<!-- //banner -->
-				<!-- properties --> 
+				<!-- properties -->
+				<%Car car = (Car)request.getAttribute("car");%>
 				<div class="w3agile properties">   
 					<div class="properties-img properties-img-single">
 						<img src="../../style/images/car1.png" alt="">
@@ -82,29 +85,16 @@
 					</div>
 					<div class="w3ls-details">   
 					<!--这里需要动态展示当前车辆的信息-->
-						<h4>奥迪A6</h4> 
+						<h4><%=car.getBrand()%></h4>
 						<p class="agile-text">奥迪A6是一种小轿车 </p>
 						<div class="w3ls-text">
 							<h4>基本参数</h4>  
-							<p><b>车辆类型 :</b> 轿车 </p>
-							<p><b>座位数 :</b> 5座 </p>
-							<p><b>动力类型 :</b> 燃油 </p>
-							<p><b>参考价格 :</b> ¥300,000 </p>
+							<p><b>车辆类型 :</b> <%=car.getType()%> </p>
+							<p><b>座位数 :</b> <%=car.getSeats()%> </p>
+							<p><b>动力类型 :</b> <%=car.getPower()%> </p>
+							<p><b>参考价格 :</b> ¥<%=car.getCar_id()%> </p>
 						</div>
 					</div>
-					<div class="w3ls-features">   
-						<h3 class="w3ls-title">供货经销商</h3> 
-						<!--这里展示能够提供当前车辆的经销商列表-->
-						<ul> 
-							<li><span class="glyphicon glyphicon-ok"> </span> 经销商1 </li>
-							<li><span class="glyphicon glyphicon-ok"> </span> 经销商2 </li>
-							<li><span class="glyphicon glyphicon-ok"> </span> 经销商3 </li>
-							
-						</ul>
-					</div>
-					
-					
-					
 				</div>
 				<!-- //about --> 
 				<!-- brands -->

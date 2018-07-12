@@ -1,11 +1,9 @@
 package custo_server;
 
-import DAO.AppointmentDAO;
-import DAO.CustomeruserDAO;
-import DAO.CususeraptDAO;
-import DAO.DAOFactory;
+import DAO.*;
 import basic.Cususerapt;
 import model.Appointment;
+import model.Car;
 import model.Customeruser;
 
 import javax.servlet.RequestDispatcher;
@@ -37,7 +35,10 @@ public class jumpPage extends HttpServlet {
             view = request.getRequestDispatcher("WEB-INF/CustPage/information.jsp");
         }
         else if(pagename.equals("testdrive")){
-            view = request.getRequestDispatcher("WEB-INF/CustPage/testdrive.html");
+            CarDAO carDAO = DAOFactory.getCarDAO();
+            List<Car> cars  = carDAO.findAll();
+            request.setAttribute("cars",cars);
+            view = request.getRequestDispatcher("WEB-INF/CustPage/testdrive.jsp");
         }
         else if(pagename.equals("viewcar")){
             view = request.getRequestDispatcher("WEB-INF/CustPage/gallery.html");
@@ -55,6 +56,14 @@ public class jumpPage extends HttpServlet {
             Cususerapt cususerapt = cususeraptDAO.findByApid(apt_id);
             request.setAttribute("cususerapt",cususerapt);
             view = request.getRequestDispatcher("WEB-INF/CustPage/recordDetail.jsp");
+        }
+        else if(pagename.equals("car_detail")) {
+            String car_id = request.getParameter("carid");
+            System.out.println(car_id);
+           CarDAO carDAO = DAOFactory.getCarDAO();
+           Car car = carDAO.findById(car_id);
+            request.setAttribute("car",car);
+            view = request.getRequestDispatcher("WEB-INF/CustPage/testsingle.jsp");
         }
         else{
             view = request.getRequestDispatcher("WEB-INF/CustPage/reserve.jsp");
