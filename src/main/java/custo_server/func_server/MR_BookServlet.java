@@ -112,7 +112,7 @@ public class MR_BookServlet extends HttpServlet {
         else
             request.setAttribute("error","预约提交失败");
 
-        request.getRequestDispatcher("WEB-INF/CustPage/reserve.jsp").forward(request,response);
+        request.getRequestDispatcher("WEB-INF/CustPage/transaction.html").forward(request,response);
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response)

@@ -77,10 +77,11 @@
 				<!--这里需要动态显示用户的信息-->
 				<div class="w3agile agents"> 
 					<h3 class="w3ls-title">个人信息</h3> 
-					<div class="w3agent-grid"> 
-						<div class="stack twisted">	
-							<img src="../../style/images/a1.jpg" alt=" " class="img-responsive">
-						</div>   						
+					<div class="w3agent-grid">
+						<div class="form-group">
+							<input type="file" id="inputfile" style="width:100%" ></br>
+							<button type="button" class="btn btn-primary" data-dismiss="modal">上传头像</button>
+						</div>
 						<div class="w3agent-text">
 							<%Customeruser customeruser = (Customeruser)request.getAttribute("user_info");%>
 							<h4><%=customeruser.getCus_name()%></h4>

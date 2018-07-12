@@ -41,6 +41,7 @@ public class DAOFactory {
         return new CarinfoDAOImpl();
     }
 
+    public static CarviewDAO getCarviewDAO(){ return  new CarviewDAOImpl();}
 
 }
 //CarDAO cardao = DAOFactory.getCarDAO()

@@ -99,10 +99,10 @@
                 <div class="contact-form">
                     <form action="/MR_BookServlet" method="post">
 
-                        <%List<KeyValuePair> lists= (List<KeyValuePair>)session.getAttribute("lists");
-                        List<Shopuser> shopusers = (List<Shopuser>) session.getAttribute("shopusers");
-                            int i = 101;
-                            int num  = lists.size();%>
+                        <%List<KeyValuePair> lists= (List<KeyValuePair>)session.getAttribute("lists");%>
+                        <%List<Shopuser> shopusers = (List<Shopuser>) session.getAttribute("shopusers");%>
+                        <%int i = 101;%>
+                        <%int num  = (int)lists.size();%>
                         <input type="hidden" id="length" name=<%=num%>>
                         <%for(KeyValuePair pair : lists){ %>
                         <input type="hidden" id=<%=i%> name=<%=pair.key%> value=<%=pair.value%> >

@@ -1,4 +1,4 @@
-<%@ page import="model.Car" %>
+<%@ page import="basic.Carview" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <!DOCTYPE html>
 <html>
@@ -74,7 +74,7 @@
 				</div>
 				<!-- //banner -->
 				<!-- properties -->
-				<%Car car = (Car)request.getAttribute("car");%>
+				<%Carview car = (Carview)request.getAttribute("car");%>
 				<div class="w3agile properties">   
 					<div class="properties-img properties-img-single">
 						<img src="../../style/images/car1.png" alt="">
@@ -88,11 +88,15 @@
 						<h4><%=car.getBrand()%></h4>
 						<p class="agile-text">奥迪A6是一种小轿车 </p>
 						<div class="w3ls-text">
+							<p><b>经销商 :</b><%=car.getShop_name()%></p>
+							<p><b>联系电话 :</b><%=car.getShop_phone()%></p>
+							<p><b>地址 :</b><%=car.getShop_address()%></p>
 							<h4>基本参数</h4>  
 							<p><b>车辆类型 :</b> <%=car.getType()%> </p>
 							<p><b>座位数 :</b> <%=car.getSeats()%> </p>
 							<p><b>动力类型 :</b> <%=car.getPower()%> </p>
-							<p><b>参考价格 :</b> ¥<%=car.getCar_id()%> </p>
+							<p><b>参考价格 :</b> ¥<%=car.getPrice()%> </p>
+							<p><b>详细描述 :</b><%=car.getDescription()%></p>
 						</div>
 					</div>
 				</div>

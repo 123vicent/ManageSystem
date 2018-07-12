@@ -1,5 +1,5 @@
 <%@ page import="java.util.List" %>
-<%@ page import="model.Car" %>
+<%@ page import="basic.Carview" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <!DOCTYPE html>
 <html>
@@ -78,19 +78,20 @@
 					<h3 class="w3ls-title">寻找爱车</h3>
 					<form action="/searchcar">
 						<div class="input-group">
-							<input type="text" class="form-control" placeholder="查找..." style="width:80%" >
+							<input type="text" name= "con" class="form-control" placeholder="查找..." style="width:80%" >
 							<span class="input-group-btn">
-							<button class="btn btn-default" type="button" onclick="window.location.href='testsingle.html'">Go!</button>
+							<button class="btn btn-default" type="submit">Go!</button>
 							</span>
 						</div><!-- /input-group -->
 						<div>
 							<lable>价格区间：¥</lable>
-							<input type="text" style="width: 20%">--<input type="text"  style="width:20%">
+							<input type="text" name="min_price" style="width: 20%">--<input name="max_price"type="text"  style="width:20%">
 						</div>
 					</form>
 
-					<% List<Car> cars = (List<Car>)request.getAttribute("cars");%>
-					<%for(Car car:cars){%>
+					<% List<Carview> cars = (List<Carview>)request.getAttribute("cars");%>
+					<%if(cars!=null){
+					  	for(Carview car:cars){%>
 					<div class="properties-bottom">
 						<div class="properties-img">
 							<img src="../../style/images/1.jpg" alt="">
@@ -98,15 +99,15 @@
 								<h4><span class="glyphicon glyphicon-eye-open"></span> <%=car.getBrand()%> </h4> <!--车辆简介-->
 							</div>
 							<div class="w3ls-buy">
-								<a href="/jump?action=car_detail&carid=<%=car.getCar_id()%>">详细</a> <!--加class="rent"为蓝色-->
+								<a href="/jump?action=car_detail&carid=<%=car.getCar_id()%>&shopuserid=<%=car.getShopuser_id()%>">详细</a> <!--加class="rent"为蓝色-->
 							</div>
 						</div>
 						<div class="w3ls-text">
 							<h5><%=car.getModel()%></h5><!--车名-->
-							<h6><%=car.getColor()%></h6><!--价格-->
+							<h6>¥<%=car.getPrice()%></h6><!--价格-->
 						</div>
 					</div>
-					<%}%>
+					<%}}%>
 					<!--<div class="properties-bottom">
 						<div class="properties-img">
 							<img src="../../style/images/1.jpg" alt="">
