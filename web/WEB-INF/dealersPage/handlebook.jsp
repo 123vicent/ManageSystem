@@ -152,8 +152,8 @@
                 <form action="/dealingapt">
                     <input type="hidden" name="ap_id" value="<%=shopapt.getAppointment_id()%>"></input>
                     <div>
-                        <button id="addBtn" type="submit" name="submit" value="接受预约" class="btn btn-default">
-                            <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>接受预约</button>
+                        <button id="addBtn" type="submit" name="submit" value="接受预约" class="btn btn-success">
+                            <span class="glyphicon glyphicon-ok" aria-hidden="true"></span>接受预约</button>
                     </div>
                     <div>
                         <br>
@@ -167,7 +167,7 @@
                         <%  }%>
                         <div>
                             <br><br>
-                            <button id="addBtn" type="submit" name="submit" value="拒绝预约" class="btn btn-default">
+                            <button id="addBtn" type="submit" name="submit" value="拒绝预约" class="btn btn-warning">
                                 <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>拒绝预约</button>
                         </div>
                     </div>
@@ -203,8 +203,8 @@
                         <%  }%>
                         <div>
                             <br>
-                            <button id="addBtn" type="submit" name="submit" value="完成预约" class="btn btn-default">
-                                <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>完成预约</button>
+                            <button id="addBtn" type="submit" name="submit" value="完成预约" class="btn btn-success">
+                                <span class="glyphicon glyphicon-check" aria-hidden="true"></span>完成预约</button>
                         </div>
                     </div>
                 </form>
@@ -213,8 +213,8 @@
             <form action="/dealingapt">
                 <center>
 
-                    <button id="addBtn" type="submit" name="submit" value="返回上一层" class="btn btn-default">
-                        <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>返回上一层</button>
+                    <button id="addBtn" type="submit" name="submit" value="返回上一层" class="btn btn-danger">
+                        <span class="glyphicon glyphicon-step-backward" aria-hidden="true"></span>返回上一层</button>
                 </center>
             </form>
             <!--//处理客户预约-->

@@ -25,6 +25,7 @@ public class SwitchPage extends HttpServlet {
             throws ServletException, IOException {
         HttpSession session = request.getSession();
         String Shopuserid = (String)session.getAttribute("userid");
+        session.setAttribute("userid",Shopuserid);
         String page = request.getParameter("page");
         RequestDispatcher view;
         if(page.equals("homepage")){
