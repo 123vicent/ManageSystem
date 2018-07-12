@@ -28,7 +28,7 @@ public class SearchcarServlet extends HttpServlet {
         CarinfoDAO carinfoDAO = DAOFactory.getCarinfoDAO();
         System.out.println(carinfoDAO.findAllByTag(shopuserid,brand,type));
         request.setAttribute("searchcars",carinfoDAO.findAllByTag(shopuserid,brand,type));
-        request.getRequestDispatcher("WEB-INF/shopsearchcar.jsp").forward(request,response);
+        request.getRequestDispatcher("ShopPage/funcViewCar.jsp").forward(request,response);
     }
 
     public void doGet(HttpServletRequest request,

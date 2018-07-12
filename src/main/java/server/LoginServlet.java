@@ -33,11 +33,11 @@ public class LoginServlet extends HttpServlet {
         String access = request.getParameter("submit");
         RequestDispatcher view;
         if(access.equals("立即注册")){
-            view = request.getRequestDispatcher("WEB-INF/register.jsp");
+            view = request.getRequestDispatcher("ShopPage/register.jsp");
         }
         else if(access.equals("忘记密码"))
         {
-            view = request.getRequestDispatcher("WEB-INF/forget.jsp");
+            view = request.getRequestDispatcher("ShopPage/forget.jsp");
         }
         else
         {
@@ -75,7 +75,7 @@ public class LoginServlet extends HttpServlet {
                     CarinfoDAO carinfoDAO = DAOFactory.getCarinfoDAO();
                     request.setAttribute("cars",carinfoDAO.findAllByShopId(userid));
 
-                    view = request.getRequestDispatcher("WEB-INF/firstpage.jsp");
+                    view = request.getRequestDispatcher("ShopPage/firstpage.jsp");
                 } else {
                     request.setAttribute("msg2", "登录失败");
                     view = request.getRequestDispatcher("index.jsp");

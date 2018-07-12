@@ -1,8 +1,7 @@
-<%@ page import="java.util.HashMap" %>
-<%@ page import="java.util.Map" %>
-<%@ page import="java.util.Set" %>
-<%@ page import="basic.KeyValuePair" %>
-<%@ page import="java.util.List" %><%--
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ page import="basic.Shopapt" %>
+<%@ page import="java.util.List" %>
+<%@ page import="basic.KeyValuePair" %><%--
   Created by IntelliJ IDEA.
   User: 17308
   Date: 2018/7/3
@@ -48,29 +47,20 @@
   </head>
 
   <body>
-  <style type="text/css">
-      #result{
-          width: 800px;
-          height:500px;
-          border:1px solid #eee;
-      }
-      #result img{
-          height:500px;
-      }
-  </style>
+
   <nav class="navbar navbar-inverse navbar-fixed-top">
       <div class="container-fluid">
           <div class="navbar-header">
               <p class="navbar-brand" ><font size="5">汽车销售管理系统</font></p>
           </div>
           <div>
-              <p id= "huanying" class="navbar-brand" align="right"><font size="4">欢迎您！<a href="/SearchUserServlet" name="userid">${userid}</a> </font></p>
+              <p id= "huanying" class="navbar-brand" align="right"><font size="4">欢迎您！<a href="/SearchUserServlet" name="userid">${userid}</a></font></p>
           </div>
 
           <div id="navbar" class="navbar-collapse collapse">
               <ul class="nav navbar-nav navbar-right">
-                  <li><a href="#A" class="active" data-toggle="tab"><font size="3">系统主页</font></a></li>
-                  <li><a href="#B" data-toggle="tab"><font size="3">使用功能</font></a></li>
+                  <li><a href="#A" data-toggle="tab"><font size="3">系统主页</font></a></li>
+                  <li><a href="#B" class="active" data-toggle="tab"><font size="3">使用功能</font></a></li>
                   <li><a href="#C" data-toggle="tab"><font size="3">用户设置</font></a></li>
                   <li><a href="#D" data-toggle="tab"><font size="3">帮助界面</font></a></li>
               </ul>
@@ -85,7 +75,7 @@
   </nav>
 
   <div class="tab-content">
-      <div class="tab-pane fade in active" id="A">
+      <div class="tab-pane fade" id="A">
           <!-- Carousel
           ================================================== -->
           <div id="myCarousel" class="carousel slide" data-ride="carousel">
@@ -218,67 +208,52 @@
               </footer>
 
           </div><!-- /.container -->
-      <div class="tab-pane fade" id="B">
+      <div class="tab-pane fade in active" id="B">
           <!-- 功能主页实现 -->
           <div class="container-fluid">
               <div class="col-sm-3 col-md-2 sidebar">
                   <ul class="nav nav-sidebar">
-                      <li class="active"><a href="#0"data-toggle="tab">功能概览</a></li>
+                      <li><a href="#0"data-toggle="tab">功能概览</a></li>
                       <li><a href="#1" data-toggle="tab">查询车辆信息</a></li>
                       <li><a href="#2" data-toggle="tab">上传车辆信息</a></li>
-                      <li><a href="#3" data-toggle="tab">查询客户预约</a></li>
+                      <li  class="active"><a href="#3" data-toggle="tab">查询客户预约</a></li>
                       <li><a href="#4" data-toggle="tab">进行消息推送</a></li>
                       <!--功能可以继续扩展-->
                   </ul>
               </div>
-
-
-
-              <!--查询所有车的类型型号，设置下拉框-->
-              <%List<KeyValuePair> lists= (List<KeyValuePair>)session.getAttribute("list");
-                  int i = 101;
-                  int num  = lists.size();%>
-              <input type="hidden" id="length" name=<%=num%>>
-              <%for(KeyValuePair pair : lists){ %>
-              <input type="hidden" id=<%=i%> name=<%=pair.key%> value=<%=pair.value%> >
-              <%i++;%>
-              <%}%>
-
-
-
               <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
                   <!-- 控制输出内容在右半部分 -->
                   <div class="tab-content">
-                      <div class="tab-pane fade in active" id="0">
+                      <div class="tab-pane fade " id="0">
                           <p>
 							<font size="4">
 							在这里可以看到功能的概览
 							</font>
                           </p>
                       </div>
-                      <div class="tab-pane fade" id="1">
-                    <form action="/Search">
-					<p>
+              <div class="tab-pane fade" id="1">
+                      <form action="/Search">
+					    <p>
 						<font size="4">
 						在这里你可以查看你旗下的车辆信息
 						</font>
-					</p></br>
-                        <label>品牌</label>
-                        <select name="Bybrand" style="width:100px;height:35px">
-                            <option value="全部车辆">所有品牌</option>
-                            <option value="Benz">Benz</option>
-                            <option value="Audi">Audi</option>
-                            <option value="Lamborghini">Lamborghini</option>
-                            <option value="Rolls-Royce">Rolls-Royce</option>
-                        </select>
-                        <label>类型</label>
-                        <select name="Bytype" style="width:100px;height:35px">
-                            <option value="全部车辆">所有类型</option>
-                            <option value="轿车">轿车</option>
-                            <option value="超级跑车">超级跑车</option>
-                            <option value="高级轿车">高级轿车</option>
-                        </select>
-                        <button id="queryBtn2" type="submit" class="btn btn-default" class="btn-group pull-left" style="margin-left: 10px;">
+					    </p></br>
+                          <label>品牌</label>
+                          <select name="Bybrand" style="width:100px;height:35px">
+                              <option value="全部车辆">所有品牌</option>
+                              <option value="Benz">Benz</option>
+                              <option value="Audi">Audi</option>
+                              <option value="Lamborghini">Lamborghini</option>
+                              <option value="Rolls-Royce">Rolls-Royce</option>
+                          </select>
+                          <label>类型</label>
+                          <select name="Bytype" style="width:100px;height:35px">
+                              <option value="全部车辆">所有类型</option>
+                              <option value="轿车">轿车</option>
+                              <option value="超级跑车">超级跑车</option>
+                              <option value="高级轿车">高级轿车</option>
+                          </select>
+								<button id="queryBtn2" type="submit" class="btn btn-default" class="btn-group pull-left" style="margin-left: 10px;">
 								<span class="glyphicon glyphicon-search" aria-hidden="true"></span>查询</button>
                         </form>
                           <p></br></br>
@@ -289,6 +264,7 @@
 
                           <table class="table table-bordered table-striped">
                               <thead>
+
                               <tr>
                                   <th>品牌</th>
                                   <th>型号</th>
@@ -297,6 +273,16 @@
                                   <th>价格</th>
                                   <th>图片</th>
                               </tr>
+                              <c:forEach var="U" items="${cars}">
+                                  <tr>
+                                      <td><c:out value="${U.brand}"></c:out></td>
+                                      <td><c:out value="${U.model}"></c:out></td>
+                                      <td><c:out value="${U.type}"></c:out></td>
+                                      <td><c:out value="${U.stock}"></c:out> </td>
+                                      <td><c:out value="${U.price}"></c:out> </td>
+                                      <td><c:out value="${U.pic_url}"></c:out> </td>
+                                  </tr>
+                              </c:forEach>
                               </thead>
                           </table>
                               </form>
@@ -321,86 +307,44 @@
                       </div>
                       -->
 
-
-
-                    <div class="tab-pane fade" id="2">
-
-
-                        <form action="/addcar" enctype="multipart/form-data">
+                      <div class="tab-pane fade" id="2">
+                          <form action="/addcar">
                           <p>
                               <font size="4">
                                   在这里你可以上传你旗下的车辆信息
                               </font>
                           </p></br>
-                                <!--<label for="name">上传车辆图片</label>
-                                <div id = "result"></div>
-                                <input id="pic" type="file" name = "uploadFile" accept = "image/*" onchange = "selectFile()"/>
-                                <input type="submit" name="upload" value = "上传图片">
+                                  <div>
+                                      <!--查询所有车的类型型号，设置下拉框-->
+                                      <%List<KeyValuePair> lists= (List<KeyValuePair>)session.getAttribute("list");
+                                          int i = 101;
+                                          int num  = lists.size();%>
+                                      <input type="hidden" id="length" name=<%=num%>>
+                                      <%for(KeyValuePair pair : lists){ %>
+                                      <input type="hidden" id=<%=i%> name=<%=pair.key%> value=<%=pair.value%> >
+                                      <%i++;%>
+                                      <%}%>
+                                      <label>选择品牌</label>
+                                      <select id="carlist1" name="brand" runat="server" onchange="selectprovince(this);" style=" width:95px;">
+                                          <option value=""></option>
+                                      </select>
+                                      <label>选择型号</label>
+                                      <select id="carlist2" name="model" runat="server" style=" width:95px;">
+                                          <option value=""></option>
+                                      </select>
+                                  </div>
+                                  <div>
+                                      <br><br>
+                                      <label for="name">库存（数量）</label>
+                                      <input name="stock" style="width:500px" type="text" class="form-control"
+                                             placeholder="请输入库存">
+                                      <div>
+                                          <label for="name">价格（自填）</label>
+                                          <input name="price" style="width:500px" type="text" class="form-control"
+                                                 placeholder="请输入价格">
 
-
-                            <script type="text/javascript">
-                                //var files = document.getElementById('pic').files;
-                                var form = new FormData();//通过HTML表单创建FormData对象
-                                var url = '127.0.0.1:8080/'
-                                function selectFile(){
-                                    var files = document.getElementById('pic').files;
-                                    console.log(files[0]);
-                                    if(files.length == 0){
-                                        return;
-                                    }
-                                    var file = files[0];
-                                    //把上传的图片显示出来
-                                    var reader = new FileReader();
-                                    // 将文件以Data URL形式进行读入页面
-                                    console.log(reader);
-                                    reader.readAsBinaryString(file);
-                                    reader.onload = function(f){
-                                        var result = document.getElementById("result");
-                                        var src = "data:" + file.type + ";base64," + window.btoa(this.result);
-                                        result.innerHTML = '<img src ="'+src+'"/>';
-                                    }
-                                    console.log('file',file);
-                                    ///////////////////
-                                    form.append('file',file);
-                                    console.log(form.get('file'));
-                                }
-                                //var xhr = new XMLHttpRequest();
-                                // function handIn(){
-                                //  console.log(form.get('file'));
-                                //  xhr.open("post", url, true);
-                                //  xhr.addEventListener("readystatechange", function() {
-                                //      var result = xhr;
-                                //      if (result.status != 200) { //error
-                                //          console.log('上传失败', result.status, result.statusText, result.response);
-                                //      }
-                                //      else if (result.readyState == 4) { //finished
-                                //          console.log('上传成功', result);
-                                //      }
-                                //  });
-                                // }
-                            </script>-->
-						<div>
-                            <label>选择品牌</label>
-                            <select id="carlist1" name="brand" runat="server" onchange="selectprovince(this);" style=" width:95px;">
-                                <option value=""></option>
-                            </select>
-                            <label>选择型号</label>
-                            <select id="carlist2" name="model" runat="server" style=" width:95px;">
-                                <option value=""></option>
-                            </select>
-                        </div>
-                        <div>
-                           <br><br>
-                            <label for="name">库存（数量）</label>
-                            <input name="stock" style="width:500px" type="text" class="form-control"
-                                   placeholder="请输入库存">
-							<div>
-							<label for="name">价格（自填）</label>
-							<input name="price" style="width:500px" type="text" class="form-control"
-							placeholder="请输入价格">
-
-							</div>
-						</div><!--
+                                      </div>
+                                  </div><!--
                           <div class="form-group">
                               <label for="inputfile">车辆展示图片上传</label>
                               <input type="file" id="inputfile">
@@ -413,65 +357,86 @@
                               <button id="addBtn" type="submit" class="btn btn-default">
                                   <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>上传</button>
                           </div>
-                        </form>
+                          </form>
                       </div>
 
-                      <div class="tab-pane fade" id="3">
+                      <div class="tab-pane fade in active" id="3">
                           <p>
                               <font size="4">
                                   在这里你可以查看你旗下的客户预约
                               </font>
                           </p></br>
-                          <form action="/handlebook" class="navbar-form navbar-left">
-                              <label>预约状态</label>
-                              <select name="appointstate" style="width:100px;height:35px">
-                                  <option >全部预约</option>
-                                  <option >已接受</option>
-                                  <option >待接受</option>
-                              </select>
-                              <label>预约类型</label>
-                              <select name="appointtype" style="width:100px;height:35px">
-                                  <option >全部预约</option>
-                                  <option >试驾预约</option>
-                                  <option >维修预约</option>
-                                  <option >保养预约</option>
-                                  <option >购车预约</option>
-                              </select>
-                              <input type="text" class="form-control" name="customername" placeholder="输入需要查询的客户姓名"></input>
-                              <input type="text" class="form-control" name="ap_id" placeholder="输入需要查询的预约号"></input>
-                              <button id="queryBtn2" type="submit" class="btn btn-default" class="btn-group pull-left" style="margin-left: 10px;">
-                                  <span class="glyphicon glyphicon-search" aria-hidden="true"></span>查询</button>
-                          </form>
+						<form action="/handlebook" class="navbar-form navbar-left">
+                            <label>预约状态</label>
+							<select name="appointstate" style="width:100px;height:35px">
+                                <option >全部预约</option>
+                                <option >已接受</option>
+                                <option >待接受</option>
+							</select>
+                            <label>预约类型</label>
+                            <select name="appointtype" style="width:100px;height:35px">
+                                <option >全部预约</option>
+                                <option >试驾预约</option>
+                                <option >维修预约</option>
+                                <option >保养预约</option>
+                                <option >购车预约</option>
+                            </select>
+							<input type="text" class="form-control" name="customername" placeholder="输入需要查询的客户姓名"></input>
+                            <input type="text" class="form-control" name="ap_id" placeholder="输入需要查询的预约号"></input>
+                            <button id="queryBtn2" type="submit" class="btn btn-default" class="btn-group pull-left" style="margin-left: 10px;">
+								<span class="glyphicon glyphicon-search" aria-hidden="true"></span>查询</button>
+						</form>
 					<p></br></br></br>
                               <font size="4">
                                   查询结果
                               </font>
-                          </p></br>
+                          </p></br><br>
+                          <form action="/dealapt">
 
-                          <table class="table table-bordered table-striped">
+                              <table class="table table-bordered table-striped">
 
-                              <thead>
-                              <tr>
-                                  <th>预约号</th>
-                                  <th>品牌</th>
-                                  <th>型号</th>
-                                  <th>客户姓名</th>
-                                  <th>联系方式</th>
-                                  <th>预约类型</th>
-                                  <th>预约时间</th>
-                                  <th>预约状态</th>
+                                  <thead>
+                                  <tr>
+                                      <th>预约号</th>
+                                      <th>品牌</th>
+                                      <th>型号</th>
+                                      <th>客户姓名</th>
+                                      <th>联系方式</th>
+                                      <th>预约类型</th>
+                                      <th>预约时间</th>
+                                      <th>预约状态</th>
+                                  </tr>
+                                  </thead>
+                                  <%List<Shopapt> shopapts = (List<Shopapt>) request.getAttribute("userapoint");
+                                      i = 0;%>
+                                  <%for(Shopapt shopapt:shopapts){%>
+                                  <tr>
+                                      <th><%=shopapt.getAppointment_id()%></th>
+                                      <th><%=shopapt.getBrand()%></th>
+                                      <th><%=shopapt.getModel()%></th>
+                                      <th><%=shopapt.getCus_name()%></th>
+                                      <th><%=shopapt.getCus_phone()%></th>
+                                      <th><%=shopapt.getAp_type()%></th>
+                                      <th><%=shopapt.getAp_time()%></th>
+                                      <th><%=shopapt.getAp_state()%>
+                                          <button id="queryBtn2" name="deal" value=<%=shopapt.getAppointment_id()%> type="submit" class="btn btn-default" class="btn-group pull-left" style="margin-left: 10px;">
+                                              处理</button></th>
 
-                              </tr>
-                              </thead>
-                          </table>
-                  </div>
+                                      <%i++;%>
+                                      <%}%>
+                                  </tr>
+                                  </tbody>
+                              </table>
+                          </form>
+
+                      </div>
 				<div class="tab-pane fade" id="4">
 					<p>
 						<font size="4">
 							在这里可以进行微信端的消息推送
 						</font>
 					</p>
-					<form role="form">
+					<form role="form" action="/sendMessage">
 						<div>
 							<textarea name="customermessage" style="width:1000px;" rows="5" warp="virtual" placeholder="输入要推送给客户的信息"></textarea>
 						</div>
@@ -497,6 +462,8 @@
           </p>
       </div>
   </div>
+
+
   </body>
 </html>
 <script type="text/javascript">
@@ -504,10 +471,10 @@
     var list2 = new Array;
     var str = document.getElementById("length").name;
     var lengthid=parseInt(str,10);
-    for(var m=0;m < lengthid  ;m++){
+    for(var m=0;m < lengthid ;m++){
         if(list1.indexOf(document.getElementById(m+101).name)==-1){
             list1[list1.length] = document.getElementById(m+101).name;
-       }
+        }
 
     }
     for(var n=0;n <list1.length ; n++){

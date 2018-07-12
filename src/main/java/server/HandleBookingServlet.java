@@ -80,7 +80,7 @@ public class HandleBookingServlet extends HttpServlet {
             e.printStackTrace();
         }*/
         request.setAttribute("userapoint",apList);
-        view=request.getRequestDispatcher("WEB-INF/usershopapoint.jsp");
+        view=request.getRequestDispatcher("ShopPage/funcViewAppointment.jsp");
         String access = request.getParameter("submit");
         view.forward(request,response);
     }
