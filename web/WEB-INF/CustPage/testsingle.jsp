@@ -9,6 +9,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="keywords" content="Fortune Estates Widget Responsive, Login Form Web Template, Flat Pricing Tables, Flat Drop-Downs, Sign-Up Web Templates, Flat Web Templates, Login Sign-up Responsive Web Template, SmartPhone Compatible Web Template, Free Web Designs for Nokia, Samsung, LG, Sony Ericsson, Motorola Web Design" />
 <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
+	<script language="javascript" type="text/javascript" src="../../style/js/My97DatePicker/WdatePicker.js"></script>
 <!-- //For-Mobile-Apps-and-Meta-Tags -->
 <!-- Custom Theme files -->
 <link href="../../style/css/bootstrap.css" type="text/css" rel="stylesheet" media="all">
@@ -97,6 +98,18 @@
 							<p><b>动力类型 :</b> <%=car.getPower()%> </p>
 							<p><b>参考价格 :</b> ¥<%=car.getPrice()%> </p>
 							<p><b>详细描述 :</b><%=car.getDescription()%></p>
+						</div>
+					</div>
+					<div class="w3ls-related">
+						<h3 class="w3ls-title">试驾预约</h3>
+						<div class="contact-form">
+							<form action="/testdrive_book" method="post">
+								<input class="Wdate" style="height: 35px;" name="ap_time" type="text" id="d15" onfocus="WdatePicker({dateFmt:'yyyy-MM-dd HH:mm:ss'})" placeholder="选择日期" required=""/>
+								<input type="text" name="phone" placeholder="联系电话" maxlength="11" required="">
+								<!--textarea name="Message" placeholder="Message" required=""></textarea-->
+								<textarea name="Message" placeholder="问题描述" required></textarea>
+								<center><input type="submit" value="提交"></center>
+							</form>
 						</div>
 					</div>
 				</div>

@@ -60,7 +60,11 @@ public class jumpPage extends HttpServlet {
         }
         else if(pagename.equals("car_detail")) {
             String car_id = request.getParameter("carid");
+            session.setAttribute("carid",car_id);
+
             String shopuser_id = request.getParameter("shopuserid");
+            session.setAttribute("shopuserid",shopuser_id);
+
             System.out.println(car_id);
             System.out.println(shopuser_id);
            CarviewDAO carviewDAO = DAOFactory.getCarviewDAO();
