@@ -9,7 +9,7 @@ import java.util.List;
 public interface ViewrecordDAO {
     public Boolean insert(Viewrecord vr);
     public Boolean update(Viewrecord vr);
-    public Boolean delete(String car_id, String cususer_id,Timestamp view_time);
-    public Viewrecord findById(String car_id, String cususer_id,Timestamp view_time);
+    public Boolean delete(String shopuser_id, String car_id, String cususer_id,Timestamp view_time);
+    public Viewrecord findById(String shopuser_id, String car_id, String cususer_id,Timestamp view_time);
     public List<Viewrecord> findAll();
 }
