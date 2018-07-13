@@ -1,6 +1,13 @@
-/*
+
 package server;
 
+import DAO.CarDAO;
+import DAO.CarinfoDAO;
+import DAO.DAOFactory;
+import DAO.ShopowncarDAO;
+import basic.Carinfo;
+import model.Car;
+import model.Shopowncar;
 import org.apache.commons.fileupload.FileItem;
 import org.apache.commons.fileupload.disk.DiskFileItemFactory;
 import org.apache.commons.fileupload.servlet.ServletFileUpload;
@@ -10,9 +17,11 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import java.io.File;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
 import java.util.List;
 
 @SuppressWarnings("serial")
@@ -24,13 +33,6 @@ public class uploadImg extends HttpServlet {
     private static final int MEMORY_THRESHOLD   = 1024 * 1024 * 3;  // 3MB
     private static final int MAX_FILE_SIZE      = 1024 * 1024 * 40; // 40MB
     private static final int MAX_REQUEST_SIZE   = 1024 * 1024 * 50; // 50MB
-
-*/
-/**
-     * 上传数据及保存文件*//*
-
-
-
     public void doPost(HttpServletRequest request,
                           HttpServletResponse response) throws ServletException, IOException {
         // 检测是否为多媒体上传
@@ -62,9 +64,11 @@ public class uploadImg extends HttpServlet {
 
         // 构造临时路径来存储上传的文件
         // 这个路径相对当前应用的目录
-        String uploadPath = request.getServletContext().getRealPath("./") + File.separator + UPLOAD_DIRECTORY;
+        String uploadPath = request.getServletContext().getRealPath("./") + UPLOAD_DIRECTORY;
 
 
+        List<String> pList = new ArrayList<String>();
+        String fileName=null;
         // 如果目录不存在则创建
         File uploadDir = new File(uploadPath);
         if (!uploadDir.exists()) {
@@ -81,7 +85,7 @@ public class uploadImg extends HttpServlet {
                 for (FileItem item : formItems) {
                     // 处理不在表单中的字段
                     if (!item.isFormField()) {
-                        String fileName = new File(item.getName()).getName();
+                        fileName = new File(item.getName()).getName();
                         String filePath = uploadPath + File.separator + fileName;
                         File storeFile = new File(filePath);
                         // 在控制台输出文件的上传路径
@@ -90,6 +94,11 @@ public class uploadImg extends HttpServlet {
                         item.write(storeFile);
                         request.setAttribute("message",
                                 "文件上传成功!");
+                        continue;
+                    }else {
+                        String list = item.getString("UTF-8");
+                        pList.add(list);
+                        continue;
                     }
                 }
             }
@@ -97,8 +106,28 @@ public class uploadImg extends HttpServlet {
             request.setAttribute("message",
                     "错误信息: " + ex.getMessage());
         }
-        // 跳转到 message.jsp
-        request.getRequestDispatcher("WEB-INF/addcar.jsp").forward(request,response);
+
+        HttpSession session = request.getSession();
+        String shopuserid = (String)session.getAttribute("userid");
+        String carid = pList.get(0);
+        ShopowncarDAO shopowncarDAO = DAOFactory.getShopowncarDAO();
+        Shopowncar shopowncar = shopowncarDAO.findById(shopuserid,carid);
+        shopowncar.setPic_url(UPLOAD_DIRECTORY+File.separator + fileName);
+        System.out.println(UPLOAD_DIRECTORY+File.separator + fileName);
+        shopowncarDAO.update(shopowncar);
+
+        CarinfoDAO carinfoDAO = DAOFactory.getCarinfoDAO();
+        List<Carinfo> carinfos = carinfoDAO.findAllByShopId(shopuserid);
+
+        CarDAO carDAO = DAOFactory.getCarDAO();
+        Car car = carDAO.findById(carid);
+        request.setAttribute("brand",car.getBrand());
+        request.setAttribute("model",car.getModel());
+                // 跳转到 message.jsp
+        //商家的车辆信息
+        request.setAttribute("soc",shopowncar);
+
+        request.getRequestDispatcher("ShopPage/ChangeCarInfo.jsp").forward(request,response);
     }
 
 
@@ -106,4 +135,4 @@ public class uploadImg extends HttpServlet {
         doPost(request,response);
     }
 }
-*/
+

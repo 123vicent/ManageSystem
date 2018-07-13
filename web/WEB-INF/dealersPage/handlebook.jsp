@@ -67,10 +67,10 @@
 
         <div id="navbar" class="navbar-collapse collapse">
             <ul class="nav navbar-nav navbar-right">
-                <li><a href="first.html" class="active" ><font size="3">系统主页</font></a></li>
-                <li><a href="funcViewAppointment.html"  ><font size="3">使用功能</font></a></li>
-                <li><a href="set.html" ><font size="3">用户设置</font></a></li>
-                <li><a href="help.html" ><font size="3">帮助界面</font></a></li>
+                <li><a href="/SwitchPage?page=homepage"><font size="3">系统主页</font></a></li>
+                <li><a href="/SwitchPage?page=funcpage"><font size="3">使用功能</font></a></li>
+                <li><a href="/SwitchPage?page=setpage"><font size="3">用户设置</font></a></li>
+                <li><a href="/SwitchPage?page=helppage"><font size="3">帮助界面</font></a></li>
             </ul>
             <!--页内切换-->
             <!--
@@ -90,13 +90,13 @@
     <!-- 左边导航栏 -->
     <div class="col-sm-3 col-md-2 sidebar">
         <ul class="nav nav-sidebar">
-            <li><a href="funcOverview.html">功能概览</a></li>
-            <li><a href="funcViewCar.html" >查询车辆信息</a></li>
-            <li><a href="funcUploadCar.html" >上传车辆信息</a></li>
-            <li class="active"><a href="funcViewAppointment.html" >查询客户预约</a></li>
-            <li><a href="funcPushMsg.html" >进行消息推送</a></li>
-            <li><a href="funcRegister.html" >登记客户车辆</a></li>
-            <li><a href="funcViewReg.html" >查询登记车辆</a></li>
+            <li><a href="/SwitchPage?page=funcpage">功能概览</a></li>
+            <li><a href="/SwitchPage?page=funcViewCar" >查询车辆信息</a></li>
+            <li><a href="/SwitchPage?page=funcUploadCar" >上传车辆信息</a></li>
+            <li><a href="/SwitchPage?page=funcViewAppointment" >查询客户预约</a></li>
+            <li><a href="/SwitchPage?page=funcPushMsg" >进行消息推送</a></li>
+            <li><a href="/SwitchPage?page=funcRegister" >登记客户车辆</a></li>
+            <li><a href="/SwitchPage?page=funcViewReg" >查询登记车辆</a></li>
             <!--功能可以继续扩展-->
         </ul>
     </div>

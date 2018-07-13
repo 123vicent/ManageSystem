@@ -46,11 +46,11 @@ public class CarinfoDAOImpl implements CarinfoDAO{
         String sql = "select * from carinfo where shopuser_id=?";
         PreparedStatement ps = null;
         ResultSet rs = null;
-        if(!(brand.equals("")||brand.equals("全部车辆")))
+        if(!(brand.equals("")))
         {
             sql+="and brand='"+brand+"'";
         }
-        if(!type.equals("全部车辆")){
+        if(!type.equals("")){
             sql+="and type='"+type+"'";
         }
         try {

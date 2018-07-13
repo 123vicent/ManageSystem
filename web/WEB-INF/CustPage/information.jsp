@@ -78,10 +78,19 @@
 				<div class="w3agile agents"> 
 					<h3 class="w3ls-title">个人信息</h3> 
 					<div class="w3agent-grid">
+						<%--<form method="post" action="/uploadimg"  enctype="multipart/form-data">
 						<div class="form-group">
 							<input type="file" id="inputfile" style="width:100%" ></br>
-							<button type="button" class="btn btn-primary" data-dismiss="modal">上传头像</button>
+							<button type="submit" class="btn btn-primary" name="uploadfile" data-dismiss="modal">上传头像</button>
 						</div>
+						</form>--%>
+						<form method="post" action="/uploadimg" enctype="multipart/form-data">
+							选择一个文件:
+							<input type="file" name="uploadFile" />
+							<br/><br/>
+							<input type="submit" value="头像上传" />
+						</form>
+
 						<div class="w3agent-text">
 							<%Customeruser customeruser = (Customeruser)request.getAttribute("user_info");%>
 							<h4><%=customeruser.getCus_name()%></h4>

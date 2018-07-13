@@ -14,23 +14,27 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.util.List;
 
 @WebServlet(name = "UpdateCarServlet",urlPatterns = "/updatecar")
 public class UpdateCarServlet extends HttpServlet {
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    protected void doPost(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
         String access = request.getParameter("access");
         String stockstr = request.getParameter("stock");
         String pricestr = request.getParameter("price");
-        String userid = request.getParameter("userid");
+        String description = request.getParameter("description");
+        HttpSession session = request.getSession();
+        String userid = (String) session.getAttribute("userid");
         String carid = request.getParameter("carid");
         ShopowncarDAO shopowncarDAO = DAOFactory.getShopowncarDAO();
         Shopowncar soc = shopowncarDAO.findById(userid,carid);
         RequestDispatcher view;
 
         if(access.equals("更新")){
-            if(stockstr.equals("")||pricestr.equals("")){
+            if(stockstr.equals("")||pricestr.equals("")||description.equals("")){
                 request.setAttribute("error","请输入完整信息");
                 view = request.getRequestDispatcher("ShopPage/ChangeCarInfo.jsp");
             }else {
@@ -38,6 +42,7 @@ public class UpdateCarServlet extends HttpServlet {
                 double price = Double.parseDouble(pricestr);
                 soc.setStock(stock);
                 soc.setPrice(price);
+                soc.setDescription(description);
                 shopowncarDAO.update(soc);
                 view = request.getRequestDispatcher("ShopPage/funcViewCar.jsp");
             }

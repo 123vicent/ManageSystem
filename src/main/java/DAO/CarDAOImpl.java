@@ -3,6 +3,7 @@ package DAO;
 import dbcon.DBConnect;
 import model.Car;
 
+import javax.servlet.RequestDispatcher;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -170,5 +171,39 @@ public class CarDAOImpl implements CarDAO {
             e.printStackTrace();
         }
         return carList;
+    }
+
+    public List<String> findAllBrand() {
+        List<String> brands = new ArrayList<String>();
+        String sql = "select distinct brand from car";
+        PreparedStatement ps = null;
+        ResultSet rs = null;
+        try {
+            ps = conn.prepareStatement(sql);
+            rs = ps.executeQuery();
+            while(rs.next()){
+                brands.add(rs.getString(1));
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return brands;
+    }
+
+    public List<String> findAllType() {
+        List<String> types = new ArrayList<String>();
+        String sql = "select distinct type from car";
+        PreparedStatement ps = null;
+        ResultSet rs = null;
+        try {
+            ps = conn.prepareStatement(sql);
+            rs = ps.executeQuery();
+            while(rs.next()){
+                types.add(rs.getString(1));
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return types;
     }
 }

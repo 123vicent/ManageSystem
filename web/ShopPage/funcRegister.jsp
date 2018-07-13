@@ -1,3 +1,6 @@
+<%@ page import="basic.KeyValuePair" %>
+<%@ page import="java.util.List" %>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html lang="en">
 	<head>
     <meta charset="utf-8">
@@ -31,6 +34,7 @@
 	<script type="text/javascript" src="https://cdn.bootcss.com/bootbox.js/4.4.0/bootbox.min.js"></script><!-- 如果断网，需要下载这个js -->
 	<script type="text/javascript" src="../style/js/bootstrap-table.js"></script>
 	<script type="text/javascript" src="../style/js/bootstrap-table-zh-CN.js"></script>
+		<script language="javascript" type="text/javascript" src="../../style/js/My97DatePicker/WdatePicker.js"></script>
 
 
     </head>
@@ -112,29 +116,49 @@
                         </font>
                     </p>
 					</br>
-					<label for="name">客户id</label>
-                        <input name="stock" style="width:500px" type="text" class="form-control"
-						placeholder="请输入客户id">
-					<label for="name">客户姓名</label>
-						<input name="stock" style="width:500px" type="text" class="form-control"
-						placeholder="请输入客户姓名">
-					<label for="name">车辆id</label>
-						<input name="stock" style="width:500px" type="text" class="form-control"
-						placeholder="请输入车辆id">
-					<label for="name">车型</label>
-						<input name="stock" style="width:500px" type="text" class="form-control"
-						placeholder="请输入车型">
-					<label for="name">车辆颜色</label>
-						<input name="stock" style="width:500px" type="text" class="form-control"
-						placeholder="请输入车辆颜色">
-					<label for="name">车座</label>
-						<input name="stock" style="width:500px" type="text" class="form-control"
-						placeholder="请输入车座">
+					<form action="/RegisterCarServlet">
+						<label for="name">车牌号</label>
+						<input name="plate_number" style="width:500px" type="text" class="form-control"
+							   placeholder="请输入车牌号">
+						<label for="name">${plate_number_error}</label><br>
+						<label for="name">客户id</label>
+						<input name="userid" style="width:500px" type="text" class="form-control"
+							   placeholder="请输入客户id">
+						<label for="name">${cusid_error}</label><br>
 
-                    <div class="btn-group pull-left" style="margin-left: 0px;">
-                        <button id="addBtn" type="submit" class="btn btn-default">
-                        <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>登记</button>
-                    </div>			
+
+						<%List<KeyValuePair> lists= (List<KeyValuePair>)session.getAttribute("list");
+							int i = 101;
+							int num  = lists.size();%>
+						<input type="hidden" id="length" name=<%=num%>>
+						<%for(KeyValuePair pair : lists){ %>
+						<input type="hidden" id=<%=i%> name=<%=pair.key%> value=<%=pair.value%> >
+						<%i++;%>
+						<%}%>
+						<label for="name">车牌</label>
+						<select name="brand" style="width:500px" id="carlist1" class="form-control" onchange="selectprovince(this);">
+							<option value=""></option>
+						</select>
+						<%--<input name="brand" style="width:500px" type="text" class="form-control"--%>
+							   <%--placeholder="请输入车牌">--%>
+						<label for="name">车型</label>
+						<select name="model" style="width:500px" id="carlist2" class="form-control">
+							<option value=""></option>
+						</select>
+						<%--<input name="model" style="width:500px" type="text" class="form-control"--%>
+							   <%--placeholder="请输入车型">--%>
+						<label for="name">${carid_error}</label><br>
+						<label for="name">登记时间</label>
+						<input class="form-control" style="width:500px" name="register_time" type="text" id="d15" onfocus="WdatePicker({dateFmt:'yyyy-MM-dd'})" required=""/>
+						<label for="name">支付价格</label>
+						<input name="pay_price" style="width:500px" type="text" class="form-control"
+							   placeholder="请输入支付价格">
+						<div class="btn-group pull-left" style="margin-left: 0px;">
+							<button id="addBtn" type="submit" class="btn btn-default">
+								<span class="glyphicon glyphicon-plus" aria-hidden="true"></span>登记</button>
+						</div>
+					</form>
+
 					<!--//登记车辆信息-->
 			    </div>
 		    </div>
@@ -147,3 +171,65 @@
 	    </div>
     </body>
 </html>
+<script type="text/javascript">
+    var list1 = new Array;
+    var list2 = new Array;
+    var str = document.getElementById("length").name;
+    var lengthid=parseInt(str,10);
+    for(var m=0;m < lengthid ;m++){
+        if(list1.indexOf(document.getElementById(m+101).name)==-1){
+            list1[list1.length] = document.getElementById(m+101).name;
+        }
+
+    }
+    for(var n=0;n <list1.length ; n++){
+        var num = document.getElementsByName(list1[n]).length;
+        list2[list2.length] = new Array;
+        for(var k=0;k<num;k++)
+        {
+            list2[n][k] = document.getElementsByName(list1[n])[k].value;
+        }
+
+    }
+
+
+    var ddlProvince = document.getElementById("carlist1");
+    var ddlCity = document.getElementById("carlist2");
+    for(var i =0;i<list1.length; i++)
+    {
+        var option = document.createElement("option");
+        option.appendChild(document.createTextNode(list1[i]));
+        option.value = list1[i];
+        ddlProvince.appendChild(option);
+        //city initialize
+        var firstprovince = list2[0];
+        for (var j = 0; j < firstprovince.length; j++) {
+            var optioncity = document.createElement("option");
+            optioncity.appendChild(document.createTextNode(firstprovince[j]));
+            optioncity.value = firstprovince[j];
+            ddlCity.appendChild(optioncity);
+        }
+    }
+    function indexof(obj,value)
+    {
+        var k=0;
+        for(;k<obj.length;k++)
+        {
+            if(obj[k] == value)
+                return k;
+        }
+        return k;
+    }
+    function selectprovince(obj) {
+        ddlCity.options.length = 0;//clear
+        var index = indexof(list1,obj.value);
+        var list2element = list2[index];
+        for(var i =0;i<list2element.length; i++)
+        {
+            var option = document.createElement("option");
+            option.appendChild(document.createTextNode(list2element[i]));
+            option.value = list2element[i];
+            ddlCity.appendChild(option);
+        }
+    }
+</script>

@@ -1,3 +1,5 @@
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html lang="en">
 	<head>
     <meta charset="utf-8">
@@ -111,7 +113,12 @@
 						  在这里你可以查看你旗下的登记的客户车辆信息
 					    </font>
 					</p></br>
-				    <form action="/handlebook" class="navbar-form navbar-left">
+					<form action="/ViewRegServlet" class="navbar-form navbar-left">
+					<input type="text" class="form-control" name="cususer_id" placeholder="输入需要查询的客户id">
+					<input type="text" class="form-control" name="cus_name" placeholder="输入需要查询的客户姓名">
+					<input type="text" class="form-control" name="brand" placeholder="输入需要查询的车品牌">
+					<input type="text" class="form-control" name="model" placeholder="输入需要查询的model">
+
 					    <button id="queryBtn6" type="submit" class="btn btn-default" class="btn-group pull-left" style="margin-left: 10px;">
 					    <span class="glyphicon glyphicon-search" aria-hidden="true"></span>查询</button>
 				    </form>
@@ -126,14 +133,25 @@
 					</br>
 				    <table class="table table-bordered table-striped">
 					<thead>
+
 						<tr>
-							<th>客户id</th>
 							<th>客户姓名</th>
-							<th>车辆id</th>
+							<th>联系方式</th>
+							<th>品牌</th>
 							<th>车型</th>
 							<th>车辆颜色</th>
-							<th>车座</th>
+							<th>登记时间</th>
 						</tr>
+						<c:forEach var="U" items="${shopowncar}">
+							<tr>
+								<td>${U.cus_name}</td>
+								<td>${U.cus_phone}</td>
+								<td>${U.brand}</td>
+								<td>${U.model}</td>
+								<td>${U.color}</td>
+								<td>${U.register_time}</td>
+							</tr>
+						</c:forEach>
 					</thead>
 				    </table>
 					<!--//登记车辆信息-->

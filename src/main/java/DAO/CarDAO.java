@@ -13,4 +13,6 @@ public interface CarDAO {
     public List<String> findModelByBrand(String brand);
     public Car findByBrandModel(String brand,String model);
     public List<Car> findAll();
+    public List<String> findAllBrand();
+    public List<String> findAllType();
 }

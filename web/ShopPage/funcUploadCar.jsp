@@ -132,11 +132,11 @@ To change this template use File | Settings | File Templates.
 								<%i++;%>
 								<%}%>
 								<label>选择品牌</label>
-								<select id="carlist1" name="brand" runat="server" onchange="selectprovince(this);" style=" width:95px;">
+								<select id="carlist1" name="brand" runat="server" onchange="selectprovince(this);" style="width:100px;height:35px">
 									<option value=""></option>
 								</select>
 								<label>选择型号</label>
-								<select id="carlist2" name="model" runat="server" style=" width:95px;">
+								<select id="carlist2" name="model" runat="server" style="width:100px;height:35px">
 									<option value=""></option>
 								</select>
 							</div>
@@ -144,11 +144,17 @@ To change this template use File | Settings | File Templates.
 								<br><br>
 								<label for="name">库存（数量）</label>
 								<input name="stock" style="width:500px" type="text" class="form-control"
-									   placeholder="请输入库存">
+									   placeholder="请输入库存（不能为空">
 								<div>
 									<label for="name">价格（自填）</label>
 									<input name="price" style="width:500px" type="text" class="form-control"
-										   placeholder="请输入价格">
+										   placeholder="请输入价格（不能为空）">
+								</div>
+								<div>
+									<label for="name">车辆描述</label>
+									<div>
+										<textarea name="description" style="width:1000px;" rows="5" warp="virtual" placeholder="输入车辆描述（不能为空）"></textarea>
+									</div>
 								</div>
 								<%if(request.getAttribute("error")!=null){ %>
 								<%=request.getAttribute("error")%>
