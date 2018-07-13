@@ -7,7 +7,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
     <link rel="icon" href="../css/favicon.ico">
-    <title>发送通知</title>
+    <title>浏览记录</title>
 	<!-- css引用 -->
     <!-- Bootstrap core CSS -->
     <link href="../style/css/bootstrap.min.css" rel="stylesheet">
@@ -64,6 +64,12 @@
 						<li><a href="/SwitchPage?page=setpage" ><font size="3">用户设置</font></a></li>
 						<li><a href="/SwitchPage?page=helppage" ><font size="3">帮助界面</font></a></li>
 				    </ul>
+				    <!--页内切换-->
+				    <!--
+				    <form class="navbar-form navbar-right">
+				  	    <input type="text" class="form-control" placeholder="Search...">
+				    </form>
+				    -->
 			    </div>
 		    </div>
 	    </nav>
@@ -80,46 +86,64 @@
 					<li><a href="/SwitchPage?page=funcViewCar" >查询车辆信息</a></li>
 					<li><a href="/SwitchPage?page=funcUploadCar" >上传车辆信息</a></li>
 					<li><a href="/SwitchPage?page=funcViewAppointment" >查询客户预约</a></li>
-					<li class="active"><a href="/SwitchPage?page=funcPushMsg" >进行消息推送</a></li>
+					<li><a href="/SwitchPage?page=funcPushMsg" >进行消息推送</a></li>
 					<li><a href="/SwitchPage?page=funcRegister" >登记客户车辆</a></li>
 					<li><a href="/SwitchPage?page=funcViewReg" >查询登记车辆</a></li>
-					<li><a href="/SwitchPage?page=funcViewRecord" >查看浏览记录</a></li>
+					<li class="active"><a href="/SwitchPage?page=funcViewRecord" >查看浏览记录</a></li>
 				    <!--功能可以继续扩展-->
 			    </ul>
 		    </div>
 			<!-- //左边导航栏 -->
 
+
 			<!-- 控制输出内容在右半部分 -->
 		    <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
-			    
-			    <div class="tab-content">
-					<!--进行消息推送-->
+			    <div class="w3ls-details">   
+					<!--浏览记录-->	
 					<p>
-						<font size="6">
-							发布通知
+						<font size="4">
+						    在这里你可以查看你旗下的登记的客户车辆信息
+					    </font>
+					</p></br>
+				    <form action="/handlebook" class="navbar-form navbar-left">
+					    <button id="queryBtn6" type="submit" class="btn btn-default" class="btn-group pull-left" style="margin-left: 10px;">
+					    <span class="glyphicon glyphicon-search" aria-hidden="true"></span>查询</button>
+				    </form>
+					<p>
+					</br>
+					</br>
+					</br>
+						<font size="4">
+					        查询结果
 						</font>
-					</p>
-					<form role="form">
-						<div>
-							<label for="name">标题(15字以内)</label>
-							<input name="price" style="width:500px" type="text" class="form-control"
-							placeholder="请输入标题" required="required" >
-							<br/><br/>
-							<textarea name="customermessage" style="width:1000px;" rows="5" warp="virtual" placeholder="正文" required></textarea>
-						</div>
-						<br/><br/>
-						<div class="btn-group pull-left" style="margin-left: 0px;">
-							<button id="addBtn" type="button" class="btn btn-default">
-							<span class="glyphicon glyphicon-plus" aria-hidden="true"></span>发布</button>
-						</div>
-					</form>			
-					<!--//进行消息推送-->
-			    </div>
+                    </p>
+					</br>
+				    <table class="table table-bordered table-striped">
+					<thead>
+						<tr>
+							<th>车辆</th>							
+							<th>本周浏览次数</th>
+							<th>本月浏览次数</th>
+							<th>总浏览次数</th>
+							<th>浏览用户数</th>
+						</tr>
+					</thead>
+				    </table>
+					<!--浏览记录-->
+					<br/>
+					<br/>			
+					<a href = "funcViewAppointment.html"><!--这里是返回预约列表的页面-->
+					<input type="button" class="btn btn-default"  value="返回"></button>
+					</a>
+						
+						
+						
+				</div>
+			    
 		    </div>
 			<!-- //控制输出内容在右半部分 -->
 
 	    </div>
-
 		<!--内容--> 
 			
 	    </div>

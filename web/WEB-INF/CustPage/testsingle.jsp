@@ -54,6 +54,7 @@
 					<li><a href="/jump?action=viewcar"><i class="glyphicon glyphicon-picture"></i> 豪车鉴赏</a></li>
 					<li><a href="/jump?action=reserve"><i class="glyphicon glyphicon-envelope"></i> 养修预约 </a></li>
 					<li><a href="/jump?action=apt_record"><i class="glyphicon glyphicon-briefcase"></i> 预约历史 </a> </li>
+					<li><a href="/jump?action=viewhistory"><i class="glyphicon glyphicon-list-alt"></i> 浏览历史</a></li>
 				</ul>
 			</nav>
 			<button class="close-button" id="close-button">C</button>
@@ -76,13 +77,34 @@
 				<!-- //banner -->
 				<!-- properties -->
 				<%Carview car = (Carview)request.getAttribute("car");%>
-				<div class="w3agile properties">   
-					<div class="properties-img properties-img-single">
-						<img src="../../style/images/car1.png" alt="">
-						<!-- 需要根据car的id去加载car的图片 -->
-						<div class="view-caption">
-							<!--h4><span class="glyphicon glyphicon-map-marker"></span> Broome St, Canada, USA </h4==-->  
-						</div> 
+				<div class="w3agile properties">
+					<div id="myCarousel" class="carousel slide">
+						<ol class="carousel-indicators">
+							<li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+							<li data-target="#myCarousel" data-slide-to="1"></li>
+							<li data-target="#myCarousel" data-slide-to="2"></li>
+						</ol>
+
+						<div class="carousel-inner">
+							<div class="item active">
+								<img src="../../style/images/car1.png" alt="First slide">
+							</div>
+							<div class="item">
+								<img src="../../style/images/g1.jpg" alt="Second slide">
+							</div>
+							<div class="item">
+								<img src="../../style/images/g2.jpg" alt="Third slide">
+							</div>
+						</div>
+
+						<a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
+							<span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+							<span class="sr-only">Previous</span>
+						</a>
+						<a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
+							<span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+							<span class="sr-only">Next</span>
+						</a>
 					</div>
 					<div class="w3ls-details">   
 					<!--这里需要动态展示当前车辆的信息-->

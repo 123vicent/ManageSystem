@@ -58,7 +58,7 @@
             <p class="navbar-brand" ><font size="5">汽车销售管理系统</font></p>
         </div>
         <div>
-            <p id= "huanying" class="navbar-brand" align="right"><font size="4">欢迎您！<a href="/SearchUserServlet" name="userid">${userid}</a> </font></p>
+            <p id= "huanying" class="navbar-brand" align="right"><font size="4">用户：<a href="/SearchUserServlet" name="userid">${userid}</a> </font></p>
         </div>
 
         <div id="navbar" class="navbar-collapse collapse">
@@ -93,6 +93,7 @@
             <li><a href="/SwitchPage?page=funcPushMsg" >进行消息推送</a></li>
             <li><a href="/SwitchPage?page=funcRegister" >登记客户车辆</a></li>
             <li><a href="/SwitchPage?page=funcViewReg" >查询登记车辆</a></li>
+            <li><a href="/SwitchPage?page=funcViewRecord" >查看浏览记录</a></li>
             <!--功能可以继续扩展-->
         </ul>
     </div>
@@ -133,14 +134,14 @@
                     <br>
                     <label for="name">修改库存</label>
                     <input name="stock" style="width:500px" type="text" value=<%=soc.getStock()%> class="form-control"
-                           placeholder="请输入库存（不能为空）">
+                           placeholder="请输入库存（不能为空）" required>
                     <div>
                         <label for="name">修改售价</label>
                         <input name="price" style="width:500px" type="text" value=<%=soc.getPrice()%> class="form-control"
-                               placeholder="请输入价格（不能为空）">
+                               placeholder="请输入价格（不能为空）" required>
                         <label for="name">修改车辆信息</label>
                         <div>
-                            <textarea name="description" style="width:1000px;" rows="5" warp="virtual" placeholder="输入修改后的车辆描述（不能为空）"><%=soc.getDescription()%></textarea>
+                            <textarea name="description" style="width:1000px;" rows="5" warp="virtual" placeholder="输入修改后的车辆描述（不能为空）" required><%=soc.getDescription()%></textarea>
                         </div>
                         <%if(request.getAttribute("error")!=null){ %>
                         <%=request.getAttribute("error")%>

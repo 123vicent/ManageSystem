@@ -58,7 +58,7 @@
 		  		    <p class="navbar-brand" ><font size="5">汽车销售管理系统</font></p>
 			    </div>
 			    <div>
-				    <p id= "huanying" class="navbar-brand" align="right"><font size="4">欢迎您！<a href="/SearchUserServlet" name="userid">${userid}</a> </font></p>
+				    <p id= "huanying" class="navbar-brand" align="right"><font size="4">用户：<a href="/SearchUserServlet" name="userid">${userid}</a> </font></p>
 			    </div>
 
 			    <div id="navbar" class="navbar-collapse collapse">
@@ -93,6 +93,7 @@
 					<li><a href="/SwitchPage?page=funcPushMsg" >进行消息推送</a></li>
 					<li class="active"><a href="/SwitchPage?page=funcRegister" >登记客户车辆</a></li>
 					<li><a href="/SwitchPage?page=funcViewReg" >查询登记车辆</a></li>
+					<li><a href="/SwitchPage?page=funcViewRecord" >查看浏览记录</a></li>
 				    <!--功能可以继续扩展-->
 			    </ul>
 		    </div>
@@ -119,11 +120,11 @@
 					<form action="/RegisterCarServlet">
 						<label for="name">车牌号</label>
 						<input name="plate_number" style="width:500px" type="text" class="form-control"
-							   placeholder="请输入车牌号">
+							   placeholder="请输入车牌号" required>
 						<label for="name">${plate_number_error}</label><br>
 						<label for="name">客户id</label>
 						<input name="userid" style="width:500px" type="text" class="form-control"
-							   placeholder="请输入客户id">
+							   placeholder="请输入客户id" required>
 						<label for="name">${cusid_error}</label><br>
 
 
@@ -136,13 +137,13 @@
 						<%i++;%>
 						<%}%>
 						<label for="name">车牌</label>
-						<select name="brand" style="width:500px" id="carlist1" class="form-control" onchange="selectprovince(this);">
+						<select name="brand" style="width:500px" id="carlist1" class="form-control" onchange="selectprovince(this);" required>
 							<option value=""></option>
 						</select>
 						<%--<input name="brand" style="width:500px" type="text" class="form-control"--%>
 							   <%--placeholder="请输入车牌">--%>
 						<label for="name">车型</label>
-						<select name="model" style="width:500px" id="carlist2" class="form-control">
+						<select name="model" style="width:500px" id="carlist2" class="form-control" required>
 							<option value=""></option>
 						</select>
 						<%--<input name="model" style="width:500px" type="text" class="form-control"--%>
@@ -152,7 +153,7 @@
 						<input class="form-control" style="width:500px" name="register_time" type="text" id="d15" onfocus="WdatePicker({dateFmt:'yyyy-MM-dd'})" required=""/>
 						<label for="name">支付价格</label>
 						<input name="pay_price" style="width:500px" type="text" class="form-control"
-							   placeholder="请输入支付价格">
+							   placeholder="请输入支付价格" required>
 						<div class="btn-group pull-left" style="margin-left: 0px;">
 							<button id="addBtn" type="submit" class="btn btn-default">
 								<span class="glyphicon glyphicon-plus" aria-hidden="true"></span>登记</button>

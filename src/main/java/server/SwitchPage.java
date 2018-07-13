@@ -54,6 +54,9 @@ public class SwitchPage extends HttpServlet {
         }else if(page.equals("funcRegister")){
 
             view = request.getRequestDispatcher("ShopPage/funcRegister.jsp");
+        }else if(page.equals("funcViewRecord")){
+
+            view = request.getRequestDispatcher("ShopPage/funcViewRecord.html");
         }else{
             view = request.getRequestDispatcher("ShopPage/funcViewReg.jsp");
         }
