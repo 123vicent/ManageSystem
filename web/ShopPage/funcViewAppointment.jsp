@@ -127,8 +127,11 @@
 						<label>预约状态</label>
 						<select name="appointstate" style="width:100px;height:35px">
 							<option >全部预约</option>
-							<option >已接受</option>
 							<option >待接受</option>
+							<option >已接受</option>
+							<option >已完成</option>
+							<option >已拒绝</option>
+							<option >已取消</option>
 						</select>
 						<label>预约类型</label>
 						<select name="appointtype" style="width:100px;height:35px">
@@ -136,7 +139,6 @@
 							<option >试驾预约</option>
 							<option >维修预约</option>
 							<option >保养预约</option>
-							<option >购车预约</option>
 						</select>
 						<input type="text" class="form-control" name="customername" placeholder="输入需要查询的客户姓名"></input>
 						<input type="text" class="form-control" name="ap_id" placeholder="输入需要查询的预约号"></input>
@@ -152,7 +154,7 @@
 					</font>
 					</p>
 					</br>
-					<form action="/dealapt">
+
 
 						<table class="table table-bordered table-striped">
 
@@ -180,15 +182,26 @@
 								<th><%=shopapt.getAp_type()%></th>
 								<th><%=shopapt.getAp_time()%></th>
 								<th><%=shopapt.getAp_state()%>
-									<button id="queryBtn2" name="deal" value=<%=shopapt.getAppointment_id()%> type="submit" class="btn btn-default" class="btn-group pull-left" style="margin-left: 10px;">
-										处理</button></th>
+									<%if(shopapt.getAp_state().equals("待接受")||shopapt.getAp_state().equals("已接受")){%>
+									<a href="/dealapt?access=deal&value=<%=shopapt.getAppointment_id()%>" >
+										<button  type="button" class="btn btn-success" class="btn-group pull-left" style="margin-left: 10px;">
+										处理</button>
+									</a>
+									</th>
+								<%}else{%>
+								<a href="/dealapt?access=check&value=<%=shopapt.getAppointment_id()%>" >
+									<button  type="button" class="btn btn-primary" class="btn-group pull-left" style="margin-left: 10px;">
+										查看</button>
+								</a>
+								</th>
+								<%;}%>
 
 								<%i++;%>
 								<%}%>
 							</tr>
 							</tbody>
 						</table>
-					</form>
+
 					<!--//查询客户预约-->
 			    </div>
 		    </div>
