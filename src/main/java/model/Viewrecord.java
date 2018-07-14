@@ -3,9 +3,18 @@ package model;
 import java.sql.Timestamp;
 
 public class Viewrecord {
+    private String shopuser_id;
     private String car_id;
     private String cususer_id;
-    private Timestamp view_date;
+    private Timestamp view_time;
+
+    public String getShopuser_id() {
+        return shopuser_id;
+    }
+
+    public void setShopuser_id(String shopuser_id) {
+        this.shopuser_id = shopuser_id;
+    }
 
     public String getCar_id() {
         return car_id;
@@ -23,11 +32,11 @@ public class Viewrecord {
         this.cususer_id = cususer_id;
     }
 
-    public Timestamp getView_date() {
-        return view_date;
+    public Timestamp getView_time() {
+        return view_time;
     }
 
-    public void setView_date(Timestamp view_date) {
-        this.view_date = view_date;
+    public void setView_time(Timestamp view_time) {
+        this.view_time = view_time;
     }
 }

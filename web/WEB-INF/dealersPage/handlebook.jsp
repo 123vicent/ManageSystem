@@ -67,10 +67,10 @@
 
         <div id="navbar" class="navbar-collapse collapse">
             <ul class="nav navbar-nav navbar-right">
-                <li><a href="/SwitchPage?page=homepage" ><font size="3">系统主页</font></a></li>
-                <li><a href="/SwitchPage?page=funcpage" class="active" ><font size="3">使用功能</font></a></li>
-                <li><a href="/SwitchPage?page=setpage" ><font size="3">用户设置</font></a></li>
-                <li><a href="/SwitchPage?page=helppage" ><font size="3">帮助界面</font></a></li>
+                <li><a href="/SwitchPage?page=homepage"><font size="3">系统主页</font></a></li>
+                <li><a href="/SwitchPage?page=funcpage"><font size="3">使用功能</font></a></li>
+                <li><a href="/SwitchPage?page=setpage"><font size="3">用户设置</font></a></li>
+                <li><a href="/SwitchPage?page=helppage"><font size="3">帮助界面</font></a></li>
             </ul>
             <!--页内切换-->
             <!--
@@ -93,10 +93,11 @@
             <li><a href="/SwitchPage?page=funcpage">功能概览</a></li>
             <li><a href="/SwitchPage?page=funcViewCar" >查询车辆信息</a></li>
             <li><a href="/SwitchPage?page=funcUploadCar" >上传车辆信息</a></li>
-            <li class="active"><a href="/SwitchPage?page=funcViewAppointment" >查询客户预约</a></li>
+            <li><a href="/SwitchPage?page=funcViewAppointment" >查询客户预约</a></li>
             <li><a href="/SwitchPage?page=funcPushMsg" >进行消息推送</a></li>
             <li><a href="/SwitchPage?page=funcRegister" >登记客户车辆</a></li>
             <li><a href="/SwitchPage?page=funcViewReg" >查询登记车辆</a></li>
+            <li><a href="/SwitchPage?page=funcViewRecord" >查看浏览记录</a></li>
             <!--功能可以继续扩展-->
         </ul>
     </div>
@@ -160,7 +161,7 @@
                         <br>
                         <label for="name">拒绝原因</label>
                         <div>
-                            <textarea name="refusemsg" style="width:1000px;" rows="5" warp="virtual" placeholder="输入拒绝原因"></textarea>
+                            <textarea name="refusemsg" style="width:1000px;" rows="5" warp="virtual" placeholder="输入拒绝原因" required></textarea>
                         </div>
                         <%if(request.getAttribute("error")!=null){ %>
                         <%=request.getAttribute("error")%>
@@ -184,19 +185,19 @@
                     <input type="hidden" name="ap_id" value="<%=shopapt.getAppointment_id()%>"></input>
                     <div>
                         <div><label for="name">完成时间</label></div>
-                        <input class="Wdate" name="complete_time" type="text" id="d15" onfocus="WdatePicker({dateFmt:'yyyy-MM-dd HH:mm:ss'})"/>
+                        <input class="Wdate" name="complete_time" type="text" id="d15" onfocus="WdatePicker({dateFmt:'yyyy-MM-dd HH:mm:ss'})" required/>
                         <div>
                             <br><br>
                             <label for="name">收款</label>
                         </div>
                         <input name="payment" style="width:500px" type="text" class="form-control"
-                               placeholder="请输入收款数">
+                               placeholder="请输入收款数" required>
                     </div>
                     <div>
                         <br><br>
                         <label for="name">描述</label>
                         <div>
-                            <textarea name="description" style="width:1000px;" rows="5" warp="virtual" placeholder="输入预约完成描述"></textarea>
+                            <textarea name="description" style="width:1000px;" rows="5" warp="virtual" placeholder="输入预约完成描述" required></textarea>
                         </div>
                         <%if(request.getAttribute("error")!=null){ %>
                         <%=request.getAttribute("error")%>

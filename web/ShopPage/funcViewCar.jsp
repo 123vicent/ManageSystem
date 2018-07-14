@@ -1,6 +1,8 @@
 <%@ page import="basic.KeyValuePair" %>
 <%@ page import="java.util.List" %>
-<%@ page import="basic.Carinfo" %><%--
+<%@ page import="basic.Carinfo" %>
+<%@ page import="DAO.CarDAO" %>
+<%@ page import="DAO.DAOFactory" %><%--
 Created by IntelliJ IDEA.
 User: 17308
 Date: 2018/7/3
@@ -65,7 +67,7 @@ To change this template use File | Settings | File Templates.
 		  		    <p class="navbar-brand" ><font size="5">汽车销售管理系统</font></p>
 			    </div>
 			    <div>
-				    <p id= "huanying" class="navbar-brand" align="right"><font size="4">欢迎您！<a href="/SearchUserServlet" name="userid">${userid}</a> </font></p>
+				    <p id= "huanying" class="navbar-brand" align="right"><font size="4">用户：<a href="/SearchUserServlet" name="userid">${userid}</a> </font></p>
 			    </div>
 
 			    <div id="navbar" class="navbar-collapse collapse">
@@ -100,6 +102,7 @@ To change this template use File | Settings | File Templates.
 					<li><a href="/SwitchPage?page=funcPushMsg" >进行消息推送</a></li>
 					<li><a href="/SwitchPage?page=funcRegister" >登记客户车辆</a></li>
 					<li><a href="/SwitchPage?page=funcViewReg" >查询登记车辆</a></li>
+					<li><a href="/SwitchPage?page=funcViewRecord" >查看浏览记录</a></li>
 				    <!--功能可以继续扩展-->
 			    </ul>
 		    </div>
@@ -123,20 +126,23 @@ To change this template use File | Settings | File Templates.
 								在这里你可以查看你旗下的车辆信息
 							</font>
 						</p></br>
+						<%List<Carinfo> carinfos = (List<Carinfo>) request.getAttribute("searchcars");int i = 0;%>
+						<%CarDAO carDAO = DAOFactory.getCarDAO();
+						List<String> brands = carDAO.findAllBrand();
+						List<String> types = carDAO.findAllType();%>
 						<label>品牌</label>
 						<select name="Bybrand" style="width:100px;height:35px">
-							<option value="全部车辆">所有品牌</option>
-							<option value="Benz">Benz</option>
-							<option value="Audi">Audi</option>
-							<option value="Lamborghini">Lamborghini</option>
-							<option value="Rolls-Royce">Rolls-Royce</option>
+							<option value="">所有品牌</option>
+							<%for(int n = 0;n<brands.size();n++){%>
+							<option><%=brands.get(n)%></option>
+							<%}%>
 						</select>
 						<label>类型</label>
 						<select name="Bytype" style="width:100px;height:35px">
-							<option value="全部车辆">所有类型</option>
-							<option value="轿车">轿车</option>
-							<option value="超级跑车">超级跑车</option>
-							<option value="高级轿车">高级轿车</option>
+							<option value="">所有类型</option>
+							<%for(int n = 0;n<types.size();n++){%>
+							<option><%=types.get(n)%></option>
+							<%}%>
 						</select>
 						<button id="queryBtn2" type="submit" class="btn btn-default" class="btn-group pull-left" style="margin-left: 10px;">
 							<span class="glyphicon glyphicon-search" aria-hidden="true"></span>查询</button>
@@ -157,7 +163,7 @@ To change this template use File | Settings | File Templates.
 							<th>车型</th>
 							<th>库存</th>
 							<th>价格</th>
-							<th>图片</th>
+							<th>详情</th>
 							<th>更新</th>
 						</tr>
 						<%--<c:forEach var="U" items="${searchcars}">
@@ -171,7 +177,6 @@ To change this template use File | Settings | File Templates.
 							</tr>
 						</c:forEach>--%>
 						</thead>
-						<%List<Carinfo> carinfos = (List<Carinfo>) request.getAttribute("searchcars");int i = 0;%>
 						<%for(Carinfo carinfo:carinfos){%>
 						<tr>
 							<th><%=carinfo.getBrand()%></th>
@@ -179,8 +184,11 @@ To change this template use File | Settings | File Templates.
 							<th><%=carinfo.getType()%></th>
 							<th><%=carinfo.getStock()%></th>
 							<th><%=carinfo.getPrice()%></th>
-							<th><%=carinfo.getPic_url()%></th>
-							<th><a href="/jumpupdate?brand=<%=carinfo.getBrand()%>&model=<%=carinfo.getModel()%>" >
+							<th><a href="/jumpupdate?action=search&brand=<%=carinfo.getBrand()%>&model=<%=carinfo.getModel()%>" >
+								<button  type="button" class="btn btn-info" class="btn-group pull-left" style="margin-left: 10px;">
+									<span class="glyphicon glyphicon-equalizer" aria-hidden="true"></span>查看详情</button>
+							</a></th>
+							<th><a href="/jumpupdate?action=update&brand=<%=carinfo.getBrand()%>&model=<%=carinfo.getModel()%>" >
 								<button  type="button" class="btn btn-info" class="btn-group pull-left" style="margin-left: 10px;">
 									<span class="glyphicon glyphicon-duplicate" aria-hidden="true"></span>更新信息</button>
 							</a></th>

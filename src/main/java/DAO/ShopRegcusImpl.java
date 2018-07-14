@@ -18,16 +18,16 @@ public class ShopRegcusImpl implements ShopRegcusDAO{
         List<ShopRegcus> srcList = new ArrayList<ShopRegcus>();
         String sql = "select * from shopregcus where shopuser_id=? ";
         if(!cususer_id.equals("")){
-            sql += "and cususer_id="+cususer_id;
+            sql += "and cususer_id='"+cususer_id+"'";
         }
         if(!cus_name.equals("")){
-            sql += " and cus_name="+cus_name;
+            sql += " and cus_name='"+cus_name+"'";
         }
         if(!brand.equals("")){
-            sql += " and brand="+brand;
+            sql += " and brand='"+brand+"'";
         }
         if(!model.equals("")){
-            sql += " and model="+model;
+            sql += " and model='"+model+"'";
         }
         PreparedStatement ps = null;
         ResultSet rs = null;

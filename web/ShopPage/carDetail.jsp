@@ -1,3 +1,6 @@
+<%@ page import="model.Car" %>
+<%@ page import="model.Shopowncar" %>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html lang="en">
 	<head>
     <meta charset="utf-8">
@@ -7,7 +10,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
     <link rel="icon" href="../css/favicon.ico">
-    <title>汽车销售管理系统-车辆登记</title>
+    <title>车辆信息</title>
 	<!-- css引用 -->
     <!-- Bootstrap core CSS -->
     <link href="../style/css/bootstrap.min.css" rel="stylesheet">
@@ -45,6 +48,11 @@
 		    #result img{
 			    height:500px;
 		    }
+			#myimg{
+				width: 100px;
+				height:100px;
+				border:1px solid #eee;
+			}
 	    </style>
 		
 		<!--上方导航栏-->
@@ -54,15 +62,15 @@
 		  		    <p class="navbar-brand" ><font size="5">汽车销售管理系统</font></p>
 			    </div>
 			    <div>
-				    <p id= "huanying" class="navbar-brand" align="right"><font size="4">欢迎您！<a href="/SearchUserServlet" name="userid">${userid}</a> </font></p>
+				    <p id= "huanying" class="navbar-brand" align="right"><font size="4">用户：<a href="/SearchUserServlet" name="userid">${userid}</a> </font></p>
 			    </div>
 
 			    <div id="navbar" class="navbar-collapse collapse">
 				    <ul class="nav navbar-nav navbar-right">
-						<li><a href="/SwitchPage?page=homepage" ><font size="3">系统主页</font></a></li>
-						<li><a href="/SwitchPage?page=funcpage" class="active" ><font size="3">使用功能</font></a></li>
-						<li><a href="/SwitchPage?page=setpage" ><font size="3">用户设置</font></a></li>
-						<li><a href="/SwitchPage?page=helppage" ><font size="3">帮助界面</font></a></li>
+						<li><a href="/SwitchPage?page=homepage"><font size="3">系统主页</font></a></li>
+						<li><a href="/SwitchPage?page=funcpage"><font size="3">使用功能</font></a></li>
+						<li><a href="/SwitchPage?page=setpage"><font size="3">用户设置</font></a></li>
+						<li><a href="/SwitchPage?page=helppage"><font size="3">帮助界面</font></a></li>
 				    </ul>
 				    <!--页内切换-->
 				    <!--
@@ -82,13 +90,14 @@
 			<!-- 左边导航栏 -->
 		    <div class="col-sm-3 col-md-2 sidebar">
 			    <ul class="nav nav-sidebar">
-					<li><a href="/SwitchPage?page=funcpage">功能概览</a></li>
-					<li><a href="/SwitchPage?page=funcViewCar" >查询车辆信息</a></li>
-					<li><a href="/SwitchPage?page=funcUploadCar" >上传车辆信息</a></li>
-					<li><a href="/SwitchPage?page=funcViewAppointment" >查询客户预约</a></li>
-					<li><a href="/SwitchPage?page=funcPushMsg" >进行消息推送</a></li>
-					<li class="active"><a href="/SwitchPage?page=funcRegister" >登记客户车辆</a></li>
-					<li><a href="/SwitchPage?page=funcViewReg" >查询登记车辆</a></li>
+                    <li><a href="/SwitchPage?page=funcpage">功能概览</a></li>
+                    <li><a href="/SwitchPage?page=funcViewCar" >查询车辆信息</a></li>
+                    <li><a href="/SwitchPage?page=funcUploadCar" >上传车辆信息</a></li>
+                    <li><a href="/SwitchPage?page=funcViewAppointment" >查询客户预约</a></li>
+                    <li><a href="/SwitchPage?page=funcPushMsg" >进行消息推送</a></li>
+                    <li><a href="/SwitchPage?page=funcRegister" >登记客户车辆</a></li>
+                    <li><a href="/SwitchPage?page=funcViewReg" >查询登记车辆</a></li>
+                    <li><a href="/SwitchPage?page=funcViewRecord" >查看浏览记录</a></li>
 				    <!--功能可以继续扩展-->
 			    </ul>
 		    </div>
@@ -98,50 +107,66 @@
 
 		    <!--查询所有车的类型型号，设置下拉框-->
 		    <!--//查询所有车的类型型号，设置下拉框-->
-		 
+
 
 
 			<!-- 控制输出内容在右半部分 -->
-		    <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
-			    
-			    <div class="tab-content">
-					<!--登记车辆信息-->
-					<p>
-                        <font size="4">
-                            在这里你可以登记你旗下客户的车辆信息
-                        </font>
-                    </p>
-					</br>
-					<label for="name">客户id</label>
-                        <input name="stock" style="width:500px" type="text" class="form-control"
-						placeholder="请输入客户id">
-					<label for="name">客户姓名</label>
-						<input name="stock" style="width:500px" type="text" class="form-control"
-						placeholder="请输入客户姓名">
-					<label for="name">车辆id</label>
-						<input name="stock" style="width:500px" type="text" class="form-control"
-						placeholder="请输入车辆id">
-					<label for="name">车型</label>
-						<input name="stock" style="width:500px" type="text" class="form-control"
-						placeholder="请输入车型">
-					<label for="name">车辆颜色</label>
-						<input name="stock" style="width:500px" type="text" class="form-control"
-						placeholder="请输入车辆颜色">
-					<label for="name">车座</label>
-						<input name="stock" style="width:500px" type="text" class="form-control"
-						placeholder="请输入车座">
+			<%Car c = (Car) request.getAttribute("car");%>
+			<%Shopowncar soc = (Shopowncar) request.getAttribute("soc");%>
 
-                    <div class="btn-group pull-left" style="margin-left: 0px;">
-                        <button id="addBtn" type="submit" class="btn btn-default">
-                        <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>登记</button>
-                    </div>			
-					<!--//登记车辆信息-->
-			    </div>
+		    <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+			    <div class="w3ls-details">   
+					<!--车辆信息-->	
+					<div class="w3ls-text">
+						<h4>车辆信息</h4>
+						<p><b>品牌 :</b> <%=c.getBrand()%> </p>
+						<p><b>型号 :</b> <%=c.getModel()%> </p>
+						<p><b>车型 :</b> <%=c.getType()%> </p>
+						<p><b>库存 :</b> <%=soc.getStock()%> </p>
+						<p><b>参考价格 :</b> <%=soc.getPrice()%> </p>
+						<p><b>车辆简介 :</b> <%=soc.getDescription()%> </p>
+						<br/>
+						<h4>车辆图片</h4> 
+					</div>
+					<!--车辆信息-->
+					<br/>
+					<br/>
+					<div display:block>
+					<img class="thumbnail" 
+					align = "left"
+					width="280" height="192"
+					src="../img/1.jpg" data-src="holder.js/500x500/auto" 
+					alt="Generic placeholder image">
+
+					<img class="thumbnail" 
+					align = "left"
+					width="280" height="192"
+					src="../img/2.jpg" data-src="holder.js/500x500/auto" 
+					alt="Generic placeholder image">
+					
+					<img class="thumbnail" 
+					align = "left"
+					width="280" height="192"
+					src="../img/3.jpg" data-src="holder.js/500x500/auto" 
+					alt="Generic placeholder image">
+					</div>
+					<br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
+					<center>
+						<a href="/carback?userid=<%=soc.getShopuser_id()%>&carid=<%=soc.getCar_id()%>">
+						<div>
+							<button id="addBtn" name="access" type="submit" value="返回" class="btn btn-danger">
+								<span class="glyphicon glyphicon-step-backward" aria-hidden="true"></span>返回
+							</button>
+						</div>
+						</a>
+					</center>					
+				</div>
+					
+			    
 		    </div>
 			<!-- //控制输出内容在右半部分 -->
 
 	    </div>
-
 		<!--内容--> 
 			
 	    </div>

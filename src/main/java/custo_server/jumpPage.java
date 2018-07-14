@@ -72,7 +72,16 @@ public class jumpPage extends HttpServlet {
             request.setAttribute("car",carview);
             view = request.getRequestDispatcher("WEB-INF/CustPage/testsingle.jsp");
         }
-        else{
+        else if(pagename.equals("viewhistory")){
+
+            view = request.getRequestDispatcher("WEB-INF/CustPage/viewhistory.html");
+        }else if(pagename.equals("trendslist")){
+
+            view = request.getRequestDispatcher("WEB-INF/CustPage/trendslist.html");
+        }else if(pagename.equals("trends")){
+
+            view = request.getRequestDispatcher("WEB-INF/CustPage/trends.html");
+        } else{
             view = request.getRequestDispatcher("WEB-INF/CustPage/reserve.jsp");
         }
         view.forward(request,response);

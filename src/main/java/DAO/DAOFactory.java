@@ -13,6 +13,8 @@ public class DAOFactory {
         return new CarDAOImpl();
     }
 
+    public static ShopRegcusDAO getShopRegcusDAO(){return new ShopRegcusImpl();}
+
     public static CusowncarDAO getCusowncarDAO(){
         return new CusowncarDAOImpl();
     }
@@ -42,6 +44,10 @@ public class DAOFactory {
     }
 
     public static CarviewDAO getCarviewDAO(){ return  new CarviewDAOImpl();}
+
+    public static NewsDAO getNewsDAO(){
+        return new NewsDAOImpl();
+    }
 
 }
 //CarDAO cardao = DAOFactory.getCarDAO()

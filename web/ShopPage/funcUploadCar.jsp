@@ -63,7 +63,7 @@ To change this template use File | Settings | File Templates.
 		  		    <p class="navbar-brand" ><font size="5">汽车销售管理系统</font></p>
 			    </div>
 			    <div>
-				    <p id= "huanying" class="navbar-brand" align="right"><font size="4">欢迎您！<a href="/SearchUserServlet" name="userid">${userid}</a> </font></p>
+				    <p id= "huanying" class="navbar-brand" align="right"><font size="4">用户：<a href="/SearchUserServlet" name="userid">${userid}</a> </font></p>
 			    </div>
 
 			    <div id="navbar" class="navbar-collapse collapse">
@@ -98,6 +98,7 @@ To change this template use File | Settings | File Templates.
 					<li><a href="/SwitchPage?page=funcPushMsg" >进行消息推送</a></li>
 					<li><a href="/SwitchPage?page=funcRegister" >登记客户车辆</a></li>
 					<li><a href="/SwitchPage?page=funcViewReg" >查询登记车辆</a></li>
+					<li><a href="/SwitchPage?page=funcViewRecord" >查看浏览记录</a></li>
 				    <!--功能可以继续扩展-->
 			    </ul>
 		    </div>
@@ -132,11 +133,11 @@ To change this template use File | Settings | File Templates.
 								<%i++;%>
 								<%}%>
 								<label>选择品牌</label>
-								<select id="carlist1" name="brand" runat="server" onchange="selectprovince(this);" style=" width:95px;">
+								<select id="carlist1" name="brand" runat="server" onchange="selectprovince(this);" style="width:100px;height:35px" required>
 									<option value=""></option>
 								</select>
 								<label>选择型号</label>
-								<select id="carlist2" name="model" runat="server" style=" width:95px;">
+								<select id="carlist2" name="model" runat="server" style="width:100px;height:35px" required>
 									<option value=""></option>
 								</select>
 							</div>
@@ -144,11 +145,17 @@ To change this template use File | Settings | File Templates.
 								<br><br>
 								<label for="name">库存（数量）</label>
 								<input name="stock" style="width:500px" type="text" class="form-control"
-									   placeholder="请输入库存">
+									   placeholder="请输入库存（不能为空" required>
 								<div>
 									<label for="name">价格（自填）</label>
 									<input name="price" style="width:500px" type="text" class="form-control"
-										   placeholder="请输入价格">
+										   placeholder="请输入价格（不能为空）" required>
+								</div>
+								<div>
+									<label for="name">车辆描述</label>
+									<div>
+										<textarea name="description" style="width:1000px;" rows="5" warp="virtual" placeholder="输入车辆描述（不能为空）" required></textarea>
+									</div>
 								</div>
 								<%if(request.getAttribute("error")!=null){ %>
 								<%=request.getAttribute("error")%>

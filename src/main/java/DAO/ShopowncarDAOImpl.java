@@ -17,7 +17,7 @@ public class ShopowncarDAOImpl implements ShopowncarDAO {
     Connection conn = dbc.getConnection();
 
     public Boolean insert(Shopowncar soc) {
-        String sql = "insert into shopowncar values (?,?,?,?,?)";
+        String sql = "insert into shopowncar values (?,?,?,?,?,?)";
         PreparedStatement ps = null;
         try {
             ps = conn.prepareStatement(sql);
@@ -26,6 +26,7 @@ public class ShopowncarDAOImpl implements ShopowncarDAO {
             ps.setInt(3,soc.getStock());
             ps.setDouble(4,soc.getPrice());
             ps.setString(5,soc.getPic_url());
+            ps.setString(6,soc.getDescription());
 
             ps.executeUpdate();
             ps.close();
@@ -37,7 +38,7 @@ public class ShopowncarDAOImpl implements ShopowncarDAO {
     }
 
     public Boolean update(Shopowncar soc){
-        String sql = "update shopowncar set shopuser_id=?,car_id=?,stock=?,price=?,pic_url=? where shopuser_id=? and car_id=?";
+        String sql = "update shopowncar set shopuser_id=?,car_id=?,stock=?,price=?,pic_url=?,description=? where shopuser_id=? and car_id=?";
         PreparedStatement ps = null;
         try {
             ps = conn.prepareStatement(sql);
@@ -46,8 +47,9 @@ public class ShopowncarDAOImpl implements ShopowncarDAO {
             ps.setInt(3,soc.getStock());
             ps.setDouble(4,soc.getPrice());
             ps.setString(5,soc.getPic_url());
-            ps.setString(6,soc.getShopuser_id());
-            ps.setString(7,soc.getCar_id());
+            ps.setString(6,soc.getDescription());
+            ps.setString(7,soc.getShopuser_id());
+            ps.setString(8,soc.getCar_id());
 
             ps.executeUpdate();
             ps.close();
@@ -91,6 +93,7 @@ public class ShopowncarDAOImpl implements ShopowncarDAO {
                 soc.setStock(rs.getInt(3));
                 soc.setPrice(rs.getDouble(4));
                 soc.setPic_url(rs.getString(5));
+                soc.setDescription(rs.getString(6));
             }
 
 
@@ -102,7 +105,7 @@ public class ShopowncarDAOImpl implements ShopowncarDAO {
 
     public List<Shopowncar> findAll(){
         List<Shopowncar> socList = new ArrayList<Shopowncar>();
-        String sql = "select * from maintainrecord";
+        String sql = "select * from shopowncar";
         PreparedStatement ps = null;
         ResultSet rs = null;
         try {
@@ -115,6 +118,7 @@ public class ShopowncarDAOImpl implements ShopowncarDAO {
                 soc.setStock(rs.getInt(3));
                 soc.setPrice(rs.getDouble(4));
                 soc.setPic_url(rs.getString(5));
+                soc.setDescription(rs.getString(6));
 
                 socList.add(soc);
             }

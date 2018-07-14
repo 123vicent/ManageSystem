@@ -6,6 +6,7 @@ public class Shopowncar {
     private int stock;
     private double price;
     private String pic_url;
+    private String description;
 
     public String getShopuser_id() {
         return shopuser_id;
@@ -45,5 +46,13 @@ public class Shopowncar {
 
     public void setPic_url(String pic_url) {
         this.pic_url = pic_url;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
     }
 }

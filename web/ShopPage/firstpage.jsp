@@ -64,7 +64,7 @@
               <p class="navbar-brand" ><font size="5">汽车销售管理系统</font></p>
           </div>
           <div>
-              <p id= "huanying" class="navbar-brand" align="right"><font size="4">欢迎您！<a href="/SearchUserServlet" name="userid">${userid}</a> </font></p>
+              <p id= "huanying" class="navbar-brand" align="right"><font size="4">用户：<a href="/SearchUserServlet" name="userid">${userid}</a> </font></p>
           </div>
 
           <div id="navbar" class="navbar-collapse collapse">
@@ -173,8 +173,8 @@
       <div class="row featurette">
         <div class="col-md-7">
           <h2 class="featurette-heading">
-          汽车销售管理系统 精细化管理客户</br> <span class="text-muted">  </span></h2>
-          <p class="lead">专为汽车4S店、二手车、新车经销商设计的车辆销售管理系统。系统功能强大、操作简单、容易上手。 程序化快速建档，自有服务器存储海量客户，避免客户数据丢失；意向客户及保险到期及时提醒，方便执行</p>
+          汽车销售管理系统 </br> <span class="text-muted">  </span></h2>
+          <p class="lead">专为汽车4S店、二手车、新车经销商设计的车辆销售管理系统。系统功能强大、操作简单、容易上手。</p>
         </div>
         <div class="col-md-5">
           <img class="featurette-image img-responsive center-block" src="../img/car-manage.png" data-src="holder.js/500x500/auto" alt="Generic placeholder image">

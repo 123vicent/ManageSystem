@@ -50,11 +50,12 @@ public class AddcarServlet extends HttpServlet {
         System.out.println(car.getCar_id());
         String stock = request.getParameter("stock");
         String price = request.getParameter("price");
+        String description = request.getParameter("description");
         System.out.println(stock);
         System.out.println(price);
         String pic_url = "111";
         //String access = request.getParameter("submit");
-        if(stock.equals("")||price.equals("")) {
+        if(stock.equals("")||price.equals("")||description.equals("")) {
             request.setAttribute("error","请将属性填完整");
         }
         else{
@@ -130,6 +131,7 @@ public class AddcarServlet extends HttpServlet {
             shopowncar.setStock(Integer.parseInt(stock));
             shopowncar.setPrice(Double.parseDouble(price));
             shopowncar.setPic_url(pic_url);
+            shopowncar.setDescription(description);
 
             ShopowncarDAO shopowncarDAO = DAOFactory.getShopowncarDAO();
             if(shopowncarDAO.insert(shopowncar)) {

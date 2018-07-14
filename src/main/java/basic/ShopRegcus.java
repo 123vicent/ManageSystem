@@ -10,7 +10,11 @@ public class ShopRegcus {
     private String brand;
     private String model;
     private String color;
-    private Date Register_time;
+    private Date register_time;
+
+    public Date getRegister_time() { return register_time; }
+
+    public void setRegister_time(Date register_time) { this.register_time = register_time; }
 
     public String getShopuser_id() {
         return shopuser_id;
@@ -68,11 +72,4 @@ public class ShopRegcus {
         this.color = color;
     }
 
-    public Date getRegister_time() {
-        return Register_time;
-    }
-
-    public void setRegister_time(Date register_time) {
-        Register_time = register_time;
-    }
 }

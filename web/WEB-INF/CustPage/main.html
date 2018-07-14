@@ -57,6 +57,7 @@
 					<li><a href="/jump?action=viewcar"><i class="glyphicon glyphicon-picture"></i> 豪车鉴赏</a></li>
 					<li><a href="/jump?action=reserve"><i class="glyphicon glyphicon-envelope"></i> 养修预约 </a></li>
 					<li><a href="/jump?action=apt_record"><i class="glyphicon glyphicon-briefcase"></i> 预约历史 </a> </li>
+					<li><a href="/jump?action=viewhistory"><i class="glyphicon glyphicon-list-alt"></i>浏览历史</a></li>
 				</ul>
 			</nav>
 			<button class="close-button" id="close-button">C</button>
@@ -78,9 +79,63 @@
 				</div>
 				<!-- //banner -->
 				<!-- welcome -->
-				<div class="welcome"> 
-					<h3 class="w3ls-title">欢迎！</h3> 
-					<p class="w3title-text">使用功能请点击左上角 </p>
+				<div class="welcome">
+					<div id="myCarousel" class="carousel slide">
+
+						<ol class="carousel-indicators">
+							<li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+							<li data-target="#myCarousel" data-slide-to="1"></li>
+							<li data-target="#myCarousel" data-slide-to="2"></li>
+						</ol>
+
+						<div class="carousel-inner">
+							<div class="item active">
+								<a href="#"><img src="../../style/images/car1.png" alt="First slide"></a>
+							</div>
+							<div class="item">
+								<a href="#"><img src="../../style/images/g1.jpg" alt="Second slide"></a>
+							</div>
+							<div class="item">
+								<a href="#"><img src="../../style/images/g2.jpg" alt="Third slide"></a>
+							</div>
+						</div>
+
+						<a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
+							<span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+							<span class="sr-only">Previous</span>
+						</a>
+						<a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
+							<span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+							<span class="sr-only">Next</span>
+						</a>
+					</div>
+				</div>
+				<!-- //welcome -->
+				<!-- properties -->
+
+
+				<!--	最新消息模块		-->
+				<div class="row" style="margin-top: 20px;">
+					<div class="col-xs-10 col-xs-offset-1">
+						<div class="list-group">
+							<a href="/jump?action=trendslist" class="list-group-item active">
+								<h4 class="list-group-item-heading">
+									最新消息 <span style="font-size: 80%;">&nbsp;&nbsp;&nbsp;查看更多>></span>
+								</h4>
+							</a>
+							<!--<a href="#" class="list-group-item">
+								<h5 class="list-group-item-heading">
+									维护通知
+								</h5>
+
+							</a>
+							<a href="#" class="list-group-item">
+								<h5 class="list-group-item-heading">
+									清仓大甩卖
+								</h5>
+							</a>-->
+						</div>
+					</div>
 				</div>
 				<!-- //welcome -->
 				<!-- properties -->

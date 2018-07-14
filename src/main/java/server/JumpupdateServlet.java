@@ -19,17 +19,24 @@ import java.io.IOException;
 public class JumpupdateServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         HttpSession session = request.getSession();
-        String shopuser_id = (String)session.getAttribute("userid");
+        RequestDispatcher view;
+        String shopuser_id = (String) session.getAttribute("userid");
+        String action = request.getParameter("action");
         String brand = request.getParameter("brand");
-        request.setAttribute("brand",brand);
+        request.setAttribute("brand", brand);
         String model = request.getParameter("model");
-        request.setAttribute("model",model);
+        request.setAttribute("model", model);
         CarDAO carDAO = DAOFactory.getCarDAO();
-        Car c = carDAO.findByBrandModel(brand,model);
+        Car c = carDAO.findByBrandModel(brand, model);
+        request.setAttribute("car",c);
         ShopowncarDAO shopowncarDAO = DAOFactory.getShopowncarDAO();
-        Shopowncar soc = shopowncarDAO.findById(shopuser_id,c.getCar_id());
+        Shopowncar soc = shopowncarDAO.findById(shopuser_id, c.getCar_id());
         request.setAttribute("soc",soc);
-        RequestDispatcher view = request.getRequestDispatcher("ShopPage/ChangeCarInfo.jsp");
+        if(action.equals("update")) {
+             view = request.getRequestDispatcher("ShopPage/ChangeCarInfo.jsp");
+        }else{
+             view = request.getRequestDispatcher("ShopPage/carDetail.jsp");
+        }
         view.forward(request,response);
     }
 

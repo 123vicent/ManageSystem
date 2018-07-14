@@ -7,7 +7,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
     <link rel="icon" href="../css/favicon.ico">
-    <title>汽车销售管理系统-查询预约</title>
+    <title>发送通知</title>
 	<!-- css引用 -->
     <!-- Bootstrap core CSS -->
     <link href="../style/css/bootstrap.min.css" rel="stylesheet">
@@ -54,7 +54,7 @@
 		  		    <p class="navbar-brand" ><font size="5">汽车销售管理系统</font></p>
 			    </div>
 			    <div>
-				    <p id= "huanying" class="navbar-brand" align="right"><font size="4">欢迎您！<a href="/SearchUserServlet" name="userid">${userid}</a> </font></p>
+				    <p id= "huanying" class="navbar-brand" align="right"><font size="4">用户：<a href="/SearchUserServlet" name="userid">${userid}</a> </font></p>
 			    </div>
 
 			    <div id="navbar" class="navbar-collapse collapse">
@@ -64,12 +64,6 @@
 						<li><a href="/SwitchPage?page=setpage" ><font size="3">用户设置</font></a></li>
 						<li><a href="/SwitchPage?page=helppage" ><font size="3">帮助界面</font></a></li>
 				    </ul>
-				    <!--页内切换-->
-				    <!--
-				    <form class="navbar-form navbar-right">
-				  	    <input type="text" class="form-control" placeholder="Search...">
-				    </form>
-				    -->
 			    </div>
 		    </div>
 	    </nav>
@@ -89,17 +83,11 @@
 					<li class="active"><a href="/SwitchPage?page=funcPushMsg" >进行消息推送</a></li>
 					<li><a href="/SwitchPage?page=funcRegister" >登记客户车辆</a></li>
 					<li><a href="/SwitchPage?page=funcViewReg" >查询登记车辆</a></li>
+					<li><a href="/SwitchPage?page=funcViewRecord" >查看浏览记录</a></li>
 				    <!--功能可以继续扩展-->
 			    </ul>
 		    </div>
 			<!-- //左边导航栏 -->
-
-
-
-		    <!--查询所有车的类型型号，设置下拉框-->
-		    <!--//查询所有车的类型型号，设置下拉框-->
-		 
-
 
 			<!-- 控制输出内容在右半部分 -->
 		    <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
@@ -107,17 +95,22 @@
 			    <div class="tab-content">
 					<!--进行消息推送-->
 					<p>
-						<font size="4">
-							在这里可以进行微信端的消息推送
+						<font size="6">
+							发布通知
 						</font>
 					</p>
 					<form role="form">
 						<div>
-							<textarea name="customermessage" style="width:1000px;" rows="5" warp="virtual" placeholder="输入要推送给客户的信息"></textarea>
+							<label for="name">标题(15字以内)</label>
+							<input name="price" style="width:500px" type="text" class="form-control"
+							placeholder="请输入标题" required="required" >
+							<br/><br/>
+							<textarea name="customermessage" style="width:1000px;" rows="5" warp="virtual" placeholder="正文" required></textarea>
 						</div>
+						<br/><br/>
 						<div class="btn-group pull-left" style="margin-left: 0px;">
 							<button id="addBtn" type="button" class="btn btn-default">
-							<span class="glyphicon glyphicon-plus" aria-hidden="true"></span>推送</button>
+							<span class="glyphicon glyphicon-plus" aria-hidden="true"></span>发布</button>
 						</div>
 					</form>			
 					<!--//进行消息推送-->
