@@ -141,7 +141,7 @@
 					align = "left"
 					width="280" height="192"
 					src=<%=imgs[i]%> data-src="holder.js/500x500/auto"
-					alt="Generic placeholder image">
+					>
 					<%}%>
 					<%--<img class="thumbnail"
 					align = "left"

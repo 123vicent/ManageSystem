@@ -42,18 +42,13 @@ public class AddcarServlet extends HttpServlet {
         //String[] s = brand_model.split("-");
         String brand = request.getParameter("brand");
         String model = request.getParameter("model");
-        System.out.println(brand);
-        System.out.println(model);
 
         CarDAO carDAO = DAOFactory.getCarDAO();
         Car car = carDAO.findByBrandModel(brand,model);
-        System.out.println(car.getCar_id());
         String stock = request.getParameter("stock");
         String price = request.getParameter("price");
         String description = request.getParameter("description");
-        System.out.println(stock);
-        System.out.println(price);
-        String pic_url = "111";
+
         //String access = request.getParameter("submit");
         if(stock.equals("")||price.equals("")||description.equals("")) {
             request.setAttribute("error","请将属性填完整");
@@ -130,7 +125,6 @@ public class AddcarServlet extends HttpServlet {
             shopowncar.setShopuser_id(shopuserid);
             shopowncar.setStock(Integer.parseInt(stock));
             shopowncar.setPrice(Double.parseDouble(price));
-            shopowncar.setPic_url(pic_url);
             shopowncar.setDescription(description);
 
             ShopowncarDAO shopowncarDAO = DAOFactory.getShopowncarDAO();
