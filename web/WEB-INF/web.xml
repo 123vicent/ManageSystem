@@ -111,4 +111,7 @@
         <url-pattern>/webToWx</url-pattern>
     </servlet-mapping>
 
+    <listener>
+        <listener-class>Listener.UserOnlineListener</listener-class>
+    </listener>
 </web-app>

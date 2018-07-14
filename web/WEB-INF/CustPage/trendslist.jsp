@@ -1,7 +1,9 @@
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
-<title>main</title> 
+<title>trendslist</title> 
 <!-- For-Mobile-Apps-and-Meta-Tags -->
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -57,7 +59,7 @@
 					<li><a href="/jump?action=viewcar"><i class="glyphicon glyphicon-picture"></i> 豪车鉴赏</a></li>
 					<li><a href="/jump?action=reserve"><i class="glyphicon glyphicon-envelope"></i> 养修预约 </a></li>
 					<li><a href="/jump?action=apt_record"><i class="glyphicon glyphicon-briefcase"></i> 预约历史 </a> </li>
-					<li><a href="/jump?action=viewhistory"<i class="glyphicon glyphicon-list-alt"></i> 浏览历史</a></li>
+					<li><a href="/jump?action=viewhistory"><i class="glyphicon glyphicon-list-alt"></i>浏览历史</a></li>
 				</ul>
 			</nav>
 			<button class="close-button" id="close-button">C</button>
@@ -80,13 +82,20 @@
 				<!-- //banner -->
 
 				<div class="w3agile properties">
-					<h3 class="w3ls-title">通知动态</h3>
+					<h3 class="w3ls-title">通知动态列表</h3>
 					<div class="properties-bottom">
+						<c:forEach var="U" items="${news}">
 						<div class="w3ls-text">
-							<p><font size="4">正文</font></p><!--通知-->
+							<a href="/jump?action=trends&title=${U.title}&shopuser_id=${U.shopuser_id}" name="news_id"><font size="4">${U.title}</font></a><!--通知1-->
+						</div>
+						</c:forEach>
+					</div>
+					<!--<div class="properties-bottom">
+						<div class="w3ls-text">
+							<a href="#"><font size="4">456</font></a>&lt;!&ndash;通知1&ndash;&gt;
 						</div>
 
-					</div>
+					</div>-->
 				</div>
 				<!-- brands -->
 				<div class="w3agile brands"> 

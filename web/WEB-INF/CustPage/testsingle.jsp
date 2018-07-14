@@ -78,23 +78,25 @@
 				<!-- properties -->
 				<%Carview car = (Carview)request.getAttribute("car");%>
 				<div class="w3agile properties">
+					<%String [] imgs = car.getPic_url().split("--");%>
 					<div id="myCarousel" class="carousel slide">
 						<ol class="carousel-indicators">
 							<li data-target="#myCarousel" data-slide-to="0" class="active"></li>
-							<li data-target="#myCarousel" data-slide-to="1"></li>
-							<li data-target="#myCarousel" data-slide-to="2"></li>
+							<%for(int i = 1;i<imgs.length;i++){%>
+							<li data-target="#myCarousel" data-slide-to=<%=i%>></li>
+							<%}%>
 						</ol>
 
 						<div class="carousel-inner">
+
 							<div class="item active">
-								<img src="../../style/images/car1.png" alt="First slide">
+								<img src=<%=imgs[0]%>  >
 							</div>
+							<%for(int i = 1;i<imgs.length;i++){%>
 							<div class="item">
-								<img src="../../style/images/g1.jpg" alt="Second slide">
+								<img src=<%=imgs[i]%>  >
 							</div>
-							<div class="item">
-								<img src="../../style/images/g2.jpg" alt="Third slide">
-							</div>
+							<%}%>
 						</div>
 
 						<a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
@@ -108,8 +110,8 @@
 					</div>
 					<div class="w3ls-details">   
 					<!--这里需要动态展示当前车辆的信息-->
-						<h4><%=car.getBrand()%></h4>
-						<p class="agile-text">奥迪A6是一种小轿车 </p>
+						<h4><%=car.getBrand()%>   <%=car.getModel()%></h4>
+						<p class="agile-text"><%=car.getDescription()%></p>
 						<div class="w3ls-text">
 							<p><b>经销商 :</b><%=car.getShop_name()%></p>
 							<p><b>联系电话 :</b><%=car.getShop_phone()%></p>
@@ -119,7 +121,6 @@
 							<p><b>座位数 :</b> <%=car.getSeats()%> </p>
 							<p><b>动力类型 :</b> <%=car.getPower()%> </p>
 							<p><b>参考价格 :</b> ¥<%=car.getPrice()%> </p>
-							<p><b>详细描述 :</b><%=car.getDescription()%></p>
 						</div>
 					</div>
 					<div class="w3ls-related">

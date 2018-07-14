@@ -3,9 +3,8 @@ package custo_server;
 import DAO.*;
 import basic.Carview;
 import basic.Cususerapt;
-import model.Appointment;
-import model.Car;
-import model.Customeruser;
+import basic.Viewcarrecord;
+import model.*;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -15,6 +14,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
+import java.sql.Timestamp;
+import java.util.Date;
 import java.util.List;
 
 @WebServlet(name = "jumpPage",urlPatterns = "/jump")
@@ -25,7 +26,6 @@ public class jumpPage extends HttpServlet {
         RequestDispatcher view;
         HttpSession session = request.getSession();
         String user_id = (String)session.getAttribute("userid");
-        System.out.println(pagename);
         if(pagename.equals("homepage"))
         {
             view = request.getRequestDispatcher("WEB-INF/CustPage/main.html");
@@ -70,17 +70,50 @@ public class jumpPage extends HttpServlet {
            CarviewDAO carviewDAO = DAOFactory.getCarviewDAO();
            Carview carview = carviewDAO.findById(car_id,shopuser_id);
             request.setAttribute("car",carview);
+            //插入浏览时间到数据库
+            ViewrecordDAO viewrecordDAO   = DAOFactory.getViewrecordDAO();
+            Viewrecord viewrecord = new Viewrecord();
+            viewrecord.setShopuser_id(shopuser_id);
+            Timestamp view_time = new java.sql.Timestamp(new java.util.Date().getTime());
+            viewrecord.setView_time(view_time);
+            viewrecord.setCar_id(car_id);
+            viewrecord.setCususer_id(user_id);
+            Boolean isSuccess = viewrecordDAO.insert(viewrecord);
+            //判断是否成功插入
+            System.out.println(isSuccess);
             view = request.getRequestDispatcher("WEB-INF/CustPage/testsingle.jsp");
         }
         else if(pagename.equals("viewhistory")){
+            ViewcarrecordDAO viewcarrecordDAO = DAOFactory.getViewcarrecordDAO();
+            List<Viewcarrecord> vcrList = viewcarrecordDAO.findAllByCusId(user_id);
+            request.setAttribute("vcrList",vcrList);
 
-            view = request.getRequestDispatcher("WEB-INF/CustPage/viewhistory.html");
+            view = request.getRequestDispatcher("WEB-INF/CustPage/viewhistory.jsp");
         }else if(pagename.equals("trendslist")){
-
-            view = request.getRequestDispatcher("WEB-INF/CustPage/trendslist.html");
+            NewsDAO newsDAO = DAOFactory.getNewsDAO();
+            request.setAttribute("news",newsDAO.findAllToday());
+            System.out.println(newsDAO.findAllToday());
+            view = request.getRequestDispatcher("WEB-INF/CustPage/trendslist.jsp");
         }else if(pagename.equals("trends")){
+            String title = request.getParameter("title");
+            System.out.println("标题："+title);
 
-            view = request.getRequestDispatcher("WEB-INF/CustPage/trends.html");
+            String shopuser_id = request.getParameter("shopuser_id");
+            System.out.println("经销商id："+shopuser_id);
+
+
+            java.util.Date utilDate=new Date();
+            java.sql.Date sqlDate=new java.sql.Date(utilDate.getTime());
+            //SimpleDateFormat ft = new SimpleDateFormat ("yyyy.MM.dd");
+            //String dateFormat = ft.format(date);
+            System.out.println("时间："+sqlDate);
+
+            NewsDAO newsDAO = DAOFactory.getNewsDAO();
+            News news = newsDAO.findById(shopuser_id,sqlDate,title);
+            System.out.println(newsDAO.findById(shopuser_id,sqlDate,title));
+            request.setAttribute("title",news.getTitle());
+            request.setAttribute("content",news.getContent());
+            view = request.getRequestDispatcher("WEB-INF/CustPage/trends.jsp");
         } else{
             view = request.getRequestDispatcher("WEB-INF/CustPage/reserve.jsp");
         }

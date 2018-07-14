@@ -14,6 +14,7 @@
 <link href="../../style/css/bootstrap.css" type="text/css" rel="stylesheet" media="all">
 <link href="../../style/css/style.css" type="text/css" rel="stylesheet" media="all">
 <link rel="stylesheet" href="../../style/css/lightbox.css">
+
 <!-- //Custom Theme files -->
 <!-- js -->
 <script src="../../style/js/jquery-2.2.3.min.js"></script>
@@ -53,7 +54,7 @@
 					<li><a href="/jump?action=viewcar"><i class="glyphicon glyphicon-picture"></i> 豪车鉴赏</a></li>
 					<li><a href="/jump?action=reserve"><i class="glyphicon glyphicon-envelope"></i> 养修预约 </a></li>
 					<li><a href="/jump?action=apt_record"><i class="glyphicon glyphicon-briefcase"></i> 预约历史 </a> </li>
-					<li><a href="viewhistory.html"><i class="glyphicon glyphicon-list-alt"></i> 浏览历史</a></li>
+					<li><a href="/jump?action=viewhistory"><i class="glyphicon glyphicon-list-alt"></i> 浏览历史</a></li>
 				</ul>
 			</nav>
 			<button class="close-button" id="close-button">C</button>

@@ -1,10 +1,8 @@
 package server;
 
-import DAO.CarinfoDAO;
-import DAO.DAOFactory;
-import DAO.ShopaptDAO;
-import DAO.ShopowncarDAO;
+import DAO.*;
 import basic.Carinfo;
+import basic.Countinfo;
 import basic.Shopapt;
 import model.Shopowncar;
 
@@ -55,8 +53,11 @@ public class SwitchPage extends HttpServlet {
 
             view = request.getRequestDispatcher("ShopPage/funcRegister.jsp");
         }else if(page.equals("funcViewRecord")){
+            ViewcarrecordDAO viewcarrecordDAO = DAOFactory.getViewcarrecordDAO();
+            List<Countinfo> countinfos = viewcarrecordDAO.findAllByShopId(Shopuserid);
+            request.setAttribute("countinfos",countinfos);
 
-            view = request.getRequestDispatcher("ShopPage/funcViewRecord.html");
+            view = request.getRequestDispatcher("ShopPage/funcViewRecord.jsp");
         }else{
             view = request.getRequestDispatcher("ShopPage/funcViewReg.jsp");
         }

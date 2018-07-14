@@ -112,7 +112,15 @@ public class uploadImg extends HttpServlet {
         String carid = pList.get(0);
         ShopowncarDAO shopowncarDAO = DAOFactory.getShopowncarDAO();
         Shopowncar shopowncar = shopowncarDAO.findById(shopuserid,carid);
-        shopowncar.setPic_url(UPLOAD_DIRECTORY+File.separator + fileName);
+
+        String OrgImg = shopowncar.getPic_url();
+        String []imgs = OrgImg.split("--");
+        if(imgs.length<3) {
+            shopowncar.setPic_url(OrgImg + "--" + UPLOAD_DIRECTORY + File.separator + fileName);
+        }
+        else{
+            shopowncar.setPic_url(OrgImg.replaceAll(imgs[0]+"--","")+ "--" + UPLOAD_DIRECTORY + File.separator + fileName);
+        }
         System.out.println(UPLOAD_DIRECTORY+File.separator + fileName);
         shopowncarDAO.update(shopowncar);
 
@@ -121,6 +129,7 @@ public class uploadImg extends HttpServlet {
 
         CarDAO carDAO = DAOFactory.getCarDAO();
         Car car = carDAO.findById(carid);
+
         request.setAttribute("brand",car.getBrand());
         request.setAttribute("model",car.getModel());
                 // 跳转到 message.jsp

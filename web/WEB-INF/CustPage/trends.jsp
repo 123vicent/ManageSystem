@@ -1,7 +1,8 @@
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <!DOCTYPE html>
 <html>
 <head>
-<title>appointmentView</title> 
+<title>main</title> 
 <!-- For-Mobile-Apps-and-Meta-Tags -->
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -18,20 +19,20 @@
 <!-- //js -->
 <!-- pop-up-box -->
 <script src="../../style/js/jquery.magnific-popup.js" type="text/javascript"></script>
-<script>
-	$(document).ready(function() {
-		$('.popup-top-anim').magnificPopup({
-			type: 'inline',
-			fixedContentPos: false,
-			fixedBgPos: true,
-			overflowY: 'auto',
-			closeBtnInside: true,
-			preloader: false,
-			midClick: true,
-			removalDelay: 300,
-			mainClass: 'my-mfp-zoom-in'
-		});																							
-	}); 
+	    <script>
+			$(document).ready(function() {
+				$('.popup-top-anim').magnificPopup({
+					type: 'inline',
+					fixedContentPos: false,
+					fixedBgPos: true,
+					overflowY: 'auto',
+					closeBtnInside: true,
+					preloader: false,
+					midClick: true,
+					removalDelay: 300,
+					mainClass: 'my-mfp-zoom-in'
+				});																							
+			}); 
 </script>
 <!--//pop-up-box -->
 <!-- web-fonts -->  
@@ -41,17 +42,23 @@
 </head>
 <body class="bg">
 	<div class="agile-main"> 
-		<div class="menu-wrap" id="style-1">  
+		<div class="menu-wrap" id="style-1"> 
 			<nav class="top-nav">
 				<ul class="icon-list">
 					<li class="menu-title">CarManage</li>
+					<!--<li><a class="active" href="main.html"><i class="glyphicon glyphicon-home"></i> 主页 </a></li>
+					<li><a href="imformation.html"><i class="glyphicon glyphicon-info-sign"></i> 个人信息 </a></li>
+					 
+					<li><a href="testdrive.html"><i class="glyphicon glyphicon-eye-open"></i> 寻车试驾 </a></li>
+					<li><a href="gallery.html"><i class="glyphicon glyphicon-picture"></i> 豪车鉴赏</a></li>																					
+					<li><a href="reserve.html"><i class="glyphicon glyphicon-envelope"></i> 养修预约 </a></li>-->
 					<li><a href="/jump?action=homepage"><i class="glyphicon glyphicon-home"></i> 主页 </a></li>
 					<li><a href="/jump?action=personal_info"><i class="glyphicon glyphicon-info-sign"></i> 个人信息 </a></li>
 					<li><a href="/jump?action=testdrive"><i class="glyphicon glyphicon-eye-open"></i> 寻车试驾 </a></li>
 					<li><a href="/jump?action=viewcar"><i class="glyphicon glyphicon-picture"></i> 豪车鉴赏</a></li>
 					<li><a href="/jump?action=reserve"><i class="glyphicon glyphicon-envelope"></i> 养修预约 </a></li>
 					<li><a href="/jump?action=apt_record"><i class="glyphicon glyphicon-briefcase"></i> 预约历史 </a> </li>
-					<li><a class="active" href="/jump?action=viewhistory"><i class="glyphicon glyphicon-list-alt"></i>浏览历史</a></li>
+					<li><a href="/jump?action=viewhistory"<i class="glyphicon glyphicon-list-alt"></i> 浏览历史</a></li>
 				</ul>
 			</nav>
 			<button class="close-button" id="close-button">C</button>
@@ -68,80 +75,41 @@
 				<!-- banner -->
 				<div class="banner about-banner"> 
 					<div class="banner-img">  
-						<h3>浏览历史</h3>
+						<h3>通知动态</h3>   
 					</div> 
 				</div>
 				<!-- //banner -->
-				<!-- properties --> 
-				<div class="w3agile properties">   
-					<div class="w3ls-text">
-					<table class="table table-striped">
-						
-						<thead>
-							<tr>
-								<th>车辆</th>
-								<th>经销商</th>
-								<th></th>
-							</tr>
-						</thead>
-						<tbody>
-							<tr>
-								<td>奥迪A6</td>
-								<td>BB汽车4S店</td>
-								<td>
-									<a href = "testsingle.html"><!--这里进入详细预约信息的页面-->
-									查看>>
-									<!--input type="button" class="btn btn-success"  value="返回"></button-->
-									</a>
-							
-							</tr>
-							<tr>
-								</td>
-								<td>宝马X3</td>
-								<td>AA汽车销售服务公司</td>
-								<td>
-									<a href = "#"><!--这里进入详细预约信息的页面-->
-									查看>>
-									<!--input type="button" class="btn btn-success"  value="返回"></button-->
-									</a>
-								</td>
-							</tr>
-							<tr>
-								<td>JEEP</td>
-								<td>BB汽车销售</td>
-								<td>
-									<a href = "#"><!--这里进入详细预约信息的页面-->
-									查看>>
-									<!--input type="button" class="btn btn-success"  value="返回"></button-->
-									</a>
-								</td>
-							</tr>
-						</tbody>
-					</table>
-					</div>	
+
+				<div class="w3agile properties">
+					<h3 class="w3ls-title">${title}</h3>
+					<div class="properties-bottom">
+						<div class="w3ls-text">
+							<p><font size="4">${content}</font></p><!--通知-->
+						</div>
+
+					</div>
 				</div>
-				<!-- //about --> 
 				<!-- brands -->
 				<div class="w3agile brands"> 
 					<h3 class="w3ls-title">合作品牌</h3> 
 					<div class="brands-info">
 						<div class="brand-grids">
-							<a href="#"><img src="../../style/images/b1.jpg" alt=""/></a>
+							<img src="../../style/images/b1.jpg" alt=""/>
 						</div>
 						<div class="brand-grids">
-							<a href="#"><img src="../../style/images/b2.jpg" alt=""/></a>
+							<img src="../../style/images/b2.jpg" alt=""/>
 						</div>
 						<div class="brand-grids">
-							<a href="#"><img src="../../style/images/b3.jpg" alt=""/></a>
+							<img src="../../style/images/b3.jpg" alt=""/>
 						</div>
 						<div class="brand-grids">
-							<a href="#"><img src="../../style/images/b4.jpg" alt=""/></a>
+							<img src="../../style/images/b4.jpg" alt=""/>
 						</div>
 						<div class="brand-grids">
-							<a href="#"><img src="../../style/images/b5.jpg" alt=""/></a>
+							<img src="../../style/images/b5.jpg" alt=""/>
 						</div>
 						<div class="brand-grids">
-							<a href="#"><img src="../../style/images/b6.jpg" alt=""/></a>
+							<img src="../../style/images/b6.jpg" alt=""/>
 						</div>
 						<div class="clearfix"> </div>
 					</div>
@@ -149,8 +117,7 @@
 				<!-- //brands -->
 				<!-- footer -->
 				<div class="w3agile footer"> 
-					 
-					
+
 				</div> 
 			</div>
 		</div>
@@ -159,7 +126,7 @@
 	<script src="../../style/js/classie.js"></script>
 	<script src="../../style/js/main.js"></script>
 	<!-- //menu-js -->
-	<!-- nicescroll-js -->
+	<!-- nice scroll-js -->
 	<script src="../../style/js/jquery.nicescroll.min.js"></script>
 	<script>
 		$(document).ready(function() {
@@ -171,7 +138,7 @@
 			$("#boxscroll").niceScroll({cursorborder:"",cursorcolor:"#00F",boxzoom:true}); // First scrollable DIV
 		});
 	</script>
-	<!-- //nicescroll-js -->
+	<!-- //nice scroll-js -->
 	<!-- Bootstrap core JavaScript
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->

@@ -9,16 +9,15 @@ import basic.Carview;
 import basic.Shopapt;
 import model.Shopuser;
 
+import java.sql.Timestamp;
+import java.util.Calendar;
 import java.util.List;
 
 public class Main {
 
     public static void main(String []args) {
-        CarviewDAO carviewDAO = DAOFactory.getCarviewDAO();
-        List<Carview> carviews = carviewDAO.findAllByCon("","","");
-        for(int i=0;i<carviews.size();i++){
-            System.out.println(carviews.get(i).getBrand());
-            System.out.println(carviews.get(i).getModel());
-       }
+        Timestamp view_time = new java.sql.Timestamp(new java.util.Date().getTime());
+        String time= view_time.toString();
+        System.out.println(time);
     }
 }
