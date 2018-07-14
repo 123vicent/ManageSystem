@@ -24,7 +24,21 @@
     <!-- Custom styles for this template -->
     <link href="../style/css/dashboard.css" rel="stylesheet">
     <link href="../style/css/carousel.css" rel="stylesheet">
-
+    <style type="text/css">
+        #result{
+            width: 600px;
+            height:400px;
+            border:1px solid #eee;
+        }
+        #result img{
+            width: auto;
+        }
+        input{
+            width: 75px;
+            margin-top: 10px;
+        }
+        @-moz-document url-prefix() { input { width:65px; } }/*单独对火狐进行设置*/
+    </style>
     <script src="../style/js/ie-emulation-modes-warning.js"></script>
     <!-- Bootstrap core JavaScript
     ================================================== -->
@@ -35,7 +49,50 @@
     <script type="text/javascript" src="https://cdn.bootcss.com/bootbox.js/4.4.0/bootbox.min.js"></script><!-- 如果断网，需要下载这个js -->
     <script type="text/javascript" src="../style/js/bootstrap-table.js"></script>
     <script type="text/javascript" src="../style/js/bootstrap-table-zh-CN.js"></script>
-
+    <script type="text/javascript">
+        //var files = document.getElementById('pic').files;
+        var form = new FormData();//通过HTML表单创建FormData对象
+        var url = '127.0.0.1:8080/'
+        function selectFile(){
+            var files = document.getElementById('pic').files;
+            console.log(files[0]);
+            if(files.length == 0){
+                return;
+            }
+            var file = files[0];
+            //把上传的图片显示出来
+            var reader = new FileReader();
+            // 将文件以Data URL形式进行读入页面
+            console.log(reader);
+            reader.readAsBinaryString(file);
+            reader.onload = function(f){
+                var result = document.getElementById("result");
+                var src = "data:" + file.type + ";base64," + window.btoa(this.result);
+                result.innerHTML = '<img onclick="fileSelect();" src ="'+src+'"/>';
+            }
+            console.log('file',file);
+            ///////////////////
+            form.append('file',file);
+            console.log(form.get('file'));
+        }
+        function fileSelect() {
+            document.getElementById("pic").click();
+        }
+        //var xhr = new XMLHttpRequest();
+        // function handIn(){
+        //  console.log(form.get('file'));
+        //  xhr.open("post", url, true);
+        //  xhr.addEventListener("readystatechange", function() {
+        //      var result = xhr;
+        //      if (result.status != 200) { //error
+        //          console.log('上传失败', result.status, result.statusText, result.response);
+        //      }
+        //      else if (result.readyState == 4) { //finished
+        //          console.log('上传成功', result);
+        //      }
+        //  });
+        // }
+    </script>
 
 </head>
 
@@ -54,6 +111,9 @@
 <!--上方导航栏-->
 <nav class="navbar navbar-inverse navbar-fixed-top">
     <div class="container-fluid">
+        <div class="navbar-header">
+            <img src="../../style/images/mainlogo.png" style="width:50px">
+        </div>
         <div class="navbar-header">
             <p class="navbar-brand" ><font size="5">汽车销售管理系统</font></p>
         </div>
@@ -158,7 +218,7 @@
                 </div>
                 -->
                 </br>
-                <div class="btn-group pull-left" style="margin-left: 20px;">
+                <div class="btn-group pull-left" style="margin-left: 0px;">
                     <button id="addBtn" name="access" type="submit" value="更新" class="btn btn-success">
                         <span class="glyphicon glyphicon-upload" aria-hidden="true"></span>更新
                     </button>
@@ -171,11 +231,21 @@
                 </div>
             </form>
             <form method="post" action="/uploadimg" enctype="multipart/form-data">
+
+                    <div id = "result">
+                        <img src="1.jpg" onclick="fileSelect();">
+                    </div>
+                    <div class="face">
+                        <!--<input type="file" name="fileToUpload" id="fileToUpload" onchange="fileSelected();" style="display:none;">-->
+                        <input id="pic" type="file" name = 'pic' accept = "image/*" onchange = "selectFile();" style="display: none;">
+                    </div>
+
+
                 <input type="hidden" name="121" value=<%=soc.getCar_id()%>>
-                :
-                <input type="file" name="uploadFile" />
-                <br/><br/>
-                <input type="submit" value="上传" />
+
+                <!--<input type="file" name="uploadFile" />-->
+                <input class="btn btn-success" type="submit" value="上传" />
+
             </form>
 
             <!--//修改车辆信息-->

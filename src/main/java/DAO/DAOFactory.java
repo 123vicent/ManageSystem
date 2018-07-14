@@ -49,5 +49,9 @@ public class DAOFactory {
         return new NewsDAOImpl();
     }
 
+    public static ViewcarrecordDAO getViewcarrecordDAO(){
+        return new ViewcarrecordDAOImpl();
+    }
+
 }
 //CarDAO cardao = DAOFactory.getCarDAO()

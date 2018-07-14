@@ -54,6 +54,9 @@
 		<!--上方导航栏-->
 	    <nav class="navbar navbar-inverse navbar-fixed-top">
 		    <div class="container-fluid">
+				<div class="navbar-header">
+					<img src="../../style/images/mainlogo.png" style="width:50px">
+				</div>
 			    <div class="navbar-header">
 		  		    <p class="navbar-brand" ><font size="5">汽车销售管理系统</font></p>
 			    </div>
@@ -154,6 +157,7 @@
 						<label for="name">支付价格</label>
 						<input name="pay_price" style="width:500px" type="text" class="form-control"
 							   placeholder="请输入支付价格" required>
+					</br>
 						<div class="btn-group pull-left" style="margin-left: 0px;">
 							<button id="addBtn" type="submit" class="btn btn-default">
 								<span class="glyphicon glyphicon-plus" aria-hidden="true"></span>登记</button>

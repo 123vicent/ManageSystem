@@ -63,6 +63,9 @@ To change this template use File | Settings | File Templates.
 		<!--上方导航栏-->
 	    <nav class="navbar navbar-inverse navbar-fixed-top">
 		    <div class="container-fluid">
+				<div class="navbar-header">
+					<img src="../../style/images/mainlogo.png" style="width:50px">
+				</div>
 			    <div class="navbar-header">
 		  		    <p class="navbar-brand" ><font size="5">汽车销售管理系统</font></p>
 			    </div>

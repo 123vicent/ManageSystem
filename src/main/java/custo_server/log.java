@@ -24,8 +24,6 @@ public class log extends HttpServlet {
 
         String userid = request.getParameter("username");
         String password = request.getParameter("password");
-        System.out.println(userid);
-        System.out.println(password);
 
         String access = request.getParameter("submit");
         RequestDispatcher view;

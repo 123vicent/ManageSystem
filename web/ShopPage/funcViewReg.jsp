@@ -52,6 +52,9 @@
 		<!--上方导航栏-->
 	    <nav class="navbar navbar-inverse navbar-fixed-top">
 		    <div class="container-fluid">
+				<div class="navbar-header">
+					<img src="../../style/images/mainlogo.png" style="width:50px">
+				</div>
 			    <div class="navbar-header">
 		  		    <p class="navbar-brand" ><font size="5">汽车销售管理系统</font></p>
 			    </div>
@@ -114,7 +117,7 @@
 						  在这里你可以查看你旗下的登记的客户车辆信息
 					    </font>
 					</p></br>
-					<form action="/ViewRegServlet" class="navbar-form navbar-left">
+					<form action="/ViewRegServlet" class="navbar-form navbar-left" style="margin-left: -15px;">
 					<input type="text" class="form-control" name="cususer_id" placeholder="输入需要查询的客户id">
 					<input type="text" class="form-control" name="cus_name" placeholder="输入需要查询的客户姓名">
 					<input type="text" class="form-control" name="brand" placeholder="输入需要查询的车品牌">

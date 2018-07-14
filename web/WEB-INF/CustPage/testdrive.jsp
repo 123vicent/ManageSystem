@@ -95,7 +95,7 @@
 					  	for(Carview car:cars){%>
 					<div class="properties-bottom">
 						<div class="properties-img">
-							<img src="../../style/images/1.jpg" alt="">
+							<img src=<%=car.getPic_url().split("--")[0]%> alt="">
 							<div class="view-caption"><!--加rent-caption为蓝色-->
 								<h4><span class="glyphicon glyphicon-eye-open"></span> <%=car.getBrand()%> </h4> <!--车辆简介-->
 							</div>

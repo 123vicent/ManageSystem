@@ -58,6 +58,9 @@
 		<!--上方导航栏-->
 	    <nav class="navbar navbar-inverse navbar-fixed-top">
 		    <div class="container-fluid">
+				<div class="navbar-header">
+					<img src="../../style/images/mainlogo.png" style="width:50px">
+				</div>
 			    <div class="navbar-header">
 		  		    <p class="navbar-brand" ><font size="5">汽车销售管理系统</font></p>
 			    </div>
@@ -132,13 +135,15 @@
 					<br/>
 					<br/>
 					<div display:block>
+					<%String []imgs=soc.getPic_url().split("--");
+					for(int i = 0;i<imgs.length;i++){%>
 					<img class="thumbnail" 
 					align = "left"
 					width="280" height="192"
-					src="../img/1.jpg" data-src="holder.js/500x500/auto" 
-					alt="Generic placeholder image">
-
-					<img class="thumbnail" 
+					src=<%=imgs[i]%> data-src="holder.js/500x500/auto"
+					>
+					<%}%>
+					<%--<img class="thumbnail"
 					align = "left"
 					width="280" height="192"
 					src="../img/2.jpg" data-src="holder.js/500x500/auto" 
@@ -148,7 +153,7 @@
 					align = "left"
 					width="280" height="192"
 					src="../img/3.jpg" data-src="holder.js/500x500/auto" 
-					alt="Generic placeholder image">
+					alt="Generic placeholder image">--%>
 					</div>
 					<br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
 					<center>
