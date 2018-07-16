@@ -8,7 +8,9 @@ import dbcon.DBConnect;
 import javax.servlet.RequestDispatcher;
 import java.sql.*;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class ViewcarrecordDAOImpl implements ViewcarrecordDAO{
     DBConnect dbc = new DBConnect();
@@ -90,8 +92,10 @@ public class ViewcarrecordDAOImpl implements ViewcarrecordDAO{
                 vcr.setShopuser_id(rs.getString(1));
                 vcr.setBrand(rs.getString(2));
                 vcr.setModel(rs.getString(3));
-                vcr.setCususer_id(rs.getString(4));
-                vcr.setView_time(rs.getTimestamp(5));
+                vcr.setType(rs.getString(4));
+                vcr.setPrice(rs.getDouble(5));
+                vcr.setCususer_id(rs.getString(6));
+                vcr.setView_time(rs.getTimestamp(7));
                 viewcarrecords.add(vcr);
             }
         } catch (SQLException e) {
@@ -126,4 +130,79 @@ public class ViewcarrecordDAOImpl implements ViewcarrecordDAO{
         return cvcList;
     }
 
+    public Map<String, Integer> findBrandCount() {
+        Map<String,Integer> brandcount = new HashMap<String, Integer>();
+        String sql = "select brand,count(brand) from viewcarrecord group by brand";
+        PreparedStatement ps = null;
+        ResultSet rs = null;
+        try {
+            ps = conn.prepareStatement(sql);
+            rs = ps.executeQuery();
+            while(rs.next()){
+                brandcount.put(rs.getString(1),rs.getInt(2));
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return brandcount;
+    }
+
+    public Map<String, Integer> findTypeCount() {
+        Map<String,Integer> typecount = new HashMap<String, Integer>();
+        String sql = "select type,count(type) from viewcarrecord group by type";
+        PreparedStatement ps = null;
+        ResultSet rs = null;
+        try {
+            ps = conn.prepareStatement(sql);
+            rs = ps.executeQuery();
+            while(rs.next()){
+                typecount.put(rs.getString(1),rs.getInt(2));
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return typecount;
+    }
+
+    public int findPriceCount(double min,double max) {
+        int pricecount;
+        String sql = "select count(*) from viewcarrecord where price between ? and ?";
+        PreparedStatement ps = null;
+        ResultSet rs = null;
+        try {
+            ps = conn.prepareStatement(sql);
+            ps.setDouble(1,min);
+            ps.setDouble(2,max);
+            rs = ps.executeQuery();
+            if(rs.next()){
+                pricecount = rs.getInt(1);
+            }else{
+                pricecount = 0;
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+            pricecount = 0;
+        }
+        return pricecount;
+    }
+
+    public int findAllCount() {
+        int count;
+        String sql ="select count(*) from viewcarrecord";
+        PreparedStatement ps =null;
+        ResultSet rs = null;
+        try {
+            ps = conn.prepareStatement(sql);
+            rs = ps.executeQuery();
+            if(rs.next()){
+                count = rs.getInt(1);
+            }else{
+                count = 0;
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+            count = 0;
+        }
+        return count;
+    }
 }

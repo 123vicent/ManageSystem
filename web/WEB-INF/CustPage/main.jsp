@@ -75,7 +75,7 @@
 			<div class="content">
 				<!-- banner -->
 				<div class="banner about-banner"> 
-					<div class="banner-img">  
+					<div class="banner-img" style=" background: url(../../style/images/first.jpg)no-repeat center";>
 						<h3>主页</h3>   
 					</div> 
 				</div>
@@ -92,13 +92,13 @@
 
 						<div class="carousel-inner">
 							<div class="item active">
-								<a href="#"><img src="../../style/images/car1.png" alt="First slide"></a>
+								<a href="#"><img src="../../style/images/" alt="First slide"></a>
 							</div>
 							<div class="item">
-								<a href="#"><img src="../../style/images/g1.jpg" alt="Second slide"></a>
+								<a href="#"><img src="../../style/images/" alt="Second slide"></a>
 							</div>
 							<div class="item">
-								<a href="#"><img src="../../style/images/g2.jpg" alt="Third slide"></a>
+								<a href="#"><img src="../../style/images/" alt="Third slide"></a>
 							</div>
 						</div>
 

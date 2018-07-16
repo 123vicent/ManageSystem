@@ -102,6 +102,7 @@ To change this template use File | Settings | File Templates.
 					<li><a href="/SwitchPage?page=funcRegister" >登记客户车辆</a></li>
 					<li><a href="/SwitchPage?page=funcViewReg" >查询登记车辆</a></li>
 					<li><a href="/SwitchPage?page=funcViewRecord" >查看浏览记录</a></li>
+					<li><a href="/SwitchPage?page=funcDataAnalyze" >浏览数据分析</a></li>
 				    <!--功能可以继续扩展-->
 			    </ul>
 		    </div>
@@ -121,7 +122,7 @@ To change this template use File | Settings | File Templates.
 					<!--上传车辆信息-->
 					<form action="/addcar" enctype="multipart/form-data">
 							<p>
-								<font size="4">
+								<font size="6">
 									在这里你可以上传你旗下的车辆信息
 								</font>
 							</p></br>
@@ -136,11 +137,11 @@ To change this template use File | Settings | File Templates.
 								<%i++;%>
 								<%}%>
 								<label>选择品牌</label>
-								<select id="carlist1" name="brand" runat="server" onchange="selectprovince(this);" style="width:100px;height:35px" required>
+								<select id="carlist1" name="brand" runat="server" onchange="selectprovince(this);" style="width:100px;height:33px" required>
 									<option value=""></option>
 								</select>
 								<label>选择型号</label>
-								<select id="carlist2" name="model" runat="server" style="width:100px;height:35px" required>
+								<select id="carlist2" name="model" runat="server" style="width:100px;height:33px" required>
 									<option value=""></option>
 								</select>
 							</div>

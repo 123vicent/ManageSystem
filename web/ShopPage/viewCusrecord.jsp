@@ -100,6 +100,7 @@
             <li><a href="/SwitchPage?page=funcRegister" >登记客户车辆</a></li>
             <li><a href="/SwitchPage?page=funcViewReg" >查询登记车辆</a></li>
             <li class="active"><a href="/SwitchPage?page=funcViewRecord" >查看浏览记录</a></li>
+            <li><a href="/SwitchPage?page=funcDataAnalyze" >浏览数据分析</a></li>
             <!--功能可以继续扩展-->
         </ul>
     </div>
@@ -149,14 +150,13 @@
             <!--浏览记录-->
             <br/>
             <br/>
+            <div>
             <a href="/SwitchPage?page=funcViewRecord">
-                <div>
                     <button id="addBtn" name="access" type="submit" value="返回" class="btn btn-danger">
                         <span class="glyphicon glyphicon-step-backward" aria-hidden="true"></span>返回
                     </button>
-                </div>
             </a>
-
+            </div>
 
         </div>
 
