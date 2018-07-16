@@ -1,5 +1,6 @@
 <%@ page import="java.util.List" %>
 <%@ page import="basic.Carview" %>
+<%@ page import="model.Shopowncar" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <!DOCTYPE html>
 <html>
@@ -20,6 +21,7 @@
 <!-- //js -->
 <!-- pop-up-box -->
 <script src="../../style/js/jquery.magnific-popup.js" type="text/javascript"></script>
+
 <script>
 	$(document).ready(function() {
 		$('.popup-top-anim').magnificPopup({
@@ -79,7 +81,18 @@
 					<h3 class="w3ls-title">寻找爱车</h3>
 					<form action="/searchcar">
 						<div class="input-group">
-							<input type="text" name= "con" class="form-control" placeholder="查找..." style="width:80%" >
+                            <!--智能提醒功能-->
+                            <%List<Carview> carviews = (List<Carview>)session.getAttribute("allshopcars");
+                            int  i = 0;
+                            int num = carviews.size();%>
+                            <input type="hidden" id="length" name=<%=num%>>
+                            <%for(Carview carview:carviews){%>
+                            <input id=<%=i+num%> type="hidden" value=<%=carview.getBrand()%>>
+                            <%i++;%>
+                            <%}%>
+							<input id="search_text" type="text" name= "con" class="form-control" placeholder="查找..." style="width:100%"  autocomplete="off" disableautocomplete>
+                            <div id="auto_div">
+                            </div>
 							<span class="input-group-btn">
 							<button class="btn btn-default" type="submit">Go!</button>
 							</span>
@@ -194,3 +207,202 @@
     <script src="../../style/js/bootstrap.js"></script>
 </body>
 </html>
+<style type="text/css">
+
+    .search
+
+    {
+
+        left: 0;
+
+        position: relative;
+
+    }
+
+    #auto_div
+
+    {
+
+        display: none;
+
+        width:90%;
+
+        border: 1px #74c0f9 solid;
+
+        background: #FFF;
+
+        position: absolute;
+
+        top: 34px;
+
+        left: 0;
+
+        color: #323232;
+
+    }
+
+</style>
+<script type="text/javascript">
+
+    //测试用的数据，这里可以用AJAX获取服务器数据
+    var test_list = new Array();
+    var length = document.getElementById("length").name;
+    var lengthid=parseInt(length,10);
+    for(var m=0;m < lengthid ;m++){
+        if(test_list.indexOf(document.getElementById(lengthid+m).value)==-1){
+            test_list[test_list.length] = document.getElementById(lengthid+m).value;
+        }
+
+    }
+
+    var old_value = "";
+
+    var highlightindex = -1;   //高亮
+
+    //自动完成
+
+    function AutoComplete(auto, search, mylist) {
+
+        if ($("#" + search).val() != old_value || old_value == "") {
+
+            var autoNode = $("#" + auto);   //缓存对象（弹出框）
+
+            var carlist = new Array();
+
+            var n = 0;
+
+            old_value = $("#" + search).val();
+
+            for (i in mylist) {
+
+                if (mylist[i].indexOf(old_value) >= 0) {
+
+                    carlist[n++] = mylist[i];
+
+                }
+
+            }
+
+            if (carlist.length == 0) {
+
+                autoNode.hide();
+
+                return;
+
+            }
+
+            autoNode.empty();  //清空上次的记录
+
+            for (i in carlist) {
+
+                var wordNode = carlist[i];   //弹出框里的每一条内容
+                wordNode=wordNode.replace(old_value,"<font color='red'>"+old_value+"</font>");
+                var newDivNode = $("<div>").attr("id", i);    //设置每个节点的id值
+
+                newDivNode.attr("style", "font:14px/25px arial;height:25px;padding:0 8px;cursor: pointer;");
+
+                newDivNode.html(wordNode).appendTo(autoNode);  //追加到弹出框
+
+                //鼠标移入高亮，移开不高亮
+
+                newDivNode.mouseover(function () {
+
+                    if (highlightindex != -1) {        //原来高亮的节点要取消高亮（是-1就不需要了）
+
+                        autoNode.children("div").eq(highlightindex).css("background-color", "white");
+
+                    }
+
+                    //记录新的高亮节点索引
+
+                    highlightindex = $(this).attr("id");
+
+                    $(this).css("background-color", "#ebebeb");
+
+                });
+
+                newDivNode.mouseout(function () {
+
+                    $(this).css("background-color", "white");
+
+                });
+
+                //鼠标点击文字上屏
+
+                newDivNode.click(function () {
+
+                    //取出高亮节点的文本内容
+
+                    var comText = autoNode.hide().children("div").eq(highlightindex).text();
+
+                    highlightindex = -1;
+
+                    //文本框中的内容变成高亮节点的内容
+
+                    $("#" + search).val(comText);
+
+                })
+
+                if (carlist.length > 0) {    //如果返回值有内容就显示出来
+
+                    autoNode.show();
+
+                } else {               //服务器端无内容返回 那么隐藏弹出框
+
+                    autoNode.hide();
+
+                    //弹出框隐藏的同时，高亮节点索引值也变成-1
+
+                    highlightindex = -1;
+
+                }
+
+            }
+
+        }
+
+        //点击页面隐藏自动补全提示框
+
+        document.onclick = function (e) {
+
+            var e = e ? e : window.event;
+
+            var tar = e.srcElement || e.target;
+
+            if (tar.id != search) {
+
+                if ($("#" + auto).is(":visible")) {
+
+                    $("#" + auto).css("display", "none")
+
+                }
+
+            }
+
+        }
+
+    }
+
+    $(function () {
+
+        old_value = $("#search_text").val();
+
+        $("#search_text").focus(function () {
+
+            if ($("#search_text").val() == "") {
+
+                AutoComplete("auto_div", "search_text", test_list);
+
+            }
+
+        });
+
+        $("#search_text").keyup(function () {
+
+            AutoComplete("auto_div", "search_text", test_list);
+
+        });
+
+    });
+
+</script>

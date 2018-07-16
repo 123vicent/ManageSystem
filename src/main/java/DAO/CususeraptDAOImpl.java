@@ -37,7 +37,8 @@ public class CususeraptDAOImpl implements CususeraptDAO {
                 cuapt.setAp_state(rs.getString(11));
                 cuapt.setComplete_time(rs.getTimestamp(12));
                 cuapt.setPayment(rs.getDouble(13));
-                cuapt.setDescription(rs.getString(14));
+                cuapt.setShopinfo(rs.getString(14));
+                cuapt.setCusinfo(rs.getString(15));
             }
         } catch (SQLException e) {
             e.printStackTrace();
@@ -69,7 +70,8 @@ public class CususeraptDAOImpl implements CususeraptDAO {
                 cuapt.setAp_state(rs.getString(11));
                 cuapt.setComplete_time(rs.getTimestamp(12));
                 cuapt.setPayment(rs.getDouble(13));
-                cuapt.setDescription(rs.getString(14));
+                cuapt.setShopinfo(rs.getString(14));
+                cuapt.setCusinfo(rs.getString(15));
                 cususerapts.add(cuapt);
             }
         } catch (SQLException e) {

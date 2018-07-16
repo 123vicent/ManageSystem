@@ -1,3 +1,5 @@
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -123,6 +125,14 @@
 									最新消息 <span style="font-size: 80%;">&nbsp;&nbsp;&nbsp;查看更多>></span>
 								</h4>
 							</a>
+							<c:forEach var="U" items="${news}" begin="0" end="4">
+								<div class="properties-bottom">
+									<div  class="w3ls-text" style="text-overflow:ellipsis;">
+										<a href="/jump?action=trends&title=${U.title}&shopuser_id=${U.shopuser_id}" name="news_id"><font size="4">${U.title}</font></a><!--通知1-->
+									</div>
+								</div>
+							</c:forEach>
+
 							<!--<a href="#" class="list-group-item">
 								<h5 class="list-group-item-heading">
 									维护通知

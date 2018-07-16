@@ -673,6 +673,12 @@ p {
     -webkit-transition:.5s all;
     -moz-transition:.5s all;
     transition:.5s all;
+
+    line-height: 28px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+
 }
 .w3ls-text h5 {
     font-size: 1.4em;

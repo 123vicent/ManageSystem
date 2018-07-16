@@ -16,6 +16,7 @@
           <element id="library" level="project" name="Maven: xml-apis:xml-apis:1.0.b2" />
           <element id="library" level="project" name="Maven: xpp3:xpp3_min:1.1.4c" />
           <element id="library" level="project" name="Maven: dom4j:dom4j:1.6.1" />
+          <element id="library" level="application" name="taglibs-standard-compat-1.2.5" />
         </element>
       </element>
     </root>

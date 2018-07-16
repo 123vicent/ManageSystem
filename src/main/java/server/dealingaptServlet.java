@@ -28,6 +28,7 @@ public class dealingaptServlet extends HttpServlet {
 
         String access = request.getParameter("submit");
         String ap_id = request.getParameter("ap_id");
+        String shopinfo = request.getParameter("shopinfo");
         AppointmentDAO apDAO = DAOFactory.getAppointmentDAO();
         Appointment ap = apDAO.findById(ap_id);
         RequestDispatcher view;
@@ -38,20 +39,15 @@ public class dealingaptServlet extends HttpServlet {
 
         if(access.equals("接受预约")){
             ap.setAp_state("已接受");
+            ap.setShopinfo(shopinfo);
             view = request.getRequestDispatcher("ShopPage/funcViewAppointment.jsp");
             apDAO.update(ap);
         }else if(access.equals("拒绝预约")){
-            String refusemsg = request.getParameter("refusemsg");
-            if(refusemsg.equals("")){
-                request.setAttribute("error","请输入完整信息");
-                view = request.getRequestDispatcher("WEB-INF/dealersPage/handlebook.jsp");
-            }else{
-                ap.setDescription(refusemsg);
+                ap.setShopinfo(shopinfo);
                 ap.setAp_state("已拒绝");
                 ap.setPayment(0);
                 view = request.getRequestDispatcher("ShopPage/funcViewAppointment.jsp");
                 apDAO.update(ap);
-            }
         }else if(access.equals("完成预约")){
             String completetime = request.getParameter("complete_time");
             String pay_ment = request.getParameter("payment");
@@ -65,7 +61,7 @@ public class dealingaptServlet extends HttpServlet {
                 ap.setAp_state("已完成");
                 ap.setComplete_time(complete_time);
                 ap.setPayment(payment);
-                ap.setDescription(description);
+                ap.setShopinfo(description);
                 view = request.getRequestDispatcher("ShopPage/funcViewAppointment.jsp");
                 apDAO.update(ap);
             }

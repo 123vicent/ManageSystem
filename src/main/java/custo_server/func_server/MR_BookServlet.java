@@ -104,7 +104,7 @@ public class MR_BookServlet extends HttpServlet {
         appointment.setAp_state(ap_state);
         //appointment.setComplete_time();
         //appointment.setPayment();
-        appointment.setDescription(Message);
+        appointment.setCusinfo(Message);
 
         AppointmentDAO appointmentDAO = DAOFactory.getAppointmentDAO();
         if(appointmentDAO.insert(appointment))

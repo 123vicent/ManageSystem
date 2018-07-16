@@ -149,6 +149,8 @@
                     </tbody>
                 </table>
             </div>
+            <div><label>客户描述</label></div>
+            <div><p class="agile-text"><%=shopapt.getCusinfo()%></p></div>
 
             <%if(shopapt.getAp_state().equals("待接受")){%>
             <div>
@@ -156,6 +158,11 @@
                 <form action="/dealingapt">
                     <input type="hidden" name="ap_id" value="<%=shopapt.getAppointment_id()%>"></input>
                     <div>
+                        <label for="name">店家描述</label>
+                        <div>
+                            <textarea name="shopinfo" style="width:1000px;" rows="5" warp="virtual" placeholder="输入描述" required></textarea>
+                        </div>
+                        <br><br>
                         <button id="addBtn" type="submit" name="submit" value="接受预约" class="btn btn-success">
                             <span class="glyphicon glyphicon-ok" aria-hidden="true"></span>接受预约</button>
                     </div>
@@ -167,7 +174,7 @@
                         <br>
                         <label for="name">拒绝原因</label>
                         <div>
-                            <textarea name="refusemsg" style="width:1000px;" rows="5" warp="virtual" placeholder="输入拒绝原因" required></textarea>
+                            <textarea name="shopinfo" style="width:1000px;" rows="5" warp="virtual" placeholder="输入拒绝原因" required></textarea>
                         </div>
                         <%if(request.getAttribute("error")!=null){ %>
                         <%=request.getAttribute("error")%>
