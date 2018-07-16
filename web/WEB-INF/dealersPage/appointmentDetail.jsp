@@ -53,10 +53,13 @@
 <nav class="navbar navbar-inverse navbar-fixed-top">
     <div class="container-fluid">
         <div class="navbar-header">
+            <img src="../../style/images/mainlogo.png" style="width:50px">
+        </div>
+        <div class="navbar-header">
             <p class="navbar-brand" ><font size="5">汽车销售管理系统</font></p>
         </div>
         <div>
-            <p id= "huanying" class="navbar-brand" align="right"><font size="4">欢迎您！<a href="/SearchUserServlet" name="userid">${userid}</a> </font></p>
+            <p id= "huanying" class="navbar-brand" align="right"><font size="4">用户：<a href="/SearchUserServlet" name="userid">${userid}</a> </font></p>
         </div>
 
         <div id="navbar" class="navbar-collapse collapse">

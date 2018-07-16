@@ -26,9 +26,9 @@
     <link href="../style/css/carousel.css" rel="stylesheet">
     <style type="text/css">
         #result{
-            width: 600px;
-            height:400px;
-            border:1px solid #eee;
+            width: 500px;
+            height: 300px;
+            border:0px solid #eee;
         }
         #result img{
             width: auto;
@@ -101,7 +101,6 @@
     #result{
         width: 800px;
         height:500px;
-        border:1px solid #eee;
     }
     #result img{
         height:500px;
@@ -231,20 +230,28 @@
                 </div>
             </form>
             <form method="post" action="/uploadimg" enctype="multipart/form-data">
+                <div>
+                    <label>
+                        点击上传车辆图片
+                    </label>
+                </div>
 
                     <div id = "result">
-                        <img src="1.jpg" onclick="fileSelect();">
+                        <img src="../../style/images/plus.jpg" onclick="fileSelect();">
                     </div>
                     <div class="face">
                         <!--<input type="file" name="fileToUpload" id="fileToUpload" onchange="fileSelected();" style="display:none;">-->
-                        <input id="pic" type="file" name = 'pic' accept = "image/*" onchange = "selectFile();" style="display: none;">
+                        <input id="pic" type="file" name = 'pic' accept = "image/*" onchange = "selectFile();" style="display: none;" required>
                     </div>
 
 
                 <input type="hidden" name="121" value=<%=soc.getCar_id()%>>
+                <%if(request.getAttribute("message")!=null){%>
+                <div><label><%=request.getAttribute("message")%></label></div>
+                <%}%>
 
                 <!--<input type="file" name="uploadFile" />-->
-                <input class="btn btn-success" type="submit" value="上传" />
+                <input class="btn btn-success" type="submit" value="上传"/>
 
             </form>
 

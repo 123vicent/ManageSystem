@@ -165,59 +165,12 @@
           <p>团队介绍</p>
           <p><a class="btn btn-default" href="#" role="button">View details &raquo;</a></p>
         </div><!-- /.col-lg-4 -->
-      </div><!-- /.row -->/.col-lg-4 -->
+      </div><!-- /.row -->
               </div><!-- /.row -->
-
-
-      <!-- START THE FEATURETTES -->
-
-      <hr class="featurette-divider">
-
-      <div class="row featurette">
-        <div class="col-md-7">
-          <h2 class="featurette-heading">
-          汽车销售管理系统 </br> <span class="text-muted">  </span></h2>
-          <p class="lead">专为汽车4S店、二手车、新车经销商设计的车辆销售管理系统。系统功能强大、操作简单、容易上手。</p>
-        </div>
-        <div class="col-md-5">
-          <img class="featurette-image img-responsive center-block" src="../img/car-manage.png" data-src="holder.js/500x500/auto" alt="Generic placeholder image">
-        </div>
-      </div>
-
-      <hr class="featurette-divider">
-
-      <div class="row featurette">
-        <div class="col-md-7 col-md-push-5">
-          <h2 class="featurette-heading">精细化管理客户 <span class="text-muted">  </span></h2>
-          <p class="lead">程序化快速建档，自有服务器存储海量客户，避免客户数据丢失；意向客户及保险到期及时提醒，方便执行</p>
-        </div>
-        <div class="col-md-5 col-md-pull-7">
-          <img class="featurette-image img-responsive center-block" src="../img/client_manage.jpg" data-src="holder.js/500x500/auto" alt="Generic placeholder image">
-        </div>
-      </div>
-
-      <hr class="featurette-divider">
-
-      <div class="row featurette">
-        <div class="col-md-7">
-          <h2 class="featurette-heading">员工满意度提升 <span class="text-muted">  </span></h2>
-          <p class="lead">详细记录客户信息，更好的把控客户进度，以业绩为导向，通过目标管理聚焦关键任务，形成团队协同力。</p>
-        </div>
-        <div class="col-md-5">
-          <img class="featurette-image img-responsive center-block" src="../img/service.jpg" data-src="holder.js/500x500/auto" alt="Generic placeholder image">
-        </div>
-      </div>
-
-
-      <hr class="featurette-divider">
-
-              <!-- /END THE FEATURETTES -->
-
 
               <!-- FOOTER -->
               <footer>
                   <p class="pull-right"><a href="#">返回顶部</a></p>
-                  <p>&copy; 2016 Company, Inc. &middot; <a href="#">Privacy</a> &middot; <a href="#">Terms</a></p>
               </footer>
 
           </div><!-- /.container -->

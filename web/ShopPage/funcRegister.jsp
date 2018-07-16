@@ -139,7 +139,7 @@
 						<input type="hidden" id=<%=i%> name=<%=pair.key%> value=<%=pair.value%> >
 						<%i++;%>
 						<%}%>
-						<label for="name">车牌</label>
+						<label for="name">品牌</label>
 						<select name="brand" style="width:500px" id="carlist1" class="form-control" onchange="selectprovince(this);" required>
 							<option value=""></option>
 						</select>
@@ -154,9 +154,9 @@
 						<label for="name">${carid_error}</label><br>
 						<label for="name">登记时间</label>
 						<input class="form-control" style="width:500px" name="register_time" type="text" id="d15" onfocus="WdatePicker({dateFmt:'yyyy-MM-dd'})" required=""/>
-						<label for="name">支付价格</label>
+						<label for="name">定价</label>
 						<input name="pay_price" style="width:500px" type="text" class="form-control"
-							   placeholder="请输入支付价格" required>
+							   placeholder="请输入定价" required>
 					</br>
 						<div class="btn-group pull-left" style="margin-left: 0px;">
 							<button id="addBtn" type="submit" class="btn btn-default">

@@ -148,7 +148,7 @@ To change this template use File | Settings | File Templates.
 								<br><br>
 								<label for="name">库存（数量）</label>
 								<input name="stock" style="width:500px" type="text" class="form-control"
-									   placeholder="请输入库存（不能为空" required>
+									   placeholder="请输入库存（不能为空）" required>
 								<div>
 									<label for="name">价格（自填）</label>
 									<input name="price" style="width:500px" type="text" class="form-control"

@@ -25,7 +25,7 @@ public class ShopowncarDAOImpl implements ShopowncarDAO {
             ps.setString(2,soc.getCar_id());
             ps.setInt(3,soc.getStock());
             ps.setDouble(4,soc.getPrice());
-            ps.setString(5,soc.getPic_url());
+            ps.setString(5,"");
             ps.setString(6,soc.getDescription());
 
             ps.executeUpdate();

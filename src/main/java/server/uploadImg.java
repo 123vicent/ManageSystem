@@ -114,12 +114,16 @@ public class uploadImg extends HttpServlet {
         Shopowncar shopowncar = shopowncarDAO.findById(shopuserid,carid);
 
         String OrgImg = shopowncar.getPic_url();
-        String []imgs = OrgImg.split("--");
-        if(imgs.length<3) {
-            shopowncar.setPic_url(OrgImg + "--" + UPLOAD_DIRECTORY + File.separator + fileName);
+        if(OrgImg==null){
+            shopowncar.setPic_url(UPLOAD_DIRECTORY + File.separator + fileName);
         }
-        else{
-            shopowncar.setPic_url(OrgImg.replaceAll(imgs[0]+"--","")+ "--" + UPLOAD_DIRECTORY + File.separator + fileName);
+        else {
+            String[] imgs = OrgImg.split("--");
+            if (imgs.length < 6) {
+                shopowncar.setPic_url(OrgImg + "--" + UPLOAD_DIRECTORY + File.separator + fileName);
+            } else {
+                shopowncar.setPic_url(OrgImg.replaceAll(imgs[0] + "--", "") + "--" + UPLOAD_DIRECTORY + File.separator + fileName);
+            }
         }
         System.out.println(UPLOAD_DIRECTORY+File.separator + fileName);
         shopowncarDAO.update(shopowncar);
@@ -134,6 +138,7 @@ public class uploadImg extends HttpServlet {
         request.setAttribute("model",car.getModel());
                 // 跳转到 message.jsp
         //商家的车辆信息
+        request.setAttribute("message","上传成功！");
         request.setAttribute("soc",shopowncar);
 
         request.getRequestDispatcher("ShopPage/ChangeCarInfo.jsp").forward(request,response);
