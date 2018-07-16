@@ -90,15 +90,16 @@
 						</div>
 					</form>
 
-					<% List<Carview> cars = (List<Carview>)request.getAttribute("cars");%>
-					<%if(cars!=null){
-					  	for(Carview car:cars){%>
+
 					<div class="properties-bottom">
+                        <% List<Carview> cars = (List<Carview>)request.getAttribute("cars");%>
+                        <%if(cars.size()!=0){
+                            for(Carview car:cars){%>
 						<div class="properties-img">
 							<img src=<%=car.getPic_url().split("--")[0]%> alt="">
-							<div class="view-caption"><!--加rent-caption为蓝色-->
-								<h4><span class="glyphicon glyphicon-eye-open"></span> <%=car.getBrand()%> </h4> <!--车辆简介-->
-							</div>
+                            <div class="view-caption"><!--加rent-caption为蓝色-->
+                                <h4><span class="glyphicon glyphicon-eye-open"></span> <%=car.getBrand()%> </h4> <!--车辆简介-->
+                            </div>
 							<div class="w3ls-buy">
 								<a href="/jump?action=car_detail&carid=<%=car.getCar_id()%>&shopuserid=<%=car.getShopuser_id()%>">详细</a> <!--加class="rent"为蓝色-->
 							</div>
@@ -107,8 +108,11 @@
 							<h5><%=car.getModel()%></h5><!--车名-->
 							<h6>¥<%=car.getPrice()%></h6><!--价格-->
 						</div>
+                        <%}}else{%>
+                        <div class="text-center"><label><font size="4" color="#dc143c">没有对应车辆！</font></label></div>
+                        <%}%>
 					</div>
-					<%}}%>
+
 					<!--<div class="properties-bottom">
 						<div class="properties-img">
 							<img src="../../style/images/1.jpg" alt="">

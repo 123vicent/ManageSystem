@@ -126,7 +126,7 @@
 						<p><b>型号 :</b> <%=c.getModel()%> </p>
 						<p><b>车型 :</b> <%=c.getType()%> </p>
 						<p><b>库存 :</b> <%=soc.getStock()%> </p>
-						<p><b>参考价格 :</b> <%=soc.getPrice()%> </p>
+						<p><b>参考价格 :</b> ¥<%=soc.getPrice()%> </p>
 						<p><b>车辆简介 :</b> <%=soc.getDescription()%> </p>
 						<br/>
 						<h4>车辆图片</h4> 
@@ -135,6 +135,7 @@
 					<br/>
 					<br/>
 					<div display:block>
+					<%if(soc.getPic_url()!=null){%>
 					<%String []imgs=soc.getPic_url().split("--");
 					for(int i = 0;i<imgs.length;i++){%>
 					<img class="thumbnail" 
@@ -142,6 +143,7 @@
 					width="280" height="192"
 					src=<%=imgs[i]%> data-src="holder.js/500x500/auto"
 					>
+					<%}%>
 					<%}%>
 					<%--<img class="thumbnail"
 					align = "left"

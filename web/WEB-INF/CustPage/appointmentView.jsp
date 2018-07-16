@@ -47,6 +47,7 @@
 		<div class="menu-wrap" id="style-1">  
 			<nav class="top-nav">
 				<ul class="icon-list">
+					<li class="menu-title">CarManage</li>
 					<li><a href="/jump?action=homepage"><i class="glyphicon glyphicon-home"></i> 主页 </a></li>
 					<li><a href="/jump?action=personal_info"><i class="glyphicon glyphicon-info-sign"></i> 个人信息 </a></li>
 					<li><a href="/jump?action=testdrive"><i class="glyphicon glyphicon-eye-open"></i> 寻车试驾 </a></li>

@@ -23,13 +23,18 @@ public class UserOnlineListener implements ServletContextListener,
          initialized(when the Web application is deployed). 
          You can initialize servlet context related data here.
       */
+        /*System.out.println("contextInitialized");
+        new Thread(new NettyService()).start();*/
+
     }
+
 
     public void contextDestroyed(ServletContextEvent sce) {
       /* This method is invoked when the Servlet Context 
          (the Web application) is undeployed or 
          Application Server shuts down.
       */
+        System.out.println("contextDestroyed");
     }
 
     // -------------------------------------------------------
@@ -37,6 +42,7 @@ public class UserOnlineListener implements ServletContextListener,
     // -------------------------------------------------------
     public void sessionCreated(HttpSessionEvent event) {
         /* Session is created. */
+
     }
 
     public void sessionDestroyed(HttpSessionEvent event) {

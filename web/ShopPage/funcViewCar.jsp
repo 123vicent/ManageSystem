@@ -186,7 +186,7 @@ To change this template use File | Settings | File Templates.
 							<th><%=carinfo.getModel()%></th>
 							<th><%=carinfo.getType()%></th>
 							<th><%=carinfo.getStock()%></th>
-							<th><%=carinfo.getPrice()%></th>
+							<th>¥<%=carinfo.getPrice()%></th>
 							<th><a href="/jumpupdate?action=search&brand=<%=carinfo.getBrand()%>&model=<%=carinfo.getModel()%>" >
 								<button  type="button" class="btn btn-info" class="btn-group pull-left" style="margin-left: 10px;">
 									<span class="glyphicon glyphicon-equalizer" aria-hidden="true"></span>查看详情</button>

@@ -56,9 +56,9 @@
 
       </span>
   </form>
-  <form action="/webToWx">
+  <%--<form action="/webToWx">
     <input type="submit" value="顾客登陆">
-  </form>
+  </form>--%>
 
 
 </div>

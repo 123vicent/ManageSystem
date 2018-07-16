@@ -59,6 +59,9 @@
 <nav class="navbar navbar-inverse navbar-fixed-top">
     <div class="container-fluid">
         <div class="navbar-header">
+            <img src="../../style/images/mainlogo.png" style="width:50px">
+        </div>
+        <div class="navbar-header">
             <p class="navbar-brand" ><font size="5">汽车销售管理系统</font></p>
         </div>
         <div>
@@ -156,6 +159,9 @@
                         <button id="addBtn" type="submit" name="submit" value="接受预约" class="btn btn-success">
                             <span class="glyphicon glyphicon-ok" aria-hidden="true"></span>接受预约</button>
                     </div>
+                </form>
+                <form action="/dealingapt">
+                    <input type="hidden" name="ap_id" value="<%=shopapt.getAppointment_id()%>"></input>
                     <div>
                         <br>
                         <br>
