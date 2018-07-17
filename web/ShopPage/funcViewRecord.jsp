@@ -99,6 +99,7 @@
             <li><a href="/SwitchPage?page=funcRegister" >登记客户车辆</a></li>
             <li><a href="/SwitchPage?page=funcViewReg" >查询登记车辆</a></li>
             <li class="active"><a href="/SwitchPage?page=funcViewRecord" >查看浏览记录</a></li>
+            <li><a href="/SwitchPage?page=funcDataAnalyze" >浏览数据分析</a></li>
             <!--功能可以继续扩展-->
         </ul>
     </div>
@@ -110,7 +111,7 @@
         <div class="w3ls-details">
             <!--浏览记录-->
             <p>
-                <font size="4">
+                <font size="6">
                     在这里你可以查看你旗下车辆的浏览情况
                 </font>
             </p></br>
@@ -134,9 +135,9 @@
                         <option value="">所有型号</option>
                     </select>
                     <label for="name">时间范围</label>
-                    <input style="width:150px;height:35px" name="start" type="text" id="d15" onfocus="WdatePicker({dateFmt:'yyyy-MM-dd HH:mm:ss'})" />
+                    <input style="width:150px;height:33px" name="start" type="text" id="d15" onfocus="WdatePicker({dateFmt:'yyyy-MM-dd HH:mm:ss'})" autocomplete="off" disableautocomplete/>
                     一一
-                    <input style="width:150px;height:35px" name="end" type="text" id="d15" onfocus="WdatePicker({dateFmt:'yyyy-MM-dd HH:mm:ss'})" />
+                    <input style="width:150px;height:33px" name="end" type="text" id="d15" onfocus="WdatePicker({dateFmt:'yyyy-MM-dd HH:mm:ss'})" autocomplete="off" disableautocomplete/>
                     <button id="queryBtn6" type="submit" class="btn btn-default" class="btn-group pull-left" style="margin-left: 10px;">
                         <span class="glyphicon glyphicon-search" aria-hidden="true"></span>查询</button>
                 </div>

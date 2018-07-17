@@ -100,7 +100,7 @@
               </ol>
               <div class="carousel-inner" role="listbox">
                   <div class="item active">
-                      <img class="first-slide" src="../img/1.jpg"  alt="First slide">
+                      <img class="first-slide" src="../../style/images/firstpage1.png"  alt="First slide">
                       <div class="container">
                           <div class="carousel-caption">
                               <h1>标题一</h1>
@@ -110,7 +110,7 @@
                       </div>
                   </div>
                   <div class="item">
-                      <img class="second-slide" src="" alt="Second slide">
+                      <img class="second-slide" src="../../style/images/firstpage2.jpg" alt="Second slide">
                       <div class="container">
                           <div class="carousel-caption">
                               <h1>标题二</h1>
@@ -120,7 +120,7 @@
                       </div>
                   </div>
                   <div class="item">
-                      <img class="third-slide" src="" alt="Third slide">
+                      <img class="third-slide" src="../../style/images/firstpage3.jpg" alt="Third slide">
                       <div class="container">
                           <div class="carousel-caption">
                               <h1>标题三</h1>

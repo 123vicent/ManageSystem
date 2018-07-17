@@ -32,7 +32,7 @@
 			midClick: true,
 			removalDelay: 300,
 			mainClass: 'my-mfp-zoom-in'
-		});																							
+		});
 	}); 
 </script>
 <!--//pop-up-box -->

@@ -104,6 +104,7 @@
 					<li><a href="/SwitchPage?page=funcRegister" >登记客户车辆</a></li>
 					<li><a href="/SwitchPage?page=funcViewReg" >查询登记车辆</a></li>
 					<li><a href="/SwitchPage?page=funcViewRecord" >查看浏览记录</a></li>
+					<li><a href="/SwitchPage?page=funcDataAnalyze" >浏览数据分析</a></li>
 				    <!--功能可以继续扩展-->
 			    </ul>
 		    </div>
@@ -122,14 +123,14 @@
 			    <div class="tab-content">
 					<!--查询客户预约-->
 					<p>
-						<font size="4">
+						<font size="6">
 							在这里你可以查看你旗下的客户预约
 						</font>
 					</p>
 					</br>
-					<form action="/handlebook" class="navbar-form navbar-left">
+					<form action="/handlebook" class="navbar-form navbar-left" style="margin-left: -15px">
 						<label>预约状态</label>
-						<select name="appointstate" style="width:100px;height:35px">
+						<select name="appointstate" style="width:100px;height:33px">
 							<option >全部预约</option>
 							<option >待接受</option>
 							<option >已接受</option>
@@ -138,7 +139,7 @@
 							<option >已取消</option>
 						</select>
 						<label>预约类型</label>
-						<select name="appointtype" style="width:100px;height:35px">
+						<select name="appointtype" style="width:100px;height:33px">
 							<option >全部预约</option>
 							<option >试驾预约</option>
 							<option >维修预约</option>

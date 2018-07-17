@@ -101,6 +101,7 @@
             <li><a href="/SwitchPage?page=funcRegister" >登记客户车辆</a></li>
             <li><a href="/SwitchPage?page=funcViewReg" >查询登记车辆</a></li>
             <li><a href="/SwitchPage?page=funcViewRecord" >查看浏览记录</a></li>
+            <li><a href="/SwitchPage?page=funcDataAnalyze" >浏览数据分析</a></li>
             <!--功能可以继续扩展-->
         </ul>
     </div>
@@ -198,7 +199,7 @@
                     <input type="hidden" name="ap_id" value="<%=shopapt.getAppointment_id()%>"></input>
                     <div>
                         <div><label for="name">完成时间</label></div>
-                        <input class="Wdate" name="complete_time" type="text" id="d15" onfocus="WdatePicker({dateFmt:'yyyy-MM-dd HH:mm:ss'})" required/>
+                        <input class="Wdate" name="complete_time" type="text" id="d15" onfocus="WdatePicker({dateFmt:'yyyy-MM-dd HH:mm:ss'})" required autocomplete="off" disableautocomplete/>
                         <div>
                             <br><br>
                             <label for="name">收款</label>
@@ -225,11 +226,11 @@
             </div>
             <%;}%>
             <form action="/dealingapt">
-                <center>
+
 
                     <button id="addBtn" type="submit" name="submit" value="返回上一层" class="btn btn-danger">
                         <span class="glyphicon glyphicon-step-backward" aria-hidden="true"></span>返回上一层</button>
-                </center>
+
             </form>
             <!--//处理客户预约-->
         </div>

@@ -59,6 +59,11 @@ public class SwitchPage extends HttpServlet {
             request.setAttribute("countinfos",countinfos);
 
             view = request.getRequestDispatcher("ShopPage/funcViewRecord.jsp");
+        }else if(page.equals("funcDataAnalyze")){
+
+
+
+            view = request.getRequestDispatcher("ShopPage/funcDataAnalyze.jsp");
         }else{
             ShopRegcusDAO shopRegcusDAO = DAOFactory.getShopRegcusDAO();
             List<ShopRegcus> shopRegcuses = shopRegcusDAO.findByCon(Shopuserid,"","","","");

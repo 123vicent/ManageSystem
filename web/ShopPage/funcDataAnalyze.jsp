@@ -1,5 +1,4 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html lang="en">
 	<head>
     <meta charset="utf-8">
@@ -9,7 +8,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
     <link rel="icon" href="../css/favicon.ico">
-    <title>汽车销售管理系统-登记记录</title>
+    <title>浏览数据分析</title>
 	<!-- css引用 -->
     <!-- Bootstrap core CSS -->
     <link href="../style/css/bootstrap.min.css" rel="stylesheet">
@@ -64,17 +63,11 @@
 
 			    <div id="navbar" class="navbar-collapse collapse">
 				    <ul class="nav navbar-nav navbar-right">
-						<li><a href="/SwitchPage?page=homepage" ><font size="3">系统主页</font></a></li>
-						<li><a href="/SwitchPage?page=funcpage" class="active" ><font size="3">使用功能</font></a></li>
-						<li><a href="/SwitchPage?page=setpage" ><font size="3">用户设置</font></a></li>
-						<li><a href="/SwitchPage?page=helppage" ><font size="3">帮助界面</font></a></li>
+					    <li><a href="first.html" class="active" ><font size="3">系统主页</font></a></li>
+					    <li><a href="funcDataAnalyze.jsp"  ><font size="3">使用功能</font></a></li>
+					    <li><a href="set.html" ><font size="3">用户设置</font></a></li>
+					    <li><a href="help.html" ><font size="3">帮助界面</font></a></li>
 				    </ul>
-				    <!--页内切换-->
-				    <!--
-				    <form class="navbar-form navbar-right">
-				  	    <input type="text" class="form-control" placeholder="Search...">
-				    </form>
-				    -->
 			    </div>
 		    </div>
 	    </nav>
@@ -93,78 +86,57 @@
 					<li><a href="/SwitchPage?page=funcViewAppointment" >查询客户预约</a></li>
 					<li><a href="/SwitchPage?page=funcPushMsg" >进行消息推送</a></li>
 					<li><a href="/SwitchPage?page=funcRegister" >登记客户车辆</a></li>
-					<li class="active"><a href="/SwitchPage?page=funcViewReg" >查询登记车辆</a></li>
+					<li><a href="/SwitchPage?page=funcViewReg" >查询登记车辆</a></li>
 					<li><a href="/SwitchPage?page=funcViewRecord" >查看浏览记录</a></li>
-					<li><a href="/SwitchPage?page=funcDataAnalyze" >浏览数据分析</a></li>
+					<li class="active"><a href="/SwitchPage?page=funcDataAnalyze" >浏览数据分析</a></li>
 				    <!--功能可以继续扩展-->
 			    </ul>
 		    </div>
 			<!-- //左边导航栏 -->
 
 
-
-		    <!--查询所有车的类型型号，设置下拉框-->
-		    <!--//查询所有车的类型型号，设置下拉框-->
-		 
-
-
 			<!-- 控制输出内容在右半部分 -->
 		    <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
 			    
 			    <div class="tab-content">
-					<!--登记车辆信息-->
+					<!--数据统计分析-->
 					<p>
 						<font size="6">
-						  在这里你可以查看你旗下的登记的客户车辆信息
-					    </font>
-					</p></br>
-					<p>
-						<font size="4">
-							下面的搜索框为筛选项，不输入即为查询全部
+							基于用户浏览记录的数据分析
 						</font>
 					</p>
-					<form action="/ViewRegServlet" class="navbar-form navbar-left" style="margin-left: -15px;">
-					<input type="text" class="form-control" name="cususer_id" placeholder="输入需要查询的客户id">
-					<input type="text" class="form-control" name="cus_name" placeholder="输入需要查询的客户姓名">
-					<input type="text" class="form-control" name="brand" placeholder="输入需要查询的车品牌">
-					<input type="text" class="form-control" name="model" placeholder="输入需要查询的model">
-
-					    <button id="queryBtn6" type="submit" class="btn btn-default" class="btn-group pull-left" style="margin-left: 10px;">
-					    <span class="glyphicon glyphicon-search" aria-hidden="true"></span>查询</button>
-				    </form>
+					</br>
+					<form action="/handlebook" class="navbar-form navbar-left">
+						<label>分析范围</label>
+						<select name="appointstate" style="width:100px;height:35px">
+							<option >全部车辆</option>
+							<option >阿斯顿马丁</option>
+							<option >奔驰</option>
+							<option >宝马</option>
+							<option >大众</option>
+							<option >奥迪</option>
+						</select>
+						
+						<button id="queryBtn2" type="submit" class="btn btn-default" class="btn-group pull-left" style="margin-left: 10px;">
+							<span class="glyphicon glyphicon-search" aria-hidden="true"></span>查询</button>
+					</form>
 					<p>
 					</br>
 					</br>
 					</br>
-						<font size="4">
-					        查询结果
-						</font>
-                    </p>
+					<font size="4">
+						分析结果
+					</font>
+					</p>
 					</br>
-				    <table class="table table-bordered table-striped">
-					<thead>
+					
+					<!--数据分析图-->
+					
+					
+					<!--//数据分析图-->
 
-						<tr>
-							<th>客户姓名</th>
-							<th>联系方式</th>
-							<th>品牌</th>
-							<th>车型</th>
-							<th>车辆颜色</th>
-							<th>登记时间</th>
-						</tr>
-						<c:forEach var="U" items="${shopowncar}">
-							<tr>
-								<td>${U.cus_name}</td>
-								<td>${U.cus_phone}</td>
-								<td>${U.brand}</td>
-								<td>${U.model}</td>
-								<td>${U.color}</td>
-								<td>${U.register_time}</td>
-							</tr>
-						</c:forEach>
-					</thead>
-				    </table>
-					<!--//登记车辆信息-->
+					
+				<!--//数据统计分析-->
 			    </div>
 		    </div>
 			<!-- //控制输出内容在右半部分 -->
