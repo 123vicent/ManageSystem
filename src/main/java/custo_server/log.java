@@ -1,6 +1,7 @@
 package custo_server;
 
 import DAO.*;
+import basic.Carview;
 import basic.KeyValuePair;
 import model.Car;
 import model.Customeruser;
@@ -51,9 +52,13 @@ public class log extends HttpServlet {
                 //rs.next();
                 HttpSession session = request.getSession();
                 session.setAttribute("userid",userid);
+
                 CustomeruserDAO customeruserdao  = DAOFactory.getCustometuserDAO();
                 Customeruser customeruser = customeruserdao.findById(userid);
 
+                CarviewDAO carviewDAO = DAOFactory.getCarviewDAO();
+                List<Carview> carviews = carviewDAO.findAll();
+                session.setAttribute("allshopcars",carviews);
 
                 if (customeruser.getPswd()!=null&&customeruser.getPswd().equals(password)) {
                   //密码正确进入主页面
@@ -69,7 +74,11 @@ public class log extends HttpServlet {
                     List<Shopuser> shopusers = shopuserDAO.findAll();
                     session.setAttribute("shopusers",shopusers);
 
-                    view = request.getRequestDispatcher("WEB-INF/CustPage/main.html");
+                    NewsDAO newsDAO = DAOFactory.getNewsDAO();
+                    request.setAttribute("news",newsDAO.findAllToday());
+                    System.out.println(newsDAO.findAllToday());
+
+                    view = request.getRequestDispatcher("WEB-INF/CustPage/main.jsp");
                 } else {
                     request.setAttribute("msg2", "登录失败");
                     view = request.getRequestDispatcher("WEB-INF/CustPage/cuslogin.jsp");

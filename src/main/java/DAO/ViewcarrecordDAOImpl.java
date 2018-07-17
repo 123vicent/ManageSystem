@@ -1,6 +1,7 @@
 package DAO;
 
 import basic.Countinfo;
+import basic.Cusviewcar;
 import basic.Viewcarrecord;
 import dbcon.DBConnect;
 
@@ -98,4 +99,31 @@ public class ViewcarrecordDAOImpl implements ViewcarrecordDAO{
         }
         return viewcarrecords;
     }
+
+    public List<Cusviewcar> findAllCus(String shopuser_id, String brand, String model) {
+        List<Cusviewcar> cvcList = new ArrayList<Cusviewcar>();
+        String sql = "select cususer_id,count(cususer_id) from viewcarrecord where shopuser_id=? and brand=? and model=? group by cususer_id";
+        PreparedStatement ps = null;
+        ResultSet rs = null;
+        try {
+            ps = conn.prepareStatement(sql);
+            ps.setString(1,shopuser_id);
+            ps.setString(2,brand);
+            ps.setString(3,model);
+            rs = ps.executeQuery();
+            CustomeruserDAO customeruserDAO = DAOFactory.getCustometuserDAO();
+            while(rs.next()){
+                Cusviewcar cvc = new Cusviewcar();
+                cvc.setCususer_id(rs.getString(1));
+                cvc.setCus_name(customeruserDAO.findById(rs.getString(1)).getCus_name());
+                cvc.setCus_phone(customeruserDAO.findById(rs.getString(1)).getCus_phone());
+                cvc.setCount(rs.getInt(2));
+                cvcList.add(cvc);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return cvcList;
+    }
+
 }

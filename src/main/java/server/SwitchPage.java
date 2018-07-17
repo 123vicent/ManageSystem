@@ -3,6 +3,7 @@ package server;
 import DAO.*;
 import basic.Carinfo;
 import basic.Countinfo;
+import basic.ShopRegcus;
 import basic.Shopapt;
 import model.Shopowncar;
 
@@ -59,6 +60,9 @@ public class SwitchPage extends HttpServlet {
 
             view = request.getRequestDispatcher("ShopPage/funcViewRecord.jsp");
         }else{
+            ShopRegcusDAO shopRegcusDAO = DAOFactory.getShopRegcusDAO();
+            List<ShopRegcus> shopRegcuses = shopRegcusDAO.findByCon(Shopuserid,"","","","");
+            request.setAttribute("shopowncar",shopRegcuses);
             view = request.getRequestDispatcher("ShopPage/funcViewReg.jsp");
         }
         view.forward(request,response);

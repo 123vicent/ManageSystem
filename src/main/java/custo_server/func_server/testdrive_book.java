@@ -96,7 +96,7 @@ public class testdrive_book extends HttpServlet {
         appointment.setAp_state(ap_state);
         //appointment.setComplete_time(0);
         appointment.setPayment(0);
-        appointment.setDescription(Message);
+        appointment.setCusinfo(Message);
 
         AppointmentDAO appointmentDAO = DAOFactory.getAppointmentDAO();
         if (appointmentDAO.insert(appointment))

@@ -114,7 +114,7 @@ public class uploadImg extends HttpServlet {
         Shopowncar shopowncar = shopowncarDAO.findById(shopuserid,carid);
 
         String OrgImg = shopowncar.getPic_url();
-        if(OrgImg==null){
+        if(OrgImg.equals("")){
             shopowncar.setPic_url(UPLOAD_DIRECTORY + File.separator + fileName);
         }
         else {

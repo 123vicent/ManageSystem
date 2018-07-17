@@ -124,8 +124,11 @@
                 <p><b>完成时间 :</b> <%if(shopapt.getComplete_time()==null){%>  <%}else{%><%=shopapt.getComplete_time()%><%;}%> </p>
                 <p><b>支付金额 :</b> 人民币 <%=shopapt.getPayment()%> 元 </p>
                 <br/>
-                <h4>备注</h4>
-                <p class="agile-text"><%=shopapt.getDescription()%></p>
+                <h4>客户描述</h4>
+                <p class="agile-text"><%=shopapt.getCusinfo()%></p>
+                <br/>
+                <h4>店家描述</h4>
+                <p class="agile-text"><%=shopapt.getShopinfo()%></p>
             </div>
             <!--车辆信息-->
             <br/>

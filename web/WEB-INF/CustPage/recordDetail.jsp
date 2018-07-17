@@ -81,17 +81,23 @@
 						<!--车辆信息-->
 						<%Cususerapt cususerapt = (Cususerapt)request.getAttribute("cususerapt");%>
 						<div class="w3ls-text">
-							<h4>预约信息</h4>  
+							<h4>预约信息</h4>
+							<p><b>预约号 :</b> <%=cususerapt.getAppointment_id()%> </p>
 							<p><b>预约车型 :</b><%=cususerapt.getBrand()%> <%=cususerapt.getModel()%> </p>
 							<p><b>预约时间 :</b> <%=cususerapt.getAp_time()%></p>
 							<p><b>预约经销商 :</b> <%=cususerapt.getShop_name()%> </p>
+							<p><b>经销商地址 :</b> <%=cususerapt.getShop_address()%> </p>
+							<p><b>负责人及联系方式 :</b> <%=cususerapt.getShop_manager()%>  <%=cususerapt.getShop_phone()%> </p>
 							<p><b>预约类型 :</b> <%=cususerapt.getAp_type()%> </p>
 							<p><b>预约状态 :</b>  <%=cususerapt.getAp_state()%> </p>
 							<p><b>完成时间 :</b> <%=cususerapt.getComplete_time()%></p>
 							<p><b>支付金额 :</b> <%=cususerapt.getPayment()%> </p>
 							<br/>
-							<h4>备注</h4> 
-							<p class="agile-text"><%=cususerapt.getDescription()%></p>
+							<h4>客户描述</h4>
+							<p class="agile-text"><%=cususerapt.getCusinfo()%></p>
+							<br/>
+							<h4>商家描述</h4>
+							<p class="agile-text"><%=cususerapt.getShopinfo()%></p>
 						</div>
 						<!--车辆信息-->
 						<br/><br/>

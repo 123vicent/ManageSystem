@@ -35,7 +35,6 @@ public class ViewRegServlet extends HttpServlet {
 
         ShopRegcusDAO shopRegcusDAO = DAOFactory.getShopRegcusDAO();
         List<ShopRegcus> shopRegcuses = shopRegcusDAO.findByCon(shopuserid,cususer_id,cus_name,brand,model);
-        System.out.println(shopRegcuses);
         request.setAttribute("shopowncar",shopRegcuses);
         request.getRequestDispatcher("ShopPage/funcViewReg.jsp").forward(request,response);
     }

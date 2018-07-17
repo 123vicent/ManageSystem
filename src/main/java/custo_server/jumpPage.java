@@ -28,7 +28,11 @@ public class jumpPage extends HttpServlet {
         String user_id = (String)session.getAttribute("userid");
         if(pagename.equals("homepage"))
         {
-            view = request.getRequestDispatcher("WEB-INF/CustPage/main.html");
+            NewsDAO newsDAO = DAOFactory.getNewsDAO();
+            request.setAttribute("news",newsDAO.findAllToday());
+            System.out.println(newsDAO.findAllToday());
+
+            view = request.getRequestDispatcher("WEB-INF/CustPage/main.jsp");
         }else if(pagename.equals("personal_info")){
             CustomeruserDAO customeruserDAO = DAOFactory.getCustometuserDAO();
             Customeruser customeruser = customeruserDAO.findById(user_id);

@@ -35,7 +35,8 @@ public class ShopaptDAOImpl implements ShopaptDAO {
                 shopapt.setAp_state(rs.getString(9));
                 shopapt.setComplete_time(rs.getTimestamp(10));
                 shopapt.setPayment(rs.getDouble(11));
-                shopapt.setDescription(rs.getString(12));
+                shopapt.setShopinfo(rs.getString(12));
+                shopapt.setCusinfo(rs.getString(13));
 
             }
         } catch (SQLException e) {
@@ -66,7 +67,8 @@ public class ShopaptDAOImpl implements ShopaptDAO {
                 shopapt.setAp_state(rs.getString(9));
                 shopapt.setComplete_time(rs.getTimestamp(10));
                 shopapt.setPayment(rs.getDouble(11));
-                shopapt.setDescription(rs.getString(12));
+                shopapt.setShopinfo(rs.getString(12));
+                shopapt.setCusinfo(rs.getString(13));
 
                 shopaptList.add(shopapt);
             }
@@ -114,7 +116,8 @@ public class ShopaptDAOImpl implements ShopaptDAO {
                 shopapt.setAp_state(rs.getString(9));
                 shopapt.setComplete_time(rs.getTimestamp(10));
                 shopapt.setPayment(rs.getDouble(11));
-                shopapt.setDescription(rs.getString(12));
+                shopapt.setShopinfo(rs.getString(12));
+                shopapt.setCusinfo(rs.getString(13));
 
                 shopaptList.add(shopapt);
             }

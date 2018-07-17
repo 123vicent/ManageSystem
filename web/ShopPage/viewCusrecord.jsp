@@ -1,6 +1,7 @@
 <%@ page import="basic.KeyValuePair" %>
 <%@ page import="java.util.List" %>
 <%@ page import="basic.Countinfo" %>
+<%@ page import="basic.Cusviewcar" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html lang="en">
 <head>
@@ -114,63 +115,33 @@
                     在这里你可以查看你旗下车辆的浏览情况
                 </font>
             </p></br>
-            <form action="/viewrecord">
-                <div>
-                    <!--查询所有车的类型型号，设置下拉框-->
-                    <%List<KeyValuePair> lists= (List<KeyValuePair>)session.getAttribute("list");
-                        int i = 101;
-                        int num  = lists.size();%>
-                    <input type="hidden" id="length" name=<%=num%>>
-                    <%for(KeyValuePair pair : lists){ %>
-                    <input type="hidden" id=<%=i%> name=<%=pair.key%> value=<%=pair.value%> >
-                    <%i++;%>
-                    <%}%>
-                    <label>选择品牌</label>
-                    <select id="carlist1" name="brand" runat="server" onchange="selectprovince(this);" style="width:100px;height:35px">
-                        <option value="">所有品牌</option>
-                    </select>
-                    <label>选择型号</label>
-                    <select id="carlist2" name="model" runat="server" style="width:100px;height:35px">
-                        <option value="">所有型号</option>
-                    </select>
-                    <label for="name">时间范围</label>
-                    <input style="width:150px;height:35px" name="start" type="text" id="d15" onfocus="WdatePicker({dateFmt:'yyyy-MM-dd HH:mm:ss'})" />
-                    一一
-                    <input style="width:150px;height:35px" name="end" type="text" id="d15" onfocus="WdatePicker({dateFmt:'yyyy-MM-dd HH:mm:ss'})" />
-                    <button id="queryBtn6" type="submit" class="btn btn-default" class="btn-group pull-left" style="margin-left: 10px;">
-                        <span class="glyphicon glyphicon-search" aria-hidden="true"></span>查询</button>
-                </div>
-            </form>
-            <%List<Countinfo> countinfos = (List<Countinfo>)request.getAttribute("countinfos");%>
+
             <p>
-                </br>
-                </br>
-                </br>
+
                 <font size="4">
-                    查询结果
+                    <div><label>品牌：<%=request.getAttribute("brand")%></label></div>
+                    <div><label>型号：<%=request.getAttribute("model")%></label></div>
+                    <br>
+                        浏览情况
                 </font>
             </p>
             </br>
+            <%List<Cusviewcar> cvcList = (List<Cusviewcar>)request.getAttribute("cvcList");%>
             <table class="table table-bordered table-striped">
                 <thead>
                 <tr>
-                    <th>品牌</th>
-                    <th>型号</th>
-                    <th>浏览用户数</th>
+                    <th>用户ID</th>
+                    <th>用户姓名</th>
+                    <th>联系方式</th>
                     <th>浏览次数</th>
                 </tr>
-                <%for(Countinfo countinfo:countinfos){%>
+                <%for(Cusviewcar cvc:cvcList){%>
                 <tr>
-                    <th><%=countinfo.getBrand()%></th>
-                    <th><%=countinfo.getModel()%></th>
-                    <th>
-                        <%=countinfo.getDistinct()%>
-                        <a href="/viewinfo?brand=<%=countinfo.getBrand()%>&model=<%=countinfo.getModel()%>">
-                            <button  type="button" class="btn btn-primary" class="btn-group pull-left" style="margin-left: 10px;">
-                                查看详细信息</button>
-                        </a>
-                    </th>
-                    <th><%=countinfo.getTotalcount()%></th>
+                    <th><%=cvc.getCususer_id()%></th>
+                    <th><%=cvc.getCus_name()%></th>
+                    <th><%=cvc.getCus_phone()%></th>
+                    <th><%=cvc.getCount()%></th>
+
                 </tr>
                 <%;}%>
                 </thead>
@@ -178,7 +149,13 @@
             <!--浏览记录-->
             <br/>
             <br/>
-
+            <a href="/SwitchPage?page=funcViewRecord">
+                <div>
+                    <button id="addBtn" name="access" type="submit" value="返回" class="btn btn-danger">
+                        <span class="glyphicon glyphicon-step-backward" aria-hidden="true"></span>返回
+                    </button>
+                </div>
+            </a>
 
 
         </div>

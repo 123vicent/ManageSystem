@@ -18,7 +18,7 @@ public class AppointmentDAOImpl implements AppointmentDAO {
     Connection conn = dbc.getConnection();
 
     public Boolean insert(Appointment a) {
-        String sql = "insert into appointment values (?,?,?,?,?,?,?,?,?,?)";
+        String sql = "insert into appointment values (?,?,?,?,?,?,?,?,?,?,?)";
         PreparedStatement ps = null;
         try {
             ps = conn.prepareStatement(sql);
@@ -31,7 +31,8 @@ public class AppointmentDAOImpl implements AppointmentDAO {
             ps.setString(7,a.getAp_state());
             ps.setTimestamp(8,a.getComplete_time());
             ps.setDouble(9,a.getPayment());
-            ps.setString(10,a.getDescription());
+            ps.setString(10,a.getShopinfo());
+            ps.setString(11,a.getCusinfo());
 
             ps.executeUpdate();
             ps.close();
@@ -44,7 +45,7 @@ public class AppointmentDAOImpl implements AppointmentDAO {
 
     public Boolean update(Appointment a){
         String sql = "update appointment set appointment_id=?,cususer_id=?,shopuser_id=?,car_id=?,ap_time=?," +
-                "ap_type=?,ap_state=?,complete_time=?,payment=?,description=? where appointment_id=?";
+                "ap_type=?,ap_state=?,complete_time=?,payment=?,shopinfo=?,cusinfo=? where appointment_id=?";
         PreparedStatement ps = null;
         try {
             ps = conn.prepareStatement(sql);
@@ -57,8 +58,9 @@ public class AppointmentDAOImpl implements AppointmentDAO {
             ps.setString(7,a.getAp_state());
             ps.setTimestamp(8,a.getComplete_time());
             ps.setDouble(9,a.getPayment());
-            ps.setString(10,a.getDescription());
-            ps.setString(11,a.getAppointment_id());
+            ps.setString(10,a.getShopinfo());
+            ps.setString(11,a.getCusinfo());
+            ps.setString(12,a.getAppointment_id());
 
             ps.executeUpdate();
             ps.close();
@@ -104,7 +106,8 @@ public class AppointmentDAOImpl implements AppointmentDAO {
                 apt.setAp_state(rs.getString(7));
                 apt.setComplete_time(rs.getTimestamp(8));
                 apt.setPayment(rs.getDouble(9));
-                apt.setDescription(rs.getString(10));
+                apt.setShopinfo(rs.getString(10));
+                apt.setCusinfo(rs.getString(11));
             }
 
         } catch (SQLException e) {
@@ -132,7 +135,8 @@ public class AppointmentDAOImpl implements AppointmentDAO {
                 apt.setAp_state(rs.getString(7));
                 apt.setComplete_time(rs.getTimestamp(8));
                 apt.setPayment(rs.getDouble(9));
-                apt.setDescription(rs.getString(10));
+                apt.setShopinfo(rs.getString(10));
+                apt.setCusinfo(rs.getString(11));
                 apList.add(apt);
             }
         } catch (SQLException e) {

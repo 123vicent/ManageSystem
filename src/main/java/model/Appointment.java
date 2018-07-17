@@ -13,7 +13,8 @@ public class Appointment {
     private String ap_state;
     private Timestamp complete_time;
     private double payment;
-    private String description;
+    private String shopinfo;
+    private String cusinfo;
 
     public String getAppointment_id() {
         return appointment_id;
@@ -87,11 +88,19 @@ public class Appointment {
         this.payment = payment;
     }
 
-    public String getDescription() {
-        return description;
+    public String getShopinfo() {
+        return shopinfo;
     }
 
-    public void setDescription(String description) {
-        this.description = description;
+    public void setShopinfo(String shopinfo) {
+        this.shopinfo = shopinfo;
+    }
+
+    public String getCusinfo() {
+        return cusinfo;
+    }
+
+    public void setCusinfo(String cusinfo) {
+        this.cusinfo = cusinfo;
     }
 }
