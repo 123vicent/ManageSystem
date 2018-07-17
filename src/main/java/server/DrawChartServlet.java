@@ -1,10 +1,13 @@
 package server;
 
+import DAO.CarDAO;
 import DAO.DAOFactory;
+import DAO.ViewcarrecordDAO;
 import DAO.ViewrecordDAO;
 import Draw.BarChart;
 import Draw.TimeSeriesChart;
 import basic.Count;
+import model.Car;
 import org.jfree.chart.JFreeChart;
 import org.jfree.chart.servlet.ServletUtilities;
 import org.jfree.data.category.CategoryDataset;
@@ -28,8 +31,8 @@ public class DrawChartServlet extends HttpServlet {
 
         //Count count = new Count();
         //count.setShopuser_id(userid);
-        ViewrecordDAO viewrecordDAO = DAOFactory.getViewrecordDAO();
-        List<Count> counts = viewrecordDAO.Count(userid);
+        ViewcarrecordDAO viewcarrecordDAO = DAOFactory.getViewcarrecordDAO();
+        List<Count> counts = viewcarrecordDAO.Count(userid);
         //CategoryDataset dataset =
         String graphURL = "";
         request.setAttribute("graphURL", graphURL);

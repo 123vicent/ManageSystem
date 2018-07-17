@@ -38,10 +38,10 @@ public class TimeSeriesChart {
         pieplot.setIgnoreNullValues(true);//设置不显示空值
         pieplot.setIgnoreZeroValues(true);//设置不显示负值
 
-        chart.getTitle().setFont(new Font("宋体",Font.BOLD,30));//设置标题字体
+        chart.getTitle().setFont(new Font("宋体",Font.TYPE1_FONT,20));//设置标题字体
         PiePlot piePlot= (PiePlot) chart.getPlot();//获取图表区域对象
-        piePlot.setLabelFont(new Font("宋体",Font.BOLD,20));//解决乱码
-        chart.getLegend().setItemFont(new Font("黑体",Font.BOLD,20));
+        piePlot.setLabelFont(new Font("宋体",Font.TYPE1_FONT,15));//解决乱码
+        chart.getLegend().setItemFont(new Font("黑体",Font.TYPE1_FONT,15));
 
         return chart;
     }
@@ -50,7 +50,7 @@ public class TimeSeriesChart {
         Iterator iterator = counts.iterator();
         while (iterator.hasNext()) {
             Count count = (Count) iterator.next();
-            dataset.setValue(count.getCar_id(),count.getCount());
+            dataset.setValue(count.getBrandmodel(),count.getCount());
         }
         return dataset;
     }

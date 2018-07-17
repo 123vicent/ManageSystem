@@ -21,7 +21,7 @@ public class BarChart {
     public JFreeChart BarChart(CategoryDataset dataset){
         JFreeChart chart = ChartFactory.createBarChart3D(
                 "统计", // 图表标题
-                "车id", // 目录轴的显示标签
+                "车名", // 目录轴的显示标签
                 "浏览量", // 数值轴的显示标签
                 dataset, // 数据集
                 PlotOrientation.VERTICAL, // 图表方向：水平、垂直
@@ -33,12 +33,12 @@ public class BarChart {
         //从这里开始
         CategoryPlot plot=chart.getCategoryPlot();//获取图表区域对象
         CategoryAxis domainAxis=plot.getDomainAxis();         //水平底部列表
-        domainAxis.setLabelFont(new Font("黑体",Font.BOLD,20));         //水平底部标题
-        domainAxis.setTickLabelFont(new Font("宋体",Font.BOLD,20));  //垂直标题
+        domainAxis.setLabelFont(new Font("黑体",Font.TYPE1_FONT,12));         //水平底部标题
+        domainAxis.setTickLabelFont(new Font("宋体",Font.TYPE1_FONT,12));  //垂直标题
         ValueAxis rangeAxis=plot.getRangeAxis();//获取柱状
-        rangeAxis.setLabelFont(new Font("黑体",Font.BOLD,20));
-        chart.getLegend().setItemFont(new Font("黑体", Font.BOLD, 20));
-        chart.getTitle().setFont(new Font("宋体",Font.BOLD,20));//设置标题字体
+        rangeAxis.setLabelFont(new Font("黑体",Font.TYPE1_FONT,12));
+        chart.getLegend().setItemFont(new Font("黑体", Font.TYPE1_FONT, 12));
+        chart.getTitle().setFont(new Font("宋体",Font.TYPE1_FONT,20));//设置标题字体
 
         //到这里结束，虽然代码有点多，但只为一个目的，解决汉字乱码问题
         return chart;
@@ -53,10 +53,10 @@ public class BarChart {
             Iterator iterator = counts.iterator();
             while (iterator.hasNext()) {
                 Count count = (Count) iterator.next();
-                System.out.println(count.getCar_id());
+                System.out.println(count.getBrandmodel());
                 System.out.println(count.getShopuser_id());
                 System.out.println(count.getCount());
-                dataset.addValue(count.getCount(), count.getShopuser_id(), count.getCar_id());
+                dataset.addValue(count.getCount(), count.getShopuser_id(), count.getBrandmodel());
             }
             return dataset;
         }

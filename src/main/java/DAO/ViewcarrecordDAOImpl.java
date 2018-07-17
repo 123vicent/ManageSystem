@@ -1,5 +1,6 @@
 package DAO;
 
+import basic.Count;
 import basic.Countinfo;
 import basic.Cusviewcar;
 import basic.Viewcarrecord;
@@ -283,5 +284,37 @@ public class ViewcarrecordDAOImpl implements ViewcarrecordDAO{
             dbc.closeDB();
         }
         return count;
+    }
+
+    public List<Count> Count(String shopuser_id) {
+        DBConnect dbc = new DBConnect();
+        Connection conn = dbc.getConnection();
+        List<Count> counts = new ArrayList<Count>();
+        String sql = "select shopuser_id,brand,model,count(*) from viewcarrecord where shopuser_id=? group by shopuser_id,brand,model";
+        PreparedStatement ps = null;
+        ResultSet rs = null;
+        try {
+            ps = conn.prepareStatement(sql);
+            ps.setString(1,shopuser_id);
+            rs = ps.executeQuery();
+            while (rs.next()){
+                Count count = new Count();
+                count.setShopuser_id(rs.getString(1));
+                count.setBrandmodel(rs.getString(2)+rs.getString(3));
+                count.setCount((double)rs.getInt(4));
+                counts.add(count);
+            }
+            if(ps!=null){
+                ps.close();
+            }
+            if(rs!=null){
+                rs.close();
+            }
+        }catch (SQLException e){
+            e.printStackTrace();
+        }finally {
+            dbc.closeDB();
+        }
+        return counts;
     }
 }

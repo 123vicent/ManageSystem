@@ -112,7 +112,9 @@
 					<form action="/DrawChartServlet" method="post">
 						<input type="submit" name="submit" value="BarChart">
 						<input type="submit" name="submit" value="PieChart"><br>
-						<img src="<%= request.getAttribute("graphURL") %>">
+						<%if(request.getAttribute("graphURL")!=null){%>
+						    <img src="<%= request.getAttribute("graphURL") %>">
+					<%;}%>
 					</form>
 
 

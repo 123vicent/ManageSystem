@@ -1,6 +1,10 @@
 package basic;
 
 public class Count {
+    private String shopuser_id;
+    private String brandmodel;
+    private Double count;
+
     public String getShopuser_id() {
         return shopuser_id;
     }
@@ -9,12 +13,12 @@ public class Count {
         this.shopuser_id = shopuser_id;
     }
 
-    public String getCar_id() {
-        return car_id;
+    public String getBrandmodel() {
+        return brandmodel;
     }
 
-    public void setCar_id(String car_id) {
-        this.car_id = car_id;
+    public void setBrandmodel(String brandmodel) {
+        this.brandmodel = brandmodel;
     }
 
     public Double getCount() {
@@ -24,8 +28,4 @@ public class Count {
     public void setCount(Double count) {
         this.count = count;
     }
-
-    private String shopuser_id;
-    private String car_id;
-    private Double count;
 }

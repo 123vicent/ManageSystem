@@ -1,5 +1,6 @@
 package DAO;
 
+import basic.Count;
 import basic.Countinfo;
 import basic.Cusviewcar;
 import basic.Viewcarrecord;
@@ -17,4 +18,5 @@ public interface ViewcarrecordDAO {
     public Map<String,Integer> findTypeCount();
     public int findPriceCount(double min,double max);
     public int findAllCount();
+    public List<Count> Count(String shopuser_id);
 }

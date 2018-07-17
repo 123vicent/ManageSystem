@@ -13,5 +13,5 @@ public interface ViewrecordDAO {
     public Boolean delete(String shopuser_id, String car_id, String cususer_id,Timestamp view_time);
     public Viewrecord findById(String shopuser_id, String car_id, String cususer_id,Timestamp view_time);
     public List<Viewrecord> findAll();
-    public List<Count> Count(String shopuser_id);
+
 }
