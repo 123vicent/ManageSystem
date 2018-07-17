@@ -11,10 +11,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ShopaptDAOImpl implements ShopaptDAO {
-    DBConnect dbc = new DBConnect();
-    Connection conn = dbc.getConnection();
+
 
     public Shopapt findByApid(String ap_id){
+        DBConnect dbc = new DBConnect();
+        Connection conn = dbc.getConnection();
         Shopapt shopapt = new Shopapt();
         String sql = "select * from shopapt where appointment_id=?";
         PreparedStatement ps = null;
@@ -37,15 +38,24 @@ public class ShopaptDAOImpl implements ShopaptDAO {
                 shopapt.setPayment(rs.getDouble(11));
                 shopapt.setShopinfo(rs.getString(12));
                 shopapt.setCusinfo(rs.getString(13));
-
+            }
+            if(ps!=null){
+                ps.close();
+            }
+            if(rs!=null){
+                rs.close();
             }
         } catch (SQLException e) {
             e.printStackTrace();
+        }finally {
+            dbc.closeDB();
         }
         return shopapt;
     }
 
     public List<Shopapt> findAllByShopId(String shopuser_id){
+        DBConnect dbc = new DBConnect();
+        Connection conn = dbc.getConnection();
         List<Shopapt> shopaptList = new ArrayList<Shopapt>();
         String sql = "select * from shopapt where shopuser_id =? order by ap_time desc";
         PreparedStatement ps = null;
@@ -72,13 +82,23 @@ public class ShopaptDAOImpl implements ShopaptDAO {
 
                 shopaptList.add(shopapt);
             }
+            if(ps!=null){
+                ps.close();
+            }
+            if(rs!=null){
+                rs.close();
+            }
         } catch (SQLException e) {
             e.printStackTrace();
+        }finally {
+            dbc.closeDB();
         }
         return shopaptList;
     }
 
     public List<Shopapt> findAllByTag(String shopuser_id,String apstate,String aptype,String cusname,String ap_id){
+        DBConnect dbc = new DBConnect();
+        Connection conn = dbc.getConnection();
         List<Shopapt> shopaptList = new ArrayList<Shopapt>();
         String sql = "select * from shopapt where shopuser_id=?";
         PreparedStatement ps = null;
@@ -121,8 +141,16 @@ public class ShopaptDAOImpl implements ShopaptDAO {
 
                 shopaptList.add(shopapt);
             }
+            if(ps!=null){
+                ps.close();
+            }
+            if(rs!=null){
+                rs.close();
+            }
         } catch (SQLException e) {
             e.printStackTrace();
+        }finally {
+            dbc.closeDB();
         }
         return shopaptList;
     }

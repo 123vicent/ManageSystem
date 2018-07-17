@@ -1,6 +1,7 @@
 package custo_server;
 
 import DAO.*;
+import algorithm.CarRecommend;
 import basic.Carview;
 import basic.KeyValuePair;
 import model.Car;
@@ -16,7 +17,9 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @WebServlet(name = "log",urlPatterns = {"/log"})
 public class log extends HttpServlet {
@@ -28,6 +31,7 @@ public class log extends HttpServlet {
 
         String access = request.getParameter("submit");
         RequestDispatcher view;
+
         if(access.equals("立即注册")){
             view = request.getRequestDispatcher("WEB-INF/CustPage/cusregister.jsp");
         }
@@ -76,7 +80,23 @@ public class log extends HttpServlet {
 
                     NewsDAO newsDAO = DAOFactory.getNewsDAO();
                     request.setAttribute("news",newsDAO.findAllToday());
-                    System.out.println(newsDAO.findAllToday());
+
+                    //计算每辆车的推荐度算法的应用
+                    CarRecommend carRecommend = new CarRecommend();
+                    carRecommend.setCarBrand_priority();
+                    carRecommend.setCarType_priority();
+                    carRecommend.setCarPrice_priority();
+                    Map<String,Double> CarBrand_priority = carRecommend.getCarBrand_priority();
+                    Map<String,Double> carType_priority = carRecommend.getCarType_priority();
+                    Map<Double,Double> CarPrice_priority = carRecommend.getCarPrice_priority();
+                    Map<Carview,Double> car_priority = new HashMap<Carview, Double>();
+                    for(Carview carview:carviews)
+                    {
+                        car_priority.put(carview,carRecommend.findcar_priority(carview));
+                    }
+
+                    car_priority=carRecommend.sortByComparator(car_priority);
+                    session.setAttribute("car_priority",car_priority);
 
                     view = request.getRequestDispatcher("WEB-INF/CustPage/main.jsp");
                 } else {

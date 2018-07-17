@@ -95,7 +95,7 @@
             <li><a href="/SwitchPage?page=funcViewCar" >查询车辆信息</a></li>
             <li><a href="/SwitchPage?page=funcUploadCar" >上传车辆信息</a></li>
             <li><a href="/SwitchPage?page=funcViewAppointment" >查询客户预约</a></li>
-            <li><a href="/SwitchPage?page=funcPushMsg" >进行消息推送</a></li>
+            <li><a href="/SwitchPage?page=funcPushMsg" >发布通知</a></li>
             <li><a href="/SwitchPage?page=funcRegister" >登记客户车辆</a></li>
             <li><a href="/SwitchPage?page=funcViewReg" >查询登记车辆</a></li>
             <li class="active"><a href="/SwitchPage?page=funcViewRecord" >查看浏览记录</a></li>
@@ -159,6 +159,7 @@
                     <th>型号</th>
                     <th>浏览用户数</th>
                     <th>浏览次数</th>
+                    <th></th>
                 </tr>
                 <%for(Countinfo countinfo:countinfos){%>
                 <tr>
@@ -166,12 +167,12 @@
                     <th><%=countinfo.getModel()%></th>
                     <th>
                         <%=countinfo.getDistinct()%>
-                        <a href="/viewinfo?brand=<%=countinfo.getBrand()%>&model=<%=countinfo.getModel()%>">
-                            <button  type="button" class="btn btn-primary" class="btn-group pull-left" style="margin-left: 10px;">
-                                查看详细信息</button>
-                        </a>
                     </th>
                     <th><%=countinfo.getTotalcount()%></th>
+                    <th><a href="/viewinfo?brand=<%=countinfo.getBrand()%>&model=<%=countinfo.getModel()%>">
+                        <button  type="button" class="btn btn-primary" class="btn-group pull-left" style="margin-left: 10px;">
+                            查看详细信息</button>
+                    </a></th>
                 </tr>
                 <%;}%>
                 </thead>

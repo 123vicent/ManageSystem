@@ -1,23 +1,28 @@
 
 
-import DAO.CarinfoDAO;
-import DAO.CarviewDAO;
-import DAO.DAOFactory;
-import DAO.ShopaptDAO;
+import DAO.*;
+import algorithm.CarRecommend;
 import basic.Carinfo;
 import basic.Carview;
+import basic.Count;
 import basic.Shopapt;
 import model.Shopuser;
 
 import java.sql.Timestamp;
-import java.util.Calendar;
-import java.util.List;
+import java.util.*;
 
 public class Main {
 
     public static void main(String []args) {
-        Timestamp view_time = new java.sql.Timestamp(new java.util.Date().getTime());
-        String time= view_time.toString();
-        System.out.println(time);
+        ViewrecordDAO viewrecordDAO = DAOFactory.getViewrecordDAO();
+        List<Count> counts = viewrecordDAO.Count("amcarshop");
+        Iterator iterator = counts.iterator();
+        while(iterator.hasNext()){
+            //Car car = (Car) iterator.next();
+            Count count = (Count) iterator.next();
+            System.out.println(count.getShopuser_id());
+            System.out.println(count.getCar_id());
+            System.out.println(count.getCount());
+        }
     }
 }

@@ -13,7 +13,7 @@ public class DAOFactory {
         return new CarDAOImpl();
     }
 
-    public static ShopRegcusDAO getShopRegcusDAO(){return new ShopRegcusImpl();}
+    public static ShopRegcusDAO getShopRegcusDAO(){return new ShopRegcusDAOImpl();}
 
     public static CusowncarDAO getCusowncarDAO(){
         return new CusowncarDAOImpl();

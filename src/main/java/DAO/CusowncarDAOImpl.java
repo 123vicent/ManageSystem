@@ -13,10 +13,11 @@ import java.util.List;
 //Cusowncar表DAO实现接口
 //含标准insert,update,delete,select（查询返回单个对象或返回对象List两种方法)查询方法
 public class CusowncarDAOImpl implements CusowncarDAO {
-    DBConnect dbc = new DBConnect();
-    Connection conn = dbc.getConnection();
+
 
     public Boolean insert(Cusowncar coc) {
+        DBConnect dbc = new DBConnect();
+        Connection conn = dbc.getConnection();
         String sql = "insert into cusowncar values (?,?,?,?,?,?)";
         PreparedStatement ps = null;
         try {
@@ -29,15 +30,22 @@ public class CusowncarDAOImpl implements CusowncarDAO {
             ps.setDouble(6,coc.getPayment());
 
             ps.executeUpdate();
-            ps.close();
+            if(ps!=null){
+                ps.close();
+            }
+
             return true;
         } catch (SQLException e) {
             e.printStackTrace();
             return false;
+        }finally {
+            dbc.closeDB();
         }
     }
 
     public Boolean update(Cusowncar coc){
+        DBConnect dbc = new DBConnect();
+        Connection conn = dbc.getConnection();
         String sql = "update cusowncar set plate_number=?,shopuser_id=?,cususer_id=?,car_id=?,register_time=?,payment=? " +
                 "where plate_number=?";
         PreparedStatement ps = null;
@@ -52,15 +60,22 @@ public class CusowncarDAOImpl implements CusowncarDAO {
             ps.setString(7,coc.getPlate_number());
 
             ps.executeUpdate();
-            ps.close();
+            if(ps!=null){
+                ps.close();
+            }
+
             return true;
         } catch (SQLException e) {
             e.printStackTrace();
             return false;
+        }finally {
+            dbc.closeDB();
         }
     }
 
     public Boolean delete(String plate_number){
+        DBConnect dbc = new DBConnect();
+        Connection conn = dbc.getConnection();
         String sql = "delete from cusowncar where plate_number=?";
         PreparedStatement ps = null;
         try {
@@ -68,15 +83,22 @@ public class CusowncarDAOImpl implements CusowncarDAO {
             ps.setString(1,plate_number);
 
             ps.executeUpdate();
-            ps.close();
+            if(ps!=null){
+                ps.close();
+            }
+
             return true;
         } catch (SQLException e) {
             e.printStackTrace();
             return false;
+        }finally {
+            dbc.closeDB();
         }
     }
 
     public Cusowncar findById(String plate_number){
+        DBConnect dbc = new DBConnect();
+        Connection conn = dbc.getConnection();
         Cusowncar coc = new Cusowncar();
         String sql = "select * from cusowncar where plate_number=?";
         PreparedStatement ps = null;
@@ -94,13 +116,23 @@ public class CusowncarDAOImpl implements CusowncarDAO {
                 coc.setRegister_time(rs.getDate(5));
                 coc.setPayment(rs.getDouble(6));
             }
+            if(ps!=null){
+                ps.close();
+            }
+            if(rs!=null){
+                rs.close();
+            }
         } catch (SQLException e) {
             e.printStackTrace();
+        }finally {
+            dbc.closeDB();
         }
         return coc;
     }
 
     public List<Cusowncar> findAll(){
+        DBConnect dbc = new DBConnect();
+        Connection conn = dbc.getConnection();
         List<Cusowncar> cocList = new ArrayList<Cusowncar>();
         String sql = "select * from cusowncar";
         PreparedStatement ps = null;
@@ -119,8 +151,16 @@ public class CusowncarDAOImpl implements CusowncarDAO {
 
                 cocList.add(coc);
             }
+            if(ps!=null){
+                ps.close();
+            }
+            if(rs!=null){
+                rs.close();
+            }
         } catch (SQLException e) {
             e.printStackTrace();
+        }finally {
+            dbc.closeDB();
         }
         return cocList;
     }

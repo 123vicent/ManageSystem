@@ -7,10 +7,11 @@ import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 public class NewsDAOImpl implements NewsDAO{
-    DBConnect dbc = new DBConnect();
-    Connection conn = dbc.getConnection();
+
 
     public boolean insert(News news) {
+        DBConnect dbc = new DBConnect();
+        Connection conn = dbc.getConnection();
         String sql = "insert into news values (?,?,?,?)";
         PreparedStatement ps = null;
         try {
@@ -20,14 +21,21 @@ public class NewsDAOImpl implements NewsDAO{
             ps.setString(3,news.getTitle());
             ps.setString(4,news.getContent());
             ps.execute();
+            if(ps!=null){
+                ps.close();
+            }
             return true;
         } catch (SQLException e) {
             e.printStackTrace();
             return false;
+        }finally {
+            dbc.closeDB();
         }
     }
 
     public List<News> findAllToday() {
+        DBConnect dbc = new DBConnect();
+        Connection conn = dbc.getConnection();
         List<News> newsList = new ArrayList<News>();
         String sql = "select * from news where time=?";
         PreparedStatement ps = null;
@@ -45,13 +53,23 @@ public class NewsDAOImpl implements NewsDAO{
                 news.setContent(rs.getString(4));
                 newsList.add(news);
             }
+            if(ps!=null){
+                ps.close();
+            }
+            if(rs!=null){
+                rs.close();
+            }
         } catch (SQLException e) {
             e.printStackTrace();
+        }finally {
+            dbc.closeDB();
         }
         return newsList;
     }
 
     public News findById(String shopuser_id, Date time, String title) {
+        DBConnect dbc = new DBConnect();
+        Connection conn = dbc.getConnection();
         News news = new News();
         String sql = "select * from news where shopuser_id=? and time=? and title=?";
         PreparedStatement ps = null;
@@ -68,8 +86,17 @@ public class NewsDAOImpl implements NewsDAO{
                 news.setTitle(rs.getString(3));
                 news.setContent(rs.getString(4));
             }
+            if(ps!=null){
+                ps.close();
+            }
+            if(rs!=null){
+                rs.close();
+            }
         } catch (SQLException e) {
             e.printStackTrace();
+        }
+        finally {
+            dbc.closeDB();
         }
         return news;
     }

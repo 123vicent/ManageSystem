@@ -149,7 +149,7 @@
             <li><a href="/SwitchPage?page=funcViewCar" >查询车辆信息</a></li>
             <li><a href="/SwitchPage?page=funcUploadCar" >上传车辆信息</a></li>
             <li><a href="/SwitchPage?page=funcViewAppointment" >查询客户预约</a></li>
-            <li><a href="/SwitchPage?page=funcPushMsg" >进行消息推送</a></li>
+            <li><a href="/SwitchPage?page=funcPushMsg" >发布通知</a></li>
             <li><a href="/SwitchPage?page=funcRegister" >登记客户车辆</a></li>
             <li><a href="/SwitchPage?page=funcViewReg" >查询登记车辆</a></li>
             <li><a href="/SwitchPage?page=funcViewRecord" >查看浏览记录</a></li>

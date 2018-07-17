@@ -6,6 +6,7 @@ import basic.Countinfo;
 import basic.ShopRegcus;
 import basic.Shopapt;
 import model.Shopowncar;
+import model.Shopuser;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -30,11 +31,14 @@ public class SwitchPage extends HttpServlet {
         if(page.equals("homepage")){
             view = request.getRequestDispatcher("ShopPage/firstpage.jsp");
         }else if(page.equals("funcpage")){
-            view = request.getRequestDispatcher("ShopPage/funcOverview.html");
+            view = request.getRequestDispatcher("ShopPage/funcOverview.jsp");
         }else if(page.equals("setpage")){
-            view = request.getRequestDispatcher("ShopPage/set.html");
+            ShopuserDAO shopuserDAO = DAOFactory.getShopuserDAO();
+            Shopuser shopuser = shopuserDAO.findById(Shopuserid);
+            request.setAttribute("shopuser",shopuser);
+            view = request.getRequestDispatcher("ShopPage/set.jsp");
         }else if(page.equals("helppage")){
-            view = request.getRequestDispatcher("ShopPage/help.html");
+            view = request.getRequestDispatcher("ShopPage/help.jsp");
         }else if(page.equals("funcViewCar")){
 
             CarinfoDAO carinfoDAO = DAOFactory.getCarinfoDAO();
@@ -49,7 +53,7 @@ public class SwitchPage extends HttpServlet {
             request.setAttribute("userapoint",shopapts);
             view = request.getRequestDispatcher("ShopPage/funcViewAppointment.jsp");
         }else if(page.equals("funcPushMsg")){
-            view = request.getRequestDispatcher("ShopPage/funcPushMsg.html");
+            view = request.getRequestDispatcher("ShopPage/funcPushMsg.jsp");
         }else if(page.equals("funcRegister")){
 
             view = request.getRequestDispatcher("ShopPage/funcRegister.jsp");

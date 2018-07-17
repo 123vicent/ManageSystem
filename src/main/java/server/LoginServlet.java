@@ -77,7 +77,7 @@ public class LoginServlet extends HttpServlet {
 
                     view = request.getRequestDispatcher("ShopPage/firstpage.jsp");
                 } else {
-                    request.setAttribute("msg2", "登录失败");
+                    request.setAttribute("msg2", "用户名或密码错误！");
                     view = request.getRequestDispatcher("index.jsp");
 
                 }

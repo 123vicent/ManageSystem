@@ -11,10 +11,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class CarviewDAOImpl implements CarviewDAO {
-    DBConnect dbc = new DBConnect();
-    Connection conn = dbc.getConnection();
+
 
     public List<Carview> findAll(){
+        DBConnect dbc = new DBConnect();
+        Connection conn = dbc.getConnection();
         List<Carview> cvList = new ArrayList<Carview>();
         String sql = "select * from carview";
         PreparedStatement ps = null;
@@ -40,13 +41,23 @@ public class CarviewDAOImpl implements CarviewDAO {
                 cv.setDescription(rs.getString(14));
                 cvList.add(cv);
             }
+            if(ps!=null){
+                ps.close();
+            }
+            if(rs!=null){
+                rs.close();
+            }
         } catch (SQLException e) {
             e.printStackTrace();
+        }finally {
+            dbc.closeDB();
         }
         return cvList;
     }
 
     public List<Carview> findAllByCon(String con, String min, String max) {
+        DBConnect dbc = new DBConnect();
+        Connection conn = dbc.getConnection();
         List<Carview> cvList = new ArrayList<Carview>();
         String sql = "select * from carview where brand REGEXP ? and price between ? and ?";
         if(min.equals("")){
@@ -55,10 +66,10 @@ public class CarviewDAOImpl implements CarviewDAO {
         if(max.equals("")){
             max = "100000000000000000";
         }
+        PreparedStatement ps = null;
         ResultSet rs = null;
         try {
             if(!con.equals("")) {
-                PreparedStatement ps = null;
                 ps = conn.prepareStatement(sql);
                 ps.setString(1, con);
                 ps.setString(2, min);
@@ -67,7 +78,6 @@ public class CarviewDAOImpl implements CarviewDAO {
             }
             else {
                 sql = "select * from carview where price between ? and ?";
-                PreparedStatement ps = null;
                 ps = conn.prepareStatement(sql);
                 ps.setString(1, min);
                 ps.setString(2, max);
@@ -92,13 +102,23 @@ public class CarviewDAOImpl implements CarviewDAO {
                 cv.setDescription(rs.getString(14));
                 cvList.add(cv);
             }
+            if(ps!=null){
+                ps.close();
+            }
+            if(rs!=null){
+                rs.close();
+            }
         } catch (SQLException e) {
             e.printStackTrace();
+        }finally {
+            dbc.closeDB();
         }
         return cvList;
     }
 
     public Carview findById(String car_id,String shopuser_id) {
+        DBConnect dbc = new DBConnect();
+        Connection conn = dbc.getConnection();
         Carview cv = new Carview();
         String sql = "select * from carview where car_id=? and shopuser_id=?";
         PreparedStatement ps = null;
@@ -124,8 +144,16 @@ public class CarviewDAOImpl implements CarviewDAO {
                 cv.setPic_url(rs.getString(13));
                 cv.setDescription(rs.getString(14));
             }
+            if(ps!=null){
+                ps.close();
+            }
+            if(rs!=null){
+                rs.close();
+            }
         } catch (SQLException e) {
             e.printStackTrace();
+        }finally {
+            dbc.closeDB();
         }
         return cv;
     }

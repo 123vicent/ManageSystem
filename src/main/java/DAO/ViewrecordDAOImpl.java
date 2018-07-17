@@ -1,5 +1,6 @@
 package DAO;
 
+import basic.Count;
 import dbcon.DBConnect;
 import model.Viewrecord;
 
@@ -10,10 +11,11 @@ import java.util.List;
 //Viewrecord表DAO实现接口
 //含标准insert,update,delete,select（查询返回单个对象或返回对象List两种方法)查询方法
 public class ViewrecordDAOImpl implements ViewrecordDAO {
-    DBConnect dbc = new DBConnect();
-    Connection conn = dbc.getConnection();
+
 
     public Boolean insert(Viewrecord vr) {
+        DBConnect dbc = new DBConnect();
+        Connection conn = dbc.getConnection();
         String sql = "insert into viewrecord values (?,?,?,?)";
         PreparedStatement ps = null;
         try {
@@ -24,15 +26,22 @@ public class ViewrecordDAOImpl implements ViewrecordDAO {
             ps.setTimestamp(4,vr.getView_time());
 
             ps.executeUpdate();
-            ps.close();
+            if(ps!=null){
+                ps.close();
+            }
+
             return true;
         } catch (SQLException e) {
             e.printStackTrace();
             return false;
+        }finally {
+            dbc.closeDB();
         }
     }
 
     public Boolean update(Viewrecord vr){
+        DBConnect dbc = new DBConnect();
+        Connection conn = dbc.getConnection();
         String sql = "update viewrecord set shopuser_id=?,car_id=?,cususer_id=?,view_date=?";
         PreparedStatement ps = null;
         try {
@@ -43,15 +52,22 @@ public class ViewrecordDAOImpl implements ViewrecordDAO {
             ps.setTimestamp(4,vr.getView_time());
 
             ps.executeUpdate();
-            ps.close();
+            if(ps!=null){
+                ps.close();
+            }
+
             return true;
         } catch (SQLException e) {
             e.printStackTrace();
             return false;
+        }finally {
+            dbc.closeDB();
         }
     }
 
     public Boolean delete(String shopuser_id, String car_id, String cususer_id,Timestamp view_time){
+        DBConnect dbc = new DBConnect();
+        Connection conn = dbc.getConnection();
         String sql = "delete from viewrecord where shopuser_id=? and car_id=? and cususer_id=? and view_time=?";
         PreparedStatement ps = null;
         try {
@@ -62,15 +78,22 @@ public class ViewrecordDAOImpl implements ViewrecordDAO {
             ps.setTimestamp(4,view_time);
 
             ps.executeUpdate();
-            ps.close();
+            if(ps!=null){
+                ps.close();
+            }
+
             return true;
         } catch (SQLException e) {
             e.printStackTrace();
             return false;
+        }finally {
+            dbc.closeDB();
         }
     }
 
     public Viewrecord findById(String shopuser_id, String car_id, String cususer_id,Timestamp view_time){
+        DBConnect dbc = new DBConnect();
+        Connection conn = dbc.getConnection();
         Viewrecord vr = new Viewrecord();
         String sql = "select * from viewrecord where shopuser_id=? and car_id=? and cususer_id=? and view_time=?";
         PreparedStatement ps = null;
@@ -87,15 +110,24 @@ public class ViewrecordDAOImpl implements ViewrecordDAO {
                 vr.setCususer_id(rs.getString(2));
                 vr.setView_time(rs.getTimestamp(3));
             }
-
+            if(ps!=null){
+                ps.close();
+            }
+            if(rs!=null){
+                rs.close();
+            }
 
         } catch (SQLException e) {
             e.printStackTrace();
+        }finally {
+            dbc.closeDB();
         }
         return vr;
     }
 
     public List<Viewrecord> findAll(){
+        DBConnect dbc = new DBConnect();
+        Connection conn = dbc.getConnection();
         List<Viewrecord> vrList = new ArrayList<Viewrecord>();
         String sql = "select * from viewrecord";
         PreparedStatement ps = null;
@@ -112,9 +144,47 @@ public class ViewrecordDAOImpl implements ViewrecordDAO {
 
                 vrList.add(vr);
             }
+            if(ps!=null){
+                ps.close();
+            }
+            if(rs!=null){
+                rs.close();
+            }
         } catch (SQLException e) {
             e.printStackTrace();
+        }finally {
+            dbc.closeDB();
         }
         return vrList;
     }
+    public List<Count> Count(String shopuser_id) {
+        DBConnect dbc = new DBConnect();
+        Connection conn = dbc.getConnection();
+        List<Count> counts = new ArrayList<Count>();
+        String sql = "select tmp.shopuser_id,tmp.car_id,COUNT(tmp.car_id) as count\n" +
+                "from\n" +
+                "(select *\n" +
+                "from viewrecord\n" +
+                "where shopuser_id = ?) \n" +
+                "as tmp\n" +
+                "group by tmp.car_id;";
+        PreparedStatement ps = null;
+        ResultSet rs = null;
+        try {
+            ps = conn.prepareStatement(sql);
+            ps.setString(1,shopuser_id);
+            rs = ps.executeQuery();
+            while (rs.next()){
+                Count count = new Count();
+                count.setShopuser_id(rs.getString(1));
+                count.setCar_id(rs.getString(2));
+                count.setCount((double)rs.getInt(3));
+                counts.add(count);
+            }
+        }catch (SQLException e){
+            e.printStackTrace();
+        }
+        return counts;
+    }
+
 }
