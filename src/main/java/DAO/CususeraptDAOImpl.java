@@ -11,10 +11,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class CususeraptDAOImpl implements CususeraptDAO {
-    DBConnect dbc = new DBConnect();
-    Connection conn = dbc.getConnection();
+
 
     public Cususerapt findByApid(String ap_id){
+        DBConnect dbc = new DBConnect();
+        Connection conn = dbc.getConnection();
         Cususerapt cuapt = new Cususerapt();
         String sql = "select * from cususerapt where appointment_id=?";
         PreparedStatement ps = null;
@@ -40,13 +41,23 @@ public class CususeraptDAOImpl implements CususeraptDAO {
                 cuapt.setShopinfo(rs.getString(14));
                 cuapt.setCusinfo(rs.getString(15));
             }
+            if(ps!=null){
+                ps.close();
+            }
+            if(rs!=null){
+                rs.close();
+            }
         } catch (SQLException e) {
             e.printStackTrace();
+        }finally {
+            dbc.closeDB();
         }
         return cuapt;
     }
 
     public List<Cususerapt> findAllByCusid(String cususer_id) {
+        DBConnect dbc = new DBConnect();
+        Connection conn = dbc.getConnection();
         List<Cususerapt> cususerapts = new ArrayList<Cususerapt>();
         String sql = "select * from cususerapt where cususer_id=?";
         PreparedStatement ps = null;
@@ -74,8 +85,16 @@ public class CususeraptDAOImpl implements CususeraptDAO {
                 cuapt.setCusinfo(rs.getString(15));
                 cususerapts.add(cuapt);
             }
+            if(ps!=null){
+                ps.close();
+            }
+            if(rs!=null){
+                rs.close();
+            }
         } catch (SQLException e) {
             e.printStackTrace();
+        }finally {
+            dbc.closeDB();
         }
         return cususerapts;
     }

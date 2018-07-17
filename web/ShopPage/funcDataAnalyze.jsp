@@ -63,10 +63,10 @@
 
 			    <div id="navbar" class="navbar-collapse collapse">
 				    <ul class="nav navbar-nav navbar-right">
-					    <li><a href="first.html" class="active" ><font size="3">系统主页</font></a></li>
-					    <li><a href="funcDataAnalyze.jsp"  ><font size="3">使用功能</font></a></li>
-					    <li><a href="set.html" ><font size="3">用户设置</font></a></li>
-					    <li><a href="help.html" ><font size="3">帮助界面</font></a></li>
+						<li><a href="/SwitchPage?page=homepage" ><font size="3">系统主页</font></a></li>
+						<li><a href="/SwitchPage?page=funcpage"><font size="3">使用功能</font></a></li>
+						<li><a href="/SwitchPage?page=setpage" ><font size="3">用户设置</font></a></li>
+						<li><a href="/SwitchPage?page=helppage" ><font size="3">帮助界面</font></a></li>
 				    </ul>
 			    </div>
 		    </div>
@@ -84,7 +84,7 @@
 					<li><a href="/SwitchPage?page=funcViewCar" >查询车辆信息</a></li>
 					<li><a href="/SwitchPage?page=funcUploadCar" >上传车辆信息</a></li>
 					<li><a href="/SwitchPage?page=funcViewAppointment" >查询客户预约</a></li>
-					<li><a href="/SwitchPage?page=funcPushMsg" >进行消息推送</a></li>
+					<li><a href="/SwitchPage?page=funcPushMsg" >发布通知</a></li>
 					<li><a href="/SwitchPage?page=funcRegister" >登记客户车辆</a></li>
 					<li><a href="/SwitchPage?page=funcViewReg" >查询登记车辆</a></li>
 					<li><a href="/SwitchPage?page=funcViewRecord" >查看浏览记录</a></li>
@@ -106,33 +106,16 @@
 						</font>
 					</p>
 					</br>
-					<form action="/handlebook" class="navbar-form navbar-left">
-						<label>分析范围</label>
-						<select name="appointstate" style="width:100px;height:35px">
-							<option >全部车辆</option>
-							<option >阿斯顿马丁</option>
-							<option >奔驰</option>
-							<option >宝马</option>
-							<option >大众</option>
-							<option >奥迪</option>
-						</select>
-						
-						<button id="queryBtn2" type="submit" class="btn btn-default" class="btn-group pull-left" style="margin-left: 10px;">
-							<span class="glyphicon glyphicon-search" aria-hidden="true"></span>查询</button>
-					</form>
 					<p>
-					</br>
-					</br>
-					</br>
-					<font size="4">
-						分析结果
-					</font>
-					</p>
-					</br>
 					
 					<!--数据分析图-->
-					
-					
+					<form action="/DrawChartServlet" method="post">
+						<input type="submit" name="submit" value="BarChart">
+						<input type="submit" name="submit" value="PieChart"><br>
+						<img src="<%= request.getAttribute("graphURL") %>">
+					</form>
+
+
 					<!--//数据分析图-->
 
 					

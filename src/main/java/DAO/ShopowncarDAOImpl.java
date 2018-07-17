@@ -13,10 +13,11 @@ import java.util.List;
 //shopowncar表DAO实现接口
 //含标准insert,update,delete,select（查询返回单个对象或返回对象List两种方法)查询方法
 public class ShopowncarDAOImpl implements ShopowncarDAO {
-    DBConnect dbc = new DBConnect();
-    Connection conn = dbc.getConnection();
+
 
     public Boolean insert(Shopowncar soc) {
+        DBConnect dbc = new DBConnect();
+        Connection conn = dbc.getConnection();
         String sql = "insert into shopowncar values (?,?,?,?,?,?)";
         PreparedStatement ps = null;
         try {
@@ -29,15 +30,22 @@ public class ShopowncarDAOImpl implements ShopowncarDAO {
             ps.setString(6,soc.getDescription());
 
             ps.executeUpdate();
-            ps.close();
+            if(ps!=null){
+                ps.close();
+            }
+
             return true;
         } catch (SQLException e) {
             e.printStackTrace();
             return false;
+        }finally {
+            dbc.closeDB();
         }
     }
 
     public Boolean update(Shopowncar soc){
+        DBConnect dbc = new DBConnect();
+        Connection conn = dbc.getConnection();
         String sql = "update shopowncar set shopuser_id=?,car_id=?,stock=?,price=?,pic_url=?,description=? where shopuser_id=? and car_id=?";
         PreparedStatement ps = null;
         try {
@@ -52,15 +60,22 @@ public class ShopowncarDAOImpl implements ShopowncarDAO {
             ps.setString(8,soc.getCar_id());
 
             ps.executeUpdate();
-            ps.close();
+            if(ps!=null){
+                ps.close();
+            }
+
             return true;
         } catch (SQLException e) {
             e.printStackTrace();
             return false;
+        }finally {
+            dbc.closeDB();
         }
     }
 
     public Boolean delete(String shopuser_id,String car_id){
+        DBConnect dbc = new DBConnect();
+        Connection conn = dbc.getConnection();
         String sql = "delete from shopowncar where shopuser_id=? and car_id=?";
         PreparedStatement ps = null;
         try {
@@ -69,15 +84,22 @@ public class ShopowncarDAOImpl implements ShopowncarDAO {
             ps.setString(2,car_id);
 
             ps.executeUpdate();
-            ps.close();
+            if(ps!=null){
+                ps.close();
+            }
+
             return true;
         } catch (SQLException e) {
             e.printStackTrace();
             return false;
+        }finally {
+            dbc.closeDB();
         }
     }
 
     public Shopowncar findById(String shopuser_id,String car_id){
+        DBConnect dbc = new DBConnect();
+        Connection conn = dbc.getConnection();
         Shopowncar soc = new Shopowncar();
         String sql = "select * from shopowncar where shopuser_id=? and car_id=?";
         PreparedStatement ps = null;
@@ -95,15 +117,24 @@ public class ShopowncarDAOImpl implements ShopowncarDAO {
                 soc.setPic_url(rs.getString(5));
                 soc.setDescription(rs.getString(6));
             }
-
+            if(ps!=null){
+                ps.close();
+            }
+            if(rs!=null){
+                rs.close();
+            }
 
         } catch (SQLException e) {
             e.printStackTrace();
+        }finally {
+            dbc.closeDB();
         }
         return soc;
     }
 
     public List<Shopowncar> findAll(){
+        DBConnect dbc = new DBConnect();
+        Connection conn = dbc.getConnection();
         List<Shopowncar> socList = new ArrayList<Shopowncar>();
         String sql = "select * from shopowncar";
         PreparedStatement ps = null;
@@ -122,8 +153,16 @@ public class ShopowncarDAOImpl implements ShopowncarDAO {
 
                 socList.add(soc);
             }
+            if(ps!=null){
+                ps.close();
+            }
+            if(rs!=null){
+                rs.close();
+            }
         } catch (SQLException e) {
             e.printStackTrace();
+        }finally {
+            dbc.closeDB();
         }
         return socList;
     }

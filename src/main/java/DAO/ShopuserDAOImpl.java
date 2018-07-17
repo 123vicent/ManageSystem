@@ -13,10 +13,11 @@ import java.util.List;
 //Shopuser表DAO实现接口
 //含标准insert,update,delete,select（查询返回单个对象或返回对象List两种方法)查询方法
 public class ShopuserDAOImpl implements ShopuserDAO {
-    DBConnect dbc = new DBConnect();
-    Connection conn = dbc.getConnection();
+
 
     public Boolean insert(Shopuser su) {
+        DBConnect dbc = new DBConnect();
+        Connection conn = dbc.getConnection();
         String sql = "insert into shopuser values (?,?,?,?,?,?,?)";
         PreparedStatement ps = null;
         try {
@@ -30,17 +31,24 @@ public class ShopuserDAOImpl implements ShopuserDAO {
             ps.setString(7,su.getDescription());
 
             ps.executeUpdate();
-            ps.close();
+            if(ps!=null){
+                ps.close();
+            }
+
             return true;
         } catch (SQLException e) {
             e.printStackTrace();
             return false;
+        }finally {
+            dbc.closeDB();
         }
     }
 
     public Boolean update(Shopuser su){
-        String sql = "update shopuser set shopuser_id=?,pswd=?,shop_name=?,shop_phone=?,shop_address=?,shop_manager," +
-                "description where shopuser_id=?";
+        DBConnect dbc = new DBConnect();
+        Connection conn = dbc.getConnection();
+        String sql = "update shopuser set shopuser_id=?,pswd=?,shop_name=?,shop_phone=?,shop_address=?,shop_manager=?," +
+                "description=? where shopuser_id=?";
         PreparedStatement ps = null;
         try {
             ps = conn.prepareStatement(sql);
@@ -54,15 +62,22 @@ public class ShopuserDAOImpl implements ShopuserDAO {
             ps.setString(8,su.getShopuser_id());
 
             ps.executeUpdate();
-            ps.close();
+            if(ps!=null){
+                ps.close();
+            }
+
             return true;
         } catch (SQLException e) {
             e.printStackTrace();
             return false;
+        }finally {
+            dbc.closeDB();
         }
     }
 
     public Boolean delete(String shopuser_id){
+        DBConnect dbc = new DBConnect();
+        Connection conn = dbc.getConnection();
         String sql = "delete from shopuser where shopuser_id=?";
         PreparedStatement ps = null;
         try {
@@ -70,15 +85,22 @@ public class ShopuserDAOImpl implements ShopuserDAO {
             ps.setString(1,shopuser_id);
 
             ps.executeUpdate();
-            ps.close();
+            if(ps!=null){
+                ps.close();
+            }
+
             return true;
         } catch (SQLException e) {
             e.printStackTrace();
             return false;
+        }finally {
+            dbc.closeDB();
         }
     }
 
     public Shopuser findById(String shopuser_id){
+        DBConnect dbc = new DBConnect();
+        Connection conn = dbc.getConnection();
         Shopuser su = new Shopuser();
         String sql = "select * from shopuser where shopuser_id=?";
         PreparedStatement ps = null;
@@ -96,15 +118,24 @@ public class ShopuserDAOImpl implements ShopuserDAO {
                 su.setShop_manager(rs.getString(6));
                 su.setDescription(rs.getString(7));
         }
-
+            if(ps!=null){
+                ps.close();
+            }
+            if(rs!=null){
+                rs.close();
+            }
 
         } catch (SQLException e) {
             e.printStackTrace();
+        }finally {
+            dbc.closeDB();
         }
         return su;
     }
 
     public List<Shopuser> findAll(){
+        DBConnect dbc = new DBConnect();
+        Connection conn = dbc.getConnection();
         List<Shopuser> suList = new ArrayList<Shopuser>();
         String sql = "select * from shopuser";
         PreparedStatement ps = null;
@@ -123,13 +154,23 @@ public class ShopuserDAOImpl implements ShopuserDAO {
                 su.setDescription(rs.getString(7));
                 suList.add(su);
             }
+            if(ps!=null){
+                ps.close();
+            }
+            if(rs!=null){
+                rs.close();
+            }
         } catch (SQLException e) {
             e.printStackTrace();
+        }finally {
+            dbc.closeDB();
         }
         return suList;
     }
 
     public Shopuser findByNameAdd(String name, String address) {
+        DBConnect dbc = new DBConnect();
+        Connection conn = dbc.getConnection();
         Shopuser su = new Shopuser();
         String sql = "select * from shopuser where shop_name=? and shop_address=?";
         PreparedStatement ps = null;
@@ -148,8 +189,16 @@ public class ShopuserDAOImpl implements ShopuserDAO {
                 su.setShop_manager(rs.getString(6));
                 su.setDescription(rs.getString(7));
             }
+            if(ps!=null){
+                ps.close();
+            }
+            if(rs!=null){
+                rs.close();
+            }
         } catch (SQLException e) {
             e.printStackTrace();
+        }finally {
+            dbc.closeDB();
         }
         return su;
     }

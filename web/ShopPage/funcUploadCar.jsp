@@ -98,7 +98,7 @@ To change this template use File | Settings | File Templates.
 					<li><a href="/SwitchPage?page=funcViewCar" >查询车辆信息</a></li>
 					<li class="active"><a href="/SwitchPage?page=funcUploadCar" >上传车辆信息</a></li>
 					<li><a href="/SwitchPage?page=funcViewAppointment" >查询客户预约</a></li>
-					<li><a href="/SwitchPage?page=funcPushMsg" >进行消息推送</a></li>
+					<li><a href="/SwitchPage?page=funcPushMsg" >发布通知</a></li>
 					<li><a href="/SwitchPage?page=funcRegister" >登记客户车辆</a></li>
 					<li><a href="/SwitchPage?page=funcViewReg" >查询登记车辆</a></li>
 					<li><a href="/SwitchPage?page=funcViewRecord" >查看浏览记录</a></li>
@@ -142,7 +142,6 @@ To change this template use File | Settings | File Templates.
 								</select>
 								<label>选择型号</label>
 								<select id="carlist2" name="model" runat="server" style="width:100px;height:33px" required>
-									<option value=""></option>
 								</select>
 							</div>
 							<div>
@@ -162,10 +161,10 @@ To change this template use File | Settings | File Templates.
 									</div>
 								</div>
 								<%if(request.getAttribute("error")!=null){ %>
-								<%=request.getAttribute("error")%>
+								<p><font size="4" color="#dc143c"><%=request.getAttribute("error")%></font></p>
 								<%  }%>
 								<%if(request.getAttribute("success")!=null){ %>
-								<%=request.getAttribute("success")%>
+								<p><font size="4" color="#dc143c"><%=request.getAttribute("success")%></font></p>
 								<%  }%>
 							</div>
 							<!--

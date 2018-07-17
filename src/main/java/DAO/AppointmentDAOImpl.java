@@ -14,10 +14,11 @@ import java.util.List;
 //Appointment表DAO实现接口
 //含标准insert,update,delete,select（查询返回单个对象或返回对象List两种方法)查询方法
 public class AppointmentDAOImpl implements AppointmentDAO {
-    DBConnect dbc = new DBConnect();
-    Connection conn = dbc.getConnection();
+
 
     public Boolean insert(Appointment a) {
+        DBConnect dbc = new DBConnect();
+        Connection conn = dbc.getConnection();
         String sql = "insert into appointment values (?,?,?,?,?,?,?,?,?,?,?)";
         PreparedStatement ps = null;
         try {
@@ -35,15 +36,21 @@ public class AppointmentDAOImpl implements AppointmentDAO {
             ps.setString(11,a.getCusinfo());
 
             ps.executeUpdate();
-            ps.close();
+            if(ps!=null){
+                ps.close();
+            }
             return true;
         } catch (SQLException e) {
             e.printStackTrace();
             return false;
+        }finally {
+            dbc.closeDB();
         }
     }
 
     public Boolean update(Appointment a){
+        DBConnect dbc = new DBConnect();
+        Connection conn = dbc.getConnection();
         String sql = "update appointment set appointment_id=?,cususer_id=?,shopuser_id=?,car_id=?,ap_time=?," +
                 "ap_type=?,ap_state=?,complete_time=?,payment=?,shopinfo=?,cusinfo=? where appointment_id=?";
         PreparedStatement ps = null;
@@ -63,15 +70,21 @@ public class AppointmentDAOImpl implements AppointmentDAO {
             ps.setString(12,a.getAppointment_id());
 
             ps.executeUpdate();
-            ps.close();
+            if(ps!=null){
+                ps.close();
+            }
             return true;
         } catch (SQLException e) {
             e.printStackTrace();
             return false;
+        }finally {
+            dbc.closeDB();
         }
     }
 
     public Boolean delete(String ap_id){
+        DBConnect dbc = new DBConnect();
+        Connection conn = dbc.getConnection();
         String sql = "delete from appointment where appointment_id=?";
         PreparedStatement ps = null;
         try {
@@ -79,15 +92,21 @@ public class AppointmentDAOImpl implements AppointmentDAO {
             ps.setString(1,ap_id);
 
             ps.executeUpdate();
-            ps.close();
+            if(ps!=null){
+                ps.close();
+            }
             return true;
         } catch (SQLException e) {
             e.printStackTrace();
             return false;
+        }finally {
+            dbc.closeDB();
         }
     }
 
     public Appointment findById(String ap_id){
+        DBConnect dbc = new DBConnect();
+        Connection conn = dbc.getConnection();
         Appointment apt = new Appointment();
         String sql = "select * from appointment where appointment_id=?";
         PreparedStatement ps = null;
@@ -109,14 +128,23 @@ public class AppointmentDAOImpl implements AppointmentDAO {
                 apt.setShopinfo(rs.getString(10));
                 apt.setCusinfo(rs.getString(11));
             }
-
+            if(ps!=null){
+                ps.close();
+            }
+            if(rs!=null){
+                rs.close();
+            }
         } catch (SQLException e) {
             e.printStackTrace();
+        }finally {
+            dbc.closeDB();
         }
         return apt;
     }
 
     public List<Appointment> findAll(){
+        DBConnect dbc = new DBConnect();
+        Connection conn = dbc.getConnection();
         List<Appointment> apList = new ArrayList<Appointment>();
         String sql = "select * from appointment";
         PreparedStatement ps = null;
@@ -139,8 +167,16 @@ public class AppointmentDAOImpl implements AppointmentDAO {
                 apt.setCusinfo(rs.getString(11));
                 apList.add(apt);
             }
+            if(ps!=null){
+                ps.close();
+            }
+            if(rs!=null){
+                rs.close();
+            }
         } catch (SQLException e) {
             e.printStackTrace();
+        }finally {
+            dbc.closeDB();
         }
         return apList;
     }

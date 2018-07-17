@@ -1,3 +1,4 @@
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html lang="en">
 	<head>
     <meta charset="utf-8">
@@ -7,7 +8,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
     <link rel="icon" href="../css/favicon.ico">
-    <title>汽车销售管理系统-设置</title>
+    <title>汽车销售管理系统-帮助</title>
 	<!-- css引用 -->
     <!-- Bootstrap core CSS -->
     <link href="../style/css/bootstrap.min.css" rel="stylesheet">
@@ -64,8 +65,8 @@
 				    <ul class="nav navbar-nav navbar-right">
 						<li><a href="/SwitchPage?page=homepage" ><font size="3">系统主页</font></a></li>
 						<li><a href="/SwitchPage?page=funcpage" ><font size="3">使用功能</font></a></li>
-						<li><a href="/SwitchPage?page=setpage" class="active" ><font size="3">用户设置</font></a></li>
-						<li><a href="/SwitchPage?page=helppage" ><font size="3">帮助界面</font></a></li>
+						<li><a href="/SwitchPage?page=setpage" ><font size="3">用户设置</font></a></li>
+						<li><a href="/SwitchPage?page=helppage" class="active" ><font size="3">帮助界面</font></a></li>
 				    </ul>
 				    <!--页内切换-->
 				    <!--
@@ -82,8 +83,8 @@
 	    <div class="tab-content">
 			<!--内容-->
 		    <p>
-              用户设置
-          </p>
+              帮助界面
+            </p>
 		    <!--内容--> 
 			
 	    </div>

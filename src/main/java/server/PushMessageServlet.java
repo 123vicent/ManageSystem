@@ -43,15 +43,16 @@ public class PushMessageServlet extends HttpServlet {
         news.setContent(message);
 
         NewsDAO newsDAO = DAOFactory.getNewsDAO();
-        if(newsDAO.insert(news))
+        boolean bool = newsDAO.insert(news);
+        if(bool)
         {
-            request.setAttribute("msg","上传成功");
+            request.setAttribute("msg","上传成功！");
         }
         else
         {
-            request.setAttribute("msg","上传成功");
+            request.setAttribute("error","上传失败！");
         }
-        request.getRequestDispatcher("ShopPage/funcPushMsg.html").forward(request,response);
+        request.getRequestDispatcher("ShopPage/funcPushMsg.jsp").forward(request,response);
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

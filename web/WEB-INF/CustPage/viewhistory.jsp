@@ -82,7 +82,7 @@
 				<!-- //banner -->
 				<!-- properties --> 
 				<div class="w3agile properties">   
-					<div class="w3ls-text">
+					<%--<div class="w3ls-text">--%>
 					<table class="table table-striped">
 						
 						<thead>
@@ -114,7 +114,7 @@
 
 						</tbody>
 					</table>
-					</div>	
+					<%--</div>	--%>
 				</div>
 				<!-- //about --> 
 				<!-- brands -->

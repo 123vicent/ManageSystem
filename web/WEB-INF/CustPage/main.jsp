@@ -1,3 +1,5 @@
+<%@ page import="java.util.Map" %>
+<%@ page import="basic.Carview" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
@@ -91,15 +93,21 @@
 						</ol>
 
 						<div class="carousel-inner">
-							<div class="item active">
-								<a href="#"><img src="../../style/images/" alt="First slide"></a>
-							</div>
+                            <%Map<Carview,Double> carviewDoubleMap  = (Map<Carview,Double>)session.getAttribute("car_priority");
+                            int i  = 1;%>
+                            <%for(Map.Entry<Carview,Double> entry:carviewDoubleMap.entrySet()) {%>
+                            <%if(i==1){%>
+                            <div class="item active">
+                                <a href="/jump?action=car_detail&carid=<%=entry.getKey().getCar_id()%>&shopuserid=<%=entry.getKey().getShopuser_id()%>"><img src=<%=entry.getKey().getPic_url().split("--")[0]%> alt="无图片"></a>
+                            </div>
+                            <%}%>
+                            <%if(i<4&&i>1){%>
 							<div class="item">
-								<a href="#"><img src="../../style/images/" alt="Second slide"></a>
+								<a href="/jump?action=car_detail&carid=<%=entry.getKey().getCar_id()%>&shopuserid=<%=entry.getKey().getShopuser_id()%>"><img src=<%=entry.getKey().getPic_url().split("--")[0]%> alt="无图片"></a>
 							</div>
-							<div class="item">
-								<a href="#"><img src="../../style/images/" alt="Third slide"></a>
-							</div>
+							<%}%>
+                            <%i++;%>
+							<%}%>
 						</div>
 
 						<a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">

@@ -14,10 +14,11 @@ import java.util.List;
 //Car表DAO实现接口
 //含标准insert,update,delete,select（查询返回单个对象或返回对象List两种方法)查询方法
 public class CarDAOImpl implements CarDAO {
-    DBConnect dbc = new DBConnect();
-    Connection conn = dbc.getConnection();
+
 
     public Boolean insert(Car c) {
+        DBConnect dbc = new DBConnect();
+        Connection conn = dbc.getConnection();
         String sql = "insert into car values (?,?,?,?,?,?,?)";
         PreparedStatement ps = null;
         try {
@@ -31,15 +32,22 @@ public class CarDAOImpl implements CarDAO {
             ps.setString(7,c.getPower());
 
             ps.executeUpdate();
-            ps.close();
+            if(ps!=null){
+                ps.close();
+            }
+
             return true;
         } catch (SQLException e) {
             e.printStackTrace();
             return false;
+        }finally {
+            dbc.closeDB();
         }
     }
 
     public Boolean update(Car c){
+        DBConnect dbc = new DBConnect();
+        Connection conn = dbc.getConnection();
         String sql = "update car set car_id=?,brand=?,model=?,color=?,seats=?,type=?,power=? where car_id=?";
         PreparedStatement ps = null;
         try {
@@ -54,15 +62,22 @@ public class CarDAOImpl implements CarDAO {
             ps.setString(8,c.getCar_id());
 
             ps.executeUpdate();
-            ps.close();
+            if(ps!=null){
+                ps.close();
+            }
+
             return true;
         } catch (SQLException e) {
             e.printStackTrace();
             return false;
+        }finally {
+            dbc.closeDB();
         }
     }
 
     public Boolean delete(String car_id){
+        DBConnect dbc = new DBConnect();
+        Connection conn = dbc.getConnection();
         String sql = "delete from car where car_id=?";
         PreparedStatement ps = null;
         try {
@@ -70,15 +85,22 @@ public class CarDAOImpl implements CarDAO {
             ps.setString(1,car_id);
 
             ps.executeUpdate();
-            ps.close();
+            if(ps!=null){
+                ps.close();
+            }
+
             return true;
         } catch (SQLException e) {
             e.printStackTrace();
             return false;
+        }finally {
+            dbc.closeDB();
         }
     }
 
     public Car findById(String car_id){
+        DBConnect dbc = new DBConnect();
+        Connection conn = dbc.getConnection();
         Car c = new Car();
         String sql = "select * from car where car_id=?";
         PreparedStatement ps = null;
@@ -96,14 +118,23 @@ public class CarDAOImpl implements CarDAO {
                 c.setType(rs.getString(6));
                 c.setPower(rs.getString(7));
             }
-
+            if(ps!=null){
+                ps.close();
+            }
+            if(rs!=null){
+                rs.close();
+            }
         } catch (SQLException e) {
             e.printStackTrace();
+        }finally {
+            dbc.closeDB();
         }
         return c;
     }
 
     public List<String> findModelByBrand(String brand){
+        DBConnect dbc = new DBConnect();
+        Connection conn = dbc.getConnection();
         List<String> modelList = new ArrayList<String>();
         String sql = "select model from car where brand=?";
         PreparedStatement ps = null;
@@ -115,13 +146,23 @@ public class CarDAOImpl implements CarDAO {
             while(rs.next()){
                 modelList.add(rs.getString(1));
             }
+            if(ps!=null){
+                ps.close();
+            }
+            if(rs!=null){
+                rs.close();
+            }
         } catch (SQLException e) {
             e.printStackTrace();
+        }finally {
+            dbc.closeDB();
         }
         return modelList;
     }
 
     public Car findByBrandModel(String brand,String model){
+        DBConnect dbc = new DBConnect();
+        Connection conn = dbc.getConnection();
         Car c = new Car();
         String sql = "select * from car.car where brand=? and model=?";
         PreparedStatement ps = null;
@@ -140,14 +181,23 @@ public class CarDAOImpl implements CarDAO {
                 c.setType(rs.getString(6));
                 c.setPower(rs.getString(7));
             }
-
+            if(ps!=null){
+                ps.close();
+            }
+            if(rs!=null){
+                rs.close();
+            }
         } catch (SQLException e) {
             e.printStackTrace();
+        }finally {
+            dbc.closeDB();
         }
         return c;
     }
 
     public List<Car> findAll(){
+        DBConnect dbc = new DBConnect();
+        Connection conn = dbc.getConnection();
         List<Car> carList = new ArrayList<Car>();
         String sql = "select * from car";
         PreparedStatement ps = null;
@@ -167,13 +217,23 @@ public class CarDAOImpl implements CarDAO {
 
                 carList.add(c);
             }
+            if(ps!=null){
+                ps.close();
+            }
+            if(rs!=null){
+                rs.close();
+            }
         } catch (SQLException e) {
             e.printStackTrace();
+        }finally {
+            dbc.closeDB();
         }
         return carList;
     }
 
     public List<String> findAllBrand() {
+        DBConnect dbc = new DBConnect();
+        Connection conn = dbc.getConnection();
         List<String> brands = new ArrayList<String>();
         String sql = "select distinct brand from car";
         PreparedStatement ps = null;
@@ -184,13 +244,23 @@ public class CarDAOImpl implements CarDAO {
             while(rs.next()){
                 brands.add(rs.getString(1));
             }
+            if(ps!=null){
+                ps.close();
+            }
+            if(rs!=null){
+                rs.close();
+            }
         } catch (SQLException e) {
             e.printStackTrace();
+        }finally {
+            dbc.closeDB();
         }
         return brands;
     }
 
     public List<String> findAllType() {
+        DBConnect dbc = new DBConnect();
+        Connection conn = dbc.getConnection();
         List<String> types = new ArrayList<String>();
         String sql = "select distinct type from car";
         PreparedStatement ps = null;
@@ -201,8 +271,16 @@ public class CarDAOImpl implements CarDAO {
             while(rs.next()){
                 types.add(rs.getString(1));
             }
+            if(ps!=null){
+                ps.close();
+            }
+            if(rs!=null){
+                rs.close();
+            }
         } catch (SQLException e) {
             e.printStackTrace();
+        }finally {
+            dbc.closeDB();
         }
         return types;
     }

@@ -14,10 +14,11 @@ import java.util.List;
 //Customeruser表DAO实现接口
 //含标准insert,update,delete,select（查询返回单个对象或返回对象List两种方法)查询方法
 public class CustomeruserDAOImpl implements CustomeruserDAO {
-    DBConnect dbc = new DBConnect();
-    Connection conn = dbc.getConnection();
+
 
     public Boolean insert(Customeruser cu) {
+        DBConnect dbc = new DBConnect();
+        Connection conn = dbc.getConnection();
         String sql = "insert into customeruser values (?,?,?,?,?,?,?)";
         PreparedStatement ps = null;
         try {
@@ -31,15 +32,22 @@ public class CustomeruserDAOImpl implements CustomeruserDAO {
             ps.setString(7,cu.getAddress());
 
             ps.executeUpdate();
-            ps.close();
+            if(ps!=null){
+                ps.close();
+            }
+
             return true;
         } catch (SQLException e) {
             e.printStackTrace();
             return false;
+        }finally {
+            dbc.closeDB();
         }
     }
 
     public Boolean update(Customeruser cu){
+        DBConnect dbc = new DBConnect();
+        Connection conn = dbc.getConnection();
         String sql = "update customeruser set cususer_id=?,pswd=?,cus_name=?,cus_phone=?,sex=?,birthday=?,address=? where cususer_id=?";
         PreparedStatement ps = null;
         try {
@@ -54,15 +62,22 @@ public class CustomeruserDAOImpl implements CustomeruserDAO {
             ps.setString(8,cu.getCususer_id());
 
             ps.executeUpdate();
-            ps.close();
+            if(ps!=null){
+                ps.close();
+            }
+
             return true;
         } catch (SQLException e) {
             e.printStackTrace();
             return false;
+        }finally {
+            dbc.closeDB();
         }
     }
 
     public Boolean delete(String cususer_id){
+        DBConnect dbc = new DBConnect();
+        Connection conn = dbc.getConnection();
         String sql = "delete from customeruser where cususer_id=?";
         PreparedStatement ps = null;
         try {
@@ -70,15 +85,22 @@ public class CustomeruserDAOImpl implements CustomeruserDAO {
             ps.setString(1,cususer_id);
 
             ps.executeUpdate();
-            ps.close();
+            if(ps!=null){
+                ps.close();
+            }
+
             return true;
         } catch (SQLException e) {
             e.printStackTrace();
             return false;
+        }finally {
+            dbc.closeDB();
         }
     }
 
     public Customeruser findById(String cususer_id){
+        DBConnect dbc = new DBConnect();
+        Connection conn = dbc.getConnection();
         Customeruser cu = new Customeruser();
         String sql = "select * from customeruser where cususer_id=?";
         PreparedStatement ps = null;
@@ -96,14 +118,23 @@ public class CustomeruserDAOImpl implements CustomeruserDAO {
                 cu.setBirthday(rs.getDate(6));
                 cu.setAddress(rs.getString(7));
             }
-
+            if(ps!=null){
+                ps.close();
+            }
+            if(rs!=null){
+                rs.close();
+            }
         } catch (SQLException e) {
             e.printStackTrace();
+        }finally {
+            dbc.closeDB();
         }
         return cu;
     }
 
     public List<Customeruser> findAll(){
+        DBConnect dbc = new DBConnect();
+        Connection conn = dbc.getConnection();
         List<Customeruser> cusList = new ArrayList<Customeruser>();
         String sql = "select * from customeruser";
         PreparedStatement ps = null;
@@ -123,13 +154,23 @@ public class CustomeruserDAOImpl implements CustomeruserDAO {
 
                 cusList.add(cu);
             }
+            if(ps!=null){
+                ps.close();
+            }
+            if(rs!=null){
+                rs.close();
+            }
         } catch (SQLException e) {
             e.printStackTrace();
+        }finally {
+            dbc.closeDB();
         }
         return cusList;
     }
 
     public Customeruser findByNamePhone(String cus_name, String cus_phone) {
+        DBConnect dbc = new DBConnect();
+        Connection conn = dbc.getConnection();
         Customeruser cu = new Customeruser();
         String sql = "select * from customeruser where cus_name=? and cus_phone=?";
         PreparedStatement ps = null;
@@ -148,8 +189,16 @@ public class CustomeruserDAOImpl implements CustomeruserDAO {
                 cu.setBirthday(rs.getDate(6));
                 cu.setAddress(rs.getString(7));
             }
+            if(ps!=null){
+                ps.close();
+            }
+            if(rs!=null){
+                rs.close();
+            }
         } catch (SQLException e) {
             e.printStackTrace();
+        }finally {
+            dbc.closeDB();
         }
         return cu;
     }

@@ -93,7 +93,7 @@
 					<li><a href="/SwitchPage?page=funcViewCar" >查询车辆信息</a></li>
 					<li><a href="/SwitchPage?page=funcUploadCar" >上传车辆信息</a></li>
 					<li><a href="/SwitchPage?page=funcViewAppointment" >查询客户预约</a></li>
-					<li><a href="/SwitchPage?page=funcPushMsg" >进行消息推送</a></li>
+					<li><a href="/SwitchPage?page=funcPushMsg" >发布通知</a></li>
 					<li class="active"><a href="/SwitchPage?page=funcRegister" >登记客户车辆</a></li>
 					<li><a href="/SwitchPage?page=funcViewReg" >查询登记车辆</a></li>
 					<li><a href="/SwitchPage?page=funcViewRecord" >查看浏览记录</a></li>
@@ -126,10 +126,10 @@
 						<input name="plate_number" style="width:500px" type="text" class="form-control"
 							   placeholder="请输入车牌号" required>
 						<label for="name">${plate_number_error}</label><br>
-						<label for="name">客户id</label>
+						<label for="name">客户ID</label>
 						<input name="userid" style="width:500px" type="text" class="form-control"
-							   placeholder="请输入客户id" required>
-						<label for="name">${cusid_error}</label><br>
+							   placeholder="请输入客户ID" required>
+						<label for="name"><font size="4" color="#dc143c">${cusid_error}</font></label><br>
 
 
 						<%List<KeyValuePair> lists= (List<KeyValuePair>)session.getAttribute("list");
@@ -152,13 +152,17 @@
 						</select>
 						<%--<input name="model" style="width:500px" type="text" class="form-control"--%>
 							   <%--placeholder="请输入车型">--%>
-						<label for="name">${carid_error}</label><br>
+						<label for="name"><font size="4" color="#dc143c">${carid_error}</font></label><br>
 						<label for="name">登记时间</label>
 						<input class="form-control" style="width:500px" name="register_time" type="text" id="d15" onfocus="WdatePicker({dateFmt:'yyyy-MM-dd'})" required=""/>
-						<label for="name">定价</label>
+						<label for="name">交易金额</label>
 						<input name="pay_price" style="width:500px" type="text" class="form-control"
-							   placeholder="请输入定价" required>
+							   placeholder="纯交易金额（不含其他费用）" required>
 					</br>
+						<div>
+							<label for="name"><font size="4" color="#dc143c">${success}</font></label>
+							<label for="name"><font size="4" color="#dc143c">${error}</font></label>
+						</div>
 						<div class="btn-group pull-left" style="margin-left: 0px;">
 							<button id="addBtn" type="submit" class="btn btn-default">
 								<span class="glyphicon glyphicon-plus" aria-hidden="true"></span>登记</button>

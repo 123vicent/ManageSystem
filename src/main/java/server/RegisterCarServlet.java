@@ -52,7 +52,7 @@ public class RegisterCarServlet extends HttpServlet {
         CarDAO carDAO = DAOFactory.getCarDAO();
         Car car = carDAO.findByBrandModel(brand, model);
         if (car.getCar_id() == null) {
-            request.setAttribute("carid_error", "车id不存在");
+            request.setAttribute("carid_error", "车辆不存在");
         }
 
         String register_time = request.getParameter("register_time");
@@ -71,7 +71,11 @@ public class RegisterCarServlet extends HttpServlet {
         cusowncar1.setPayment(Double.parseDouble(pay_price));
 
         CusowncarDAO cusowncarDAO1 = DAOFactory.getCusowncarDAO();
-        cusowncarDAO1.insert(cusowncar1);
+        if(cusowncarDAO1.insert(cusowncar1)){
+            request.setAttribute("success","登记成功！");
+        }else {
+            request.setAttribute("error","登记失败！");
+        }
 
 
         request.getRequestDispatcher("ShopPage/funcRegister.jsp").forward(request, response);

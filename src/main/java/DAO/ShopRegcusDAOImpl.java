@@ -10,11 +10,12 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ShopRegcusImpl implements ShopRegcusDAO{
-    DBConnect dbc = new DBConnect();
-    Connection conn = dbc.getConnection();
+public class ShopRegcusDAOImpl implements ShopRegcusDAO{
+
 
     public List<ShopRegcus> findByCon(String shopuser_id, String cususer_id, String cus_name, String brand, String model) {
+        DBConnect dbc = new DBConnect();
+        Connection conn = dbc.getConnection();
         List<ShopRegcus> srcList = new ArrayList<ShopRegcus>();
         String sql = "select * from shopregcus where shopuser_id=? ";
         if(!cususer_id.equals("")){
@@ -47,8 +48,16 @@ public class ShopRegcusImpl implements ShopRegcusDAO{
                 src.setRegister_time(rs.getDate(8));
                 srcList.add(src);
             }
+            if(ps!=null){
+                ps.close();
+            }
+            if(rs!=null){
+                rs.close();
+            }
         } catch (SQLException e) {
             e.printStackTrace();
+        }finally {
+            dbc.closeDB();
         }
         return srcList;
     }

@@ -32,21 +32,19 @@
     <input type="text" id="username" name="username" class="form-control" placeholder="请输入用户名" autofocus>
     </br>
     <%if(request.getAttribute("msg0")!=null){ %>
-    <%=request.getAttribute("msg0")%>
+    <p><font size="4" color="#dc143c"><%=request.getAttribute("msg0")%>！</font></p>
     <%  }%>
     <label for="inputPassword" class="sr-only">Password</label>
     <input type="password" id="inputPassword" name="password" class="form-control" placeholder="请输入密码" >
     <%if(request.getAttribute("msg1")!=null){ %>
-    <%=request.getAttribute("msg1")%>
+    <p><font size="4" color="#dc143c"><%=request.getAttribute("msg1")%>！</font></p>
     <%  }%>
     <%if(request.getAttribute("msg2")!=null){ %>
-    <%=request.getAttribute("msg2")%>
+    <p><font size="4" color="#dc143c"><%=request.getAttribute("msg2")%></font></p>
     <%  }%>
     <div class="checkbox">
       <br>
-      <label>
-        <input type="checkbox" value="remember-me"> 记住密码
-      </label>
+
     </div>
 
     <button class="btn btn-lg btn-primary btn-block" name="submit" type="submit" value="登录">登录</button>

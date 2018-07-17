@@ -11,10 +11,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class CarinfoDAOImpl implements CarinfoDAO{
-    DBConnect dbc = new DBConnect();
-    Connection conn = dbc.getConnection();
+
 
     public List<Carinfo> findAllByShopId(String shopuser_id){
+        DBConnect dbc = new DBConnect();
+        Connection conn = dbc.getConnection();
         List<Carinfo> carinfoList = new ArrayList<Carinfo>();
         String sql = "select * from carinfo where shopuser_id=?";
         PreparedStatement ps = null;
@@ -35,13 +36,23 @@ public class CarinfoDAOImpl implements CarinfoDAO{
 
                 carinfoList.add(carinfo);
             }
+            if(ps!=null){
+                ps.close();
+            }
+            if(rs!=null){
+                rs.close();
+            }
         } catch (SQLException e) {
             e.printStackTrace();
+        }finally {
+            dbc.closeDB();
         }
         return  carinfoList;
     }
 
     public List<Carinfo> findAllByTag(String shopuser_id,String brand,String type){
+        DBConnect dbc = new DBConnect();
+        Connection conn = dbc.getConnection();
         List<Carinfo> carinfos = new ArrayList<Carinfo>();
         String sql = "select * from carinfo where shopuser_id=?";
         PreparedStatement ps = null;
@@ -69,8 +80,16 @@ public class CarinfoDAOImpl implements CarinfoDAO{
 
                 carinfos.add(carinfo);
             }
+            if(ps!=null){
+                ps.close();
+            }
+            if(rs!=null){
+                rs.close();
+            }
         } catch (SQLException e) {
             e.printStackTrace();
+        }finally {
+            dbc.closeDB();
         }
         return carinfos;
     }
