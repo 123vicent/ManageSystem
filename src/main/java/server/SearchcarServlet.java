@@ -22,11 +22,10 @@ public class SearchcarServlet extends HttpServlet {
 
         String brand = request.getParameter("Bybrand");
         String type = request.getParameter("Bytype");
-        System.out.println(brand);
-        System.out.println(type);
+
 
         CarinfoDAO carinfoDAO = DAOFactory.getCarinfoDAO();
-        System.out.println(carinfoDAO.findAllByTag(shopuserid,brand,type));
+
         request.setAttribute("searchcars",carinfoDAO.findAllByTag(shopuserid,brand,type));
         request.getRequestDispatcher("ShopPage/funcViewCar.jsp").forward(request,response);
     }

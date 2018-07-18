@@ -19,19 +19,18 @@ public class ViewRegServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         HttpSession session = request.getSession();
         String shopuserid = (String)session.getAttribute("userid");
-        System.out.println("经销商id："+shopuserid);
+
 
         String cususer_id = request.getParameter("cususer_id");
-        System.out.println("用户id："+cususer_id);
 
         String cus_name = request.getParameter("cus_name");
-        System.out.println("用户名字："+cus_name);
+
 
         String brand = request.getParameter("brand");
-        System.out.println("车品牌："+brand);
+
 
         String model = request.getParameter("model");
-        System.out.println("车模型："+model);
+
 
         ShopRegcusDAO shopRegcusDAO = DAOFactory.getShopRegcusDAO();
         List<ShopRegcus> shopRegcuses = shopRegcusDAO.findByCon(shopuserid,cususer_id,cus_name,brand,model);

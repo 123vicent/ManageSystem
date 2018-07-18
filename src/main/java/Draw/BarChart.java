@@ -1,5 +1,6 @@
 package Draw;
 import java.awt.*;
+import java.text.DecimalFormat;
 import java.util.Iterator;
 import java.util.List;
 import DAO.DAOFactory;
@@ -11,11 +12,18 @@ import org.jfree.chart.ChartFactory;
 import org.jfree.chart.ChartPanel;
 import org.jfree.chart.JFreeChart;
 import org.jfree.chart.axis.CategoryAxis;
+import org.jfree.chart.axis.CategoryLabelPositions;
+import org.jfree.chart.axis.NumberAxis;
 import org.jfree.chart.axis.ValueAxis;
+import org.jfree.chart.labels.ItemLabelAnchor;
+import org.jfree.chart.labels.ItemLabelPosition;
+import org.jfree.chart.labels.StandardCategoryItemLabelGenerator;
 import org.jfree.chart.plot.CategoryPlot;
 import org.jfree.chart.plot.PlotOrientation;
+import org.jfree.chart.renderer.category.BarRenderer;
 import org.jfree.data.category.CategoryDataset;
 import org.jfree.data.category.DefaultCategoryDataset;
+import org.jfree.ui.TextAnchor;
 
 public class BarChart {
     public JFreeChart BarChart(CategoryDataset dataset){
@@ -39,6 +47,39 @@ public class BarChart {
         rangeAxis.setLabelFont(new Font("黑体",Font.TYPE1_FONT,12));
         chart.getLegend().setItemFont(new Font("黑体", Font.TYPE1_FONT, 12));
         chart.getTitle().setFont(new Font("宋体",Font.TYPE1_FONT,20));//设置标题字体
+
+        BarRenderer renderer = (BarRenderer) plot.getRenderer();
+        renderer.setSeriesPaint(0, Color.gray);
+        renderer.setSeriesPaint(1, Color.orange);
+        renderer.setDrawBarOutline(false);
+        renderer.setBaseItemLabelGenerator(new StandardCategoryItemLabelGenerator());
+        renderer.setBaseItemLabelsVisible(true);
+        renderer.setBasePositiveItemLabelPosition(new ItemLabelPosition(ItemLabelAnchor.OUTSIDE12, TextAnchor.CENTER_LEFT));
+        renderer.setItemLabelAnchorOffset(10);
+
+        //设置距离图片左端距离
+        domainAxis.setUpperMargin(0.2);
+        //设置距离图片右端距离
+        domainAxis.setLowerMargin(0.2);
+        //数据轴精度
+        NumberAxis na = (NumberAxis) plot.getRangeAxis();
+        na.setAutoRangeIncludesZero(true);
+        DecimalFormat df = new DecimalFormat("#0.000");
+        //数据轴数据标签的显示格式
+        na.setNumberFormatOverride(df);
+        //设置柱的透明度
+        plot.setForegroundAlpha(1.0f);
+
+
+
+        CategoryAxis categoryaxis = plot.getDomainAxis();
+        categoryaxis.setCategoryLabelPositions(CategoryLabelPositions
+                .createUpRotationLabelPositions(Math.PI / 6));
+
+        //设置图像区域背景色
+        plot.setBackgroundPaint(Color.lightGray);
+        //水平轴网格线颜色
+        plot.setRangeGridlinePaint(Color.white);
 
         //到这里结束，虽然代码有点多，但只为一个目的，解决汉字乱码问题
         return chart;

@@ -83,7 +83,38 @@
 
 				<div class="w3agile properties">
 					<h3 class="w3ls-title">通知动态列表</h3>
-					<div class="properties-bottom">
+					<div class="w3agile properties">
+						<%--<div class="w3ls-text">--%>
+						<table class="table table-striped">
+
+							<thead>
+							<tr>
+								<th>标题</th>
+								<th>日期</th>
+								<th></th>
+							</tr>
+							</thead>
+							<tbody>
+							<c:forEach var="U" items="${news}">
+							<tr>
+
+
+								<td>${U.title}</td>
+								<td>${U.time}</td>
+								<td>
+									<a href="/jump?action=trends&title=${U.title}&shopuser_id=${U.shopuser_id}" name="news_id">详情</a>
+
+										<!--input type="button" class="btn btn-success"  value="返回"></button-->
+									</a>
+								</td>
+							</tr>
+							</c:forEach>
+
+
+
+							</tbody>
+						</table>
+					<%--<div class="properties-bottom">
 						<c:forEach var="U" items="${news}">
 						<div class="w3ls-text">
 							<a href="/jump?action=trends&title=${U.title}&shopuser_id=${U.shopuser_id}" name="news_id"><font size="4">${U.title}</font></a><!--通知1-->
@@ -95,11 +126,11 @@
 							<a href="#"><font size="4">456</font></a>&lt;!&ndash;通知1&ndash;&gt;
 						</div>
 
-					</div>-->
+					</div>-->--%>
 				</div>
 				<!-- brands -->
 				<div class="w3agile brands"> 
-					<h3 class="w3ls-title">合作品牌</h3> 
+
 					<div class="brands-info">
 						<div class="brand-grids">
 							<img src="../../style/images/b1.jpg" alt=""/>

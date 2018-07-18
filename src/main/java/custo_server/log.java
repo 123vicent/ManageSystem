@@ -55,6 +55,7 @@ public class log extends HttpServlet {
                 //rs = stmt.executeQuery("SELECT * FROM user where usr_name = '"+userid+"'and password =  '"+password+"'");
                 //rs.next();
                 HttpSession session = request.getSession();
+                session.setMaxInactiveInterval(3600);
                 session.setAttribute("userid",userid);
 
                 CustomeruserDAO customeruserdao  = DAOFactory.getCustometuserDAO();
@@ -100,7 +101,7 @@ public class log extends HttpServlet {
 
                     view = request.getRequestDispatcher("WEB-INF/CustPage/main.jsp");
                 } else {
-                    request.setAttribute("msg2", "登录失败");
+                    request.setAttribute("msg2", "用户名或密码错误");
                     view = request.getRequestDispatcher("WEB-INF/CustPage/cuslogin.jsp");
 
                 }

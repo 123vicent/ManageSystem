@@ -1,9 +1,7 @@
 package custo_server.func_server;
 
-import DAO.AppointmentDAO;
-import DAO.CarDAO;
-import DAO.DAOFactory;
-import DAO.ShopuserDAO;
+import DAO.*;
+import basic.Carview;
 import model.Appointment;
 import model.Car;
 import model.Shopuser;
@@ -26,17 +24,16 @@ public class testdrive_book extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         int ap_num = (int)(Math.random()*100000000);
         String ap_id = Integer.toString(ap_num);
-        System.out.println("预约id："+ ap_id);
+
 
         HttpSession session = request.getSession();
         String cuid = (String) session.getAttribute("userid");
-        System.out.println("会话得到的用户id：" + cuid);
+
 
         String shopuserid = (String) session.getAttribute("shopuserid");
-        System.out.println("经销商id：" + shopuserid);
 
         String carid = (String) session.getAttribute("carid");
-        System.out.println("得到会话的车id："+ carid);
+
 
         //String brand_model = request.getParameter("brand-model");
         //System.out.println("车模型：" + brand_model);
@@ -63,7 +60,7 @@ public class testdrive_book extends HttpServlet {
         //Shopuser shopuser = shopuserDAO.findByNameAdd(ShopName, adress);
 
         String ap_time = request.getParameter("ap_time");
-        System.out.println("预约时间：" + ap_time);
+
         DateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 
         Date date = null;
@@ -75,14 +72,14 @@ public class testdrive_book extends HttpServlet {
         //SimpleDateFormat ft = new SimpleDateFormat ("yyyy-MM-dd HH:mm:ss");
         //System.out.println(ft.format(date));
         Timestamp timestamp = new Timestamp(date.getTime());
-        System.out.println("插入数据库的时间：" + timestamp);
+
 
         String ap_type = "试驾预约";
 
         String ap_state = "待接受";
 
         String Message = new String(request.getParameter("Message").getBytes("ISO8859-1"),"UTF-8");
-        System.out.println("描述："+Message);
+
         //String phone = request.getParameter("phone");
         //System.out.println(phone);
 
@@ -99,12 +96,25 @@ public class testdrive_book extends HttpServlet {
         appointment.setCusinfo(Message);
 
         AppointmentDAO appointmentDAO = DAOFactory.getAppointmentDAO();
-        if (appointmentDAO.insert(appointment))
-            request.setAttribute("meaasge", "预约提交成功");
+        if (appointmentDAO.insert(appointment)) {
+            request.getRequestDispatcher("WEB-INF/CustPage/transaction.html").forward(request, response);
+        }
         else
-            request.setAttribute("error", "预约提交失败");
+        {
+            String car_id = request.getParameter("carid");
+            session.setAttribute("carid",car_id);
 
-        request.getRequestDispatcher("WEB-INF/CustPage/transaction.html").forward(request, response);
+            String shopuser_id = request.getParameter("shopuserid");
+            session.setAttribute("shopuserid",shopuser_id);
+
+            CarviewDAO carviewDAO = DAOFactory.getCarviewDAO();
+            Carview carview = carviewDAO.findById(car_id,shopuser_id);
+            request.setAttribute("car",carview);
+            request.setAttribute("error", "预约提交失败");
+            request.getRequestDispatcher("WEB-INF/CustPage/testsingle.jsp").forward(request, response);
+        }
+
+
 
     }
 

@@ -68,7 +68,10 @@ public class SwitchPage extends HttpServlet {
 
 
             view = request.getRequestDispatcher("ShopPage/funcDataAnalyze.jsp");
-        }else{
+        }else if(page.equals("log")){
+            view = request.getRequestDispatcher("index.jsp");
+        }
+        else{
             ShopRegcusDAO shopRegcusDAO = DAOFactory.getShopRegcusDAO();
             List<ShopRegcus> shopRegcuses = shopRegcusDAO.findByCon(Shopuserid,"","","","");
             request.setAttribute("shopowncar",shopRegcuses);

@@ -21,20 +21,19 @@ public class PushMessageServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         HttpSession session = request.getSession();
         String shopuserid = (String)session.getAttribute("userid");
-        System.out.println("经销商id："+shopuserid);
+
 
         Date utilDate=new Date();
         java.sql.Date sqlDate=new java.sql.Date(utilDate.getTime());
         //SimpleDateFormat ft = new SimpleDateFormat ("yyyy.MM.dd");
         //String dateFormat = ft.format(date);
-        System.out.println(sqlDate);
+
 
 
         String title = request.getParameter("title");
-        System.out.println("标题："+title);
+
 
         String message = request.getParameter("message");
-        System.out.println("正文："+message);
 
         News news = new News();
         news.setShopuser_id(shopuserid);

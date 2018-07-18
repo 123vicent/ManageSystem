@@ -78,7 +78,7 @@
 				<!-- //banner -->
 
 				<div class="w3agile agents">
-					<h3 class="w3ls-title">寻找爱车</h3>
+
 					<form action="/searchcar">
 						<div class="input-group">
                             <!--智能提醒功能-->
@@ -90,7 +90,7 @@
                             <input id=<%=i+num%> type="hidden" value=<%=carview.getBrand()%>>
                             <%i++;%>
                             <%}%>
-							<input id="search_text" type="text" name= "con" class="form-control" placeholder="查找..." style="width:100%"  autocomplete="off" disableautocomplete>
+							<input id="search_text" type="text" name= "con" class="form-control" placeholder="搜索汽车品牌" style="width:100%"  autocomplete="off" disableautocomplete>
                             <div id="auto_div">
                             </div>
 							<span class="input-group-btn">
@@ -153,7 +153,7 @@
 				</form>-->
 				<!-- brands -->
 				<div class="w3agile brands"> 
-					<h3 class="w3ls-title">合作品牌</h3> 
+
 					<div class="brands-info">
 						<div class="brand-grids">
 							<a href="#"><img src="../../style/images/b1.jpg" alt=""/></a>

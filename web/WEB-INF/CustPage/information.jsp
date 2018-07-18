@@ -35,6 +35,7 @@
 		});																							
 	}); 
 </script>
+	<script language="javascript" type="text/javascript" src="../../style/js/My97DatePicker/WdatePicker.js"></script>
 <!--//pop-up-box -->
 <!-- web-fonts -->  
 <link href='http://fonts.googleapis.com/css?family=Abel' rel='stylesheet' type='text/css'>
@@ -58,7 +59,7 @@
 				</ul>
 			</nav>
 			<button class="close-button" id="close-button">C</button>
-		</div> 
+		</div>
 		<div class="content-wrap">
 			<div class="header"> 
 				<div class="menu-icon">   
@@ -100,7 +101,7 @@
 							<h4><%=customeruser.getCus_name()%></h4>
 							<p><i class="glyphicon glyphicon-earphone"></i><%=customeruser.getCus_phone()%></p>
 							<p><i class="glyphicon glyphicon-info-sign"></i> <%=customeruser.getSex()%></p>
-							<p><i class="glyphicon glyphicon-user" aria-hidden="true"></i><a href="mailto:info@example.com"><%=customeruser.getBirthday()%></a></p>
+							<p><i class="glyphicon glyphicon-user" aria-hidden="true"></i><%=customeruser.getBirthday()%></p>
 							<p><i class="glyphicon glyphicon-map-marker" aria-hidden="true"></i><%=customeruser.getAddress()%></p>
 						</div>
 					</div>
@@ -112,8 +113,7 @@
 				<div class="w3agile gallery"> 
 					 
 					
-					
-					
+
 			
 					<!-- 按钮触发模态框 -->
 					<button class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal" style="margin-left: 80px">
@@ -127,9 +127,10 @@
 								<h3 class="w3ls-title">用户信息</h3>
 								<div class="contact-form"> 
 									<form action="/modify">
-										<input type="text" name="phone" placeholder="联系方式" required=""> 
-										<input type="text" name="sex" placeholder="性别" required="">
-										<input type="text" name="address" placeholder="地址" required=""> 
+										<label>联系方式</label><input type="text" name="phone" value=<%=customeruser.getCus_phone()%> placeholder="联系方式" required="">
+										<label>性别</label><input type="text" name="sex" value=<%=customeruser.getSex()%> placeholder="性别" required="">
+										<label>出生日期</label><input class="Wdate" style="height: 38px" name="birthday" type="text" value="<%=customeruser.getBirthday()%>" id="d15" onfocus="WdatePicker({dateFmt:'yyyy-MM-dd'})" required=""/>
+										<label>地址</label><input type="text" name="address" value=<%=customeruser.getAddress()%> placeholder="地址" required="">
 										<!--textarea name="Message" placeholder="Message" required=""></textarea-->
 										<input type="submit" value="提交">
 										<button type="button" class="btn btn-success" data-dismiss="modal">关闭</button>
@@ -142,11 +143,12 @@
 
 					<!--  light box js -->
 					<script src="../../style/js/lightbox-plus-jquery.min.js"> </script>
-					<!-- //light box js--> 					 
+					<!-- //light box js-->
 				</div>
 				<!-- //gallery -->
 			</div>
 		</div>
+
 	</div> 
 	<!-- menu-js -->
 	<script src="../../style/js/classie.js"></script>

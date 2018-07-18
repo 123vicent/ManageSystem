@@ -25,7 +25,7 @@ public class SearchUserServlet extends HttpServlet {
 
         String userid = (String)session.getAttribute("userid");
 
-        System.out.println(userid);
+
         List<Shopuser> shopusers = new ArrayList<Shopuser>();
 
         ShopuserDAO shopuserDAO = DAOFactory.getShopuserDAO();

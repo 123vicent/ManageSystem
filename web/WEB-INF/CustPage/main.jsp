@@ -1,4 +1,4 @@
-<%@ page import="java.util.Map" %>
+ <%@ page import="java.util.Map" %>
 <%@ page import="basic.Carview" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
@@ -159,7 +159,7 @@
 				<!-- properties -->
 				<div class="w3agile properties">
 					<div class="properties-top">
-						<h3 class="w3ls-title">功能简介</h3>
+						<h3 class="w3ls-title">功能入口</h3>
 
 					</div> 
 					<div class="properties-bottom">
@@ -216,7 +216,7 @@
 				<!-- //properties -->
 				<!-- brands -->
 				<div class="w3agile brands"> 
-					<h3 class="w3ls-title">合作品牌</h3> 
+
 					<div class="brands-info">
 						<div class="brand-grids">
 							<img src="../../style/images/b1.jpg" alt=""/>

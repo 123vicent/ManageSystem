@@ -28,7 +28,6 @@ public class LoginServlet extends HttpServlet {
 
         String userid = request.getParameter("username");
         String password = request.getParameter("password");
-        System.out.println(userid);System.out.println(password);
 
         String access = request.getParameter("submit");
         RequestDispatcher view;
@@ -55,6 +54,7 @@ public class LoginServlet extends HttpServlet {
                 //rs = stmt.executeQuery("SELECT * FROM user where usr_name = '"+userid+"'and password =  '"+password+"'");
                 //rs.next();
                 HttpSession session = request.getSession();
+                session.setMaxInactiveInterval(3600);
                 session.setAttribute("userid",userid);
                 ShopuserDAO shopuserdao = DAOFactory.getShopuserDAO();
                 Shopuser shopuser = shopuserdao.findById(userid);
@@ -66,7 +66,7 @@ public class LoginServlet extends HttpServlet {
                    List<KeyValuePair> lists =new ArrayList<KeyValuePair>();
                     for(Car car:cars) {
                         lists.add(new KeyValuePair(car.getBrand(),car.getModel()));
-                        System.out.println(car.getBrand());
+
                     }
                     session.setAttribute("list",lists);
 
