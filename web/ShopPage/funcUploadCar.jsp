@@ -29,7 +29,9 @@ To change this template use File | Settings | File Templates.
     <!-- Custom styles for this template -->
     <link href="../style/css/dashboard.css" rel="stylesheet">
 	<link href="../style/css/carousel.css" rel="stylesheet">
-
+		<link href="../style/css/style1.css" rel="stylesheet">
+		<script src="../style/js/jquery-1.7.1.min.js"></script>
+		<script src="../style/js/ui.js"></script>
     <script src="../style/js/ie-emulation-modes-warning.js"></script>
 	<!-- Bootstrap core JavaScript
     ================================================== -->
@@ -66,7 +68,7 @@ To change this template use File | Settings | File Templates.
 		  		    <p class="navbar-brand" ><font size="5">汽车销售管理系统</font></p>
 			    </div>
 			    <div>
-				    <p id= "huanying" class="navbar-brand" align="right"><font size="4">用户：<a href="/SearchUserServlet" name="userid">${userid}</a> </font></p>
+				    <p id= "huanying" class="navbar-brand" align="right"><font size="4">用户：<a href="/SwitchPage?page=setpage">${userid}</a> </font></p>
 			    </div>
 
 			    <div id="navbar" class="navbar-collapse collapse">
@@ -148,11 +150,13 @@ To change this template use File | Settings | File Templates.
 								<br><br>
 								<label for="name">库存（数量）</label>
 								<input name="stock" style="width:500px" type="text" class="form-control"
-									   placeholder="请输入库存（不能为空）" required>
+									   placeholder="请输入库存（不能为空）" required onkeypress="keyPress();"
+									   onkeyup="if(event.keyCode !=37 && event.keyCode != 39)value=value.replace(/\D/g,'')">
 								<div>
 									<label for="name">价格（自填）</label>
 									<input name="price" style="width:500px" type="text" class="form-control"
-										   placeholder="请输入价格（不能为空）" required>
+										   placeholder="请输入价格（不能为空）" required onkeypress="keyPress();"
+										   onkeyup="if(event.keyCode !=37 && event.keyCode != 39)value=value.replace(/\D/g,'')">
 								</div>
 								<div>
 									<label for="name">车辆描述</label>
@@ -160,12 +164,9 @@ To change this template use File | Settings | File Templates.
 										<textarea name="description" style="width:1000px;" rows="5" warp="virtual" placeholder="输入车辆描述（不能为空）" required></textarea>
 									</div>
 								</div>
-								<%if(request.getAttribute("error")!=null){ %>
-								<p><font size="4" color="#dc143c"><%=request.getAttribute("error")%></font></p>
-								<%  }%>
-								<%if(request.getAttribute("success")!=null){ %>
-								<p><font size="4" color="#dc143c"><%=request.getAttribute("success")%></font></p>
-								<%  }%>
+
+								<input type="hidden" id="error" value=<%=request.getAttribute("error")%>>
+								<input type="hidden" id="success" value=<%=request.getAttribute("success")%>>
 							</div>
 							<!--
          <div class="form-group">
@@ -253,5 +254,15 @@ To change this template use File | Settings | File Templates.
             option.value = list2element[i];
             ddlCity.appendChild(option);
         }
+    }
+</script>
+<script>
+    var error = document.getElementById("error").value;
+    var success = document.getElementById("success").value;
+    if(error.localeCompare(null)) {
+        mizhu.alert('', error);
+    }
+    if(success.localeCompare(null)) {
+        mizhu.alert('', success);
     }
 </script>

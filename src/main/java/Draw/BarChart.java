@@ -3,13 +3,9 @@ import java.awt.*;
 import java.text.DecimalFormat;
 import java.util.Iterator;
 import java.util.List;
-import DAO.DAOFactory;
-import DAO.ShopowncarDAO;
 import basic.Count;
-import model.Car;
-import model.Shopowncar;
+
 import org.jfree.chart.ChartFactory;
-import org.jfree.chart.ChartPanel;
 import org.jfree.chart.JFreeChart;
 import org.jfree.chart.axis.CategoryAxis;
 import org.jfree.chart.axis.CategoryLabelPositions;
@@ -28,7 +24,7 @@ import org.jfree.ui.TextAnchor;
 public class BarChart {
     public JFreeChart BarChart(CategoryDataset dataset){
         JFreeChart chart = ChartFactory.createBarChart3D(
-                "统计", // 图表标题
+                "浏览量统计", // 图表标题
                 "车名", // 目录轴的显示标签
                 "浏览量", // 数值轴的显示标签
                 dataset, // 数据集
@@ -40,13 +36,15 @@ public class BarChart {
 
         //从这里开始
         CategoryPlot plot=chart.getCategoryPlot();//获取图表区域对象
-        CategoryAxis domainAxis=plot.getDomainAxis();         //水平底部列表
+        CategoryAxis domainAxis=plot.getDomainAxis();//水平底部列表
         domainAxis.setLabelFont(new Font("黑体",Font.TYPE1_FONT,12));         //水平底部标题
         domainAxis.setTickLabelFont(new Font("宋体",Font.TYPE1_FONT,12));  //垂直标题
         ValueAxis rangeAxis=plot.getRangeAxis();//获取柱状
         rangeAxis.setLabelFont(new Font("黑体",Font.TYPE1_FONT,12));
         chart.getLegend().setItemFont(new Font("黑体", Font.TYPE1_FONT, 12));
         chart.getTitle().setFont(new Font("宋体",Font.TYPE1_FONT,20));//设置标题字体
+
+        //到这里结束，虽然代码有点多，但只为一个目的，解决汉字乱码问题
 
         BarRenderer renderer = (BarRenderer) plot.getRenderer();
         renderer.setSeriesPaint(0, Color.gray);
@@ -69,19 +67,16 @@ public class BarChart {
         na.setNumberFormatOverride(df);
         //设置柱的透明度
         plot.setForegroundAlpha(1.0f);
-
-
-
+        //设置横轴倾斜
         CategoryAxis categoryaxis = plot.getDomainAxis();
         categoryaxis.setCategoryLabelPositions(CategoryLabelPositions
                 .createUpRotationLabelPositions(Math.PI / 6));
 
         //设置图像区域背景色
-        plot.setBackgroundPaint(Color.lightGray);
+        plot.setBackgroundPaint(Color.white);
         //水平轴网格线颜色
-        plot.setRangeGridlinePaint(Color.white);
+        plot.setRangeGridlinePaint(Color.lightGray);
 
-        //到这里结束，虽然代码有点多，但只为一个目的，解决汉字乱码问题
         return chart;
     }
     public CategoryDataset setDataSet(List<Count> counts) {
@@ -94,9 +89,6 @@ public class BarChart {
             Iterator iterator = counts.iterator();
             while (iterator.hasNext()) {
                 Count count = (Count) iterator.next();
-                System.out.println(count.getBrandmodel());
-                System.out.println(count.getShopuser_id());
-                System.out.println(count.getCount());
                 dataset.addValue(count.getCount(), count.getShopuser_id(), count.getBrandmodel());
             }
             return dataset;

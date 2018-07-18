@@ -34,18 +34,19 @@ public class UpdateCarServlet extends HttpServlet {
         RequestDispatcher view;
 
         if(access.equals("更新")){
-            if(stockstr.equals("")||pricestr.equals("")||description.equals("")){
-                request.setAttribute("error","请输入完整信息");
-                view = request.getRequestDispatcher("ShopPage/ChangeCarInfo.jsp");
-            }else {
                 int stock = Integer.parseInt(stockstr);
                 double price = Double.parseDouble(pricestr);
                 soc.setStock(stock);
                 soc.setPrice(price);
                 soc.setDescription(description);
-                shopowncarDAO.update(soc);
-                view = request.getRequestDispatcher("ShopPage/funcViewCar.jsp");
-            }
+                if(shopowncarDAO.update(soc)){
+                    request.setAttribute("msg","更新成功！");
+                    view = request.getRequestDispatcher("ShopPage/funcViewCar.jsp");
+                }else{
+                    request.setAttribute("msg","更新失败！");
+                    view = request.getRequestDispatcher("ShopPage/funcViewCar.jsp");
+                }
+
         }else{
             view = request.getRequestDispatcher("ShopPage/funcViewCar.jsp");
         }

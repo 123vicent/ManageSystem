@@ -45,11 +45,11 @@ public class PushMessageServlet extends HttpServlet {
         boolean bool = newsDAO.insert(news);
         if(bool)
         {
-            request.setAttribute("msg","上传成功！");
+            request.setAttribute("success","上传成功！");
         }
         else
         {
-            request.setAttribute("error","上传失败！");
+            request.setAttribute("error","上传失败！请检查您的标题长度");
         }
         request.getRequestDispatcher("ShopPage/funcPushMsg.jsp").forward(request,response);
     }

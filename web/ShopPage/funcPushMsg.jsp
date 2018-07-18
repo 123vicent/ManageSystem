@@ -21,7 +21,9 @@
     <!-- Custom styles for this template -->
     <link href="../style/css/dashboard.css" rel="stylesheet">
 	<link href="../style/css/carousel.css" rel="stylesheet">
-
+		<link href="../style/css/style1.css" rel="stylesheet">
+		<script src="../style/js/jquery-1.7.1.min.js"></script>
+		<script src="../style/js/ui.js"></script>
     <script src="../style/js/ie-emulation-modes-warning.js"></script>
 	<!-- Bootstrap core JavaScript
     ================================================== -->
@@ -58,7 +60,7 @@
 		  		    <p class="navbar-brand" ><font size="5">汽车销售管理系统</font></p>
 			    </div>
 			    <div>
-				    <p id= "huanying" class="navbar-brand" align="right"><font size="4">用户：<a href="/SearchUserServlet" name="userid">${userid}</a> </font></p>
+				    <p id= "huanying" class="navbar-brand" align="right"><font size="4">用户：<a href="/SwitchPage?page=setpage">${userid}</a> </font></p>
 			    </div>
 
 			    <div id="navbar" class="navbar-collapse collapse">
@@ -113,14 +115,10 @@
 							<textarea name="message" style="width:1000px;" rows="5" warp="virtual" placeholder="正文" required></textarea>
 						</div>
 						<br/><br/>
-						<%String msg = (String) request.getAttribute("msg");%>
+						<%String success = (String) request.getAttribute("success");%>
 						<%String error = (String) request.getAttribute("error");%>
-						<%if(msg!=null){%>
-						<p><font size="4" color="#7fff00"><%=msg%></font></p>
-						<%}%>
-						<%if(error!=null){%>
-						<p><font size="4" color="#7fff00"><%=error%></font></p>
-						<%}%>
+						<input type="hidden" id="success" value=<%=success%>>
+						<input type="hidden" id="error" value=<%=error%>>
 						<div class="btn-group pull-left" style="margin-left: 0px;">
 							<button id="addBtn" type="submit" class="btn btn-default">
 							<span class="glyphicon glyphicon-plus" aria-hidden="true"></span>发布</button>
@@ -138,3 +136,13 @@
 	    </div>
     </body>
 </html>
+<script>
+    var error = document.getElementById("error").value;
+    var success = document.getElementById("success").value;
+    if(error.localeCompare(null)) {
+        mizhu.alert('', error);
+    }
+    if(success.localeCompare(null)) {
+        mizhu.alert('', success);
+    }
+</script>

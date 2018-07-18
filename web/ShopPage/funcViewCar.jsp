@@ -19,7 +19,6 @@ To change this template use File | Settings | File Templates.
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
     <meta name="description" content="">
     <meta name="author" content="">
-    <link rel="icon" href="../css/favicon.ico">
     <title>汽车销售管理系统-查询车辆</title>
 	<!-- css引用 -->
     <!-- Bootstrap core CSS -->
@@ -33,7 +32,9 @@ To change this template use File | Settings | File Templates.
     <!-- Custom styles for this template -->
     <link href="../style/css/dashboard.css" rel="stylesheet">
 	<link href="../style/css/carousel.css" rel="stylesheet">
-
+	<link href="../style/css/style1.css" rel="stylesheet">
+		<script src="../style/js/jquery-1.7.1.min.js"></script>
+		<script src="../style/js/ui.js"></script>
     <script src="../style/js/ie-emulation-modes-warning.js"></script>
 	<!-- Bootstrap core JavaScript
     ================================================== -->
@@ -70,7 +71,7 @@ To change this template use File | Settings | File Templates.
 		  		    <p class="navbar-brand" ><font size="5">汽车销售管理系统</font></p>
 			    </div>
 			    <div>
-				    <p id= "huanying" class="navbar-brand" align="right"><font size="4">用户：<a href="/SearchUserServlet" name="userid">${userid}</a> </font></p>
+				    <p id= "huanying" class="navbar-brand" align="right"><font size="4">用户：<a href="/SwitchPage?page=setpage">${userid}</a> </font></p>
 			    </div>
 
 			    <div id="navbar" class="navbar-collapse collapse">
@@ -152,6 +153,7 @@ To change this template use File | Settings | File Templates.
 							<span class="glyphicon glyphicon-search" aria-hidden="true"></span>查询</button>
 					</form>
 
+					<input type="hidden" id="msg" value=<%=request.getAttribute("msg")%>
 					<p></br></br>
 						<font size="4">
 							查询结果
@@ -210,3 +212,9 @@ To change this template use File | Settings | File Templates.
 	    </div>
     </body>
 </html>
+<script>
+	var msg = document.getElementById("msg").value;
+	if(msg.localeCompare(null)) {
+        mizhu.alert('', msg);
+    }
+</script>

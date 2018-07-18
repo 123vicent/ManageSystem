@@ -21,7 +21,6 @@ import java.sql.Date;
 public class RegisterCarServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String plate_number = request.getParameter("plate_number");
-        System.out.println(plate_number);
         CusowncarDAO cusowncarDAO = DAOFactory.getCusowncarDAO();
         Cusowncar cusowncar = cusowncarDAO.findById(plate_number);
         if (cusowncar.getPlate_number() != null) {

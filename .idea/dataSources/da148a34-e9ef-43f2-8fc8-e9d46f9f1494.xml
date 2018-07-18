@@ -1269,7 +1269,7 @@ title</ColNames>
     </column>
     <column id="305" parent="238" name="description">
       <Position>6</Position>
-      <DataType>varchar(200)|0s</DataType>
+      <DataType>text|0s</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
     <index id="306" parent="238" name="fk_shopowncar_car_idx">
@@ -1491,7 +1491,7 @@ car_id</RefColNames>
     </column>
     <column id="346" parent="242" name="description">
       <Position>14</Position>
-      <DataType>varchar(200)|0s</DataType>
+      <DataType>text|0s</DataType>
     </column>
     <column id="347" parent="243" name="appointment_id">
       <Position>1</Position>

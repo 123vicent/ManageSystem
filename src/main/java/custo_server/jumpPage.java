@@ -111,7 +111,9 @@ public class jumpPage extends HttpServlet {
             request.setAttribute("title",news.getTitle());
             request.setAttribute("content",news.getContent());
             view = request.getRequestDispatcher("WEB-INF/CustPage/trends.jsp");
-        } else{
+        } else if(pagename.equals("help")){
+            view = request.getRequestDispatcher("WEB-INF/CustPage/cusHelp.html");
+        }else{
             view = request.getRequestDispatcher("WEB-INF/CustPage/reserve.jsp");
         }
         view.forward(request,response);

@@ -8,7 +8,6 @@ import java.util.List;
 
 import basic.Count;
 import org.jfree.chart.ChartFactory;
-import org.jfree.chart.ChartPanel;
 import org.jfree.chart.JFreeChart;
 import org.jfree.chart.labels.StandardPieSectionLabelGenerator;
 import org.jfree.chart.plot.PiePlot;
@@ -72,7 +71,9 @@ public class TimeSeriesChart {
 
         pieplot.setShadowPaint(null);//去掉阴影
 
+        piePlot.setOutlinePaint(null);
 
+        piePlot.setBackgroundPaint(Color.white);
         // 0:category 1:value:2 :percentage
 
         pieplot.setLabelGenerator(new
@@ -84,11 +85,6 @@ public class TimeSeriesChart {
 
         pieplot.setIgnoreNullValues(true);//设置不显示空值
         pieplot.setIgnoreZeroValues(true);//设置不显示负值
-
-/*        chart.getTitle().setFont(new Font("宋体",Font.BOLD,30));//设置标题字体
-        PiePlot piePlot= (PiePlot) chart.getPlot();//获取图表区域对象
-        piePlot.setLabelFont(new Font("宋体",Font.BOLD,20));//解决乱码
-        chart.getLegend().setItemFont(new Font("黑体",Font.BOLD,20));*/
 
         return chart;
     }

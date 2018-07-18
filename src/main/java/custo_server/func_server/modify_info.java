@@ -21,7 +21,7 @@ public class modify_info extends HttpServlet {
         String phone = request.getParameter("phone");
         String sex = request.getParameter("sex");
         String address = request.getParameter("address");
-        Date birthday = Date.valueOf(request.getParameter("birthdday"));
+        Date birthday = Date.valueOf(request.getParameter("birthday"));
 
         HttpSession session = request.getSession();
         String userid = (String)session.getAttribute("userid");

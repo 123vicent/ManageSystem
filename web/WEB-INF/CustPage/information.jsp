@@ -56,6 +56,7 @@
 					<li><a href="/jump?action=reserve"><i class="glyphicon glyphicon-envelope"></i> 养修预约 </a></li>
 					<li><a href="/jump?action=apt_record"><i class="glyphicon glyphicon-briefcase"></i> 预约历史 </a> </li>
 					<li><a href="/jump?action=viewhistory"><i class="glyphicon glyphicon-list-alt"></i> 浏览历史</a></li>
+					<li><a href="/jump?action=help"><i class="glyphicon glyphicon-list-alt"></i> 帮助</a></li>
 				</ul>
 			</nav>
 			<button class="close-button" id="close-button">C</button>
@@ -127,7 +128,8 @@
 								<h3 class="w3ls-title">用户信息</h3>
 								<div class="contact-form"> 
 									<form action="/modify">
-										<label>联系方式</label><input type="text" name="phone" value=<%=customeruser.getCus_phone()%> placeholder="联系方式" required="">
+										<label>联系方式</label><input type="text" name="phone" id="phone" value=<%=customeruser.getCus_phone()%> placeholder="联系方式" required="">
+										<%--<span id="phone-message" style="color: red; font-size: small;"></span>--%>
 										<label>性别</label><input type="text" name="sex" value=<%=customeruser.getSex()%> placeholder="性别" required="">
 										<label>出生日期</label><input class="Wdate" style="height: 38px" name="birthday" type="text" value="<%=customeruser.getBirthday()%>" id="d15" onfocus="WdatePicker({dateFmt:'yyyy-MM-dd'})" required=""/>
 										<label>地址</label><input type="text" name="address" value=<%=customeruser.getAddress()%> placeholder="地址" required="">
@@ -173,5 +175,28 @@
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
     <script src="../../style/js/bootstrap.js"></script>
+
+	<script>
+        function checkPhone() {
+            var number = /^1[3|4|5|8][0-9]\d{4,8}$/;
+            var inputValue = document.getElementById("phone")
+            var ret = number.test(inputValue);
+            if (inputValue == ""){
+                document.getElementById("phone-message"),innerHTML = "";
+            }else if (inputValue.length<11 || ret != true){
+                document.getElementById("phone-message").innerHTML = "请确保输入正确的手机号码";
+				return false;
+            } else{
+                document.getElementById("phone-message").innerHTML = "";
+            }
+        }
+
+        function checkSubmit() {
+            if (checkPhone() == false) {
+                alert("请确保正确填写每一项内容！")
+            }
+        }
+	</script>
+
 </body>
 </html>

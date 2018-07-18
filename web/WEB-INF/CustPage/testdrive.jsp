@@ -56,6 +56,7 @@
 					<li><a href="/jump?action=reserve"><i class="glyphicon glyphicon-envelope"></i> 养修预约 </a></li>
 					<li><a href="/jump?action=apt_record"><i class="glyphicon glyphicon-briefcase"></i> 预约历史 </a> </li>
 					<li><a href="/jump?action=viewhistory"><i class="glyphicon glyphicon-list-alt"></i> 浏览历史</a></li>
+					<li><a href="/jump?action=help"><i class="glyphicon glyphicon-list-alt"></i> 帮助</a></li>
 				</ul>
 			</nav>
 			<button class="close-button" id="close-button">C</button>
@@ -94,12 +95,17 @@
                             <div id="auto_div">
                             </div>
 							<span class="input-group-btn">
-							<button class="btn btn-default" type="submit">Go!</button>
+							<button class="btn btn-default" onclick="checkSubmit();" type="submit">Go!</button>
 							</span>
 						</div><!-- /input-group -->
 						<div>
 							<lable>价格区间：¥</lable>
-							<input type="text" name="min_price" style="width: 20%">--<input name="max_price"type="text"  style="width:20%">
+							<input type="text" id="min_price" name="min_price" style="width: 20%" oninput="checkMinPrice();" onkeypress="keyPress();"
+								   onkeyup="if(event.keyCode !=37 && event.keyCode != 39)value=value.replace(/\D/g,'')">
+							--
+							<input name="max_price" id="max_price" type="text" style="width:20%" oninput="checkMaxPrice();" onkeypress="keyPress();"
+								   onkeyup="if(event.keyCode !=37 && event.keyCode != 39)value=value.replace(/\D/g,'')">
+							<span id="price-message" style="color: red; font-size: small;"></span>
 						</div>
 					</form>
 
@@ -205,6 +211,45 @@
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
     <script src="../../style/js/bootstrap.js"></script>
+
+
+	<script>
+        function checkMinPrice() {
+            var num = /^d+$/;
+            var inputValue = document.getElementById("min_price").value;
+            var ret = num.test(inputValue);
+            if (inputValue == ""){
+                ducuent.getElementById("price_message").innerHTML = "";
+            } else if (inputValue < 0 || ret == false){
+                ducuent.getElementById("price_message").innerHTML = "请输入正确的价格区间！";
+                return false;
+            }
+
+        }
+
+        function checkMaxPrice(){
+            var num = /^d+$/;
+            var minPrice = document.getElementById("min_price").value;
+            var maxPrice = document.getElementById("max_price").value;
+            var ret = num.test(maxPrice);
+            if (maxPrice == ""){
+                document.getElementById("price-messae").innerHTML = "";
+            } else if(ret == false || maxPrice < minPrice){
+                document.getElementById("price-messae").innerHTML = "请输入正确的价格区间！";
+                return false;
+            }else{
+                document.getElementById("price-messae").innerHTML = "";
+            }
+        }
+
+        checkSubmit()
+		{
+            if(checkMinPrice() == false || checkMaxPrice() == false){
+                alert("请检查您的价格区间！");
+            }
+        }
+	</script>
+
 </body>
 </html>
 <style type="text/css">
@@ -232,6 +277,8 @@
         background: #FFF;
 
         position: absolute;
+
+		z-index:100;
 
         top: 34px;
 
@@ -404,5 +451,21 @@
         });
 
     });
+    function keyPress() {
 
+        var keyCode = event.keyCode;
+
+        if ((keyCode >= 48 && keyCode <= 57))
+
+        {
+
+            event.returnValue = true;
+
+        } else {
+
+            event.returnValue = false;
+
+        }
+
+    }
 </script>

@@ -66,7 +66,7 @@
             <p class="navbar-brand" ><font size="5">汽车销售管理系统</font></p>
         </div>
         <div>
-            <p id= "huanying" class="navbar-brand" align="right"><font size="4">用户：<a href="/SearchUserServlet" name="userid">${userid}</a> </font></p>
+            <p id= "huanying" class="navbar-brand" align="right"><font size="4">用户：<a href="/SwitchPage?page=setpage">${userid}</a> </font></p>
         </div>
 
         <div id="navbar" class="navbar-collapse collapse">
@@ -158,6 +158,7 @@
         </form>
         <!--//上传车辆信息-->
     </div>
+</div>
 </div>
 </body>
 </html>

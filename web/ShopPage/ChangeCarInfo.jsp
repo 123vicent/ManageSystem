@@ -22,8 +22,12 @@
     <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
     <link href="../style/css/ie10-viewport-bug-workaround.css" rel="stylesheet">
     <!-- Custom styles for this template -->
+
     <link href="../style/css/dashboard.css" rel="stylesheet">
     <link href="../style/css/carousel.css" rel="stylesheet">
+    <link href="../style/css/style1.css" rel="stylesheet">
+    <script src="../style/js/jquery-1.7.1.min.js"></script>
+    <script src="../style/js/ui.js"></script>
     <style type="text/css">
         #result{
             width: 500px;
@@ -117,7 +121,7 @@
             <p class="navbar-brand" ><font size="5">汽车销售管理系统</font></p>
         </div>
         <div>
-            <p id= "huanying" class="navbar-brand" align="right"><font size="4">用户：<a href="/SearchUserServlet" name="userid">${userid}</a> </font></p>
+            <p id= "huanying" class="navbar-brand" align="right"><font size="4">用户：<a href="/SwitchPage?page=setpage">${userid}</a> </font></p>
         </div>
 
         <div id="navbar" class="navbar-collapse collapse">
@@ -146,7 +150,7 @@
     <div class="col-sm-3 col-md-2 sidebar">
         <ul class="nav nav-sidebar">
             <li><a href="/SwitchPage?page=funcpage">功能概览</a></li>
-            <li><a href="/SwitchPage?page=funcViewCar" >查询车辆信息</a></li>
+            <li class="active"><a href="/SwitchPage?page=funcViewCar" >查询车辆信息</a></li>
             <li><a href="/SwitchPage?page=funcUploadCar" >上传车辆信息</a></li>
             <li><a href="/SwitchPage?page=funcViewAppointment" >查询客户预约</a></li>
             <li><a href="/SwitchPage?page=funcPushMsg" >发布通知</a></li>
@@ -193,12 +197,16 @@
                     <br>
                     <br>
                     <label for="name">修改库存</label>
-                    <input name="stock" style="width:500px" type="text" value=<%=soc.getStock()%> class="form-control"
-                           placeholder="请输入库存（不能为空）" required>
+                    <input name="stock" style="width:500px" id="stock" type="text" value=<%=soc.getStock()%> class="form-control"
+                           placeholder="请输入库存（不能为空）"  required onkeypress="keyPress();"
+                           onkeyup="if(event.keyCode !=37 && event.keyCode != 39)value=value.replace(/\D/g,'')">
+                    <span id="stock-message" style="color: red; font-size: small;"></span>
                     <div>
                         <label for="name">修改售价</label>
-                        <input name="price" style="width:500px" type="text" value=<%=soc.getPrice()%> class="form-control"
-                               placeholder="请输入价格（不能为空）" required>
+                        <input name="price" id="price" style="width:500px" type="text" value=<%=soc.getPrice()%> class="form-control"
+                               placeholder="请输入价格（不能为空）" required onkeypress="keyPress();"
+                               onkeyup="if(event.keyCode !=37 && event.keyCode != 39)value=value.replace(/\D/g,'')">
+                        <span id="price-message" style="color: red; font-size: small;"></span>
                         <label for="name">修改车辆信息</label>
                         <div>
                             <textarea name="description" style="width:1000px;" rows="5" warp="virtual" placeholder="输入修改后的车辆描述（不能为空）" required><%=soc.getDescription()%></textarea>
@@ -247,9 +255,8 @@
 
 
                 <input type="hidden" name="121" value=<%=soc.getCar_id()%>>
-                <%if(request.getAttribute("message")!=null){%>
-                <div><label><%=request.getAttribute("message")%></label></div>
-                <%}%>
+
+                <input type="hidden" id="msg" value=<%=request.getAttribute("message")%>>
 
                 <!--<input type="file" name="uploadFile" />-->
                 <input class="btn btn-success" type="submit" value="上传"/>
@@ -264,5 +271,63 @@
 <!--内容-->
 
 </div>
+
+<script>
+    function checkStock(){
+        var num = /^d+$/;
+        var inputValue = document.getElementById("stock").value;
+        var ret = num.test(inputValue);
+        if (inputValue == ""){
+            document.getElementById("stock-message").innerHTML = "";
+        } else if (inputValue < 0 || ret == false) {
+            document.getElementById("stock-message").innerHTML = "请输入正确内容！";
+        }else{
+            document.getElementById("stock-message").innerHTML = "";
+        }
+    }
+
+    function checkPrice() {
+        var num = /^d+$/;
+        var inputValue = document.getElementById("price").value;
+        var ret = num.test(inputValue);
+        if (inputValue == ""){
+            ducuent.getElementById("price_message").innerHTML = "";
+        } else if (inputValue < 0 || ret == false){
+            ducuent.getElementById("price_message").innerHTML = "请输入正确的价格！";
+            return false;
+        }
+    }
+
+    function checkSubmit() {
+        if(checkStock() == false || checkPrice() == false){
+            alert("请确保正确填写每一项内容");
+        }
+    }
+    function keyPress() {
+
+        var keyCode = event.keyCode;
+
+        if ((keyCode >= 48 && keyCode <= 57))
+
+        {
+
+            event.returnValue = true;
+
+        } else {
+
+            event.returnValue = false;
+
+        }
+
+    }
+</script>
+<script>
+    var msg = document.getElementById("msg").value;
+    if(msg.localeCompare(null)) {
+        mizhu.alert('', msg);
+    }
+
+</script>
+
 </body>
 </html>

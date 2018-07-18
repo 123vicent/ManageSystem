@@ -87,9 +87,6 @@ public class log extends HttpServlet {
                     carRecommend.setCarBrand_priority();
                     carRecommend.setCarType_priority();
                     carRecommend.setCarPrice_priority();
-                    Map<String,Double> CarBrand_priority = carRecommend.getCarBrand_priority();
-                    Map<String,Double> carType_priority = carRecommend.getCarType_priority();
-                    Map<Double,Double> CarPrice_priority = carRecommend.getCarPrice_priority();
                     Map<Carview,Double> car_priority = new HashMap<Carview, Double>();
                     for(Carview carview:carviews)
                     {

@@ -74,6 +74,7 @@
                 <li><a class="active" href="/jump?action=reserve"><i class="glyphicon glyphicon-envelope"></i> 养修预约 </a></li>
                 <li><a href="/jump?action=apt_record"><i class="glyphicon glyphicon-briefcase"></i> 预约历史 </a> </li>
                 <li><a href="/jump?action=viewhistory"><i class="glyphicon glyphicon-list-alt"></i> 浏览历史 </a> </li>
+                <li><a href="/jump?action=help"><i class="glyphicon glyphicon-list-alt"></i> 帮助</a></li>
             </ul>
         </nav>
         <button class="close-button" id="close-button">C</button>
@@ -132,6 +133,7 @@
                         <span style="font-size: 14px;">计划养修时间</span>
                         <input class="Wdate" name="ap_time" style="height: 38px" type="text" id="d15" onfocus="WdatePicker({dateFmt:'yyyy-MM-dd HH:mm:ss'})" required=""/>
 
+                        <span style="font-size: 14px;">需求</span>
                         <textarea name="Message" placeholder="问题描述" required></textarea>
                         <center><input type="submit" value="提交"></center>
                     </form>
