@@ -29,11 +29,9 @@ public class DrawChartServlet extends HttpServlet {
         HttpSession session = request.getSession();
         String userid = (String)session.getAttribute("userid");
 
-        //Count count = new Count();
-        //count.setShopuser_id(userid);
         ViewcarrecordDAO viewcarrecordDAO = DAOFactory.getViewcarrecordDAO();
         List<Count> counts = viewcarrecordDAO.Count(userid);
-        //CategoryDataset dataset =
+
         String graphURL = "";
         request.setAttribute("graphURL", graphURL);
         String submit = request.getParameter("submit");

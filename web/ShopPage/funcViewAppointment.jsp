@@ -31,7 +31,9 @@
     <!-- Custom styles for this template -->
     <link href="../style/css/dashboard.css" rel="stylesheet">
 	<link href="../style/css/carousel.css" rel="stylesheet">
-
+		<link href="../style/css/style1.css" rel="stylesheet">
+		<script src="../style/js/jquery-1.7.1.min.js"></script>
+		<script src="../style/js/ui.js"></script>
     <script src="../style/js/ie-emulation-modes-warning.js"></script>
 	<!-- Bootstrap core JavaScript
     ================================================== -->
@@ -78,12 +80,6 @@
 						<li><a href="/SwitchPage?page=setpage" ><font size="3">用户设置</font></a></li>
 						<li><a href="/SwitchPage?page=helppage" ><font size="3">帮助界面</font></a></li>
 				    </ul>
-				    <!--页内切换-->
-				    <!--
-				    <form class="navbar-form navbar-right">
-				  	    <input type="text" class="form-control" placeholder="Search...">
-				    </form>
-				    -->
 			    </div>
 		    </div>
 	    </nav>
@@ -109,13 +105,6 @@
 			    </ul>
 		    </div>
 			<!-- //左边导航栏 -->
-
-
-
-		    <!--查询所有车的类型型号，设置下拉框-->
-		    <!--//查询所有车的类型型号，设置下拉框-->
-		 
-
 
 			<!-- 控制输出内容在右半部分 -->
 		    <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
@@ -207,6 +196,8 @@
 							</tbody>
 						</table>
 
+					<input type="hidden" id="success" value=<%=request.getAttribute("success")%>>
+					<input type="hidden" id="error" value=<%=request.getAttribute("error")%>>
 					<!--//查询客户预约-->
 			    </div>
 		    </div>
@@ -219,3 +210,13 @@
 	    </div>
     </body>
 </html>
+<script>
+    var error = document.getElementById("error").value;
+    var success = document.getElementById("success").value;
+    if(error.localeCompare(null)) {
+        mizhu.alert('', error);
+    }
+    if(success.localeCompare(null)) {
+        mizhu.alert('', success);
+    }
+</script>

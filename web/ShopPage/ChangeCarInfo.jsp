@@ -82,20 +82,6 @@
         function fileSelect() {
             document.getElementById("pic").click();
         }
-        //var xhr = new XMLHttpRequest();
-        // function handIn(){
-        //  console.log(form.get('file'));
-        //  xhr.open("post", url, true);
-        //  xhr.addEventListener("readystatechange", function() {
-        //      var result = xhr;
-        //      if (result.status != 200) { //error
-        //          console.log('上传失败', result.status, result.statusText, result.response);
-        //      }
-        //      else if (result.readyState == 4) { //finished
-        //          console.log('上传成功', result);
-        //      }
-        //  });
-        // }
     </script>
 
 </head>
@@ -131,12 +117,7 @@
                 <li><a href="/SwitchPage?page=setpage"><font size="3">用户设置</font></a></li>
                 <li><a href="/SwitchPage?page=helppage"><font size="3">帮助界面</font></a></li>
             </ul>
-            <!--页内切换-->
-            <!--
-            <form class="navbar-form navbar-right">
-                  <input type="text" class="form-control" placeholder="Search...">
-            </form>
-            -->
+
         </div>
     </div>
 </nav>
@@ -162,13 +143,6 @@
         </ul>
     </div>
     <!-- //左边导航栏 -->
-
-
-
-    <!--查询所有车的类型型号，设置下拉框-->
-    <!--//查询所有车的类型型号，设置下拉框-->
-
-
 
     <!-- 控制输出内容在右半部分 -->
     <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
@@ -218,13 +192,6 @@
                         <br/>
                     </div>
                 </div>
-                <!--
-                <div class="form-group">
-                    <label for="inputfile">车辆展示图片上传</label>
-                    <input type="file" id="inputfile">
-                    <p class="help-block">请选择文件图片上传</p>
-                </div>
-                -->
                 </br>
                 <div class="btn-group pull-left" style="margin-left: 0px;">
                     <button id="addBtn" name="access" type="submit" value="更新" class="btn btn-success">
@@ -249,7 +216,6 @@
                         <img src="../../style/images/plus.jpg" onclick="fileSelect();">
                     </div>
                     <div class="face">
-                        <!--<input type="file" name="fileToUpload" id="fileToUpload" onchange="fileSelected();" style="display:none;">-->
                         <input id="pic" type="file" name = 'pic' accept = "image/*" onchange = "selectFile();" style="display: none;" required>
                     </div>
 
@@ -258,7 +224,6 @@
 
                 <input type="hidden" id="msg" value=<%=request.getAttribute("message")%>>
 
-                <!--<input type="file" name="uploadFile" />-->
                 <input class="btn btn-success" type="submit" value="上传"/>
 
             </form>

@@ -70,7 +70,7 @@
 			<div class="content">
 				<!-- banner -->
 				<div class="banner about-banner"> 
-					<div class="banner-img">  
+					<div class="banner-img4">
 						<h3>我的预约</h3>   
 					</div> 
 				</div>

@@ -73,12 +73,6 @@
 						<li><a href="/SwitchPage?page=setpage" ><font size="3">用户设置</font></a></li>
 						<li><a href="/SwitchPage?page=helppage" ><font size="3">帮助界面</font></a></li>
 				    </ul>
-				    <!--页内切换-->
-				    <!--
-				    <form class="navbar-form navbar-right">
-				  	    <input type="text" class="form-control" placeholder="Search...">
-				    </form>
-				    -->
 			    </div>
 		    </div>
 	    </nav>
@@ -104,13 +98,6 @@
 			    </ul>
 		    </div>
 			<!-- //左边导航栏 -->
-
-
-
-		    <!--查询所有车的类型型号，设置下拉框-->
-		    <!--//查询所有车的类型型号，设置下拉框-->
-		 
-
 
 			<!-- 控制输出内容在右半部分 -->
 		    <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
@@ -146,14 +133,10 @@
 						<select name="brand" style="width:500px" id="carlist1" class="form-control" onchange="selectprovince(this);" required>
 							<option value=""></option>
 						</select>
-						<%--<input name="brand" style="width:500px" type="text" class="form-control"--%>
-							   <%--placeholder="请输入车牌">--%>
 						<label for="name">车型</label>
 						<select name="model" style="width:500px" id="carlist2" class="form-control" required>
 							<option value=""></option>
 						</select>
-						<%--<input name="model" style="width:500px" type="text" class="form-control"--%>
-							   <%--placeholder="请输入车型">--%>
 						<label for="name"><font size="4" color="#dc143c">${carid_error}</font></label><br>
 						<label for="name">登记时间</label>
 						<input class="form-control" style="width:500px" name="register_time" type="text" id="d15" onfocus="WdatePicker({dateFmt:'yyyy-MM-dd'})" required=""/>
@@ -212,14 +195,6 @@
         option.appendChild(document.createTextNode(list1[i]));
         option.value = list1[i];
         ddlProvince.appendChild(option);
-        //city initialize
-        var firstprovince = list2[0];
-        for (var j = 0; j < firstprovince.length; j++) {
-            var optioncity = document.createElement("option");
-            optioncity.appendChild(document.createTextNode(firstprovince[j]));
-            optioncity.value = firstprovince[j];
-            ddlCity.appendChild(optioncity);
-        }
     }
     function indexof(obj,value)
     {

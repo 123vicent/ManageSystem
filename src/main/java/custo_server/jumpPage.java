@@ -78,8 +78,7 @@ public class jumpPage extends HttpServlet {
             viewrecord.setView_time(view_time);
             viewrecord.setCar_id(car_id);
             viewrecord.setCususer_id(user_id);
-            Boolean isSuccess = viewrecordDAO.insert(viewrecord);
-            //判断是否成功插入
+            viewrecordDAO.insert(viewrecord);
             view = request.getRequestDispatcher("WEB-INF/CustPage/testsingle.jsp");
         }
         else if(pagename.equals("viewhistory")){
@@ -94,15 +93,10 @@ public class jumpPage extends HttpServlet {
             view = request.getRequestDispatcher("WEB-INF/CustPage/trendslist.jsp");
         }else if(pagename.equals("trends")){
             String title = request.getParameter("title");
-
             String shopuser_id = request.getParameter("shopuser_id");
-
 
             java.util.Date utilDate=new Date();
             java.sql.Date sqlDate=new java.sql.Date(utilDate.getTime());
-            //SimpleDateFormat ft = new SimpleDateFormat ("yyyy.MM.dd");
-            //String dateFormat = ft.format(date);
-
             NewsDAO newsDAO = DAOFactory.getNewsDAO();
             News news = newsDAO.findById(shopuser_id,sqlDate,title);
             ShopuserDAO shopuserDAO = DAOFactory.getShopuserDAO();

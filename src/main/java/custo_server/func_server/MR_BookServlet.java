@@ -25,75 +25,33 @@ public class MR_BookServlet extends HttpServlet {
         int ap_num = (int)(Math.random()*100000000);
         String ap_id = Integer.toString(ap_num);
 
-
-        //String name = new String(request.getParameter("name").getBytes("ISO8859-1"),"UTF-8");
-        //System.out.println("用户姓名："+ name);
-
-        //String phone = new String(request.getParameter("phone").getBytes("ISO8859-1"),"UTF-8");
-        //System.out.println("用户电话：" + phone);
-
         HttpSession session = request.getSession();
         String cuid = (String)session.getAttribute("userid");
 
-        //根据名字电话查找用户id
-        //CustomeruserDAO customeruserDAO = DAOFactory.getCustometuserDAO();
-        //customeruser = customeruserDAO.findByNamePhone(name,phone);
-        //System.out.println("查找得到的用户id：" + customeruser.getCususer_id());
-
         String brand = new String(request.getParameter("brand").getBytes("ISO8859-1"),"UTF-8");
-
-
         String model = request.getParameter("model");
-
         //根据brand，model查找车id
         CarDAO carDAO = DAOFactory.getCarDAO();
         Car car = carDAO.findByBrandModel(brand,model);
-
-
-        //String province = new String(request.getParameter("province").getBytes("ISO8859-1"),"UTF-8");
-        //System.out.println(province);
-
-        //String city = new String(request.getParameter("city").getBytes("ISO8859-1"),"UTF-8");
-        //System.out.println(city);
-        //System.out.println("地址：" + province+city);
-
         String shop =new String(request.getParameter("shop").getBytes("ISO8859-1"),"UTF-8");
-
-
         String[] shopname = shop.split("-");
         String adress = shopname[1];
-
-
         String ShopName = shopname[0];
-
         //根据address，name查找经销商id
         ShopuserDAO shopuserDAO = DAOFactory.getShopuserDAO();
         Shopuser shopuser = shopuserDAO.findByNameAdd(ShopName,adress);
-
-
         String book = new String(request.getParameter("book").getBytes("ISO8859-1"),"UTF-8");
-
-
         String ap_time = request.getParameter("ap_time");
-
         DateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-
         Date date = null;
         try {
             date = df.parse(ap_time);
         } catch (ParseException e) {
             e.printStackTrace();
         }
-        //SimpleDateFormat ft = new SimpleDateFormat ("yyyy-MM-dd HH:mm:ss");
-        //System.out.println(ft.format(date));
         Timestamp timestamp = new Timestamp(date.getTime());
-
-
         String ap_state = "待接受";
-
         String Message = new String(request.getParameter("Message").getBytes("ISO8859-1"),"UTF-8");
-
-
         Appointment appointment = new Appointment();
         appointment.setAppointment_id(String.valueOf(ap_id));
         appointment.setCususer_id(cuid);
@@ -102,8 +60,6 @@ public class MR_BookServlet extends HttpServlet {
         appointment.setAp_time(timestamp);
         appointment.setAp_type(book);
         appointment.setAp_state(ap_state);
-        //appointment.setComplete_time();
-        //appointment.setPayment();
         appointment.setCusinfo(Message);
 
         AppointmentDAO appointmentDAO = DAOFactory.getAppointmentDAO();

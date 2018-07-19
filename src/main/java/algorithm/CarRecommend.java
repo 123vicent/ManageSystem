@@ -23,17 +23,6 @@ public class CarRecommend {
         this.carPrice_priority = carPrice_priority;
     }
 
-    public Map<String, Double> getCarType_priority() {
-        return carType_priority;
-    }
-
-    public Map<String, Double> getCarBrand_priority() {
-        return carBrand_priority;
-    }
-
-    public Map<Double, Double> getCarPrice_priority() {
-        return carPrice_priority;
-    }
 
     public void setCarBrand_priority() {
         ViewcarrecordDAO viewcarrecordDAO = DAOFactory.getViewcarrecordDAO();
@@ -41,7 +30,6 @@ public class CarRecommend {
         Map<String,Double> carBrand_priority = new HashMap<String, Double>();
         double num = viewcarrecordDAO.findAllCount();
         for (Map.Entry<String, Integer> entry : carBrandMap.entrySet()) {
-            System.out.println("Key = " + entry.getKey() + ", Value = " + entry.getValue());
             carBrand_priority.put(entry.getKey(),(double) entry.getValue()/num);
         }
         this.carBrand_priority = carBrand_priority;
@@ -53,14 +41,12 @@ public class CarRecommend {
         Map<String,Double> carType_priority = new HashMap<String, Double>();
         double num = viewcarrecordDAO.findAllCount();
         for (Map.Entry<String, Integer> entry : typeCount.entrySet()) {
-            System.out.println("Key = " + entry.getKey() + ", Value = " + entry.getValue());
             carType_priority.put(entry.getKey(),(double) entry.getValue()/num);
         }
         this.carType_priority = carType_priority;
     }
 
     public double findcar_priority(Carview carview){
-
         ViewcarrecordDAO viewcarrecordDAO = DAOFactory.getViewcarrecordDAO();
         double priority;
         double carbrand_pt;
@@ -93,7 +79,6 @@ public class CarRecommend {
 
     public Map sortByComparator(Map unsortMap){
         List list = new LinkedList(unsortMap.entrySet());
-// System.out.println("list:"+list);
         Collections.sort(list, new Comparator()
         {
             public int compare(Object o1, Object o2)
@@ -103,7 +88,6 @@ public class CarRecommend {
             }
         });
         Map sortedMap = new LinkedHashMap();
-
         for (Iterator it = list.iterator(); it.hasNext();) {
             Map.Entry entry = (Map.Entry)it.next();
             sortedMap.put(entry.getKey(), entry.getValue());

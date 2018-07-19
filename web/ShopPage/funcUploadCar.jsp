@@ -78,12 +78,6 @@ To change this template use File | Settings | File Templates.
 						<li><a href="/SwitchPage?page=setpage" ><font size="3">用户设置</font></a></li>
 						<li><a href="/SwitchPage?page=helppage" ><font size="3">帮助界面</font></a></li>
 				    </ul>
-				    <!--页内切换-->
-				    <!--
-				    <form class="navbar-form navbar-right">
-				  	    <input type="text" class="form-control" placeholder="Search...">
-				    </form>
-				    -->
 			    </div>
 		    </div>
 	    </nav>
@@ -109,13 +103,6 @@ To change this template use File | Settings | File Templates.
 			    </ul>
 		    </div>
 			<!-- //左边导航栏 -->
-
-
-
-		    <!--查询所有车的类型型号，设置下拉框-->
-		    <!--//查询所有车的类型型号，设置下拉框-->
-		 
-
 
 			<!-- 控制输出内容在右半部分 -->
 		    <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
@@ -168,14 +155,6 @@ To change this template use File | Settings | File Templates.
 								<input type="hidden" id="error" value=<%=request.getAttribute("error")%>>
 								<input type="hidden" id="success" value=<%=request.getAttribute("success")%>>
 							</div>
-							<!--
-         <div class="form-group">
-             <label for="inputfile">车辆展示图片上传</label>
-             <input type="file" id="inputfile">
-             <p class="help-block">请选择文件图片上传</p>
-
-         </div>
-         -->
 							</br>
 							<div class="btn-group pull-left" style="margin-left: 0px;">
 								<button id="addBtn" type="submit" class="btn btn-default">
@@ -224,14 +203,6 @@ To change this template use File | Settings | File Templates.
         option.appendChild(document.createTextNode(list1[i]));
         option.value = list1[i];
         ddlProvince.appendChild(option);
-        //city initialize
-        var firstprovince = list2[0];
-        for (var j = 0; j < firstprovince.length; j++) {
-            var optioncity = document.createElement("option");
-            optioncity.appendChild(document.createTextNode(firstprovince[j]));
-            optioncity.value = firstprovince[j];
-            ddlCity.appendChild(optioncity);
-        }
     }
     function indexof(obj,value)
     {

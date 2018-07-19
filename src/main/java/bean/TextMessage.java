@@ -6,7 +6,6 @@ public class TextMessage {
     private String CreateTime;
     private String MsgType;
     private String Content;
-    private String MsgId;
 
     public String getToUserName() {
         return ToUserName;
@@ -48,12 +47,5 @@ public class TextMessage {
         Content = content;
     }
 
-    public String getMsgId() {
-        return MsgId;
-    }
-
-    public void setMsgId(String msgId) {
-        MsgId = msgId;
-    }
 
 }

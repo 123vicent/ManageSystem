@@ -24,8 +24,6 @@ public class LoginServlet extends HttpServlet {
     public void doPost(HttpServletRequest request,
                        HttpServletResponse response)
             throws ServletException, IOException {
-        //建立数据库连接
-
         String userid = request.getParameter("username");
         String password = request.getParameter("password");
 
@@ -33,10 +31,6 @@ public class LoginServlet extends HttpServlet {
         RequestDispatcher view;
         if(access.equals("立即注册")){
             view = request.getRequestDispatcher("ShopPage/register.jsp");
-        }
-        else if(access.equals("忘记密码"))
-        {
-            view = request.getRequestDispatcher("ShopPage/forget.jsp");
         }
         else
         {
@@ -51,16 +45,12 @@ public class LoginServlet extends HttpServlet {
                 view  = request.getRequestDispatcher("index.jsp");
             }
             else {
-                //rs = stmt.executeQuery("SELECT * FROM user where usr_name = '"+userid+"'and password =  '"+password+"'");
-                //rs.next();
                 HttpSession session = request.getSession();
                 session.setMaxInactiveInterval(3600);
                 session.setAttribute("userid",userid);
                 ShopuserDAO shopuserdao = DAOFactory.getShopuserDAO();
                 Shopuser shopuser = shopuserdao.findById(userid);
                 if (shopuser.getPswd()!=null&&shopuser.getPswd().equals(password)) {
-                    //request.setAttribute("msg","登录失败");
-                    //view=request.getRequestDispatcher("index.jsp");
                     CarDAO cardao = DAOFactory.getCarDAO();
                     List<Car> cars = cardao.findAll();
                    List<KeyValuePair> lists =new ArrayList<KeyValuePair>();
@@ -70,7 +60,7 @@ public class LoginServlet extends HttpServlet {
                     }
                     session.setAttribute("list",lists);
 
-                    request.setAttribute("userid",userid);//显示用户id
+                    request.setAttribute("userid",userid);
 
                     CarinfoDAO carinfoDAO = DAOFactory.getCarinfoDAO();
                     request.setAttribute("cars",carinfoDAO.findAllByShopId(userid));

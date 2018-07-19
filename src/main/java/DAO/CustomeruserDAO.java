@@ -11,5 +11,4 @@ public interface CustomeruserDAO {
     public Boolean delete(String cususer_id);
     public Customeruser findById(String cususer_id);
     public List<Customeruser> findAll();
-    public Customeruser findByNamePhone(String cus_name,String cus_phone);
 }

@@ -68,12 +68,6 @@
 						<li><a href="/SwitchPage?page=setpage" ><font size="3">用户设置</font></a></li>
 						<li><a href="/SwitchPage?page=helppage" class="active" ><font size="3">帮助界面</font></a></li>
 				    </ul>
-				    <!--页内切换-->
-				    <!--
-				    <form class="navbar-form navbar-right">
-				  	    <input type="text" class="form-control" placeholder="Search...">
-				    </form>
-				    -->
 			    </div>
 		    </div>
 	    </nav>

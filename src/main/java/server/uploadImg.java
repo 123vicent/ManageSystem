@@ -125,11 +125,7 @@ public class uploadImg extends HttpServlet {
                 shopowncar.setPic_url(OrgImg.replaceAll(imgs[0] + "--", "") + "--" + UPLOAD_DIRECTORY + File.separator + fileName);
             }
         }
-        System.out.println(UPLOAD_DIRECTORY+File.separator + fileName);
         shopowncarDAO.update(shopowncar);
-
-        CarinfoDAO carinfoDAO = DAOFactory.getCarinfoDAO();
-        List<Carinfo> carinfos = carinfoDAO.findAllByShopId(shopuserid);
 
         CarDAO carDAO = DAOFactory.getCarDAO();
         Car car = carDAO.findById(carid);

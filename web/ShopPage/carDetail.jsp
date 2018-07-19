@@ -75,12 +75,7 @@
 						<li><a href="/SwitchPage?page=setpage"><font size="3">用户设置</font></a></li>
 						<li><a href="/SwitchPage?page=helppage"><font size="3">帮助界面</font></a></li>
 				    </ul>
-				    <!--页内切换-->
-				    <!--
-				    <form class="navbar-form navbar-right">
-				  	    <input type="text" class="form-control" placeholder="Search...">
-				    </form>
-				    -->
+
 			    </div>
 		    </div>
 	    </nav>
@@ -106,12 +101,6 @@
 			    </ul>
 		    </div>
 			<!-- //左边导航栏 -->
-
-
-
-		    <!--查询所有车的类型型号，设置下拉框-->
-		    <!--//查询所有车的类型型号，设置下拉框-->
-
 
 
 			<!-- 控制输出内容在右半部分 -->
@@ -146,17 +135,7 @@
 					>
 					<%}%>
 					<%}%>
-					<%--<img class="thumbnail"
-					align = "left"
-					width="280" height="192"
-					src="../img/2.jpg" data-src="holder.js/500x500/auto" 
-					alt="Generic placeholder image">
-					
-					<img class="thumbnail" 
-					align = "left"
-					width="280" height="192"
-					src="../img/3.jpg" data-src="holder.js/500x500/auto" 
-					alt="Generic placeholder image">--%>
+
 					</div>
 					<br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
 

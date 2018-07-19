@@ -29,7 +29,9 @@
     <!-- Custom styles for this template -->
     <link href="../style/css/dashboard.css" rel="stylesheet">
     <link href="../style/css/carousel.css" rel="stylesheet">
-
+    <link href="../style/css/style1.css" rel="stylesheet">
+    <script src="../style/js/jquery-1.7.1.min.js"></script>
+    <script src="../style/js/ui.js"></script>
     <script src="../style/js/ie-emulation-modes-warning.js"></script>
     <!-- Bootstrap core JavaScript
     ================================================== -->
@@ -76,12 +78,6 @@
                 <li><a href="/SwitchPage?page=setpage" class="active" ><font size="3">用户设置</font></a></li>
                 <li><a href="/SwitchPage?page=helppage" ><font size="3">帮助界面</font></a></li>
             </ul>
-            <!--页内切换-->
-            <!--
-            <form class="navbar-form navbar-right">
-                  <input type="text" class="form-control" placeholder="Search...">
-            </form>
-            -->
         </div>
     </div>
 </nav>
@@ -143,12 +139,8 @@
             </div>
             <%String success = (String) request.getAttribute("success");%>
             <%String failed = (String) request.getAttribute("failed");%>
-            <%if(success!=null){%>
-            <font size="4" color="#7fff00"><%=success%></font>
-            <%;}%>
-            <%if(failed!=null){%>
-            <font size="4" color="#dc143c"><%=failed%></font>
-            <%;}%>
+            <input type="hidden" id="success" value=<%=success%>>
+            <input type="hidden" id="failed" value=<%=failed%>>
 
             </br>
             <div class="btn-group pull-left" style="margin-left: 0px;">
@@ -162,3 +154,13 @@
 </div>
 </body>
 </html>
+<script>
+    var failed = document.getElementById("failed").value;
+    var success = document.getElementById("success").value;
+    if(failed.localeCompare(null)) {
+        mizhu.alert('', failed);
+    }
+    if(success.localeCompare(null)) {
+        mizhu.alert('', success);
+    }
+</script>

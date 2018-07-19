@@ -13,7 +13,7 @@ public class webToWx extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         RequestDispatcher view;
-        //response.sendRedirect("WEB-INF/CustPage/login.html");
+
         view = request.getRequestDispatcher("WEB-INF/CustPage/cuslogin.jsp");
         view.forward(request,response);
     }

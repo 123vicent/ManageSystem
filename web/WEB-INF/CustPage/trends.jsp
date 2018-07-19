@@ -46,12 +46,6 @@
 			<nav class="top-nav">
 				<ul class="icon-list">
 					<li class="menu-title">CarManage</li>
-					<!--<li><a class="active" href="main.html"><i class="glyphicon glyphicon-home"></i> 主页 </a></li>
-					<li><a href="imformation.html"><i class="glyphicon glyphicon-info-sign"></i> 个人信息 </a></li>
-					 
-					<li><a href="testdrive.html"><i class="glyphicon glyphicon-eye-open"></i> 寻车试驾 </a></li>
-					<li><a href="gallery.html"><i class="glyphicon glyphicon-picture"></i> 豪车鉴赏</a></li>																					
-					<li><a href="reserve.html"><i class="glyphicon glyphicon-envelope"></i> 养修预约 </a></li>-->
 					<li><a href="/jump?action=homepage"><i class="glyphicon glyphicon-home"></i> 主页 </a></li>
 					<li><a href="/jump?action=personal_info"><i class="glyphicon glyphicon-info-sign"></i> 个人信息 </a></li>
 					<li><a href="/jump?action=testdrive"><i class="glyphicon glyphicon-eye-open"></i> 寻车试驾 </a></li>

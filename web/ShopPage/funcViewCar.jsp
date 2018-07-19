@@ -81,12 +81,6 @@ To change this template use File | Settings | File Templates.
 						<li><a href="/SwitchPage?page=setpage" ><font size="3">用户设置</font></a></li>
 						<li><a href="/SwitchPage?page=helppage" ><font size="3">帮助界面</font></a></li>
 				    </ul>
-				    <!--页内切换-->
-				    <!--
-				    <form class="navbar-form navbar-right">
-				  	    <input type="text" class="form-control" placeholder="Search...">
-				    </form>
-				    -->
 			    </div>
 		    </div>
 	    </nav>
@@ -112,13 +106,6 @@ To change this template use File | Settings | File Templates.
 			    </ul>
 		    </div>
 			<!-- //左边导航栏 -->
-
-
-
-		    <!--查询所有车的类型型号，设置下拉框-->
-		    <!--//查询所有车的类型型号，设置下拉框-->
-		 
-
 
 			<!-- 控制输出内容在右半部分 -->
 		    <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
@@ -172,16 +159,6 @@ To change this template use File | Settings | File Templates.
 							<th>详情</th>
 							<th>更新</th>
 						</tr>
-						<%--<c:forEach var="U" items="${searchcars}">
-							<tr>
-								<td><c:out value="${U.brand}"></c:out></td>
-								<td><c:out value="${U.model}"></c:out></td>
-								<td><c:out value="${U.type}"></c:out></td>
-								<td><c:out value="${U.stock}"></c:out> </td>
-								<td><c:out value="${U.price}"></c:out> </td>
-								<td><c:out value="${U.pic_url}"></c:out> </td>
-							</tr>
-						</c:forEach>--%>
 						</thead>
 						<%for(Carinfo carinfo:carinfos){%>
 						<tr>
