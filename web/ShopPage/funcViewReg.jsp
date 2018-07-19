@@ -59,7 +59,7 @@
 		  		    <p class="navbar-brand" ><font size="5">汽车销售管理系统</font></p>
 			    </div>
 			    <div>
-				    <p id= "huanying" class="navbar-brand" align="right"><font size="4">用户：<a href="/SearchUserServlet" name="userid">${userid}</a> </font></p>
+				    <p id= "huanying" class="navbar-brand" align="right"><font size="4">用户：<a href="/SwitchPage?page=setpage">${userid}</a> </font></p>
 			    </div>
 
 			    <div id="navbar" class="navbar-collapse collapse">
@@ -124,10 +124,10 @@
 						</font>
 					</p>
 					<form action="/ViewRegServlet" class="navbar-form navbar-left" style="margin-left: -15px;">
-					<input type="text" class="form-control" name="cususer_id" placeholder="输入需要查询的客户id">
-					<input type="text" class="form-control" name="cus_name" placeholder="输入需要查询的客户姓名">
-					<input type="text" class="form-control" name="brand" placeholder="输入需要查询的车品牌">
-					<input type="text" class="form-control" name="model" placeholder="输入需要查询的model">
+					<input type="text" class="form-control" name="cususer_id" placeholder="客户ID">
+					<input type="text" class="form-control" name="cus_name" placeholder="客户姓名">
+					<input type="text" class="form-control" name="brand" placeholder="品牌">
+					<input type="text" class="form-control" name="model" placeholder="型号">
 
 					    <button id="queryBtn6" type="submit" class="btn btn-default" class="btn-group pull-left" style="margin-left: 10px;">
 					    <span class="glyphicon glyphicon-search" aria-hidden="true"></span>查询</button>

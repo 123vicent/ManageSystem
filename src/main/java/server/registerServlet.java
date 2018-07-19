@@ -51,9 +51,12 @@ public class registerServlet extends HttpServlet {
             shopuser.setShop_address(address);
             shopuser.setShop_manager(manager);
 
-
-            shopuserdao.insert(shopuser);
-            view = request.getRequestDispatcher("index.jsp");
+            if(shopuserdao.insert(shopuser)){
+                view = request.getRequestDispatcher("ShopPage/shopRegSuccess.html");
+            }else {
+                request.setAttribute("failed","注册失败");
+                view=request.getRequestDispatcher("ShopPage/register.jsp");
+            }
         }
         /*try {
             rs = stmt.executeQuery("select * from user");

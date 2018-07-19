@@ -55,6 +55,7 @@
 					<li><a href="/jump?action=reserve"><i class="glyphicon glyphicon-envelope"></i> 养修预约 </a></li>
 					<li><a href="/jump?action=apt_record"><i class="glyphicon glyphicon-briefcase"></i> 预约历史 </a> </li>
 					<li><a href="/jump?action=viewhistory"><i class="glyphicon glyphicon-list-alt"></i> 浏览历史</a></li>
+					<li><a href="/jump?action=help"><i class="glyphicon glyphicon-list-alt"></i> 帮助</a></li>
 				</ul>
 			</nav>
 			<button class="close-button" id="close-button">C</button>
@@ -113,6 +114,7 @@
 						<h4><%=car.getBrand()%>   <%=car.getModel()%></h4>
 						<p class="agile-text"><%=car.getDescription()%></p>
 						<div class="w3ls-text">
+							<h4>经销商信息</h4>
 							<p><b>经销商 :</b><%=car.getShop_name()%></p>
 							<p><b>联系电话 :</b><%=car.getShop_phone()%></p>
 							<p><b>地址 :</b><%=car.getShop_address()%></p>
@@ -127,8 +129,10 @@
 						<h3 class="w3ls-title">试驾预约</h3>
 						<div class="contact-form">
 							<form action="/testdrive_book" method="post">
+								<label>预约日期</label>
 								<input class="Wdate" style="height: 35px;" name="ap_time" type="text" id="d15" onfocus="WdatePicker({dateFmt:'yyyy-MM-dd HH:mm:ss'})" placeholder="选择日期" required=""/>
 								<!--textarea name="Message" placeholder="Message" required=""></textarea-->
+								<label>您的要求</label>
 								<textarea name="Message" placeholder="问题描述" required></textarea>
 								<center><input type="submit" value="提交"></center>
 							</form>
@@ -138,7 +142,7 @@
 				<!-- //about --> 
 				<!-- brands -->
 				<div class="w3agile brands"> 
-					<h3 class="w3ls-title">合作合作品牌</h3> 
+
 					<div class="brands-info">
 						<div class="brand-grids">
 							<a href="#"><img src="../../style/images/b1.jpg" alt=""/></a>

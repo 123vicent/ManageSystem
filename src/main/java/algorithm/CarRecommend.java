@@ -3,7 +3,6 @@ package algorithm;
 import DAO.DAOFactory;
 import DAO.ViewcarrecordDAO;
 import basic.Carview;
-import basic.Viewcarrecord;
 
 import java.util.*;
 
@@ -64,9 +63,21 @@ public class CarRecommend {
 
         ViewcarrecordDAO viewcarrecordDAO = DAOFactory.getViewcarrecordDAO();
         double priority;
-        double carbrand_pt = carBrand_priority.get(carview.getBrand());
-        double cartype_pt = carType_priority.get(carview.getType());
+        double carbrand_pt;
+        double cartype_pt;
         double carprice_pt = 0;
+        if(carBrand_priority.get(carview.getBrand())!=null) {
+            carbrand_pt = carBrand_priority.get(carview.getBrand());
+        }
+        else{
+            carbrand_pt = 0;
+        }
+        if(carType_priority.get(carview.getType())!=null) {
+            cartype_pt = carType_priority.get(carview.getType());
+        }
+        else{
+            cartype_pt = 0;
+        }
         for(Map.Entry<Double,Double> entry:carPrice_priority.entrySet()) {
             double min  = entry.getKey();
             double max = entry.getValue();

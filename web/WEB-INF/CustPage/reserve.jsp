@@ -74,6 +74,7 @@
                 <li><a class="active" href="/jump?action=reserve"><i class="glyphicon glyphicon-envelope"></i> 养修预约 </a></li>
                 <li><a href="/jump?action=apt_record"><i class="glyphicon glyphicon-briefcase"></i> 预约历史 </a> </li>
                 <li><a href="/jump?action=viewhistory"><i class="glyphicon glyphicon-list-alt"></i> 浏览历史 </a> </li>
+                <li><a href="/jump?action=help"><i class="glyphicon glyphicon-list-alt"></i> 帮助</a></li>
             </ul>
         </nav>
         <button class="close-button" id="close-button">C</button>
@@ -129,18 +130,19 @@
                             <label class="radio-inline">
                                 <input type="radio" name="book" id="emp_add_repair2" value="维修预约"> 维修 </label>
                         </div>
-                        <span style="font-size: 14px;">计划试驾时间</span>
-                        <input class="Wdate" name="ap_time" type="text" id="d15" onfocus="WdatePicker({dateFmt:'yyyy-MM-dd HH:mm:ss'})" required=""/>
+                        <span style="font-size: 14px;">计划养修时间</span>
+                        <input class="Wdate" name="ap_time" style="height: 38px" type="text" id="d15" onfocus="WdatePicker({dateFmt:'yyyy-MM-dd HH:mm:ss'})" required=""/>
 
+                        <span style="font-size: 14px;">需求</span>
                         <textarea name="Message" placeholder="问题描述" required></textarea>
-                        <input type="submit" value="提交">
+                        <center><input type="submit" value="提交"></center>
                     </form>
                 </div>
             </div>
             <!-- //contact -->
             <!-- brands -->
             <div class="w3agile brands">
-                <h3 class="w3ls-title">合作品牌</h3>
+
                 <div class="brands-info">
                     <div class="brand-grids">
                         <a href="#"><img src="../../style/images/b1.jpg" alt=""/></a>

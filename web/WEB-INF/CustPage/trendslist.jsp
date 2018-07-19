@@ -60,6 +60,7 @@
 					<li><a href="/jump?action=reserve"><i class="glyphicon glyphicon-envelope"></i> 养修预约 </a></li>
 					<li><a href="/jump?action=apt_record"><i class="glyphicon glyphicon-briefcase"></i> 预约历史 </a> </li>
 					<li><a href="/jump?action=viewhistory"><i class="glyphicon glyphicon-list-alt"></i>浏览历史</a></li>
+					<li><a href="/jump?action=help"><i class="glyphicon glyphicon-list-alt"></i> 帮助</a></li>
 				</ul>
 			</nav>
 			<button class="close-button" id="close-button">C</button>
@@ -83,7 +84,38 @@
 
 				<div class="w3agile properties">
 					<h3 class="w3ls-title">通知动态列表</h3>
-					<div class="properties-bottom">
+					<div class="w3agile properties">
+						<%--<div class="w3ls-text">--%>
+						<table class="table table-striped">
+
+							<thead>
+							<tr>
+								<th>标题</th>
+								<th>日期</th>
+								<th></th>
+							</tr>
+							</thead>
+							<tbody>
+							<c:forEach var="U" items="${news}">
+							<tr>
+
+
+								<td>${U.title}</td>
+								<td>${U.time}</td>
+								<td>
+									<a href="/jump?action=trends&title=${U.title}&shopuser_id=${U.shopuser_id}" name="news_id">详情</a>
+
+										<!--input type="button" class="btn btn-success"  value="返回"></button-->
+									</a>
+								</td>
+							</tr>
+							</c:forEach>
+
+
+
+							</tbody>
+						</table>
+					<%--<div class="properties-bottom">
 						<c:forEach var="U" items="${news}">
 						<div class="w3ls-text">
 							<a href="/jump?action=trends&title=${U.title}&shopuser_id=${U.shopuser_id}" name="news_id"><font size="4">${U.title}</font></a><!--通知1-->
@@ -95,11 +127,11 @@
 							<a href="#"><font size="4">456</font></a>&lt;!&ndash;通知1&ndash;&gt;
 						</div>
 
-					</div>-->
+					</div>-->--%>
 				</div>
 				<!-- brands -->
 				<div class="w3agile brands"> 
-					<h3 class="w3ls-title">合作品牌</h3> 
+
 					<div class="brands-info">
 						<div class="brand-grids">
 							<img src="../../style/images/b1.jpg" alt=""/>
@@ -129,7 +161,8 @@
 				</div> 
 			</div>
 		</div>
-	</div> 
+	</div>
+	</div>
 	<!-- menu-js -->
 	<script src="../../style/js/classie.js"></script>
 	<script src="../../style/js/main.js"></script>

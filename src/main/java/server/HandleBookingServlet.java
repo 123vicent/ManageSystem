@@ -30,7 +30,6 @@ public class HandleBookingServlet extends HttpServlet {
 
         HttpSession session = request.getSession();
         String shopuserid = (String)session.getAttribute("userid");
-        System.out.println(shopuserid);
 
         ShopaptDAO shopaptDAO = DAOFactory.getShopaptDAO();
         String apstate = request.getParameter("appointstate");

@@ -21,7 +21,6 @@ import java.sql.Date;
 public class RegisterCarServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String plate_number = request.getParameter("plate_number");
-        System.out.println(plate_number);
         CusowncarDAO cusowncarDAO = DAOFactory.getCusowncarDAO();
         Cusowncar cusowncar = cusowncarDAO.findById(plate_number);
         if (cusowncar.getPlate_number() != null) {
@@ -30,24 +29,24 @@ public class RegisterCarServlet extends HttpServlet {
 
         HttpSession session = request.getSession();
         String shopuserid = (String) session.getAttribute("userid");
-        System.out.println("经销商id：" + shopuserid);
+
 
         String cusid = request.getParameter("userid");
-        System.out.println("输入的客户id：" + cusid);
+
 
         CustomeruserDAO customeruserDAO = DAOFactory.getCustometuserDAO();
         Customeruser customeruser = customeruserDAO.findById(cusid);
-        System.out.println("查找的客户id：" + customeruser.getCususer_id());
+
         if (customeruser.getCususer_id() == null) {
             //System.out.println(1111);
             request.setAttribute("cusid_error", "客户id不存在");
         }
 
         String brand = request.getParameter("brand");
-        System.out.println("车牌：" + brand);
+
 
         String model = request.getParameter("model");
-        System.out.println("车型：" + model);
+
 
         CarDAO carDAO = DAOFactory.getCarDAO();
         Car car = carDAO.findByBrandModel(brand, model);
@@ -56,11 +55,11 @@ public class RegisterCarServlet extends HttpServlet {
         }
 
         String register_time = request.getParameter("register_time");
-        System.out.println("登记时间：" + register_time);
+
         Date time = Date.valueOf(register_time);
 
         String pay_price = request.getParameter("pay_price");
-        System.out.println("支付价格：" + pay_price);
+
 
         Cusowncar cusowncar1 = new Cusowncar();
         cusowncar1.setPlate_number(plate_number);

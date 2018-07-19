@@ -40,7 +40,6 @@ public class SwitchPage extends HttpServlet {
         }else if(page.equals("helppage")){
             view = request.getRequestDispatcher("ShopPage/help.jsp");
         }else if(page.equals("funcViewCar")){
-
             CarinfoDAO carinfoDAO = DAOFactory.getCarinfoDAO();
             List<Carinfo> carinfos = carinfoDAO.findAllByShopId(Shopuserid);
             request.setAttribute("searchcars",carinfos);
@@ -55,20 +54,18 @@ public class SwitchPage extends HttpServlet {
         }else if(page.equals("funcPushMsg")){
             view = request.getRequestDispatcher("ShopPage/funcPushMsg.jsp");
         }else if(page.equals("funcRegister")){
-
             view = request.getRequestDispatcher("ShopPage/funcRegister.jsp");
         }else if(page.equals("funcViewRecord")){
             ViewcarrecordDAO viewcarrecordDAO = DAOFactory.getViewcarrecordDAO();
             List<Countinfo> countinfos = viewcarrecordDAO.findAllByShopId(Shopuserid);
             request.setAttribute("countinfos",countinfos);
-
             view = request.getRequestDispatcher("ShopPage/funcViewRecord.jsp");
         }else if(page.equals("funcDataAnalyze")){
-
-
-
             view = request.getRequestDispatcher("ShopPage/funcDataAnalyze.jsp");
-        }else{
+        }else if(page.equals("log")){
+            view = request.getRequestDispatcher("index.jsp");
+        }
+        else{
             ShopRegcusDAO shopRegcusDAO = DAOFactory.getShopRegcusDAO();
             List<ShopRegcus> shopRegcuses = shopRegcusDAO.findByCon(Shopuserid,"","","","");
             request.setAttribute("shopowncar",shopRegcuses);

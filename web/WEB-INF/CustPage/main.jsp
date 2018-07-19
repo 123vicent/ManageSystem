@@ -1,4 +1,4 @@
-<%@ page import="java.util.Map" %>
+ <%@ page import="java.util.Map" %>
 <%@ page import="basic.Carview" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
@@ -62,6 +62,7 @@
 					<li><a href="/jump?action=reserve"><i class="glyphicon glyphicon-envelope"></i> 养修预约 </a></li>
 					<li><a href="/jump?action=apt_record"><i class="glyphicon glyphicon-briefcase"></i> 预约历史 </a> </li>
 					<li><a href="/jump?action=viewhistory"><i class="glyphicon glyphicon-list-alt"></i>浏览历史</a></li>
+					<li><a href="/jump?action=help"><i class="glyphicon glyphicon-list-alt"></i> 帮助</a></li>
 				</ul>
 			</nav>
 			<button class="close-button" id="close-button">C</button>
@@ -159,7 +160,7 @@
 				<!-- properties -->
 				<div class="w3agile properties">
 					<div class="properties-top">
-						<h3 class="w3ls-title">功能简介</h3>
+						<h3 class="w3ls-title">功能入口</h3>
 
 					</div> 
 					<div class="properties-bottom">
@@ -216,7 +217,7 @@
 				<!-- //properties -->
 				<!-- brands -->
 				<div class="w3agile brands"> 
-					<h3 class="w3ls-title">合作品牌</h3> 
+
 					<div class="brands-info">
 						<div class="brand-grids">
 							<img src="../../style/images/b1.jpg" alt=""/>

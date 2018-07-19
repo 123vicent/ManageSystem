@@ -55,6 +55,7 @@ public class log extends HttpServlet {
                 //rs = stmt.executeQuery("SELECT * FROM user where usr_name = '"+userid+"'and password =  '"+password+"'");
                 //rs.next();
                 HttpSession session = request.getSession();
+                session.setMaxInactiveInterval(3600);
                 session.setAttribute("userid",userid);
 
                 CustomeruserDAO customeruserdao  = DAOFactory.getCustometuserDAO();
@@ -86,9 +87,6 @@ public class log extends HttpServlet {
                     carRecommend.setCarBrand_priority();
                     carRecommend.setCarType_priority();
                     carRecommend.setCarPrice_priority();
-                    Map<String,Double> CarBrand_priority = carRecommend.getCarBrand_priority();
-                    Map<String,Double> carType_priority = carRecommend.getCarType_priority();
-                    Map<Double,Double> CarPrice_priority = carRecommend.getCarPrice_priority();
                     Map<Carview,Double> car_priority = new HashMap<Carview, Double>();
                     for(Carview carview:carviews)
                     {
@@ -100,7 +98,7 @@ public class log extends HttpServlet {
 
                     view = request.getRequestDispatcher("WEB-INF/CustPage/main.jsp");
                 } else {
-                    request.setAttribute("msg2", "登录失败");
+                    request.setAttribute("msg2", "用户名或密码错误");
                     view = request.getRequestDispatcher("WEB-INF/CustPage/cuslogin.jsp");
 
                 }

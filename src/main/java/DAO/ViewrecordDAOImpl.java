@@ -157,34 +157,6 @@ public class ViewrecordDAOImpl implements ViewrecordDAO {
         }
         return vrList;
     }
-    public List<Count> Count(String shopuser_id) {
-        DBConnect dbc = new DBConnect();
-        Connection conn = dbc.getConnection();
-        List<Count> counts = new ArrayList<Count>();
-        String sql = "select tmp.shopuser_id,tmp.car_id,COUNT(tmp.car_id) as count\n" +
-                "from\n" +
-                "(select *\n" +
-                "from viewrecord\n" +
-                "where shopuser_id = ?) \n" +
-                "as tmp\n" +
-                "group by tmp.car_id;";
-        PreparedStatement ps = null;
-        ResultSet rs = null;
-        try {
-            ps = conn.prepareStatement(sql);
-            ps.setString(1,shopuser_id);
-            rs = ps.executeQuery();
-            while (rs.next()){
-                Count count = new Count();
-                count.setShopuser_id(rs.getString(1));
-                count.setCar_id(rs.getString(2));
-                count.setCount((double)rs.getInt(3));
-                counts.add(count);
-            }
-        }catch (SQLException e){
-            e.printStackTrace();
-        }
-        return counts;
-    }
+
 
 }

@@ -58,7 +58,7 @@
 		  		    <p class="navbar-brand" ><font size="5">汽车销售管理系统</font></p>
 			    </div>
 			    <div>
-				    <p id= "huanying" class="navbar-brand" align="right"><font size="4">用户：<a href="/SearchUserServlet" name="userid">${userid}</a> </font></p>
+				    <p id= "huanying" class="navbar-brand" align="right"><font size="4">用户：<a href="/SwitchPage?page=setpage">${userid}</a> </font></p>
 			    </div>
 
 			    <div id="navbar" class="navbar-collapse collapse">
@@ -112,7 +112,9 @@
 					<form action="/DrawChartServlet" method="post">
 						<input type="submit" name="submit" value="BarChart">
 						<input type="submit" name="submit" value="PieChart"><br>
-						<img src="<%= request.getAttribute("graphURL") %>">
+						<%if(request.getAttribute("graphURL")!=null){%>
+						    <img src="<%= request.getAttribute("graphURL") %>">
+					<%;}%>
 					</form>
 
 

@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
+import java.sql.Date;
 
 @WebServlet(name = "modify_info",urlPatterns = "/modify")
 public class modify_info extends HttpServlet {
@@ -20,6 +21,7 @@ public class modify_info extends HttpServlet {
         String phone = request.getParameter("phone");
         String sex = request.getParameter("sex");
         String address = request.getParameter("address");
+        Date birthday = Date.valueOf(request.getParameter("birthday"));
 
         HttpSession session = request.getSession();
         String userid = (String)session.getAttribute("userid");
@@ -36,6 +38,7 @@ public class modify_info extends HttpServlet {
         if(!address.equals("")){
             customeruser.setAddress(request.getParameter("address"));
         }
+        customeruser.setBirthday(birthday);
         customeruserDAO.update(customeruser);
         view = request.getRequestDispatcher("WEB-INF/CustPage/information.jsp");
         request.setAttribute("user_info",customeruser);

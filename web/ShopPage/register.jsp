@@ -7,6 +7,11 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="../style/css/bootstrap.min.css">
+
+<title>欢迎注册汽车销售管理系统</title>
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -17,15 +22,14 @@
 </head>
 <body>
 
+
 <nav class="navbar navbar-inverse navbar-fixed-top">
     <div class="container-fluid">
         <div class="navbar-header">
-            <img src="../../style/images/mainlogo.png" style="width:50px">
+            <p class="navbar-brand">
+                <font size="5">汽车销售管理系统</font>
+            </p>
         </div>
-        <div class="navbar-header">
-            <p class="navbar-brand" ><font size="5">汽车销售管理系统</font></p>
-        </div>
-
     </div>
 </nav>
 
@@ -34,113 +38,102 @@
         <form action="/register" class="">
 
             <div class="form-group has-feedback">
-                <label for="username">用户ID</label>
+                <label for="username">用户名*</label>
                 <div class="input-group">
-                    <span class="input-group-addon"><span class="glyphicon glyphicon-user"></span></span>
-                    <input id="username" name="identity" class="form-control" placeholder="设置您的ID（用于登录）" maxlength="20" type="text" required>
+                        <span class="input-group-addon">
+                            <span class="glyphicon glyphicon-user"></span>
+                        </span>
+                    <input id="username" name="identity" class="form-control" placeholder="请输入用户名" maxlength="20" type="text" required="" oninput="checkId();">
                 </div>
+                <span id="id-message" style="color: red; font-size: small;"></span>
                 <%if(request.getAttribute("msg")!=null){ %>
                 <p><font color="#dc143c" size="4"><%=request.getAttribute("msg")%></font> </p>
                 <%  }%>
-                <span style="color:red;display: none;" class="tips"></span>
-                <span style="display: none;" class=" glyphicon glyphicon-remove form-control-feedback"></span>
-                <span style="display: none;" class="glyphicon glyphicon-ok form-control-feedback"></span>
             </div>
 
             <div class="form-group has-feedback">
-                <label for="password">密码</label>
+                <label for="password">密码*</label>
                 <div class="input-group">
-                    <span class="input-group-addon"><span class="glyphicon glyphicon-lock"></span></span>
-                    <input id="password" name="password" class="form-control" placeholder="请设置密码（6-20位字母数字或符号）" maxlength="20" type="password" required>
+                        <span class="input-group-addon">
+                            <span class="glyphicon glyphicon-lock"></span>
+                        </span>
+                    <input id="password" class="form-control" name="password" placeholder="请输入密码" maxlength="20" type="password" required="" oninput="checkPassword();">
                 </div>
-
-                <span style="color:red;display: none;" class="tips"></span>
-                <span style="display: none;" class="glyphicon glyphicon-remove form-control-feedback"></span>
-                <span style="display: none;" class="glyphicon glyphicon-ok form-control-feedback"></span>
+                <span id="password-message" style="color: red; font-size: small;"></span>
             </div>
 
             <div class="form-group has-feedback">
-                <label for="passwordConfirm">确认密码</label>
+                <label for="passwordConfirm">确认密码*</label>
                 <div class="input-group">
-                    <span class="input-group-addon"><span class="glyphicon glyphicon-lock"></span></span>
-                    <input id="passwordConfirm" name="chkpassword" class="form-control" placeholder="请再次输入密码" maxlength="20" type="password" required>
+                        <span class="input-group-addon">
+                            <span class="glyphicon glyphicon-lock"></span>
+                        </span>
+                    <input id="repassword" class="form-control" name="chkpassword" placeholder="请再次输入密码" maxlength="20" type="password" required="" oninput="checkPasswordRepeat();">
                 </div>
-                <%if(request.getAttribute("chkpswd")!=null){ %>
-                <p><font color="#dc143c" size="4"><%=request.getAttribute("chkpswd")%></font> </p>
-                <%  }%>
-                <span style="color:red;display: none;" class="tips"></span>
-                <span style="display: none;" class="glyphicon glyphicon-remove form-control-feedback"></span>
-                <span style="display: none;" class="glyphicon glyphicon-ok form-control-feedback"></span>
+                <span id="repassword-message" style="color: red; font-size: small;"></span>
             </div>
 
-
-
-
             <div class="form-group has-feedback">
-                <label for="shop_address">经销商注册名</label>
+                <label for="shop_address">商家名称*</label>
                 <div class="input-group">
-                    <span class="input-group-addon"><span class="glyphicon glyphicon-user"></span></span>
-                    <input id="shop_address" name="shopname" class="form-control" placeholder="注册名称（展示给客户）" maxlength="20" type="text" required>
+                        <span class="input-group-addon">
+                            <span class="glyphicon glyphicon-user"></span>
+                        </span>
+                    <input id="shopName" class="form-control" name="shopname" placeholder="请输入商家名称(少于45个字符)" maxlength="45" type="text" required="">
                 </div>
-
-                <span style="color:red;display: none;" class="tips"></span>
-                <span style="display: none;" class=" glyphicon glyphicon-remove form-control-feedback"></span>
-                <span style="display: none;" class="glyphicon glyphicon-ok form-control-feedback"></span>
+                <span id="name-message" style="color: red; font-size: small;"></span>
             </div>
 
 
 
             <div class="form-group has-feedback">
-                <label for="shop_address">地址</label>
+                <label for="shop_address">商家地址*</label>
                 <div class="input-group">
-                    <span class="input-group-addon"><span class="glyphicon glyphicon-user"></span></span>
-                    <input id="shop_address" name="address" class="form-control" placeholder="请输入地址" maxlength="20" type="text" required>
+                        <span class="input-group-addon">
+                            <span class="glyphicon glyphicon-user"></span>
+                        </span>
+                    <input id="shop_address" class="form-control" name="address" placeholder="请输入商家地址" maxlength="45" type="text" required="">
                 </div>
-
-                <span style="color:red;display: none;" class="tips"></span>
-                <span style="display: none;" class=" glyphicon glyphicon-remove form-control-feedback"></span>
-                <span style="display: none;" class="glyphicon glyphicon-ok form-control-feedback"></span>
             </div>
 
             <div class="form-group has-feedback">
-                <label for="shop_phone">联系电话</label>
+                <label for="shop_phone">商家联系电话*</label>
                 <div class="input-group">
-                    <span class="input-group-addon"><span class="glyphicon glyphicon-phone"></span></span>
-                    <input id="phoneNum" class="form-control" name="phone" placeholder="请输入电话号码" maxlength="11" type="text" required>
+                        <span class="input-group-addon">
+                            <span class="glyphicon glyphicon-phone"></span>
+                        </span>
+                    <input id="shop_phone" class="form-control" name="phone" placeholder="请输入商家电话号码" maxlength="11" type="text" required="" oninput ="checkPhone();">
                 </div>
-                <span style="color:red;display: none;" class="tips"></span>
-                <span style="display: none;" class="glyphicon glyphicon-remove form-control-feedback"></span>
-                <span style="display: none;" class="glyphicon glyphicon-ok form-control-feedback"></span>
+                <span id="phone-message" style="color: red; font-size: small;"></span>
             </div>
 
             <div class="form-group has-feedback">
-                <label for="shop_manager">主要负责人</label>
+                <label for="shop_manager">商家经理*</label>
                 <div class="input-group">
-                    <span class="input-group-addon"><span class="glyphicon glyphicon-user"></span></span>
-                    <input id="shop_manager" name="manager" class="form-control" placeholder="负责人姓名" maxlength="20" type="text" required>
+                        <span class="input-group-addon">
+                            <span class="glyphicon glyphicon-user"></span>
+                        </span>
+                    <input id="shop_manager" class="form-control" name="manager" placeholder="请输入商家经理名称" maxlength="45" type="text" required="" oninput="checkManager();">
                 </div>
-
-                <span style="color:red;display: none;" class="tips"></span>
-                <span style="display: none;" class=" glyphicon glyphicon-remove form-control-feedback"></span>
-                <span style="display: none;" class="glyphicon glyphicon-ok form-control-feedback"></span>
+                <span id="manager-message" style="color: red; font-size: small;"></span>
             </div>
 
             <div class="form-group has-feedback">
-                <label for="description">经销商简介</label>
+                <label for="description">商店描述*</label>
                 <div class="input-group">
-                    <span class="input-group-addon"><span class="glyphicon glyphicon-user"></span></span>
-                    <input id="description" name="description" class="form-control" placeholder="简介（20字以内）" maxlength="20" type="text" required>
+                        <span class="input-group-addon">
+                            <span class="glyphicon glyphicon-user"></span>
+                        </span>
+                    <input id="description" class="form-control" name="description" placeholder="请描述店铺业务" maxlength="45" type="text" required="">
                 </div>
-
-                <span style="color:red;display: none;" class="tips"></span>
-                <span style="display: none;" class=" glyphicon glyphicon-remove form-control-feedback"></span>
-                <span style="display: none;" class="glyphicon glyphicon-ok form-control-feedback"></span>
             </div>
-
+            <%if(request.getAttribute("failed")!=null){ %>
+            <p><font color="#dc143c" size="4"><%=request.getAttribute("failed")%></font> </p>
+            <%  }%>
 
 
             <div class="form-group">
-                <input class="form-control btn btn-primary" type="submit" name="submit" id="submit" value="立&nbsp;&nbsp;即&nbsp;&nbsp;注&nbsp;&nbsp;册" type="submit">
+                <input class="form-control btn btn-primary" id="submit" onclick="checkSubmit();" value="立&nbsp;&nbsp;即&nbsp;&nbsp;注&nbsp;&nbsp;册" type="submit">
             </div>
 
             <div class="form-group">
@@ -150,6 +143,81 @@
         </form>
     </div>
 </div>
+
+<script>
+    function checkId() {
+        //字母数字下划线
+        var regex = /^[^_][A-Za-z]*[a-z0-9_]*$/;
+        var inputValue = document.getElementById("username").value;
+        var ret = regex.test(inputValue);
+        if(inputValue == ""){
+            document.getElementById("id-message").innerHTML = ""
+        }else if(inputValue.length > 20 || inputValue.length == 1 || ret != true){
+            document.getElementById("id-message").innerHTML = "输入2-20位数字字母下划线";
+            return false;
+        }else{
+            document.getElementById("id-message").innerHTML = ""
+        }
+    }
+
+    function checkPassword() {
+        var inputValue = document.getElementById("password").value;
+        if(inputValue.length == 1 || inputValue.length > 20){
+            document.getElementById("password-message").innerHTML = "请输入2-20个任意字符"
+            return false;
+        }else{
+            document.getElementById("password-message").innerHTML = "";
+        }
+    }
+
+    function checkPasswordRepeat(){
+        var password = document.getElementById("password").value;
+        var repassword = document.getElementById("repassword").value;
+        if (repassword == "") {
+            document.getElementById("repassword-message").innerHTML = ""
+        } else if (repassword != password) {
+            document.getElementById("repassword-message").innerHTML = "请确保两次输入的密码一致"
+            return false;
+        } else{
+            document.getElementById("repassword-message").innerHTML = "";
+        }
+    }
+
+    function checkPhone(){
+        //只输入数字
+        var number = /^1[3|4|5|8][0-9]\d{4,8}$/;
+        var phone = document.getElementById("shop_phone").value;
+        var ret = number.test(phone);
+        if(phone == ""){
+            document.getElementById("phone-message").innerHTML = "";
+        }else if((phone.length < 11 && phone.length > 0) || (ret != true && phone.length > 0)){
+            document.getElementById("phone-message").innerHTML = "请确保正确输入11位手机号码";
+            return false;
+        }else{
+            document.getElementById("phone-message").innerHTML = "";
+        }
+    }
+
+    function checkManager(){
+        //只输入字母和汉字
+        var word = /^[a-zA-Z\u4e00-\u9fa5]+$/;
+        var manager = document.getElementById("shop_manager").value;
+        var ret = word.test(manager);
+        if(ret != true && manager.length > 0){
+            document.getElementById("manager-message").innerHTML = "请确保您输入的内容只有汉字和字母";
+            return false;
+        }else{
+            document.getElementById("manager-message").innerHTML = "";
+        }
+    }
+
+    function checkSubmit(){
+        if(checkId() == false || checkPassword() == false || checkPasswordRepeat() == false || checkPhone() == false || checkManager() == false){
+            alert("您的表单包含无效信息，请检查并修改后再次提交！")
+        }
+    }
+
+</script>
 
 </body>
 </html>

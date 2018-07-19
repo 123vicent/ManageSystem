@@ -24,7 +24,7 @@ public class MR_BookServlet extends HttpServlet {
             throws ServletException, IOException {
         int ap_num = (int)(Math.random()*100000000);
         String ap_id = Integer.toString(ap_num);
-        System.out.println("预约id："+ ap_id);
+
 
         //String name = new String(request.getParameter("name").getBytes("ISO8859-1"),"UTF-8");
         //System.out.println("用户姓名："+ name);
@@ -34,21 +34,21 @@ public class MR_BookServlet extends HttpServlet {
 
         HttpSession session = request.getSession();
         String cuid = (String)session.getAttribute("userid");
-        System.out.println("会话得到的用户id："+ cuid);
+
         //根据名字电话查找用户id
         //CustomeruserDAO customeruserDAO = DAOFactory.getCustometuserDAO();
         //customeruser = customeruserDAO.findByNamePhone(name,phone);
         //System.out.println("查找得到的用户id：" + customeruser.getCususer_id());
 
         String brand = new String(request.getParameter("brand").getBytes("ISO8859-1"),"UTF-8");
-        System.out.println("牌： " + brand);
+
 
         String model = request.getParameter("model");
-        System.out.println("模型：" + model);
+
         //根据brand，model查找车id
         CarDAO carDAO = DAOFactory.getCarDAO();
         Car car = carDAO.findByBrandModel(brand,model);
-        System.out.println("车id：" + car.getCar_id());
+
 
         //String province = new String(request.getParameter("province").getBytes("ISO8859-1"),"UTF-8");
         //System.out.println(province);
@@ -58,24 +58,24 @@ public class MR_BookServlet extends HttpServlet {
         //System.out.println("地址：" + province+city);
 
         String shop =new String(request.getParameter("shop").getBytes("ISO8859-1"),"UTF-8");
-        System.out.println("经销商名字："+ shop);
+
 
         String[] shopname = shop.split("-");
         String adress = shopname[1];
-        System.out.println(adress);
+
 
         String ShopName = shopname[0];
-        System.out.println(ShopName);
+
         //根据address，name查找经销商id
         ShopuserDAO shopuserDAO = DAOFactory.getShopuserDAO();
         Shopuser shopuser = shopuserDAO.findByNameAdd(ShopName,adress);
-        System.out.println("经销商id：" + shopuser.getShopuser_id());
+
 
         String book = new String(request.getParameter("book").getBytes("ISO8859-1"),"UTF-8");
-        System.out.println("预约类型："+book);
+
 
         String ap_time = request.getParameter("ap_time");
-        System.out.println("预约时间：" + ap_time);
+
         DateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 
         Date date = null;
@@ -87,12 +87,12 @@ public class MR_BookServlet extends HttpServlet {
         //SimpleDateFormat ft = new SimpleDateFormat ("yyyy-MM-dd HH:mm:ss");
         //System.out.println(ft.format(date));
         Timestamp timestamp = new Timestamp(date.getTime());
-        System.out.println("插入数据库的时间："+timestamp);
+
 
         String ap_state = "待接受";
 
         String Message = new String(request.getParameter("Message").getBytes("ISO8859-1"),"UTF-8");
-        System.out.println("描述："+Message);
+
 
         Appointment appointment = new Appointment();
         appointment.setAppointment_id(String.valueOf(ap_id));
@@ -107,12 +107,15 @@ public class MR_BookServlet extends HttpServlet {
         appointment.setCusinfo(Message);
 
         AppointmentDAO appointmentDAO = DAOFactory.getAppointmentDAO();
-        if(appointmentDAO.insert(appointment))
-            request.setAttribute("success","预约提交成功");
-        else
-            request.setAttribute("error","预约提交失败");
+        if(appointmentDAO.insert(appointment)) {
+            request.setAttribute("success", "预约提交成功");
+            request.getRequestDispatcher("WEB-INF/CustPage/transaction.html").forward(request, response);
+        }
+        else {
+            request.setAttribute("error", "预约提交失败");
+            request.getRequestDispatcher("WEB-INF/CustPage/reserve.jsp").forward(request, response);
+        }
 
-        request.getRequestDispatcher("WEB-INF/CustPage/transaction.html").forward(request,response);
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response)

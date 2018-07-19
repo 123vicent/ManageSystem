@@ -30,7 +30,6 @@ public class jumpPage extends HttpServlet {
         {
             NewsDAO newsDAO = DAOFactory.getNewsDAO();
             request.setAttribute("news",newsDAO.findAllToday());
-            System.out.println(newsDAO.findAllToday());
 
             view = request.getRequestDispatcher("WEB-INF/CustPage/main.jsp");
         }else if(pagename.equals("personal_info")){
@@ -56,7 +55,6 @@ public class jumpPage extends HttpServlet {
         }
         else if(pagename.equals("appoint_detail")) {
             String apt_id = request.getParameter("value");
-            System.out.println(apt_id);
             CususeraptDAO cususeraptDAO = DAOFactory.getCususeraptDAO();
             Cususerapt cususerapt = cususeraptDAO.findByApid(apt_id);
             request.setAttribute("cususerapt",cususerapt);
@@ -69,8 +67,6 @@ public class jumpPage extends HttpServlet {
             String shopuser_id = request.getParameter("shopuserid");
             session.setAttribute("shopuserid",shopuser_id);
 
-            System.out.println(car_id);
-            System.out.println(shopuser_id);
            CarviewDAO carviewDAO = DAOFactory.getCarviewDAO();
            Carview carview = carviewDAO.findById(car_id,shopuser_id);
             request.setAttribute("car",carview);
@@ -84,7 +80,6 @@ public class jumpPage extends HttpServlet {
             viewrecord.setCususer_id(user_id);
             Boolean isSuccess = viewrecordDAO.insert(viewrecord);
             //判断是否成功插入
-            System.out.println(isSuccess);
             view = request.getRequestDispatcher("WEB-INF/CustPage/testsingle.jsp");
         }
         else if(pagename.equals("viewhistory")){
@@ -96,29 +91,29 @@ public class jumpPage extends HttpServlet {
         }else if(pagename.equals("trendslist")){
             NewsDAO newsDAO = DAOFactory.getNewsDAO();
             request.setAttribute("news",newsDAO.findAllToday());
-            System.out.println(newsDAO.findAllToday());
             view = request.getRequestDispatcher("WEB-INF/CustPage/trendslist.jsp");
         }else if(pagename.equals("trends")){
             String title = request.getParameter("title");
-            System.out.println("标题："+title);
 
             String shopuser_id = request.getParameter("shopuser_id");
-            System.out.println("经销商id："+shopuser_id);
 
 
             java.util.Date utilDate=new Date();
             java.sql.Date sqlDate=new java.sql.Date(utilDate.getTime());
             //SimpleDateFormat ft = new SimpleDateFormat ("yyyy.MM.dd");
             //String dateFormat = ft.format(date);
-            System.out.println("时间："+sqlDate);
 
             NewsDAO newsDAO = DAOFactory.getNewsDAO();
             News news = newsDAO.findById(shopuser_id,sqlDate,title);
-            System.out.println(newsDAO.findById(shopuser_id,sqlDate,title));
+            ShopuserDAO shopuserDAO = DAOFactory.getShopuserDAO();
+            Shopuser shopuser = shopuserDAO.findById(shopuser_id);
+            request.setAttribute("shopname",shopuser.getShop_name());
             request.setAttribute("title",news.getTitle());
             request.setAttribute("content",news.getContent());
             view = request.getRequestDispatcher("WEB-INF/CustPage/trends.jsp");
-        } else{
+        } else if(pagename.equals("help")){
+            view = request.getRequestDispatcher("WEB-INF/CustPage/cusHelp.html");
+        }else{
             view = request.getRequestDispatcher("WEB-INF/CustPage/reserve.jsp");
         }
         view.forward(request,response);

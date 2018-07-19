@@ -18,14 +18,14 @@ public class regist extends HttpServlet {
     public void doPost(HttpServletRequest request,
                        HttpServletResponse response)
             throws ServletException, IOException {
-        String id = request.getParameter("id");
+        String id = request.getParameter("username");
         String pswd = request.getParameter("password");
         String chkpswd = request.getParameter("chkpassword");
         String phone = request.getParameter("phone");
         String name = request.getParameter("name");
-        String address = null;
-        String birthday = "2018-01-01";
-        String sex = null;
+        String sex = request.getParameter("gender");
+        String address = request.getParameter("address");
+        String birthday = request.getParameter("birthday");
 
         RequestDispatcher view;
 

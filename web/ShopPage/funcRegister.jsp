@@ -23,7 +23,9 @@
     <!-- Custom styles for this template -->
     <link href="../style/css/dashboard.css" rel="stylesheet">
 	<link href="../style/css/carousel.css" rel="stylesheet">
-
+		<link href="../style/css/style1.css" rel="stylesheet">
+		<script src="../style/js/jquery-1.7.1.min.js"></script>
+		<script src="../style/js/ui.js"></script>
     <script src="../style/js/ie-emulation-modes-warning.js"></script>
 	<!-- Bootstrap core JavaScript
     ================================================== -->
@@ -157,12 +159,11 @@
 						<input class="form-control" style="width:500px" name="register_time" type="text" id="d15" onfocus="WdatePicker({dateFmt:'yyyy-MM-dd'})" required=""/>
 						<label for="name">交易金额</label>
 						<input name="pay_price" style="width:500px" type="text" class="form-control"
-							   placeholder="纯交易金额（不含其他费用）" required>
+							   placeholder="纯交易金额（不含其他费用）" required onkeypress="keyPress();"
+							   onkeyup="if(event.keyCode !=37 && event.keyCode != 39)value=value.replace(/\D/g,'')">
 					</br>
-						<div>
-							<label for="name"><font size="4" color="#dc143c">${success}</font></label>
-							<label for="name"><font size="4" color="#dc143c">${error}</font></label>
-						</div>
+						<input type="hidden" id="success" value=${success}>
+						<input type="hidden" id="error" value=${error}>
 						<div class="btn-group pull-left" style="margin-left: 0px;">
 							<button id="addBtn" type="submit" class="btn btn-default">
 								<span class="glyphicon glyphicon-plus" aria-hidden="true"></span>登记</button>
@@ -241,5 +242,32 @@
             option.value = list2element[i];
             ddlCity.appendChild(option);
         }
+    }
+    function keyPress() {
+
+        var keyCode = event.keyCode;
+
+        if ((keyCode >= 48 && keyCode <= 57))
+
+        {
+
+            event.returnValue = true;
+
+        } else {
+
+            event.returnValue = false;
+
+        }
+
+    }
+</script>
+<script>
+    var error = document.getElementById("error").value;
+    var success = document.getElementById("success").value;
+    if(error.localeCompare("")) {
+        mizhu.alert('', error);
+    }
+    if(success.localeCompare("")) {
+        mizhu.alert('', success);
     }
 </script>

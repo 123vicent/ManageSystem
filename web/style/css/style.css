@@ -759,7 +759,7 @@ p {
     -webkit-animation-iteration-count: 1;
     -moz-animation-name: translate-transition;
     -moz-animation-duration: 0.8s;
-    -moz-animation-timing-function: liner;
+    -moz-animation-timing-function: linear;
     -moz-animation-iteration-count: 1;
     animation-name: translate-transition;
     animation-duration: 0.8s;

@@ -58,7 +58,8 @@
 					<li><a href="/jump?action=viewcar"><i class="glyphicon glyphicon-picture"></i> 豪车鉴赏</a></li>
 					<li><a href="/jump?action=reserve"><i class="glyphicon glyphicon-envelope"></i> 养修预约 </a></li>
 					<li><a href="/jump?action=apt_record"><i class="glyphicon glyphicon-briefcase"></i> 预约历史 </a> </li>
-					<li><a href="/jump?action=viewhistory"<i class="glyphicon glyphicon-list-alt"></i> 浏览历史</a></li>
+					<li><a href="/jump?action=viewhistory"><i class="glyphicon glyphicon-list-alt"></i> 浏览历史</a></li>
+					<li><a href="/jump?action=help"><i class="glyphicon glyphicon-list-alt"></i> 帮助</a></li>
 				</ul>
 			</nav>
 			<button class="close-button" id="close-button">C</button>
@@ -81,17 +82,19 @@
 				<!-- //banner -->
 
 				<div class="w3agile properties">
-					<h3 class="w3ls-title">${title}</h3>
+					<h4 class="text-center">${title}</h4>
+					<br>
+					<center><h5>${shopname}</h5></center>
 					<div class="properties-bottom">
-						<div class="w3ls-text">
-							<p><font size="4">${content}</font></p><!--通知-->
+						<div class="text-left">
+							<p><font size="2">${content}</font></p><!--通知-->
 						</div>
 
 					</div>
 				</div>
 				<!-- brands -->
 				<div class="w3agile brands"> 
-					<h3 class="w3ls-title">合作品牌</h3> 
+
 					<div class="brands-info">
 						<div class="brand-grids">
 							<img src="../../style/images/b1.jpg" alt=""/>

@@ -54,7 +54,8 @@
 					<li><a href="/jump?action=viewcar"><i class="glyphicon glyphicon-picture"></i> 豪车鉴赏</a></li>
 					<li><a href="/jump?action=reserve"><i class="glyphicon glyphicon-envelope"></i> 养修预约 </a></li>
 					<li><a class="active" href="/jump?action=apt_record"><i class="glyphicon glyphicon-briefcase"></i> 预约历史 </a> </li>
-					<li><a href="/jump?action=viewhistory"<i class="glyphicon glyphicon-list-alt"></i> 浏览历史</a></li>
+					<li><a href="/jump?action=viewhistory"><i class="glyphicon glyphicon-list-alt"></i> 浏览历史</a></li>
+					<li><a href="/jump?action=help"><i class="glyphicon glyphicon-list-alt"></i> 帮助</a></li>
 				</ul>
 			</nav>
 			<button class="close-button" id="close-button">C</button>
@@ -107,8 +108,7 @@
 				</div>
 				<!-- //about --> 
 				<!-- brands -->
-				<div class="w3agile brands"> 
-					<h3 class="w3ls-title">合作品牌</h3> 
+				<div class="w3agile brands">
 					<div class="brands-info">
 						<div class="brand-grids">
 							<a href="#"><img src="../../style/images/b1.jpg" alt=""/></a>
