@@ -38,15 +38,11 @@ public class RegisterCarServlet extends HttpServlet {
         Customeruser customeruser = customeruserDAO.findById(cusid);
 
         if (customeruser.getCususer_id() == null) {
-            //System.out.println(1111);
             request.setAttribute("cusid_error", "客户id不存在");
         }
 
         String brand = request.getParameter("brand");
-
-
         String model = request.getParameter("model");
-
 
         CarDAO carDAO = DAOFactory.getCarDAO();
         Car car = carDAO.findByBrandModel(brand, model);

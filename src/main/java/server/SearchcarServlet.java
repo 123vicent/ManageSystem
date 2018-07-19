@@ -23,7 +23,6 @@ public class SearchcarServlet extends HttpServlet {
         String brand = request.getParameter("Bybrand");
         String type = request.getParameter("Bytype");
 
-
         CarinfoDAO carinfoDAO = DAOFactory.getCarinfoDAO();
 
         request.setAttribute("searchcars",carinfoDAO.findAllByTag(shopuserid,brand,type));

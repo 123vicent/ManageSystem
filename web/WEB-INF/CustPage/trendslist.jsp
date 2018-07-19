@@ -47,12 +47,6 @@
 			<nav class="top-nav">
 				<ul class="icon-list">
 					<li class="menu-title">CarManage</li>
-					<!--<li><a class="active" href="main.html"><i class="glyphicon glyphicon-home"></i> 主页 </a></li>
-					<li><a href="imformation.html"><i class="glyphicon glyphicon-info-sign"></i> 个人信息 </a></li>
-					 
-					<li><a href="testdrive.html"><i class="glyphicon glyphicon-eye-open"></i> 寻车试驾 </a></li>
-					<li><a href="gallery.html"><i class="glyphicon glyphicon-picture"></i> 豪车鉴赏</a></li>																					
-					<li><a href="reserve.html"><i class="glyphicon glyphicon-envelope"></i> 养修预约 </a></li>-->
 					<li><a href="/jump?action=homepage"><i class="glyphicon glyphicon-home"></i> 主页 </a></li>
 					<li><a href="/jump?action=personal_info"><i class="glyphicon glyphicon-info-sign"></i> 个人信息 </a></li>
 					<li><a href="/jump?action=testdrive"><i class="glyphicon glyphicon-eye-open"></i> 寻车试驾 </a></li>
@@ -105,7 +99,6 @@
 								<td>
 									<a href="/jump?action=trends&title=${U.title}&shopuser_id=${U.shopuser_id}" name="news_id">详情</a>
 
-										<!--input type="button" class="btn btn-success"  value="返回"></button-->
 									</a>
 								</td>
 							</tr>
@@ -115,21 +108,8 @@
 
 							</tbody>
 						</table>
-					<%--<div class="properties-bottom">
-						<c:forEach var="U" items="${news}">
-						<div class="w3ls-text">
-							<a href="/jump?action=trends&title=${U.title}&shopuser_id=${U.shopuser_id}" name="news_id"><font size="4">${U.title}</font></a><!--通知1-->
-						</div>
-						</c:forEach>
-					</div>
-					<!--<div class="properties-bottom">
-						<div class="w3ls-text">
-							<a href="#"><font size="4">456</font></a>&lt;!&ndash;通知1&ndash;&gt;
-						</div>
 
-					</div>-->--%>
 				</div>
-				<!-- brands -->
 				<div class="w3agile brands"> 
 
 					<div class="brands-info">
@@ -154,7 +134,6 @@
 						<div class="clearfix"> </div>
 					</div>
 				</div>
-				<!-- //brands -->
 				<!-- footer -->
 				<div class="w3agile footer"> 
 

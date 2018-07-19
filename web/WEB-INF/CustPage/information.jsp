@@ -83,20 +83,6 @@
 					<h3 class="w3ls-title">个人信息</h3> 
 					<div class="w3agent-grid">
 						<img src="../../style/images/head.jpeg">
-						<%--<form method="post" action="/uploadimg"  enctype="multipart/form-data">
-						<div class="form-group">
-							<input type="file" id="inputfile" style="width:100%" ></br>
-							<button type="submit" class="btn btn-primary" name="uploadfile" data-dismiss="modal">上传头像</button>
-						</div>
-						</form>--%>
-
-						<%--<form method="post" action="/uploadimg" enctype="multipart/form-data">
-							选择一个文件:
-							<input type="file" name="uploadFile" />
-							<br/><br/>
-							<input type="submit" value="头像上传" />
-						</form>--%>
-
 						<div class="w3agent-text">
 							<%Customeruser customeruser = (Customeruser)request.getAttribute("user_info");%>
 							<h4><%=customeruser.getCus_name()%></h4>
@@ -129,11 +115,11 @@
 								<div class="contact-form"> 
 									<form action="/modify">
 										<label>联系方式</label><input type="text" name="phone" id="phone" value=<%=customeruser.getCus_phone()%> placeholder="联系方式" required="">
-										<%--<span id="phone-message" style="color: red; font-size: small;"></span>--%>
+
 										<label>性别</label><input type="text" name="sex" value=<%=customeruser.getSex()%> placeholder="性别" required="">
 										<label>出生日期</label><input class="Wdate" style="height: 38px" name="birthday" type="text" value="<%=customeruser.getBirthday()%>" id="d15" onfocus="WdatePicker({dateFmt:'yyyy-MM-dd'})" required=""/>
 										<label>地址</label><input type="text" name="address" value=<%=customeruser.getAddress()%> placeholder="地址" required="">
-										<!--textarea name="Message" placeholder="Message" required=""></textarea-->
+
 										<input type="submit" value="提交">
 										<button type="button" class="btn btn-success" data-dismiss="modal">关闭</button>
 									</form> 

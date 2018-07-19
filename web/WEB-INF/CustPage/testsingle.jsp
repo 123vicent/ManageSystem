@@ -71,7 +71,7 @@
 			<div class="content">
 				<!-- banner -->
 				<div class="banner about-banner"> 
-					<div class="banner-img">  
+					<div class="banner-img7">
 						<h3>车辆信息</h3>   
 					</div> 
 				</div>
@@ -125,13 +125,13 @@
 							<p><b>参考价格 :</b> ¥<%=car.getPrice()%> </p>
 						</div>
 					</div>
+					<a href="/jump?action=testdrive"><center><input type="button" class="btn btn-warning"  value="返回"></center></a>
 					<div class="w3ls-related">
 						<h3 class="w3ls-title">试驾预约</h3>
 						<div class="contact-form">
 							<form action="/testdrive_book" method="post">
 								<label>预约日期</label>
 								<input class="Wdate" style="height: 35px;" name="ap_time" type="text" id="d15" onfocus="WdatePicker({dateFmt:'yyyy-MM-dd HH:mm:ss'})" placeholder="选择日期" required=""/>
-								<!--textarea name="Message" placeholder="Message" required=""></textarea-->
 								<label>您的要求</label>
 								<textarea name="Message" placeholder="问题描述" required></textarea>
 								<center><input type="submit" value="提交"></center>

@@ -71,7 +71,7 @@
 			<div class="content">
 				<!-- banner -->
 				<div class="banner about-banner"> 
-					<div class="banner-img">  
+					<div class="banner-img4">
 						<h3>预约历史</h3>   
 					</div> 
 				</div>
@@ -97,7 +97,6 @@
 								<td>
 									<a href = "/jump?action=appoint_detail&value=<%=cususerapt.getAppointment_id()%>"><!--这里进入详细预约信息的页面-->
 									详情>>
-									<!--input type="button" class="btn btn-success"  value="返回"></button-->
 									</a>
 								</td>
 							</tr>

@@ -95,7 +95,6 @@ public class wxconnect extends HttpServlet {
         if (mySignature != null && mySignature != "" && mySignature.equals(signature)) {
             System.out.println("签名校验通过。");
             //如果检验成功输出echostr，微信服务器接收到此输出，才会确认检验完成。
-            //response.getWriter().println(echostr);
             response.getWriter().write(echostr);
         } else {
             System.out.println("签名校验失败.");
@@ -120,10 +119,6 @@ public class wxconnect extends HttpServlet {
         String msgType = map.get("MsgType");
         String content = map.get("Content");
 
-        System.out.println(toUserName);
-        System.out.println(fromUserName);
-        System.out.println(msgType);
-        System.out.println(content);
 
         // 对文本消息进行处理
         String message = null;

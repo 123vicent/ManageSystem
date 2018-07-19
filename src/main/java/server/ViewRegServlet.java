@@ -20,7 +20,6 @@ public class ViewRegServlet extends HttpServlet {
         HttpSession session = request.getSession();
         String shopuserid = (String)session.getAttribute("userid");
 
-
         String cususer_id = request.getParameter("cususer_id");
 
         String cus_name = request.getParameter("cus_name");

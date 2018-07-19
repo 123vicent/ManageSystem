@@ -90,7 +90,7 @@
         <div class="content">
             <!-- banner -->
             <div class="banner about-banner">
-                <div class="banner-img">
+                <div class="banner-img5">
                     <h3>养修预约</h3>
                 </div>
             </div>
@@ -227,14 +227,6 @@
         option.appendChild(document.createTextNode(list1[i]));
         option.value = list1[i];
         ddlProvince.appendChild(option);
-        //city initialize
-        var firstprovince = list2[0];
-        for (var j = 0; j < firstprovince.length; j++) {
-            var optioncity = document.createElement("option");
-            optioncity.appendChild(document.createTextNode(firstprovince[j]));
-            optioncity.value = firstprovince[j];
-            ddlCity.appendChild(optioncity);
-        }
     }
     function indexof(obj,value)
     {

@@ -76,14 +76,13 @@
 			<div class="content">
 				<!-- banner -->
 				<div class="banner about-banner"> 
-					<div class="banner-img">  
+					<div class="banner-img4">
 						<h3>浏览历史</h3>
 					</div> 
 				</div>
 				<!-- //banner -->
 				<!-- properties --> 
-				<div class="w3agile properties">   
-					<%--<div class="w3ls-text">--%>
+				<div class="w3agile properties">
 					<table class="table table-striped">
 						
 						<thead>
@@ -105,7 +104,6 @@
 								<td>
 									<a href = "/jump?action=car_detail&shopuserid=<%=vcrList.get(i).getShopuser_id()%>&carid=<%=c.getCar_id()%>"><!--这里进入详细预约信息的页面-->
 									查看>>
-									<!--input type="button" class="btn btn-success"  value="返回"></button-->
 									</a>
 								</td>
 								</tr>

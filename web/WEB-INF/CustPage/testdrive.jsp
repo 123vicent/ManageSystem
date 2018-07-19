@@ -72,7 +72,7 @@
 			<div class="content">
 				<!-- banner -->
 				<div class="banner about-banner"> 
-					<div class="banner-img">  
+					<div class="banner-img3">
 						<h3>寻车试驾</h3>   
 					</div> 
 				</div>
@@ -132,32 +132,9 @@
                         <%}%>
 					</div>
 
-					<!--<div class="properties-bottom">
-						<div class="properties-img">
-							<img src="../../style/images/1.jpg" alt="">
-							<div class="view-caption rent-caption">
-								<h4><span class="glyphicon glyphicon-eye-open"></span> 123 </h4>
-							</div>
-							<div class="w3ls-buy" >
-								<a href="/jump?action=车辆信息" class="rent">详细</a>
-							</div>
-						</div>
-						<div class="w3ls-text">
-							<h5>Car2</h5>
-							<h6>¥500k</h6>
-						</div>
-					</div>-->
 					<div class="clearfix"> </div>
 				</div>
-				<!--<form action="/testdrive_book">
-				<div class="w3agile agents">
-					<h3 class="w3ls-title">试驾预约</h3>
-						<div align="center">
-						<button class="btn btn-default" type="submit" onclick="window.location.href='testdrive2.html'">进行预约</button>
-						</div>
-				</div>
-				</form>-->
-				<!-- brands -->
+
 				<div class="w3agile brands"> 
 
 					<div class="brands-info">

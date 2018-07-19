@@ -17,7 +17,7 @@ import java.util.List;
 public class carbakcServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String shopuser_id = request.getParameter("userid");
-        String carid = request.getParameter("carid");
+
         CarinfoDAO carinfoDAO = DAOFactory.getCarinfoDAO();
         List<Carinfo> carinfos = carinfoDAO.findAllByShopId(shopuser_id);
         request.setAttribute("searchcars",carinfos);

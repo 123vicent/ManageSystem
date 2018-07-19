@@ -10,7 +10,6 @@ public interface CarDAO {
     public Boolean update(Car car);
     public Boolean delete(String car_id);
     public Car findById(String car_id);
-    public List<String> findModelByBrand(String brand);
     public Car findByBrandModel(String brand,String model);
     public List<Car> findAll();
     public List<String> findAllBrand();

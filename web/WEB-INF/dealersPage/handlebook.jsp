@@ -75,12 +75,6 @@
                 <li><a href="/SwitchPage?page=setpage"><font size="3">用户设置</font></a></li>
                 <li><a href="/SwitchPage?page=helppage"><font size="3">帮助界面</font></a></li>
             </ul>
-            <!--页内切换-->
-            <!--
-            <form class="navbar-form navbar-right">
-                  <input type="text" class="form-control" placeholder="Search...">
-            </form>
-            -->
         </div>
     </div>
 </nav>
@@ -106,14 +100,6 @@
         </ul>
     </div>
     <!-- //左边导航栏 -->
-
-
-
-    <!--查询所有车的类型型号，设置下拉框-->
-    <!--//查询所有车的类型型号，设置下拉框-->
-
-
-
     <!-- 控制输出内容在右半部分 -->
     <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
 
@@ -177,9 +163,6 @@
                         <div>
                             <textarea name="shopinfo" style="width:1000px;" rows="5" warp="virtual" placeholder="输入拒绝原因" required></textarea>
                         </div>
-                        <%if(request.getAttribute("error")!=null){ %>
-                        <%=request.getAttribute("error")%>
-                        <%  }%>
                         <div>
                             <br><br>
                             <button id="addBtn" type="submit" name="submit" value="拒绝预约" class="btn btn-warning">

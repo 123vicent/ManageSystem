@@ -21,20 +21,10 @@ public class PushMessageServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         HttpSession session = request.getSession();
         String shopuserid = (String)session.getAttribute("userid");
-
-
         Date utilDate=new Date();
         java.sql.Date sqlDate=new java.sql.Date(utilDate.getTime());
-        //SimpleDateFormat ft = new SimpleDateFormat ("yyyy.MM.dd");
-        //String dateFormat = ft.format(date);
-
-
-
         String title = request.getParameter("title");
-
-
         String message = request.getParameter("message");
-
         News news = new News();
         news.setShopuser_id(shopuserid);
         news.setTime(sqlDate);

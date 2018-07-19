@@ -41,29 +41,36 @@ public class dealingaptServlet extends HttpServlet {
             ap.setAp_state("已接受");
             ap.setShopinfo(shopinfo);
             view = request.getRequestDispatcher("ShopPage/funcViewAppointment.jsp");
-            apDAO.update(ap);
+            if(apDAO.update(ap)){
+                request.setAttribute("success","成功接受！");
+            }else{
+                request.setAttribute("error","发生错误！");
+            }
         }else if(access.equals("拒绝预约")){
                 ap.setShopinfo(shopinfo);
                 ap.setAp_state("已拒绝");
                 ap.setPayment(0);
                 view = request.getRequestDispatcher("ShopPage/funcViewAppointment.jsp");
-                apDAO.update(ap);
+                if(apDAO.update(ap)){
+                    request.setAttribute("success","成功拒绝！");
+                }else{
+                    request.setAttribute("error","发生错误！");
+                }
         }else if(access.equals("完成预约")){
             String completetime = request.getParameter("complete_time");
             String pay_ment = request.getParameter("payment");
             String description = request.getParameter("description");
-            if(completetime.equals("")||pay_ment.equals("")||description.equals("")){
-                request.setAttribute("error","请输入完整信息");
-                view = request.getRequestDispatcher("WEB-INF/dealersPage/handlebook.jsp");
+            double payment = Double.parseDouble(pay_ment);
+            Timestamp complete_time = Timestamp.valueOf(completetime);
+            ap.setAp_state("已完成");
+            ap.setComplete_time(complete_time);
+            ap.setPayment(payment);
+            ap.setShopinfo(description);
+            view = request.getRequestDispatcher("ShopPage/funcViewAppointment.jsp");
+            if(apDAO.update(ap)){
+                request.setAttribute("success","预约完成！");
             }else{
-                double payment = Double.parseDouble(pay_ment);
-                Timestamp complete_time = Timestamp.valueOf(completetime);
-                ap.setAp_state("已完成");
-                ap.setComplete_time(complete_time);
-                ap.setPayment(payment);
-                ap.setShopinfo(description);
-                view = request.getRequestDispatcher("ShopPage/funcViewAppointment.jsp");
-                apDAO.update(ap);
+                request.setAttribute("error","发生错误！");
             }
         }else{
             view = request.getRequestDispatcher("ShopPage/funcViewAppointment.jsp");

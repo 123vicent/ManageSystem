@@ -50,6 +50,7 @@ public class registerServlet extends HttpServlet {
             shopuser.setShop_phone(phone);
             shopuser.setShop_address(address);
             shopuser.setShop_manager(manager);
+            shopuser.setDescription(description);
 
             if(shopuserdao.insert(shopuser)){
                 view = request.getRequestDispatcher("ShopPage/shopRegSuccess.html");
@@ -58,26 +59,6 @@ public class registerServlet extends HttpServlet {
                 view=request.getRequestDispatcher("ShopPage/register.jsp");
             }
         }
-        /*try {
-            rs = stmt.executeQuery("select * from user");
-            while(rs.next())
-            {
-                if(rs.getString(2).equals(identity)) {
-                    request.setAttribute("msg","该用户名已被注册!");
-                    view=request.getRequestDispatcher("WEB-INF/register.jsp");
-                    view.forward(request,response);
-                }
-            }
-            int i=(int)(Math.random()*900)+100;
-            String id =  Integer.toString(i);
-            String sql  = "insert into user values ('"+id+"','"+identity+"','"+password+"','"+phone+"','"+email+"')";
-            stmt.execute(sql);
-        } catch (SQLException e) {
-            e.printStackTrace();
-            request.setAttribute("msg","注册失败");
-            view=request.getRequestDispatcher("WEB-INF/register.jsp");
-            view.forward(request,response);
-        }*/
         view.forward(request,response);
     }
 

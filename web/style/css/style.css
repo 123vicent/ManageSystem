@@ -432,7 +432,7 @@ ul.nav-sub {
 }
 /*-- banner--*/
 .banner-img {
-    background: url(../images/1.jpg)no-repeat center;
+    background: url(../images/personInfo.jpg)no-repeat center;
     background-size: cover;
     min-height: 370px;
 }
@@ -441,6 +441,41 @@ ul.nav-sub {
 }
 .banner-img2{
     background-image: url(../images/3.jpg);
+}
+.banner-img3 {
+    background: url(../images/findCar.jpg)no-repeat center;
+    background-size: cover;
+    min-height: 370px;
+}
+.banner-img4 {
+    background: url(../images/view.jpg)no-repeat center;
+    background-size: cover;
+    min-height: 370px;
+}
+.banner-img5 {
+    background: url(../images/repairCar.jpg)no-repeat center;
+    background-size: cover;
+    min-height: 370px;
+}
+.banner-img6 {
+    background: url(../images/personInfo.jpg)no-repeat center;
+    background-size: cover;
+    min-height: 370px;
+}
+.banner-img7 {
+    background: url(../images/reserve.jpg)no-repeat center;
+    background-size: cover;
+    min-height: 370px;
+}
+.banner-img8 {
+    background: url(../images/brand.jpg)no-repeat center;
+    background-size: cover;
+    min-height: 370px;
+}
+.banner-img9 {
+    background: url(../images/help.jpg)no-repeat center;
+    background-size: cover;
+    min-height: 370px;
 }
 .banner .carousel-control span.glyphicon {
     font-size: 1.5em;
@@ -1256,6 +1291,27 @@ button.mfp-arrow {
 /*-- //home-page --*/
 /*-- about-page --*/
 .banner.about-banner .banner-img {
+    min-height: 125px;
+}
+.banner.about-banner .banner-img3 {
+    min-height: 125px;
+}
+.banner.about-banner .banner-img4 {
+    min-height: 125px;
+}
+.banner.about-banner .banner-img5 {
+    min-height: 125px;
+}
+.banner.about-banner .banner-img6 {
+    min-height: 125px;
+}
+.banner.about-banner .banner-img7 {
+    min-height: 125px;
+}
+.banner.about-banner .banner-img8 {
+    min-height: 125px;
+}
+.banner.about-banner .banner-img9 {
     min-height: 125px;
 }
 .banner.about-banner h3 {

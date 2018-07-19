@@ -24,8 +24,6 @@ import java.util.Map;
 @WebServlet(name = "log",urlPatterns = {"/log"})
 public class log extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        //建立数据库连接
-
         String userid = request.getParameter("username");
         String password = request.getParameter("password");
 
@@ -34,10 +32,6 @@ public class log extends HttpServlet {
 
         if(access.equals("立即注册")){
             view = request.getRequestDispatcher("WEB-INF/CustPage/cusregister.jsp");
-        }
-        else if(access.equals("忘记密码"))
-        {
-            view = request.getRequestDispatcher("WEB-INF/forget.jsp");
         }
         else
         {
@@ -52,8 +46,6 @@ public class log extends HttpServlet {
                 view  = request.getRequestDispatcher("WEB-INF/CustPage/cuslogin.jsp");
             }
             else {
-                //rs = stmt.executeQuery("SELECT * FROM user where usr_name = '"+userid+"'and password =  '"+password+"'");
-                //rs.next();
                 HttpSession session = request.getSession();
                 session.setMaxInactiveInterval(3600);
                 session.setAttribute("userid",userid);

@@ -77,12 +77,7 @@
                   <li><a href="/SwitchPage?page=setpage"><font size="3">用户设置</font></a></li>
                   <li><a href="/SwitchPage?page=helppage"><font size="3">帮助界面</font></a></li>
               </ul>
-              <!--页内切换-->
-              <!--
-              <form class="navbar-form navbar-right">
-                <input type="text" class="form-control" placeholder="Search...">
-              </form>
-              -->
+
           </div>
       </div>
   </nav>
@@ -102,31 +97,16 @@
                   <div class="item active">
                       <img class="first-slide" src="../../style/images/firstpage1.png"  alt="First slide">
                       <div class="container">
-                          <%--<div class="carousel-caption">
-                              <h1>标题一</h1>
-                              <p>段落一</p>
-                              <p><a class="btn btn-lg btn-primary" data-toggle="tab" href="/SwitchPage?page=funcpage" data-toggle="tab"role="button">马上使用功能</a></p>
-                          </div>--%>
                       </div>
                   </div>
                   <div class="item">
                       <img class="second-slide" src="../../style/images/firstpage2.jpg" alt="Second slide">
                       <div class="container">
-                          <%--<div class="carousel-caption">
-                              <h1>标题二</h1>
-                              <p>段落二</p>
-                              <p><a class="btn btn-lg btn-primary" data-toggle="tab" href="#C" data-toggle="tab"role="button">查看用户设置</a></p>
-                          </div>--%>
                       </div>
                   </div>
                   <div class="item">
                       <img class="third-slide" src="../../style/images/firstpage3.jpg" alt="Third slide">
                       <div class="container">
-                          <%--<div class="carousel-caption">
-                              <h1>标题三</h1>
-                              <p>段落三</p>
-                              <p><a class="btn btn-lg btn-primary" data-toggle="tab" href="#D" role="button">查看帮助界面</a></p>
-                          </div>--%>
                       </div>
                   </div>
               </div>
@@ -138,10 +118,7 @@
                   <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
                   <span class="sr-only">Next</span>
               </a>
-          </div><!-- /.carousel -->
-          <!-- Marketing messaging and featurettes
-      ================================================== -->
-          <!-- Wrap the rest of the page in another container to center all the content. -->
+          </div>
 
           <div class="container marketing">
 
