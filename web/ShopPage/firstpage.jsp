@@ -125,19 +125,19 @@
       <!-- Three columns of text below the carousel -->
       <div class="row">
         <div class="col-lg-4">
-          <img class="img-circle" src="../img/team.jpg" alt="Generic placeholder image" width="140" height="140">
+          <img class="img-circle" src="../style/images/find.jpg" alt="Generic placeholder image" width="140" height="140">
           <h2>查询车辆</h2>
           <p></p>
           <p><a class="btn btn-default" href="/SwitchPage?page=funcViewCar" role="button">View details &raquo;</a></p>
         </div><!-- /.col-lg-4 -->
         <div class="col-lg-4">
-          <img class="img-circle" src="../img/team.jpg" alt="Generic placeholder image" width="140" height="140">
+          <img class="img-circle" src="../style/images/reserve1.jpg" alt="Generic placeholder image" width="140" height="140">
           <h2>查询预约</h2>
           <p></p>
           <p><a class="btn btn-default" href="/SwitchPage?page=funcViewAppointment" role="button">View details &raquo;</a></p>
         </div><!-- /.col-lg-4 -->
         <div class="col-lg-4">
-          <img class="img-circle" src="../img/team.jpg" alt="Generic placeholder image" width="140" height="140">
+          <img class="img-circle" src="../style/images/record1.jpg" alt="Generic placeholder image" width="140" height="140">
           <h2>浏览记录</h2>
           <p></p>
           <p><a class="btn btn-default" href="/SwitchPage?page=funcViewRecord" role="button">View details &raquo;</a></p>
