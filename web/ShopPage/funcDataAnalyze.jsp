@@ -110,11 +110,15 @@
 					
 					<!--数据分析图-->
 					<form action="/DrawChartServlet" method="post">
-						<input type="submit" name="submit" value="BarChart">
-						<input type="submit" name="submit" value="PieChart"><br>
+					<div class="btn pull-left" style="margin-left: 0px;">
+					<button class="btn btn-default" type="submit" name="submit" value="BarChart">BarChart</button>
+					<button class="btn btn-default" type="submit" name="submit" value="PieChart">PieChart</button>
+					</div>
+						<br>
 						<%if(request.getAttribute("graphURL")!=null){%>
 						    <img src="<%= request.getAttribute("graphURL") %>">
 					<%;}%>
+
 					</form>
 
 
