@@ -53,10 +53,15 @@ public class regist extends HttpServlet {
             customeruser.setCus_name(name);
 
 
-            customeruserdao.insert(customeruser);
-            view = request.getRequestDispatcher("WEB-INF/CustPage/cuslogin.jsp");
+            if(customeruserdao.insert(customeruser)){
+                request.setAttribute("success","注册成功！");
+                view = request.getRequestDispatcher("WEB-INF/CustPage/cuslogin.jsp");
+            }
+            else{
+                request.setAttribute("failed","注册失败！请重新注册");
+                view = request.getRequestDispatcher("WEB-INF/CustPage/cusregister.jsp");
+            }
         }
-
         view.forward(request,response);
     }
 

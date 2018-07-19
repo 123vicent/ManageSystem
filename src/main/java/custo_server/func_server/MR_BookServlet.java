@@ -29,7 +29,7 @@ public class MR_BookServlet extends HttpServlet {
         String cuid = (String)session.getAttribute("userid");
 
         String brand = new String(request.getParameter("brand").getBytes("ISO8859-1"),"UTF-8");
-        String model = request.getParameter("model");
+        String model = new String(request.getParameter("model").getBytes("ISO8859-1"),"UTF-8");
         //根据brand，model查找车id
         CarDAO carDAO = DAOFactory.getCarDAO();
         Car car = carDAO.findByBrandModel(brand,model);

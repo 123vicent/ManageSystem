@@ -13,6 +13,9 @@
     <title>登录</title>
     <link rel="stylesheet" type="text/css" href="../../style/css/bootstrap.min.css">
     <link href="../../style/css/signin.css" rel="stylesheet">
+    <link href="../../style/css/style1.css" rel="stylesheet">
+    <script src="../../style/js/jquery-1.7.1.min.js"></script>
+    <script src="../../style/js/ui.js"></script>
 </head>
 <body>
 <nav class="navbar navbar-inverse navbar-fixed-top">
@@ -26,6 +29,7 @@
 
 <div class="container" style="margin-top: 120px">
 
+    <input type="hidden" id="success" value=${success}>
     <form class="form-signin"  action="/log">
         <h2 class="form-signin-heading" id="sign_top">登录</h2>  <br><br>
         <label for="username" class="sr-only">username</label>
@@ -35,7 +39,7 @@
         <label><font size="4" color="#dc143c"><%=request.getAttribute("msg0")%></font> </label>
         <%  }%>
         <label for="inputPassword" class="sr-only">Password</label>
-        <input type="password" id="inputPassword" name="password" class="form-control" placeholder="请输入密码" >
+        <input type="password" id="inputPassword" name="password" class="form-control" placeholder="请输入密码">
         <%if(request.getAttribute("msg1")!=null){ %>
         <label><font size="4" color="#dc143c"><%=request.getAttribute("msg1")%></font> </label>
         <%  }%>
@@ -55,3 +59,9 @@
 </div>
 </body>
 </html>
+<script>
+    var success = document.getElementById("success").value;
+    if(success.localeCompare("")) {
+        mizhu.alert('', success);
+    }
+</script>
