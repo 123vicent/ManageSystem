@@ -20,7 +20,7 @@ public class DBConnect {
     public Connection getConnection() {
         url ="jdbc:mysql://localhost:3306/car";
         user = "root";
-        password = "root";
+        password = "123456";
         try {
             conn = DriverManager.getConnection(url,user,password);
         } catch (SQLException e) {
