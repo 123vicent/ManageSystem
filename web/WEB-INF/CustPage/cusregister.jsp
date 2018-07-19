@@ -29,6 +29,8 @@
 
 <div class="container" style="margin-top: 80px;">
     <div class="col-md-6 col-md-offset-3">
+        <a href="/webToWx"><font size="5" color="#dc143c"><<返回</font></a>
+        <br>
         <form action="/regist" class="">
             <label for="user_id"><font size="4">用户名*</font></label>
             <div class="input-group">
@@ -44,7 +46,7 @@
                 <label for="password"><font size="4">密码*</font></label>
                 <div class="input-group">
                     <span class="input-group-addon"><span class="glyphicon glyphicon-lock"></span></span>
-                    <input id="password" class="form-control" placeholder="请输入密码,至少含有两个字符" name="password" maxlength="20" type="password" required="" oninput="checkPassword();" />
+                    <input id="password" class="form-control" placeholder="请输入密码,至少含有两个字符" name="password" maxlength="20" type="password" required="" oninput="checkPassword();"/>
                 </div>
                 <span id="password-message" style="color: red; font-size: small;"></span>
             </div>
@@ -79,7 +81,9 @@
                 <label for="user_phone"><font size="4">手机号码*</font></label>
                 <div class="input-group">
                     <span class="input-group-addon"><span class="glyphicon glyphicon-phone"></span></span>
-                    <input id="user_phone" class="form-control" placeholder="请输入11位手机号码" name="phone" maxlength="11" type="text" required="" oninput="checkPhone();" />
+                    <input id="user_phone" class="form-control" placeholder="请输入11位手机号码" name="phone"
+                           maxlength="11" type="text" required="" oninput="checkPhone();" onkeypress="keyPress();"
+                           onkeyup="if(event.keyCode !=37 && event.keyCode != 39)value=value.replace(/\D/g,'')"/>
                 </div>
                 <span id="phone-message" style="color: red; font-size: small;"></span>
             </div>
@@ -199,6 +203,23 @@
         }
     }
 
+    function keyPress() {
+
+        var keyCode = event.keyCode;
+
+        if ((keyCode >= 48 && keyCode <= 57))
+
+        {
+
+            event.returnValue = true;
+
+        } else {
+
+            event.returnValue = false;
+
+        }
+
+    }
 </script>
 
 </body>

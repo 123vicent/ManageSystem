@@ -1,6 +1,7 @@
 package custo_server.func_server;
 
 import DAO.*;
+import algorithm.GenerateApid;
 import model.Appointment;
 import model.Car;
 import model.Shopuser;
@@ -22,8 +23,7 @@ import java.util.Date;
 public class MR_BookServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        int ap_num = (int)(Math.random()*100000000);
-        String ap_id = Integer.toString(ap_num);
+       String ap_id = new GenerateApid().generate();
 
         HttpSession session = request.getSession();
         String cuid = (String)session.getAttribute("userid");
@@ -53,7 +53,7 @@ public class MR_BookServlet extends HttpServlet {
         String ap_state = "待接受";
         String Message = new String(request.getParameter("Message").getBytes("ISO8859-1"),"UTF-8");
         Appointment appointment = new Appointment();
-        appointment.setAppointment_id(String.valueOf(ap_id));
+        appointment.setAppointment_id(ap_id);
         appointment.setCususer_id(cuid);
         appointment.setShopuser_id(shopuser.getShopuser_id());
         appointment.setCar_id(car.getCar_id());

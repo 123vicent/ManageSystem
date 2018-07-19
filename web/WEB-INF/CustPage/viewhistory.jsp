@@ -2,7 +2,6 @@
 <%@ page import="java.util.List" %>
 <%@ page import="DAO.ShopuserDAO" %>
 <%@ page import="DAO.DAOFactory" %>
-<%@ page import="model.Shopuser" %>
 <%@ page import="DAO.CarDAO" %>
 <%@ page import="model.Car" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>

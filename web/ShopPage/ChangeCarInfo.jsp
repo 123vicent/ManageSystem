@@ -238,36 +238,6 @@
 </div>
 
 <script>
-    function checkStock(){
-        var num = /^d+$/;
-        var inputValue = document.getElementById("stock").value;
-        var ret = num.test(inputValue);
-        if (inputValue == ""){
-            document.getElementById("stock-message").innerHTML = "";
-        } else if (inputValue < 0 || ret == false) {
-            document.getElementById("stock-message").innerHTML = "请输入正确内容！";
-        }else{
-            document.getElementById("stock-message").innerHTML = "";
-        }
-    }
-
-    function checkPrice() {
-        var num = /^d+$/;
-        var inputValue = document.getElementById("price").value;
-        var ret = num.test(inputValue);
-        if (inputValue == ""){
-            ducuent.getElementById("price_message").innerHTML = "";
-        } else if (inputValue < 0 || ret == false){
-            ducuent.getElementById("price_message").innerHTML = "请输入正确的价格！";
-            return false;
-        }
-    }
-
-    function checkSubmit() {
-        if(checkStock() == false || checkPrice() == false){
-            alert("请确保正确填写每一项内容");
-        }
-    }
     function keyPress() {
 
         var keyCode = event.keyCode;

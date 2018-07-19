@@ -6,6 +6,7 @@ import basic.Carview;
 
 import java.util.*;
 
+//车辆推荐算法
 public class CarRecommend {
     private Map<String,Double> carType_priority = new HashMap<String, Double>();
     private Map<String,Double> carBrand_priority = new HashMap<String, Double>();

@@ -34,7 +34,6 @@ public class UserOnlineListener implements ServletContextListener,
          (the Web application) is undeployed or 
          Application Server shuts down.
       */
-        System.out.println("contextDestroyed");
     }
 
     // -------------------------------------------------------
@@ -50,10 +49,6 @@ public class UserOnlineListener implements ServletContextListener,
         HttpSession session = event.getSession();
         ServletContext application = session.getServletContext();
         // 取得登录的用户名
-        String username = (String)session.getAttribute("userid");
-        // 从在线列表中删除用户名
-        System.out.println(username);
-        System.out.println("用户退出");
 
     }
 

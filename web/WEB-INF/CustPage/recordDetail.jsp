@@ -91,14 +91,23 @@
 							<p><b>负责人及联系方式 :</b> <%=cususerapt.getShop_manager()%>  <%=cususerapt.getShop_phone()%> </p>
 							<p><b>预约类型 :</b> <%=cususerapt.getAp_type()%> </p>
 							<p><b>预约状态 :</b>  <%=cususerapt.getAp_state()%> </p>
-							<p><b>完成时间 :</b> <%=cususerapt.getComplete_time()%></p>
+							<%if(cususerapt.getComplete_time()!=null){%><p><b>完成时间 :</b> <%=cususerapt.getComplete_time()%></p>
+							<%}else{%><p><b>完成时间 :</b>    </p><%;}%>
 							<p><b>支付金额 :</b> <%=cususerapt.getPayment()%> </p>
 							<br/>
 							<h4>客户描述</h4>
+							<%if(cususerapt.getCusinfo()!=null){%>
 							<p class="agile-text"><%=cususerapt.getCusinfo()%></p>
+							<%}else{%>
+							<p class="agile-text">   </p>
+							<%;}%>
 							<br/>
 							<h4>商家描述</h4>
+							<%if(cususerapt.getShopinfo()!=null){%>
 							<p class="agile-text"><%=cususerapt.getShopinfo()%></p>
+							<%}else{%>
+							<p class="agile-text">   </p>
+							<%;}%>
 						</div>
 						<!--车辆信息-->
 						<br/><br/>

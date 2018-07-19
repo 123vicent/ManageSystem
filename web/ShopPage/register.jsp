@@ -102,7 +102,9 @@
                         <span class="input-group-addon">
                             <span class="glyphicon glyphicon-phone"></span>
                         </span>
-                    <input id="shop_phone" class="form-control" name="phone" placeholder="请输入商家电话号码" maxlength="11" type="text" required="" oninput ="checkPhone();">
+                    <input id="shop_phone" class="form-control" name="phone" placeholder="请输入商家电话号码" maxlength="11" type="text" required="" oninput ="checkPhone();"
+                           onkeypress="keyPress();"
+                           onkeyup="if(event.keyCode !=37 && event.keyCode != 39)value=value.replace(/\D/g,'')">
                 </div>
                 <span id="phone-message" style="color: red; font-size: small;"></span>
             </div>
@@ -216,7 +218,23 @@
             alert("您的表单包含无效信息，请检查并修改后再次提交！")
         }
     }
+    function keyPress() {
 
+        var keyCode = event.keyCode;
+
+        if ((keyCode >= 48 && keyCode <= 57))
+
+        {
+
+            event.returnValue = true;
+
+        } else {
+
+            event.returnValue = false;
+
+        }
+
+    }
 </script>
 
 </body>
