@@ -111,8 +111,8 @@
 					<!--数据分析图-->
 					<form action="/DrawChartServlet" method="post">
 					<div class="btn pull-left" style="margin-left: 0px;">
-					<button class="btn btn-default" type="submit" name="submit" value="BarChart">BarChart</button>
-					<button class="btn btn-default" type="submit" name="submit" value="PieChart">PieChart</button>
+					<button class="btn btn-info" type="submit" name="submit" value="BarChart">BarChart</button>
+					<button class="btn btn-info" type="submit" name="submit" value="PieChart">PieChart</button>
 					</div>
 						<br>
 						<%if(request.getAttribute("graphURL")!=null){%>

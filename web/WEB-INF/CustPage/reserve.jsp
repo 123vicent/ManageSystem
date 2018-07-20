@@ -111,15 +111,14 @@
                         <%i++;%>
                         <%}%>
                         <span style="font-size: 14px;">需维修或保养汽车车型</span>
-                        <select id="carlist1" class="select-form" name="brand" runat="server" onchange="selectprovince(this);">
+                        <select id="carlist1" class="select-form" name="brand" runat="server" onchange="selectprovince(this);" required>
                             <option value="">请选择品牌..</option>
                         </select>
-                        <select id="carlist2" class="select-form" name="model" runat="server">
+                        <select id="carlist2" class="select-form" name="model" runat="server" required>
                             <option value="">请选择车型..</option>
                         </select>
                         <span style="font-size: 14px;">意向服务点</span>
-                        <select class="select-form" name="shop">
-                            <option value="">经销商</option>
+                        <select class="select-form" name="shop" required>
                             <%for(Shopuser shopuser:shopusers){%>
                             <option><%=(shopuser.getShop_name()+"-"+shopuser.getShop_address())%></option>
                             <%}%>

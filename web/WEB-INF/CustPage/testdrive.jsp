@@ -100,10 +100,10 @@
 						</div><!-- /input-group -->
 						<div>
 							<lable>价格区间：¥</lable>
-							<input type="text" id="min_price" name="min_price" style="width: 20%" oninput="checkMinPrice();" onkeypress="keyPress();"
+							<input type="text" id="min_price" name="min_price" style="width: 20%" onkeypress="keyPress();"
 								   onkeyup="if(event.keyCode !=37 && event.keyCode != 39)value=value.replace(/\D/g,'')">
 							--
-							<input name="max_price" id="max_price" type="text" style="width:20%" oninput="checkMaxPrice();" onkeypress="keyPress();"
+							<input name="max_price" id="max_price" type="text" style="width:20%"  onkeypress="keyPress();"
 								   onkeyup="if(event.keyCode !=37 && event.keyCode != 39)value=value.replace(/\D/g,'')">
 							<span id="price-message" style="color: red; font-size: small;"></span>
 						</div>

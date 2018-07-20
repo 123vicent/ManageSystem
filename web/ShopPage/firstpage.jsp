@@ -146,9 +146,6 @@
               </div><!-- /.row -->
 
               <!-- FOOTER -->
-              <footer>
-                  <p class="pull-right"><a href="#">返回顶部</a></p>
-              </footer>
 
           </div><!-- /.container -->
   </div>

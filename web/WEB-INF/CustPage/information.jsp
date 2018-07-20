@@ -114,9 +114,19 @@
 								<h3 class="w3ls-title">用户信息</h3>
 								<div class="contact-form"> 
 									<form action="/modify">
-										<label>联系方式</label><input type="text" name="phone" id="phone" value=<%=customeruser.getCus_phone()%> placeholder="联系方式" required="">
+										<label>联系方式</label>
+										<input type="text" name="phone" id="phone" value=<%=customeruser.getCus_phone()%> placeholder="联系方式" required=""
+												onkeypress="keyPress();" onkeyup="if(event.keyCode !=37 && event.keyCode != 39)value=value.replace(/\D/g,'')"
+											   style="ime-mode: inactive">
 
-										<label>性别</label><input type="text" name="sex" value=<%=customeruser.getSex()%> placeholder="性别" required="">
+										<label>性别</label>
+										<div>
+										<select name="sex" style="height: 38px" value=<%=customeruser.getSex()%> required="">
+											<option>男</option>
+											<option>女</option>
+										</select>
+										</div>
+										<br>
 										<label>出生日期</label><input class="Wdate" style="height: 38px" name="birthday" type="text" value="<%=customeruser.getBirthday()%>" id="d15" onfocus="WdatePicker({dateFmt:'yyyy-MM-dd'})" required=""/>
 										<label>地址</label><input type="text" name="address" value=<%=customeruser.getAddress()%> placeholder="地址" required="">
 
@@ -181,6 +191,23 @@
             if (checkPhone() == false) {
                 alert("请确保正确填写每一项内容！")
             }
+        }
+        function keyPress() {
+
+            var keyCode = event.keyCode;
+
+            if ((keyCode >= 48 && keyCode <= 57))
+
+            {
+
+                event.returnValue = true;
+
+            } else {
+
+                event.returnValue = false;
+
+            }
+
         }
 	</script>
 

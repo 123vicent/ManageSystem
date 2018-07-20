@@ -119,7 +119,8 @@
             <div>
                 <label>联系方式</label>
                 <input name="shop_phone" style="width:500px" type="text" value="<%=shopuser.getShop_phone()%>" class="form-control"
-                       placeholder="请输入联系方式（不能为空）" required>
+                       placeholder="请输入联系方式（不能为空）" required onkeypress="keyPress();"
+                       onkeyup="if(event.keyCode !=37 && event.keyCode != 39)value=value.replace(/\D/g,'')">
                 <div>
                     <label>商店地址</label>
                     <input name="shop_address" style="width:500px" type="text" value="<%=shopuser.getShop_address()%>" class="form-control"
@@ -162,5 +163,22 @@
     }
     if(success.localeCompare(null)) {
         mizhu.alert('', success);
+    }
+    function keyPress() {
+
+        var keyCode = event.keyCode;
+
+        if ((keyCode >= 48 && keyCode <= 57))
+
+        {
+
+            event.returnValue = true;
+
+        } else {
+
+            event.returnValue = false;
+
+        }
+
     }
 </script>

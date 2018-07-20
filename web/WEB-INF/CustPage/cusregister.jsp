@@ -11,6 +11,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="../../style/css/bootstrap.min.css" />
 <script language="javascript" type="text/javascript" src="../../style/js/My97DatePicker/WdatePicker.js">  </script>
+<link href="../../style/css/style1.css" rel="stylesheet">
+<script src="../../style/js/jquery-1.7.1.min.js"></script>
+<script src="../../style/js/ui.js"></script>
 <title>用户注册</title>
 <head>
     <meta charset="utf-8" />
@@ -19,6 +22,7 @@
     <title>用户注册</title>
 </head>
 <body>
+<input type="hidden" id="failed" value=${failed}>
 <nav class="navbar navbar-inverse navbar-fixed-top">
     <div class="container-fluid">
         <div class="navbar-header">
@@ -72,8 +76,8 @@
             <div class="form-group">
                 <center>
                     <label class="radio-inline" style="font-size: smaller;">
-                        <input type="radio" name="gender" id="emp_add_gender1" value="M" checked="checked"> 先生 </label>
-                    <label class="radio-inline" style="font-size: smaller;"> <input type="radio" name="gender" id="emp_add_gender2" value="F"> 女士 </label>
+                        <input type="radio" name="gender" id="emp_add_gender1" value="男" checked="checked"> 先生 </label>
+                    <label class="radio-inline" style="font-size: smaller;"> <input type="radio" name="gender" id="emp_add_gender2" value="女"> 女士 </label>
                 </center>
             </div>
 
@@ -219,6 +223,10 @@
 
         }
 
+    }
+    var failed = document.getElementById("failed").value;
+    if(failed.localeCompare("")) {
+        mizhu.alert('', failed);
     }
 </script>
 
